@@ -1,0 +1,13 @@
+:root {
+  /* UI Workshop Theme */
+  --primary-color: #ff4785;
+  --secondary-color: #1ea7fd;
+  --bg-color: #141b2d;
+  --surface-color: rgba(30, 36, 54, 0.7);
+  --text-color: #f6f9fc;
+  --muted-text: #a7b6c2;
+  --card-bg: rgba(36, 42, 66, 0.6);
+  --glass-border: rgba(255, 71, 133, 0.2);
+  --glass-shadow: rgba(30, 167, 253, 0.08);
+  --font-main: "Nunito Sans", system-ui, -apple-system, sans-serif;
+}

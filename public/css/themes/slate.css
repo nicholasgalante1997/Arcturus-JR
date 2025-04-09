@@ -1,0 +1,11 @@
+:root {
+  --primary-color: #ffa502; /* Amber */
+  --secondary-color: #6c5ce7; /* Soft violet */
+  --bg-color: #0d1117; /* GitHub dark */
+  --surface-color: rgba(22, 27, 34, 0.7);
+  --text-color: #f0f0f0;
+  --muted-text: #a0a0a0;
+  --card-bg: rgba(30, 35, 42, 0.6);
+  --glass-border: rgba(255, 165, 2, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.15);
+}

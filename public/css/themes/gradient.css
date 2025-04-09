@@ -1,0 +1,12 @@
+:root {
+  --primary-color: #ff5b4c;
+  --secondary-color: #4d6aff;
+  --bg-color: #090a1a;
+  --surface-color: rgba(15, 16, 36, 0.7);
+  --text-color: #ffffff;
+  --muted-text: #b3b3cc;
+  --card-bg: rgba(25, 26, 46, 0.6);
+  --glass-border: rgba(255, 91, 76, 0.2);
+  --glass-shadow: rgba(77, 106, 255, 0.15);
+  --font-main: "Nunito Sans", system-ui, -apple-system, sans-serif;
+}

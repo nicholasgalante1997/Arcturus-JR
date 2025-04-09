@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdown Blog</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/themes/sb.css" />
+
+    <!-- Import Maps for ES Modules -->
+    <script type="importmap">
+      {
+        "imports": {
+          "dompurify": "https://esm.sh/dompurify@3.2.5",
+          "front-matter": "https://esm.sh/front-matter@4.0.2",
+          "highlight.js": "https://esm.sh/highlight.js@11.11.1",
+          "marked": "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js",
+          "sleepydogs/LazySingleton": "https://esm.sh/sleepydogs@1.0.8-alpha.4/LazySingleton"
+        }
+      }
+    </script>
+
+    <!-- Bootstrap JavaScript -->
+    <script type="module" src="js/bootstrap.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1><a href="/" data-link>Markdown Blog</a></h1>
+        <nav>
+          <ul>
+            <li><a href="/" data-link>Home</a></li>
+            <li><a href="/about" data-link>About</a></li>
+            <li><a href="/posts" data-link>Posts</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="app" class="container">
+      <!-- Content will be inserted here via JavaScript -->
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Markdown Blog</p>
+      </div>
+    </footer>
+  </body>
+</html>

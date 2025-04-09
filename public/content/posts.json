@@ -1,0 +1,37 @@
+[
+  {
+    "id": "getting-started-with-es6",
+    "title": "Getting Started with ES6 Features",
+    "date": "2025-04-01",
+    "excerpt": "Learn about the most useful ES6 features that will improve your JavaScript code and make you more productive.",
+    "tags": ["javascript", "es6"]
+  },
+  {
+    "id": "vanilla-js-spa",
+    "title": "Building SPAs with Vanilla JavaScript",
+    "date": "2025-03-25",
+    "excerpt": "How to build modern single-page applications without frameworks using only vanilla JavaScript.",
+    "tags": ["javascript", "spa", "web development"]
+  },
+  {
+    "id": "history-api-routing",
+    "title": "Client-Side Routing with the History API",
+    "date": "2025-03-15",
+    "excerpt": "A deep dive into the History API and how to use it for clean client-side routing in your web applications.",
+    "tags": ["javascript", "routing", "history api"]
+  },
+  {
+    "id": "import-maps-guide",
+    "title": "The Complete Guide to Import Maps",
+    "date": "2025-03-05",
+    "excerpt": "Everything you need to know about using Import Maps for managing JavaScript dependencies without bundlers.",
+    "tags": ["javascript", "import maps", "modules"]
+  },
+  {
+    "id": "markdown-blogging",
+    "title": "Using Markdown for Modern Blogging",
+    "date": "2025-02-20",
+    "excerpt": "Why Markdown is the perfect format for bloggers and how to incorporate it into your workflow.",
+    "tags": ["markdown", "blogging", "content"]
+  }
+]

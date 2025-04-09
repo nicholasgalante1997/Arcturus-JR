@@ -1,0 +1,11 @@
+:root {
+  --primary-color: #88c0d0; /* Nord frost */
+  --secondary-color: #b48ead; /* Nord purple */
+  --bg-color: #2e3440; /* Nord polar night */
+  --surface-color: rgba(46, 52, 64, 0.7);
+  --text-color: #eceff4; /* Nord snow storm */
+  --muted-text: #d8dee9;
+  --card-bg: rgba(59, 66, 82, 0.6); /* Nord polar night lighter */
+  --glass-border: rgba(136, 192, 208, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.15);
+}

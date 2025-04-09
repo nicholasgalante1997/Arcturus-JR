@@ -1,0 +1,11 @@
+:root {
+  --primary-color: #00b894; /* Emerald */
+  --secondary-color: #e17055; /* Rust */
+  --bg-color: #1a1a2e; /* Deep blue */
+  --surface-color: rgba(30, 30, 50, 0.7);
+  --text-color: #f0f0f0;
+  --muted-text: #a0a0b0;
+  --card-bg: rgba(35, 35, 55, 0.6);
+  --glass-border: rgba(0, 184, 148, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.2);
+}

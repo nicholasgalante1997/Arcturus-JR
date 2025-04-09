@@ -1,0 +1,11 @@
+:root {
+  --primary-color: #ffd700; /* Gold */
+  --secondary-color: #9d4edd; /* Purple */
+  --bg-color: #0f0f1a; /* Deep navy/purple */
+  --surface-color: rgba(20, 20, 35, 0.7);
+  --text-color: #f0f0f0;
+  --muted-text: #b8b8c0;
+  --card-bg: rgba(25, 25, 40, 0.6);
+  --glass-border: rgba(255, 215, 0, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.2);
+}
