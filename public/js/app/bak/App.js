@@ -1,31 +1,31 @@
-import { marked } from 'marked';
+import { marked } from "marked";
 import hljs from 'highlight.js';
 
 class BlogApp {
   constructor() {
-    this.appElement = document.getElementById('app');
+    this.appElement = document.getElementById("app");
     this.routes = [
-      { path: '/', view: this.homeView },
-      { path: '/about', view: this.aboutView },
-      { path: '/posts', view: this.postsListView },
-      { path: '/post/:id', view: this.postView }
+      { path: "/", view: this.homeView },
+      { path: "/about", view: this.aboutView },
+      { path: "/posts", view: this.postsListView },
+      { path: "/post/:id", view: this.postView },
     ];
 
     this.setupEventListeners();
     this.router();
+
+    // Initialize history
+    window.addEventListener("popstate", () => this.router());
   }
 
   setupEventListeners() {
-    document.addEventListener('click', (e) => {
-      const link = e.target.closest('[data-link]');
+    document.addEventListener("click", (e) => {
+      const link = e.target.closest("[data-link]");
       if (link) {
         e.preventDefault();
         this.navigateTo(link.href);
       }
     });
-
-    // Initialize history
-    window.addEventListener('popstate', () => this.router());
   }
 
   navigateTo(url) {
@@ -34,8 +34,8 @@ class BlogApp {
   }
 
   getParamsFromPath(pathSpec, pathname) {
-    const pathParts = pathSpec.split('/');
-    const pathnameParts = pathname.split('/');
+    const pathParts = pathSpec.split("/");
+    const pathnameParts = pathname.split("/");
 
     if (pathParts.length !== pathnameParts.length) {
       return {};
@@ -48,20 +48,20 @@ class BlogApp {
       const pathPart = pathnameParts[i];
 
       // Check if it's a parameter (starts with :)
-      if (routePart.startsWith(':')) {
+      if (routePart.startsWith(":")) {
         params[routePart.slice(1)] = decodeURIComponent(pathPart);
         continue;
       }
     }
 
     return params;
-  }
+  } 
 
   matchRoute(pathname) {
     const route = this.routes.find((route) => {
       // Convert route path to regex pattern
-      const pathParts = route.path.split('/');
-      const pathnameParts = pathname.split('/');
+      const pathParts = route.path.split("/");
+      const pathnameParts = pathname.split("/");
 
       if (pathParts.length !== pathnameParts.length) {
         return false;
@@ -74,7 +74,7 @@ class BlogApp {
         const pathPart = pathnameParts[i];
 
         // Check if it's a parameter (starts with :)
-        if (routePart.startsWith(':')) {
+        if (routePart.startsWith(":")) {
           params[routePart.slice(1)] = pathPart;
           continue;
         }
@@ -92,8 +92,8 @@ class BlogApp {
 
     return {
       ...route,
-      params: this.getParamsFromPath(route.path, pathname)
-    };
+      params: this.getParamsFromPath(route.path, pathname),
+    }
   }
 
   async router() {
@@ -108,7 +108,7 @@ class BlogApp {
       return;
     }
 
-    console.info('Matched route:', match);
+    console.info("Matched route:", match);
 
     const { view, params } = match;
 
@@ -119,7 +119,7 @@ class BlogApp {
       // Call the view function and pass params
       await view.call(this, params);
     } catch (error) {
-      console.error('Error rendering view:', error);
+      console.error("Error rendering view:", error);
       this.errorView();
     }
 
@@ -129,11 +129,11 @@ class BlogApp {
   }
 
   updateNav() {
-    document.querySelectorAll('nav a').forEach((link) => {
-      if (link.getAttribute('href') === location.pathname) {
-        link.classList.add('active');
+    document.querySelectorAll("nav a").forEach((link) => {
+      if (link.getAttribute("href") === location.pathname) {
+        link.classList.add("active");
       } else {
-        link.classList.remove('active');
+        link.classList.remove("active");
       }
     });
   }
@@ -146,7 +146,7 @@ class BlogApp {
       }
       return await response.text();
     } catch (error) {
-      console.error('Error fetching markdown:', error);
+      console.error("Error fetching markdown:", error);
       throw error;
     }
   }
@@ -157,7 +157,7 @@ class BlogApp {
 
   // View renderers
   async homeView() {
-    const markdown = await this.fetchMarkdown('content/home.md');
+    const markdown = await this.fetchMarkdown("content/home.md");
     const content = this.renderMarkdown(markdown);
 
     this.appElement.innerHTML = `
@@ -176,7 +176,7 @@ class BlogApp {
   }
 
   async aboutView() {
-    const markdown = await this.fetchMarkdown('content/about.md');
+    const markdown = await this.fetchMarkdown("content/about.md");
     const content = this.renderMarkdown(markdown);
 
     this.appElement.innerHTML = `
@@ -209,11 +209,13 @@ class BlogApp {
                 <article class="post">
                     <h1>${post.title}</h1>
                     <div class="post-meta">
-                        <time datetime="${post.date}">${new Date(post.date).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric'
-                        })}</time>
+                        <time datetime="${post.date}">${new Date(
+        post.date
+      ).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })}</time>
                     </div>
                     <div class="post-content markdown-content">
                         ${this.renderMarkdown(post.content)}
@@ -251,11 +253,12 @@ class BlogApp {
       const posts = await this.fetchPosts();
       const recentPosts = posts.slice(0, 3); // Get 3 most recent posts
 
-      const postsContainer = document.getElementById('recent-posts');
+      const postsContainer = document.getElementById("recent-posts");
       postsContainer.innerHTML = this.renderPostsList(recentPosts);
     } catch (error) {
-      console.error('Error loading recent posts:', error);
-      document.getElementById('recent-posts').innerHTML = '<p class="error">Failed to load recent posts</p>';
+      console.error("Error loading recent posts:", error);
+      document.getElementById("recent-posts").innerHTML =
+        '<p class="error">Failed to load recent posts</p>';
     }
   }
 
@@ -263,17 +266,18 @@ class BlogApp {
     try {
       const posts = await this.fetchPosts();
 
-      const postsContainer = document.getElementById('all-posts');
+      const postsContainer = document.getElementById("all-posts");
       postsContainer.innerHTML = this.renderPostsList(posts);
     } catch (error) {
-      console.error('Error loading all posts:', error);
-      document.getElementById('all-posts').innerHTML = '<p class="error">Failed to load posts</p>';
+      console.error("Error loading all posts:", error);
+      document.getElementById("all-posts").innerHTML =
+        '<p class="error">Failed to load posts</p>';
     }
   }
 
   renderPostsList(posts) {
     if (posts.length === 0) {
-      return '<p>No posts found</p>';
+      return "<p>No posts found</p>";
     }
 
     return posts
@@ -284,11 +288,13 @@ class BlogApp {
                     <div class="post-card-content">
                         <h2>${post.title}</h2>
                         <div class="post-meta">
-                            <time datetime="${post.date}">${new Date(post.date).toLocaleDateString('en-US', {
-                              year: 'numeric',
-                              month: 'long',
-                              day: 'numeric'
-                            })}</time>
+                            <time datetime="${post.date}">${new Date(
+          post.date
+        ).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}</time>
                         </div>
                         <p>${post.excerpt}</p>
                     </div>
@@ -296,18 +302,18 @@ class BlogApp {
             </div>
         `
       )
-      .join('');
+      .join("");
   }
 
   async fetchPosts() {
     try {
-      const response = await fetch('/content/posts.json');
+      const response = await fetch("/content/posts.json");
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       return await response.json();
     } catch (error) {
-      console.error('Error fetching posts:', error);
+      console.error("Error fetching posts:", error);
       throw error;
     }
   }
@@ -318,7 +324,7 @@ class BlogApp {
     const post = posts.find((post) => post.id === id);
 
     if (!post) {
-      throw new Error('Post not found');
+      throw new Error("Post not found");
     }
 
     // Then fetch the actual content
@@ -326,12 +332,12 @@ class BlogApp {
 
     return {
       ...post,
-      content
+      content,
     };
   }
 }
 
 // Initialize the app
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   new BlogApp();
 });

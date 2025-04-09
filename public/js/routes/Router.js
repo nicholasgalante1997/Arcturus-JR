@@ -1,6 +1,16 @@
-import hljs from "highlight.js";
+import hljs from 'highlight.js';
+import ViewEngine from '../models/View';
 
 class AppRouter {
+
+  /** @type {Array<{ path: string, view: string }>} */
+  routes;
+
+  views = new ViewEngine();
+
+  /**
+   * @param {Array<{ path: string, view: string }>} routes 
+   */
   constructor(routes) {
     this.routes = routes;
   }
@@ -11,11 +21,11 @@ class AppRouter {
   }
 
   getParamsFromPath(pathSpec, pathname) {
-    const pathParts = pathSpec.split("/");
-    const pathnameParts = pathname.split("/");
+    const pathParts = pathSpec.split('/');
+    const pathnameParts = pathname.split('/');
 
     if (pathParts.length !== pathnameParts.length) {
-      return {};
+      return null;
     }
 
     const params = {};
@@ -25,7 +35,7 @@ class AppRouter {
       const pathPart = pathnameParts[i];
 
       // Check if it's a parameter (starts with :)
-      if (routePart.startsWith(":")) {
+      if (routePart.startsWith(':')) {
         params[routePart.slice(1)] = decodeURIComponent(pathPart);
         continue;
       }
@@ -36,22 +46,19 @@ class AppRouter {
 
   matchRoute(pathname) {
     const route = this.routes.find((route) => {
-      const pathParts = route.path.split("/");
-      const pathnameParts = pathname.split("/");
+      const pathParts = route.path.split('/');
+      const pathnameParts = pathname.split('/');
 
       if (pathParts.length !== pathnameParts.length) {
         return false;
       }
 
-      const params = {};
-
       for (let i = 0; i < pathParts.length; i++) {
         const routePart = pathParts[i];
         const pathPart = pathnameParts[i];
 
-        // Check if it's a parameter (starts with :)
-        if (routePart.startsWith(":")) {
-          params[routePart.slice(1)] = pathPart;
+        // Check if it's a parameter (starts with ":") Assume it matches anything
+        if (routePart.startsWith(':')) {
           continue;
         }
 
@@ -68,7 +75,7 @@ class AppRouter {
 
     return {
       ...route,
-      params: this.getParamsFromPath(route.path, pathname),
+      params: this.getParamsFromPath(route.path, pathname)
     };
   }
 
@@ -80,23 +87,25 @@ class AppRouter {
 
     // If no match, show 404
     if (!match) {
-      this.notFoundView();
+      this.views.render('404');
       return;
     }
 
-    console.info("Matched route:", match);
+    console.info('Matched route:', match);
 
     const { view, params } = match;
 
     // Show loading state
-    this.appElement.innerHTML = '<div class="loading"></div>';
-
+    const appElement = document.getElementById('app');
+    if (appElement) {
+      appElement.innerHTML = '<div class="loading"></div>';
+    }
+   
     try {
-      // Call the view function and pass params
-      await view.call(this, params);
+      await this.views.render(view, params);
     } catch (error) {
-      console.error("Error rendering view:", error);
-      this.errorView();
+      console.error('Error rendering view:', error);
+      await this.views.render('error');
     }
 
     // Update active navigation
@@ -105,11 +114,11 @@ class AppRouter {
   }
 
   updateNav() {
-    document.querySelectorAll("nav a").forEach((link) => {
-      if (link.getAttribute("href") === location.pathname) {
-        link.classList.add("active");
+    document.querySelectorAll('nav a').forEach((link) => {
+      if (link.getAttribute('href') === location.pathname) {
+        link.classList.add('active');
       } else {
-        link.classList.remove("active");
+        link.classList.remove('active');
       }
     });
   }

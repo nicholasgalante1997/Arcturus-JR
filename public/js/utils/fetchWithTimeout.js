@@ -3,7 +3,7 @@
  * @param {string | URL} url - The URL to fetch
  * @param {RequestInit} options - The RequestInit options to pass to fetch
  * @param {number} [timeoutMs=5000] - The timeout in milliseconds
- * 
+ *
  * @returns {Promise<Response>} The response from the fetch
  */
 export async function fetchWithTimeout(url, options = {}, timeoutMs = 5000) {
@@ -21,7 +21,7 @@ export async function fetchWithTimeout(url, options = {}, timeoutMs = 5000) {
   // Add the signal to the fetch options
   const fetchOptions = {
     ...options,
-    signal,
+    signal
   };
 
   // Return the fetch promise with timeout handling
@@ -32,7 +32,7 @@ export async function fetchWithTimeout(url, options = {}, timeoutMs = 5000) {
     })
     .catch((error) => {
       clearTimeout(timeout); // Clear the timeout if the fetch fails
-      if (error.name === "AbortError") {
+      if (error.name === 'AbortError') {
         throw new Error(`Request timed out after ${timeoutMs}ms`);
       }
       throw error; // Re-throw other errors
