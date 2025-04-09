@@ -1,0 +1,12 @@
+:root {
+  /* Neon Nights Theme */
+  --primary-color: #00f5d4;
+  --secondary-color: #fe53bb;
+  --bg-color: #141414;
+  --surface-color: rgba(25, 25, 25, 0.75);
+  --text-color: #f8f8f8;
+  --muted-text: #b0b0b0;
+  --card-bg: rgba(30, 30, 35, 0.7);
+  --glass-border: rgba(0, 245, 212, 0.25);
+  --glass-shadow: rgba(254, 83, 187, 0.1);
+}

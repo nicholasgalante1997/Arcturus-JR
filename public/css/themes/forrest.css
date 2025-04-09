@@ -1,0 +1,13 @@
+:root {
+  /* Forest Deep Theme */
+  --primary-color: #7fdb7a;
+  --secondary-color: #6db3dd;
+  --bg-color: #162324;
+  --surface-color: rgba(28, 43, 44, 0.7);
+  --text-color: #e0e8e8;
+  --muted-text: #a0b0b0;
+  --card-bg: rgba(32, 50, 51, 0.6);
+  --glass-border: rgba(127, 219, 122, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.15);
+  --font-main: 'Fraunces', Georgia, serif;
+}

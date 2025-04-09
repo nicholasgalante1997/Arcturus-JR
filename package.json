@@ -6,6 +6,8 @@
     "public/js"
   ],
   "scripts": {
+    "clean": "run-p clean:*",
+    "clean:css": "rm public/css/styles.min.css && rm public/css/themes/*.min.css",
     "lint": "eslint ./public/js/**/*.js",
     "fmt": "prettier --write ./public/js/**/*.js",
     "postcss": "run-p postcss:*",

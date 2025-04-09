@@ -62,19 +62,39 @@ header {
   border-bottom: 1px solid var(--glass-border);
 }
 
-header h1 {
+header a h1 {
   margin: 0;
   font-weight: 700;
   letter-spacing: -0.5px;
+  margin-block: 0px;
+  line-height: 1;
 }
 
-header h1 a {
+header a {
   color: var(--primary-color);
   text-decoration: none;
   transition: opacity 0.2s ease;
+  line-height: 1;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
 }
 
-header h1 a:hover {
+header a div#nav-profile-image {
+  display: inline-block;
+  box-sizing: border-box;
+  margin-right: 0.5rem;
+  padding: 0;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  border: 1px solid white;
+  overflow: hidden;
+}
+
+header a:hover {
   opacity: 0.8;
 }
 
@@ -90,7 +110,6 @@ header nav a {
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
-  padding: 0.5rem 0;
   position: relative;
   transition: color 0.3s ease;
 }
@@ -132,6 +151,22 @@ header nav a.active::after {
 main {
   min-height: calc(100vh - 160px);
   padding: 3rem 0;
+}
+
+img[alt="home-hero-doodles-adventurer"] {
+  background: transparent;
+  width: auto !important;
+  height: 411px !important;
+  box-shadow: none !important;
+  object-fit: contain;
+  object-position: left;
+  aspect-ratio: 3 / 2;
+  border-radius: 4px;
+}
+
+img[alt="home-hero-doodles-adventurer"]::after {
+  content: "Hello";
+  color: white;
 }
 
 /* Blog Post List */
@@ -216,7 +251,6 @@ main {
 }
 
 .post h1 {
-  margin-bottom: 0.8rem;
   color: var(--primary-color);
   font-weight: 800;
   font-size: 2.5rem;
@@ -235,8 +269,6 @@ main {
 .markdown-content h4,
 .markdown-content h5,
 .markdown-content h6 {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
   color: var(--primary-color);
   font-weight: 700;
   letter-spacing: -0.5px;
@@ -252,18 +284,12 @@ main {
 }
 
 .markdown-content p {
-  margin-bottom: 1.5rem;
   font-size: 1.05rem;
 }
 
 .markdown-content ul,
 .markdown-content ol {
-  margin-bottom: 1.5rem;
   padding-left: 2rem;
-}
-
-.markdown-content li {
-  margin-bottom: 0.5rem;
 }
 
 .markdown-content code {
@@ -359,6 +385,14 @@ footer p {
   border: 1px solid rgba(255, 107, 107, 0.3);
 }
 
+.alt-label {
+  position: relative;
+  display: inline-block;
+  font-size: 0.8em;
+  color: var(--muted-text);
+  top: -40px;
+}
+
 /* Page Transitions */
 .fade-in {
   animation: fadeIn 0.5s ease forwards;
@@ -381,6 +415,17 @@ footer p {
   
   .markdown-content h2 {
     font-size: 1.5rem;
+  }
+
+  img[alt="home-hero-doodles-adventurer"] {
+    background: transparent;
+    width: 100% !important;
+    height: auto !important;
+    box-shadow: none !important;
+    object-fit: contain;
+    object-position: center;
+    aspect-ratio: 3 / 2;
+    border-radius: 4px;
   }
 }
 

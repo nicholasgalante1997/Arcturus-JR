@@ -1,13 +1,8 @@
-# Welcome to My Markdown Blog
+![home-hero-doodles-adventurer](/assets/doodles-adventurer.jpg)
+<span class="alt-label" data-for="home-hero-doodles-adventurer">
+  Me, embarking on a crusade against Vercel's disposition to cripple modern web development.
+<span>
 
-This is a simple, static blog built with vanilla JavaScript, ES6 modules, and the Marked library for rendering markdown content.
+This is a space I've created to share thoughts, opinions, technical essays, verbal assaults, and anything that doesn't fit into a technical category above.
 
-## Features
-
-- No frameworks, no bundlers - just plain JavaScript
-- Client-side routing using the History API
-- Markdown rendering with the Marked library
-- Responsive design that works on all devices
-- Import maps for clean dependency management
-
-Feel free to explore the blog posts or learn more about this project on the About page.
+> _After enough time doing anything, you'll eventually arrive at an unfortunate truth; that you have grown to care about it. After enough time caring about something, you'll begin to notice that it's not perfect, and you have opinions on what it will take to make it perfect. This is a great sign you are on your way to becoming human._
