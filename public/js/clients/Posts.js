@@ -1,10 +1,22 @@
-import { fetchWithTimeout } from '../utils/fetchWithTimeout';
+import { fetchWithTimeout } from '../utils/fetchWithTimeout.js';
 import Markdown from './Markdown.js';
 
+/**
+ * @typedef {Object} Post
+ * @property {string} id
+ * @property {string} title
+ * @property {string} date
+ * @property {string} excerpt
+ * @property {Array<string>} tags
+ */
+
 class Posts {
-  #postsUrl = 'content/posts.json';
+  #postsUrl = '/content/posts.json';
   #markdown = new Markdown();
 
+  /**
+   * @returns {Promise<Post[]>}
+   */
   async fetchPosts() {
     try {
       const response = await fetchWithTimeout(this.#postsUrl);
@@ -13,13 +25,13 @@ class Posts {
       }
       return await response.json();
     } catch (error) {
+      console.error('Posts[fetchPosts]: has thrown an error:', error);
       console.error('Error fetching posts:', error);
       throw error;
     }
   }
 
   async fetchPost(id) {
-    // First get the post metadata
     const posts = await this.fetchPosts();
     const post = posts.find((post) => post.id === id);
 
@@ -27,12 +39,11 @@ class Posts {
       throw new Error('Post not found');
     }
 
-    // Then fetch the actual content
-    const content = await this.fetchMarkdown(`content/posts/${id}.md`);
+    const mdoc = await this.#markdown.fetchMarkdown(`/content/posts/${id}.md`);
 
     return {
       ...post,
-      content
+      $markdown: mdoc
     };
   }
 }

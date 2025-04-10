@@ -6,6 +6,10 @@ import MarkdownDocument from '../models/Markdown.js';
 import { fetchWithTimeout } from '../utils/fetchWithTimeout.js';
 
 class Markdown {
+  /**
+   * @param {string} file
+   * @returns {Promise<MarkdownDocument>}
+   */
   async fetchMarkdown(file) {
     try {
       const timeoutMs = 2200;
@@ -36,7 +40,7 @@ class Markdown {
     return headers;
   }
 
-  #getMarkdownFetchInit(signal) {
+  #getMarkdownFetchInit() {
     const headers = this.#getMarkdownFetchHeaders();
     return {
       headers,

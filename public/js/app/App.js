@@ -1,18 +1,10 @@
 import AppRouter from '../routes/Router.js';
-import ViewEngine from '../models/View.js';
+import routes from '../routes/routes.js';
 
 class App {
-
   #router;
-
   constructor() {
-    this.#router = new AppRouter([
-      { path: '/', view: 'home' },
-      { path: '/about', view: 'about' },
-      { path: '/posts', view: 'posts' },
-      { path: '/post/:id', view: 'post/:id' }
-    ]);
-    
+    this.#router = new AppRouter(routes);
     this.#router.router();
     this.setupEventListeners();
   }
@@ -22,7 +14,7 @@ class App {
       const link = e.target.closest('[data-link]');
       if (link) {
         e.preventDefault();
-        this.navigateTo(link.href);
+        this.#router.push(link.href);
       }
     });
 

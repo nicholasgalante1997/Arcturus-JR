@@ -1,21 +1,24 @@
 import hljs from 'highlight.js';
-import ViewEngine from '../models/View';
+import ViewEngine from '../models/View.js';
+import { getAppContainerElement } from '../utils/getDOMElements.js';
 
 class AppRouter {
+  #appContainer = getAppContainerElement();
 
   /** @type {Array<{ path: string, view: string }>} */
   routes;
 
+  /** @type {ViewEngine} */
   views = new ViewEngine();
 
   /**
-   * @param {Array<{ path: string, view: string }>} routes 
+   * @param {Array<{ path: string, view: string }>} routes
    */
   constructor(routes) {
     this.routes = routes;
   }
 
-  navigateTo(url) {
+  push(url) {
     window.history.pushState(null, null, url);
     this.router();
   }
@@ -81,26 +84,20 @@ class AppRouter {
 
   async router() {
     const pathname = window.location.pathname;
-
-    // Find matching route
     const match = this.matchRoute(pathname);
 
-    // If no match, show 404
     if (!match) {
       this.views.render('404');
       return;
     }
 
     console.info('Matched route:', match);
-
     const { view, params } = match;
 
-    // Show loading state
-    const appElement = document.getElementById('app');
-    if (appElement) {
-      appElement.innerHTML = '<div class="loading"></div>';
+    if (this.#appContainer) {
+      this.#appContainer.innerHTML = '<div class="loading"></div>';
     }
-   
+
     try {
       await this.views.render(view, params);
     } catch (error) {
@@ -108,12 +105,15 @@ class AppRouter {
       await this.views.render('error');
     }
 
-    // Update active navigation
-    this.updateNav();
+    this.runSideEffects();
+  }
+
+  runSideEffects() {
+    this.#updateNav();
     hljs.highlightAll();
   }
 
-  updateNav() {
+  #updateNav() {
     document.querySelectorAll('nav a').forEach((link) => {
       if (link.getAttribute('href') === location.pathname) {
         link.classList.add('active');

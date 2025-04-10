@@ -1,7 +1,7 @@
 export function getAppContainerElement() {
-    return document.getElementById('app');
+  return document.getElementById('app');
 }
 
 export function getPostsContainerElement() {
-    return document.getElementById('all-posts');
+  return document.getElementById('all-posts');
 }

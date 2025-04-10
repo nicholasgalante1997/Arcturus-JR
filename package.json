@@ -7,11 +7,6 @@
   "files": [
     "public/js"
   ],
-  "engines": {
-    "node": ">=20",
-    "bun": "~1.2.4",
-    "npm": ">=9"
-  },
   "scripts": {
     "clean": "run-p clean:*",
     "clean:css": "rm public/css/styles.min.css && rm public/css/themes/*.min.css",
@@ -55,6 +50,11 @@
     "prettier-package-json": "^2.8.0",
     "serve": "^14.2.4",
     "sleepydogs": "1.0.8-alpha.4"
+  },
+  "engines": {
+    "bun": "~1.2.4",
+    "node": ">=20",
+    "npm": ">=9"
   },
   "lint-staged": {
     "package.json": [
