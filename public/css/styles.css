@@ -28,7 +28,7 @@ body {
   line-height: 1.7;
   color: var(--text-color);
   background-color: var(--bg-color);
-  background-image: 
+  background-image:
     radial-gradient(circle at 10% 20%, rgba(100, 255, 218, 0.03) 0%, transparent 20%),
     radial-gradient(circle at 80% 80%, rgba(121, 134, 203, 0.03) 0%, transparent 20%);
   background-attachment: fixed;
@@ -141,7 +141,7 @@ header nav a.active::after {
     justify-content: space-between;
     align-items: center;
   }
-  
+
   header nav ul {
     margin-top: 0;
   }
@@ -153,7 +153,7 @@ main {
   padding: 3rem 0;
 }
 
-img[alt="home-hero-doodles-adventurer"] {
+img[alt='home-hero-doodles-adventurer'] {
   background: transparent;
   width: auto !important;
   height: 411px !important;
@@ -164,9 +164,9 @@ img[alt="home-hero-doodles-adventurer"] {
   border-radius: 4px;
 }
 
-img[alt="home-hero-doodles-adventurer"]::after {
-  content: "Hello";
-  color: white;
+h2.recent-posts-label {
+  box-sizing: border-box;
+  margin-top: 2rem;
 }
 
 /* Blog Post List */
@@ -185,7 +185,9 @@ img[alt="home-hero-doodles-adventurer"]::after {
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   box-shadow: 0 8px 32px var(--glass-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .post-card:hover {
@@ -363,7 +365,7 @@ footer p {
 }
 
 .loading::after {
-  content: "";
+  content: '';
   width: 40px;
   height: 40px;
   border: 3px solid rgba(121, 134, 203, 0.2);
@@ -373,7 +375,9 @@ footer p {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .error {
@@ -399,8 +403,14 @@ footer p {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsive adjustments */
@@ -408,16 +418,16 @@ footer p {
   .post {
     padding: 1.5rem;
   }
-  
+
   .post h1 {
     font-size: 2rem;
   }
-  
+
   .markdown-content h2 {
     font-size: 1.5rem;
   }
 
-  img[alt="home-hero-doodles-adventurer"] {
+  img[alt='home-hero-doodles-adventurer'] {
     background: transparent;
     width: 100% !important;
     height: auto !important;

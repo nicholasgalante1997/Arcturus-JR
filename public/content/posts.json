@@ -1,16 +1,97 @@
 [
   {
-    "id": "getting-started-with-es6",
-    "title": "Getting Started with ES6 Features",
-    "date": "2025-04-01",
-    "excerpt": "Learn about the most useful ES6 features that will improve your JavaScript code and make you more productive.",
-    "tags": ["javascript", "es6"]
+    "id": "lazyollama",
+    "title": "LazyOllama: A lazy browser based Ollama resource manager.",
+    "date": "2025-03-18",
+    "excerpt": "We went off the deepend here. This is the missing Ollama desktop app, but like as a browser gui.",
+    "tags": [
+      "Large Language Models",
+      "Ollama",
+      "Bun",
+      "Turborepo"
+    ],
+    "image": {
+      "src":  "/assets/doodles-adventurer.jpg",
+      "alt": "a male Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
+      "aspectRatio": "2 / 3"
+    },
+    "readingTime": "45 minutes (Maybe More!)",
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "large language models",
+    "searchTerms": ["Large Language Models", "Ollama", "Bun", "Turborepo"],
+    "slug": "building-lazy-ollama",
+    "visible": true
   },
   {
-    "id": "history-api-routing",
-    "title": "Client-Side Routing with the History API",
-    "date": "2025-03-15",
-    "excerpt": "A deep dive into the History API and how to use it for clean client-side routing in your web applications.",
-    "tags": ["javascript", "routing", "history api"]
+    "id": "webdev-project-setup",
+    "title": "Modern React without Frameworks: React, Bun, and Turborepo",
+    "date": "2025-02-15",
+    "excerpt": "React is a wonderful thing. Here's how you can keep it wonderful for you and your team.",
+    "tags": ["javascript", "react", "bun", "turborepo"],
+    "image": {
+      "src":  "/assets/doodles-shapes.jpg",
+      "alt": "Doodles basic shapes, smiling in a crude and cute fashion",
+      "aspectRatio": "1 / 1"
+    },
+    "readingTime": "20 minutes",
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "web development",
+    "searchTerms": ["Web Development", "Javascript", "React", "Bun", "Turborepo"],
+    "slug": "frameworkless-react-bun-turborepo",
+    "visible": true
+  },
+  {
+    "id": "springfield-ast-parser",
+    "title": "Auditing an Internal Microfrontend System at Moderate Scale - Part 1",
+    "date": "2024-12-28",
+    "excerpt": "There are a lot of ways to skin a cat. Here's a way to audit a system.",
+    "tags": ["javascript", "microfrontends", "AST"],
+    "image": {
+      "src":  "/assets/doodles-ember.avif",
+      "alt": "Doodles flame person, smiling in a crude and cute fashion",
+      "aspectRatio": "1 / 1"
+    },
+    "readingTime": "15 minutes",
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "microfrontends + system audits",
+    "searchTerms": ["Web Development", "Javascript", "Microfrontends", "AST"],
+    "slug": "auditing-microfrontends-ast",
+    "visible": true
+  },
+  {
+    "id": "tc39-signals",
+    "title": "Implementing a tiny TC39 Signal API in Typescript in about ~200 SLOC using simple Graphs and Stacks.",
+    "date": "2025-03-18",
+    "excerpt": "You can probably achieve anything with Graphs and Stacks. Im shocked the Israel-Palestine conflict hasn't been solved by a well-placed Digraph.",
+    "tags": ["Typescript", "TC39 Proposal", "Signals"],
+    "image": {
+      "src":  "/assets/doodles-adventurer.jpg",
+      "alt": "Me, as a Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
+      "aspectRatio": "16 / 16"
+    },
+    "readingTime": "30 minutes",
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "Signals",
+    "searchTerms": ["Typescript", "TC39 Proposal", "Signals"],
+    "slug": "tc39-signals",
+    "visible": true
+  },
+  {
+    "id": "utf8-variation-selector-embeddings",
+    "title": "Unicode: Embedding Messages in Unicode Characters via Variation Selectors",
+    "date": "2024-12-28",
+    "excerpt": "There's a hidden message in this post, for all the amateur cryptographers out there.",
+    "tags": ["Unicode", "Variation Selectors"],
+    "image": {
+      "src":  "/assets/doodles-ember.avif",
+      "alt": "Doodles flame person, smiling in a crude and cute fashion",
+      "aspectRatio": "1 / 1"
+    },
+    "readingTime": "15 minutes",
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "Unicode",
+    "searchTerms": ["Unicode", "Variation Selectors"],
+    "slug": "unicode-variation-selector-embeddings",
+    "visible": true
   }
 ]

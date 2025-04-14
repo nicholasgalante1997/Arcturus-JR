@@ -39,7 +39,6 @@ class ViewEngine {
     const markdown = await this.#fetchView('home.md');
     const content = markdown.asHtml();
     const postsList = await this.#posts.fetchPosts();
-    console.log({ postsList });
     const postsMarkup = this.#transformPostsToList(postsList.slice(0, 3));
 
     if (this.#appContainer) {
@@ -47,7 +46,7 @@ class ViewEngine {
         <div class="markdown-content">
           ${content}
         </div>
-        <h2>Recent Posts</h2>
+        <h2 class="recent-posts-label">Recent Posts</h2>
         <div class="post-list" id="recent-posts">
           ${postsMarkup}
         </div>
@@ -162,11 +161,6 @@ class ViewEngine {
                   })}</time>
                 </div>
                 <p>${post.excerpt}</p>
-
-                <div class="post-card-actions">
-                  <button class="btn btn-primary">Read more</button>
-                  <button class="btn btn-secondary">RSS</button>
-                </div>
               </div>
             </a>
           </div>
