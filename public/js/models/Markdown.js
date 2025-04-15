@@ -45,6 +45,10 @@ class MarkdownDocument {
       markup: this.#markup
     };
   }
+
+  attribute(key) {
+    return this.#properties[key] || null;
+  }
 }
 
 export default MarkdownDocument;

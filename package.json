@@ -8,8 +8,16 @@
     "public/js"
   ],
   "scripts": {
+    "bundle": "webpack --config webpack/prod.mjs",
+    "build": "run-s clean bundle postcss copy",
+    "dev": "webpack serve --config webpack/development.mjs",
     "clean": "run-p clean:*",
-    "clean:css": "rm public/css/styles.min.css && rm public/css/themes/*.min.css",
+    "clean:css": "rm -f public/css/styles.min.css && rm -f public/css/themes/*.min.css",
+    "clean:dist": "rm -rf dist/",
+    "copy": "run-p copy:*",
+    "copy:styles": "cp -R public/css dist/",
+    "copy:assets": "cp -R public/assets dist/",
+    "copy:markdown": "cp -R public/content dist/",
     "fmt": "run-p fmt:*",
     "fmt:javascript": "prettier --write ./public/js/**/*.js",
     "fmt:package-json": "prettier-package-json --write package.json",
@@ -29,17 +37,22 @@
     "sleepydogs": "1.0.8-alpha.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
     "@eslint/css": "^0.6.0",
     "@eslint/js": "^9.24.0",
     "@eslint/json": "^0.11.0",
     "@eslint/markdown": "^6.3.0",
     "autoprefixer": "^10.4.21",
+    "babel-loader": "^10.0.0",
     "cssnano": "^7.0.6",
     "dompurify": "^3.2.5",
     "eslint": "^9.24.0",
     "front-matter": "^4.0.2",
     "globals": "^16.0.0",
+    "gsap": "^3.12.7",
     "highlight.js": "^11.11.1",
+    "html-webpack-plugin": "^5.6.3",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0",
     "marked": "^15.0.8",
@@ -49,7 +62,11 @@
     "prettier": "^3.5.3",
     "prettier-package-json": "^2.8.0",
     "serve": "^14.2.4",
-    "sleepydogs": "1.0.8-alpha.4"
+    "sleepydogs": "1.0.8-alpha.4",
+    "webpack": "^5.99.5",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1",
+    "webpack-merge": "^6.0.1"
   },
   "engines": {
     "bun": "~1.2.4",

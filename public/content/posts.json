@@ -29,9 +29,9 @@
     "excerpt": "React is a wonderful thing. Here's how you can keep it wonderful for you and your team.",
     "tags": ["javascript", "react", "bun", "turborepo"],
     "image": {
-      "src":  "/assets/doodles-shapes.jpg",
+      "src":  "/assets/doodles-gang.webp",
       "alt": "Doodles basic shapes, smiling in a crude and cute fashion",
-      "aspectRatio": "1 / 1"
+      "aspectRatio": "16 / 9"
     },
     "readingTime": "20 minutes",
     "category": "SOFTWARE ENGINEERING",

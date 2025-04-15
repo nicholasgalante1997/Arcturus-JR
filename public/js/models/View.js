@@ -89,18 +89,63 @@ class ViewEngine {
       console.log('Post is', post);
       this.#appContainer.innerHTML = `
         <article class="post">
-          <h1>${post.title}</h1>
-          <div class="post-meta">
-            <time datetime="${post.date}">${new Date(post.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })}</time>
-          </div>
-          <div class="post-content markdown-content">
-            ${post.$markdown.asHtml()}
-          </div>
-        </article>
+          <section class="article-container">
+            <article class="article-root">
+              
+              <div class="article-supplementary-info-container text-container">
+                <span class="article-date fira-sans-semibold">${post.date}</span>
+                <span style="height:24px;width:1px;background-color:var(--pico-primary-inverse, #fff);border-radius:2px;"></span>
+                <span class="article-series fira-sans-semibold">
+                  Estimated Reading Time:&nbsp;
+                  <b>${post['readingTime'] || 'Quick One'}</b>
+                </span>
+              </div>
+      
+              <div class="article-title-container text-container">
+                <h1 class="article-title">${post.title}</h1>
+              </div>
+      
+              <div class="article-description-container text-container">
+                <p class="article-description noto-serif">${post.excerpt}</p>
+              </div>
+      
+              <div class="article-author-container text-container">
+                  <div style="display:flex;flex-direction:row;align-items:center;gap:8px;">
+                    <img 
+                      style="aspect-ratio: 1 / 1; object-fit: cover; object-position: center; image-orientation: from-image; image-rendering: optimizeQuality; border-radius: 24px;" 
+                      height="48" 
+                      width="48" 
+                      src="/assets/headshot.jpg" 
+                      alt="Nick's Avatar, a class photo of Butters Stotch against a pink background" 
+                      class="post-card__author-avatar"
+                    >
+                    <p class="article-author noto-serif">
+                      By
+                      <a href="/about" class="post-card__author" data-link>
+                        Nick G.
+                      </a>
+                    </p>
+                  </div>
+              </div>
+      
+              <div class="article-headline-image-container">
+                <img
+                  src="${post.image.src}"
+                  alt="${post.image.alt}"
+                  style="aspect-ratio: ${post.image.aspectRatio}; object-fit: cover; object-position: center; image-orientation: from-image; image-rendering: optimizeQuality; border-radius: 4px;"
+                  class="article-headline-image"
+                />
+                <span class="article-headline-image-publisher">
+                  ${post.$markdown.attribute('image')?.publisher ?? 'Doodles NFTs Collection, 2025'}
+                </span>
+              </div>
+
+              <section class="article__markdown-root">
+                ${post.$markdown.asHtml()}
+              </section>
+            </article>
+          </section>
+        </main>
       `;
     } catch (error) {
       this.#renderErrorView({ error });
