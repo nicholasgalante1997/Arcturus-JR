@@ -94,7 +94,6 @@ class ViewEngine {
               
               <div class="article-supplementary-info-container text-container">
                 <span class="article-date fira-sans-semibold">${post.date}</span>
-                <span style="height:24px;width:1px;background-color:var(--pico-primary-inverse, #fff);border-radius:2px;"></span>
                 <span class="article-series fira-sans-semibold">
                   Estimated Reading Time:&nbsp;
                   <b>${post['readingTime'] || 'Quick One'}</b>
@@ -121,7 +120,7 @@ class ViewEngine {
                     >
                     <p class="article-author noto-serif">
                       By
-                      <a href="/about" class="post-card__author" data-link>
+                      <a style="color:var(--secondary-color);font-weight:600;" href="/about" class="post-card__author" data-link>
                         Nick G.
                       </a>
                     </p>
@@ -132,7 +131,7 @@ class ViewEngine {
                 <img
                   src="${post.image.src}"
                   alt="${post.image.alt}"
-                  style="aspect-ratio: ${post.image.aspectRatio}; object-fit: cover; object-position: center; image-orientation: from-image; image-rendering: optimizeQuality; border-radius: 4px;"
+                  style="aspect-ratio: ${post.image.aspectRatio}; object-fit: cover; object-position: center; image-orientation: from-image; image-rendering: optimizeQuality; border-radius: 8px;"
                   class="article-headline-image"
                 />
                 <span class="article-headline-image-publisher">
@@ -140,7 +139,7 @@ class ViewEngine {
                 </span>
               </div>
 
-              <section class="article__markdown-root">
+              <section class="post-content markdown-content article__markdown-root">
                 ${post.$markdown.asHtml()}
               </section>
             </article>

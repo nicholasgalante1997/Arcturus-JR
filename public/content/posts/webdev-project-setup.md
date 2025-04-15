@@ -31,14 +31,6 @@ genres:
     - React
 ---
 
-## Table of Contents
-
-- [Table of Contents](#table-of-contents)
-- [Frameworks are commitments, and React has gone the way of the framework](#frameworks-are-commitments-and-react-has-gone-the-way-of-the-framework)
-- [React Framework Hate Fest 2025](#react-framework-hate-fest-2025)
-  - [1. Create-React-App brought about a culture of client side rendering](#1-create-react-app-brought-about-a-culture-of-client-side-rendering)
-  - [2. Developers could have ate their peas](#2-developers-could-have-ate-their-peas)
-
 ## Frameworks are commitments, and React has gone the way of the framework
 
 > After writing this out more thoroughly, I'm realizing it's an excessively long tangent on how I strongly dislike Client Side Rendering, perhaps more generally React, and how I heavily prefer Server Side Rendering, Static Site Generation, even Isomorphic or Partial SSR is preferential in my opinion to Client Side Rendering. I just go on and on about it. If you do not have an interest in that, I do not blame you. Skip to the section entitled _Standardizing Project Setup_ below.

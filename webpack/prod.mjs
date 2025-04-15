@@ -10,7 +10,7 @@ const prod = {
   output: {
     clean: false,
     path: path.resolve(process.cwd(), 'dist'),
-    filename: '[name].[hash].js',
+    filename: '[name].[contenthash].js',
     module: true,
     chunkFormat: 'module'
   },
@@ -24,7 +24,11 @@ const prod = {
       inject: 'head',
       chunks: ['main'],
       publicPath: '/',
-      title: 'nickgbytes.co | A place for ideas.'
+      title: 'nickgbytes.co | A place for ideas.',
+      minify: {
+        html5: true
+      },
+      scriptLoading: 'module',
     })
   ]
 };

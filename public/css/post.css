@@ -15,7 +15,7 @@ article.post {
   }
 
   .post-content {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 
   section.article-container {
@@ -74,12 +74,12 @@ article.post {
           text-underline-offset: 2px;
         }
       }
-      /* 
+      
       > div.article-supplementary-info-container {
         gap: calc(var(--spacing-unit) * 0.5);
         margin-top: var(--spacing-unit);
         font-size: 14px;
-      } */
+      }
 
       > div.article-title-container {
         > h1.article-title {
@@ -110,11 +110,12 @@ article.post {
         min-width: var(--article-headline-image-width);
         margin-left: auto;
         margin-right: auto;
+        box-sizing: border-box;
+        padding-left: 0;
+        padding-right: 0;
         margin-top: calc(var(--spacing-unit) * 2);
-        padding-bottom: calc(var(--spacing-unit) * 3);
+        margin-bottom: calc(var(--spacing-unit) * 3);
         position: relative;
-
-        height: fit-content;
         overflow: hidden;
         border-radius: 8px;
 
@@ -127,31 +128,33 @@ article.post {
           image-orientation: from-image;
           border-radius: 8px;
         }
-        /* 
+
         span.article-headline-image-publisher {
           position: relative;
+          left: 16px;
           font-size: 12px;
           font-weight: 400px;
           font-family: 'Noto Serif';
-        } */
+        }
       }
 
       > section.article__markdown-root {
         max-width: var(--inner-article-max-width);
         width: var(--inner-article-max-width);
 
-        /* > p {
+        > p {
           margin-left: auto;
           margin-right: auto;
           max-width: var(--inner-article-max-width);
           width: var(--inner-article-max-width);
-          font-size: 20px;
+          font-size: 16px;
           letter-spacing: normal;
           font-family: 'Nunito Sans', 'Fira Sans', system-ui;
-          font-weight: 400;
-        } */
+          font-weight: 500;
+          margin-block: 10px;
+        }
 
-        /* blockquote {
+        blockquote {
           margin-left: auto;
           margin-right: auto;
           max-width: var(--inner-article-max-width);
@@ -163,7 +166,7 @@ article.post {
           font-size: 18px;
           font-style: italic;
           color: inherit;
-        } */
+        }
 
         /* pre {
           margin-left: auto;
@@ -214,7 +217,7 @@ article.post {
 @media screen and (min-width: 768px) and (max-width: 1048px) {
   article.post {
     --inner-article-max-width: 100%;
-    --article-headline-image-width: calc(100% - 16px);
+    --article-headline-image-width: 100%;
   }
 }
 
@@ -222,5 +225,37 @@ article.post {
   article.post {
     --inner-article-max-width: 100%;
     --article-headline-image-width: calc(100% - 16px);
+
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+
+    div.article-supplementary-info-container {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      align-items: flex-start !important;
+      gap: 4px !important;
+    }
+
+    section.article-container {
+      padding: 0px;
+
+      article.article-root {
+        box-sizing: border-box;
+        margin-top: calc(var(--spacing-unit) * 2);
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: calc(var(--spacing-unit) * 2);
+        width: 100%;
+
+        > section.article__markdown-root {
+          > p {
+            margin-block: 10px;
+          }
+        }
+      }
+    }
   }
 }
