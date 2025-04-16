@@ -1,0 +1,135 @@
+name: deploy-aws
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+            - production
+            - staging
+      invalidate_cache:
+        description: 'Invalidate CloudFront cache'
+        required: false
+        default: true
+        type: boolean
+
+env:
+  PRODUCTION_S3_BUCKET: ${{ secrets.PRODUCTION_S3_BUCKET }}
+  STAGING_S3_BUCKET: ${{ secrets.STAGING_S3_BUCKET }}
+  PRODUCTION_CLOUDFRONT_ID: ${{ secrets.PRODUCTION_CLOUDFRONT_ID }}
+  STAGING_CLOUDFRONT_ID: ${{ secrets.STAGING_CLOUDFRONT_ID }}
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+
+jobs:
+  checkout:
+    name: Checkout
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Bun Runtime
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install dependencies
+        run: bun install
+      - name: Run tests
+        run: bun run test
+        continue-on-error: false
+      - name: Run linting
+        run: bun run lint
+        continue-on-error: false
+  build:
+    name: Build
+    needs: checkout
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Bun Runtime
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest         
+      - name: Install dependencies
+        run: bun install
+      - name: Build static site
+        run: bun run build
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-output
+          path: ./dist  # Change this to your build output directory
+          retention-days: 1
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.event.inputs.environment || 'production' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3      
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-output
+          path: ./dist
+      # Set environment variables based on the deployment environment
+      - name: Set environment-specific variables
+        id: vars
+        run: |
+            if [[ "${{ github.event.inputs.environment }}" == "staging" || "${{ github.ref_name }}" != "main" ]]; then
+              echo "S3_BUCKET=${{ env.STAGING_S3_BUCKET }}" >> $GITHUB_OUTPUT
+              echo "CLOUDFRONT_ID=${{ env.STAGING_CLOUDFRONT_ID }}" >> $GITHUB_OUTPUT
+              echo "ENVIRONMENT=staging" >> $GITHUB_OUTPUT
+            else
+              echo "S3_BUCKET=${{ env.PRODUCTION_S3_BUCKET }}" >> $GITHUB_OUTPUT
+              echo "CLOUDFRONT_ID=${{ env.PRODUCTION_CLOUDFRONT_ID }}" >> $GITHUB_OUTPUT
+              echo "ENVIRONMENT=production" >> $GITHUB_OUTPUT
+            fi
+              # Configure AWS credentials
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Deploy to S3
+        run: |
+          echo "Deploying to ${{ steps.vars.outputs.ENVIRONMENT }} environment..."
+          echo "S3 Bucket: ${{ steps.vars.outputs.S3_BUCKET }}"
+            
+          # Use --size-only to only upload files that differ in size
+          # Use --delete to remove files from S3 that are not in the local directory
+          aws s3 sync ./dist s3://${{ steps.vars.outputs.S3_BUCKET }} \
+            --delete \
+            --cache-control "max-age=31536000, public" \
+            --exclude "*.html" \
+            --exclude "*.json" \
+            --exclude "*.xml" \
+            --exclude "*.txt"
+            
+          # Upload HTML, JSON, XML, and TXT files with different cache settings
+          aws s3 sync ./dist s3://${{ steps.vars.outputs.S3_BUCKET }} \
+            --delete \
+            --cache-control "max-age=0, no-cache, no-store, must-revalidate" \
+            --include "*.html" \
+            --include "*.json" \
+            --include "*.xml" \
+            --include "*.txt"
+      # Invalidate CloudFront cache
+      - name: Invalidate CloudFront cache
+        if: ${{ github.event.inputs.invalidate_cache != false }}
+        run: |
+          echo "Invalidating CloudFront distribution: ${{ steps.vars.outputs.CLOUDFRONT_ID }}"
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ steps.vars.outputs.CLOUDFRONT_ID }} \
+            --paths "/*"
+    
