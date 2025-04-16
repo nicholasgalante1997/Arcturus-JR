@@ -2,11 +2,18 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import { merge } from 'webpack-merge';
 import WebpackCommonConfig from './common.mjs';
+import PackageJson from '../package.json' with { type: 'json' };
+
+function mapPeerDependenciesToExternals(peerDependencies) {
+  return Object.keys(peerDependencies)
+    .map((dep) => ({ [dep]: dep }))
+    .reduce((acc, next) => Object.assign(acc, next), {});
+}
 
 /** @type {import('webpack').Configuration} */
 const prod = {
   mode: 'production',
-  entry: path.resolve(process.cwd(), 'public', 'js', 'bootstrap.js'),
+  entry: path.resolve(process.cwd(), 'src', 'bootstrap.js'),
   output: {
     clean: false,
     path: path.resolve(process.cwd(), 'dist'),
@@ -17,6 +24,8 @@ const prod = {
   experiments: {
     outputModule: true
   },
+  externalsType: 'module',
+  externals: mapPeerDependenciesToExternals(PackageJson.peerDependencies),
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve('webpack/html/index.html'),
@@ -28,7 +37,7 @@ const prod = {
       minify: {
         html5: true
       },
-      scriptLoading: 'module',
+      scriptLoading: 'module'
     })
   ]
 };

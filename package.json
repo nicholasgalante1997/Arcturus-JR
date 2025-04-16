@@ -1,11 +1,11 @@
 {
-  "name": "@project-arcturus/minivans-site",
+  "name": "nickgalante.tech",
   "version": "1.0.0",
-  "description": "A simple markdown blog site for Nick Galante's tech blog/opinions.",
+  "description": "A simple markdown web site for my (probably wrong) tech blog/opinions.",
   "author": "Nick Galante <rustycloud42@protonmail.com> (https://github.com/nicholasgalante1997)",
   "type": "module",
   "files": [
-    "public/js"
+    "src"
   ],
   "scripts": {
     "build": "run-s clean bundle postcss copy",
@@ -19,21 +19,22 @@
     "copy:styles": "cp -R public/css dist/",
     "dev": "webpack serve --config webpack/development.mjs",
     "fmt": "run-p fmt:*",
-    "fmt:javascript": "prettier --write ./public/js/**/*.js",
+    "fmt:javascript": "prettier --write ./src/**/*.js",
     "fmt:package-json": "prettier-package-json --write package.json",
-    "lint": "eslint ./public/js/**/*.js",
+    "lint": "eslint ./src/**/*.js",
     "postcss": "run-p postcss:*",
     "postcss:styles": "postcss ./public/css/styles.css --dir ./public/css --ext .min.css && postcss ./public/css/post.css --dir ./public/css --ext .min.css",
     "postcss:themes": "postcss ./public/css/themes/*.css --dir ./public/css/themes --ext .min.css",
     "precommit": "lint-staged",
-    "serve": "serve -p 4200 public"
+    "serve": "serve -p 4200 dist/",
+    "start": "bun run serve"
   },
   "peerDependencies": {
     "dompurify": "^3.2.5",
     "front-matter": "^4.0.2",
+    "gsap": "^3.12.7",
     "highlight.js": "^11.11.1",
     "marked": "^15.0.8",
-    "serve": "^14.2.4",
     "sleepydogs": "1.0.8-alpha.4"
   },
   "devDependencies": {

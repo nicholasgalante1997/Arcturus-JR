@@ -9,7 +9,7 @@ import WebpackCommonConfig from './common.mjs';
  */
 const dev = {
   mode: 'development',
-  entry: path.resolve(process.cwd(), 'public', 'js', 'bootstrap.js'),
+  entry: path.resolve(process.cwd(), 'src', 'bootstrap.js'),
   devServer: {
     hot: true,
     historyApiFallback: true,
