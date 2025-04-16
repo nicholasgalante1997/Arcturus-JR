@@ -102,7 +102,7 @@ class AppRouter {
       await this.views.render(view, params);
     } catch (error) {
       console.error('Error rendering view:', error);
-      await this.views.render('error');
+      await this.views.render('error', { error });
     }
 
     this.runSideEffects();
