@@ -66,10 +66,10 @@ jobs:
       - name: Build static site
         run: bun run build
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-output
-          path: ./dist  # Change this to your build output directory
+          path: ./dist
           retention-days: 1
   deploy:
     name: Deploy
@@ -81,11 +81,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3      
       - name: Download build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: build-output
           path: ./dist
-      # Set environment variables based on the deployment environment
       - name: Set environment-specific variables
         id: vars
         run: |
