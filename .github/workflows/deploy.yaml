@@ -26,6 +26,10 @@ env:
   PRODUCTION_CLOUDFRONT_ID: ${{ secrets.PRODUCTION_CLOUDFRONT_ID }}
   STAGING_CLOUDFRONT_ID: ${{ secrets.STAGING_CLOUDFRONT_ID }}
   AWS_REGION: ${{ secrets.AWS_REGION }}
+  PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
+  STAGING_DOMAIN: ${{ secrets.STAGING_DOMAIN }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 jobs:
   checkout:
@@ -98,8 +102,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
       - name: Deploy to S3
         run: |
@@ -126,10 +130,63 @@ jobs:
             --include "*.txt"
       # Invalidate CloudFront cache
       - name: Invalidate CloudFront cache
-        if: ${{ github.event.inputs.invalidate_cache != false }}
+        if: ${{ steps.vars.outputs.ENVIRONMENT == 'production' || github.event.inputs.invalidate_cache != false }}
         run: |
           echo "Invalidating CloudFront distribution: ${{ steps.vars.outputs.CLOUDFRONT_ID }}"
           aws cloudfront create-invalidation \
             --distribution-id ${{ steps.vars.outputs.CLOUDFRONT_ID }} \
             --paths "/*"
+          # Report deployment status
+      - name: Report deployment status
+        run: |
+          echo "🚀 Deployment to ${{ steps.vars.outputs.ENVIRONMENT }} completed successfully!"
+          echo "Website URL: https://${{ steps.vars.outputs.ENVIRONMENT == 'production' && env.PRODUCTION_DOMAIN || env.STAGING_DOMAIN }}"
     
+  validate-deployment:
+    name: Validate Deployment
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set URLs based on environment
+        id: urls
+        run: |
+          if [[ "${{ github.event.inputs.environment }}" == "staging" || "${{ github.ref_name }}" != "main" ]]; then
+            echo "SITE_URL=https://${{ env.STAGING_DOMAIN }}" >> $GITHUB_OUTPUT
+          else
+            echo "SITE_URL=https://${{ env.PRODUCTION_DOMAIN }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check site availability
+        run: |
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" ${{ steps.urls.outputs.SITE_URL }})
+          if [[ $HTTP_STATUS -eq 200 ]]; then
+            echo "✅ Site is accessible (HTTP Status: $HTTP_STATUS)"
+          else
+            echo "❌ Site returned HTTP Status: $HTTP_STATUS"
+            exit 1
+          fi
+      
+      # Optional: Run Lighthouse performance tests
+      - name: Audit with Lighthouse
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          urls: ${{ steps.urls.outputs.SITE_URL }}
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+  summary:
+    name: Pipeline Summary
+    needs:
+      - validate-deployment
+    runs-on: ubuntu-latest
+    if: always()  # Run regardless of previous job status
+    steps:
+      - name: Print summary
+        run: |
+          echo "📝 Pipeline Summary:"
+                  
+          if [[ "${{ needs.validate-deployment.result }}" == "success" ]]; then
+            echo "✅ All jobs succeeded!"
+          else
+            echo "❌ One or more jobs failed."
+            exit 1
+          fi
