@@ -112,9 +112,10 @@ jobs:
             
           # Use --size-only to only upload files that differ in size
           # Use --delete to remove files from S3 that are not in the local directory
+          # For now, set no-cache policy. In the future, when stable, set this block's cache policy to "max-age=31536000, public" (1year)
           aws s3 sync ./dist s3://${{ steps.vars.outputs.S3_BUCKET }} \
             --delete \
-            --cache-control "max-age=31536000, public" \
+            --cache-control "max-age=0, no-cache, no-store, must-revalidate" \
             --exclude "*.html" \
             --exclude "*.json" \
             --exclude "*.xml" \
