@@ -18,6 +18,13 @@ class ViewEngine {
   }
 
   async render(view, params = {}) {
+    let showWorkInProgressView = true;
+
+    if (showWorkInProgressView) {
+      this.#renderSiteWorkInProgressView();
+      return;
+    }
+
     try {
       const render = this.#views.get(view);
       if (render && typeof render === 'function') {
@@ -170,6 +177,17 @@ class ViewEngine {
           <code language="json">${JSON.stringify({ error: params.error })}</code>
         </pre>
         <p><a href="/" data-link>Try again</a></p>
+      </div>
+    `;
+  }
+
+  #renderSiteWorkInProgressView() {
+    this.#appContainer.innerHTML = `
+      <div class="center-content">
+        <h1 style="color:var(--primary-color)">This page is currently under construction <span class="emoji">🚧</span></h1>
+        <strong>
+          Target Release: 05/2025
+        </strong>
       </div>
     `;
   }
