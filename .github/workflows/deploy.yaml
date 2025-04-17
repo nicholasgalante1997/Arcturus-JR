@@ -165,14 +165,6 @@ jobs:
             echo "❌ Site returned HTTP Status: $HTTP_STATUS"
             exit 1
           fi
-      
-      # Optional: Run Lighthouse performance tests
-      - name: Audit with Lighthouse
-        uses: treosh/lighthouse-ci-action@v9
-        with:
-          urls: ${{ steps.urls.outputs.SITE_URL }}
-          uploadArtifacts: true
-          temporaryPublicStorage: true
   summary:
     name: Pipeline Summary
     needs:
