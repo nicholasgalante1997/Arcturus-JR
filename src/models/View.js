@@ -143,12 +143,13 @@ class ViewEngine {
                   </div>
               </div>
       
-              <div class="article-headline-image-container">
+              <div class="article-headline-image-container" style="border-radius: 20px;overflow: hidden;">
                 <img
                   src="${post.image.src}"
                   alt="${post.image.alt}"
-                  style="aspect-ratio: ${post.image.aspectRatio}; object-fit: cover; object-position: center; image-orientation: from-image; image-rendering: optimizeQuality; border-radius: 8px;"
-                  class="article-headline-image"
+                  height="260"
+                  width="100%"
+                  style="aspect-ratio: ${post.image.aspectRatio}; object-fit: contain; object-position: center; image-orientation: from-image; image-rendering: optimizeQuality; border-radius: 8px;"
                 />
               </div>
 
