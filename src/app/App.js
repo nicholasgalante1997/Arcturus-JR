@@ -2,6 +2,8 @@ import Config from '../config/index.js';
 import AppRouter from '../routes/Router.js';
 import routes from '../routes/routes.js';
 
+import Scroller from '../utils/scroll.js';
+
 class App {
   #router;
   constructor() {
@@ -16,6 +18,7 @@ class App {
       if (link) {
         e.preventDefault();
         this.#router.push(link.href);
+        Scroller.top();
       }
     });
 
