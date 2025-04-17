@@ -466,3 +466,9 @@ div.center-content {
   justify-content: center;
   align-items: center;
 }
+
+span#gh-icon-link:hover,
+span#in-icon-link:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

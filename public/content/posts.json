@@ -1,5 +1,23 @@
 [
   {
+    "id": "webdev-aws-static-website-hosting",
+    "title": "ES6 SPA Continuous Deployment with AWS and Github Actions",
+    "date": "2025-04-17",
+    "excerpt": "In this article, we'll cover scaffolding a CICD pipeline for a ESnext SPA and hosting it on AWS.",
+    "tags": ["javascript", "aws", "github actions", "cicd", "spa"],
+    "image": {
+      "src":  "/assets/doodles-marketplace.avif",
+      "alt": "Doodles nft cards for sale in a marketplace fashion",
+      "aspectRatio": "16 / 9"
+    },
+    "readingTime": "30 minutes",
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "Amazon Web Services",
+    "searchTerms": ["Web Development", "Javascript", "AWS", "Github Actions", "CICD", "SPA"],
+    "slug": "webdev-aws-static-website-hosting",
+    "visible": true
+  },
+  {
     "id": "lazyollama",
     "title": "LazyOllama: A lazy browser based Ollama resource manager.",
     "date": "2025-03-18",
