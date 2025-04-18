@@ -1,3 +1,4 @@
+import { runTypewriterAnimation } from '../animations/typing.js';
 import MarkdownEngine from '../clients/Markdown.js';
 import Posts from '../clients/Posts.js';
 import Config from '../config/index.js';
@@ -12,6 +13,7 @@ class ViewEngine {
   constructor() {
     this.#views.set('home', this.#renderHomeView.bind(this));
     this.#views.set('about', this.#renderAboutView.bind(this));
+    this.#views.set('contact', this.#renderContactView.bind(this));
     this.#views.set('posts', this.#renderPostsView.bind(this));
     this.#views.set('post', this.#renderPostView.bind(this));
     this.#views.set('error', this.#renderErrorView.bind(this));
@@ -69,13 +71,29 @@ class ViewEngine {
         ${content}
       </div>
     `;
+
+    setTimeout(() => {
+      const element = this.#appContainer.querySelector('h1.about-hero-text');
+      runTypewriterAnimation(element);
+    }, 400);
+  }
+
+  async #renderContactView() {
+    const markdown = await this.#fetchView('contact.md');
+    const content = markdown.asHtml();
+
+    this.#appContainer.innerHTML = `
+      <div class="markdown-content">
+        ${content}
+      </div>
+    `;
   }
 
   async #renderPostsView() {
     const posts = await this.#posts.fetchPosts();
     const postsMarkup = this.#transformPostsToList(posts);
     this.#appContainer.innerHTML = `
-      <h1>Blog Posts</h1>
+      <h1 style="margin-block-start: 3rem;">Blog Posts</h1>
       <div class="post-list" id="all-posts">
         ${postsMarkup}
       </div>

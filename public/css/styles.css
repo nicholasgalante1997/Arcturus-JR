@@ -473,3 +473,76 @@ span#in-icon-link:hover {
   opacity: 0.8;
   cursor: pointer;
 }
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+div.about-hero-section {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  position: relative;
+  top: 48px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  > div.about-hero-image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 300px;
+    height: 300px;
+    border-radius: 150px;
+    border: 1.5px solid var(--primary-color);
+    overflow: hidden;
+
+    > img {
+      background: transparent;
+      width: auto !important;
+      height: 411px !important;
+      box-shadow: none !important;
+      object-fit: contain;
+      object-position: left;
+      aspect-ratio: 1;
+      border-radius: 4px;
+    }
+  }
+
+  .about-hero-text-container {
+    .about-text-typing-container {
+      text-align: center;
+      padding: 20px;
+
+      h1 {
+        font-size: 3rem;
+        color: #333;
+        position: relative;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        min-height: 4.5rem;
+        min-width: 10px;
+      }
+
+      h1::after {
+        content: '|';
+        position: absolute;
+        right: -10px;
+        animation: blink 0.7s infinite;
+      }
+    }
+  }
+}
