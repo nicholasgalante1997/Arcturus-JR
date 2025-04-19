@@ -28,7 +28,7 @@ const prod = {
   externals: mapPeerDependenciesToExternals(PackageJson.peerDependencies),
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve('webpack/html/index.html'),
+      template: path.resolve('webpack/html/prod.html'),
       filename: 'index.html',
       inject: 'head',
       chunks: ['main'],
