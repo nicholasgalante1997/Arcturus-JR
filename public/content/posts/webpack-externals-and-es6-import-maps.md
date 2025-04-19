@@ -144,17 +144,20 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 ```
 
-Now when we bundle this application, we'll have a either an entrypoint file or a chunk file, depending on how our webpack config is configured, that contains the module code for the default export of `gsap`.  It's going to be somewhere in that bundled output.
+Now when we bundle this application, we'll have either an entrypoint file or a chunk file, depending on how our webpack config is configured, that contains the module code for the default export of `gsap`.  It's going to be somewhere in that bundled output.
 
 Alternatively, when we update our webpack.config.js to have an external field as follows:
 
 ```javascript
+...
+externalsType: 'module',
 externals: {
   gsap: 'gsap'
-}
+},
+...
 ```
 
-If we re-bundle our application, you'll notice that the `gsap` module is no longer included in the final output bundle anywhere, and we've actually retained our `import gsap from 'gsap';` statement.
+If we re-bundle our application, you'll notice that the `gsap` module source code is no longer included in the final output bundle anywhere, and we've actually retained our `import gsap from 'gsap';` statement.
 
 You might be asking at this point, well if we're excluding our deps from the final bundle, why are we even bundling?  
 
@@ -162,13 +165,13 @@ There's a number of things your bundler does for you, and there is still a benef
 
 When you bundle your app for production, webpack, in conjunction with babel or some other loader, performs a number of optimizations, and minifications, and transforms on your code to create the final output bundle, and to transform the source code for the specified target environment of your choice.
 
-You're also probably using react, because you bought in when it was hot before it started to show its obvious signs of decadence. You and me both. So in that case, I don't imagine you're writing `React.createElement(...)` calls everywhere, you're probably writing jsx and in that case, you need babel or a transform layer to turn your jsx, which browsers can't grok, into a digestable esm or commonjs syntax. You could just use babel yourself and transpile, but you're more likely using webpack for a legacy or enterprise application and are using babel via the babel-loader to transform your source code. So you can't opt out of bundling just yet.
+You're also probably using react, because you bought in when it was hot before it started to show its obvious signs of decadence. You and me both. So in that case, I don't imagine you're writing `React.createElement(...)` calls everywhere, you're probably writing jsx and so you'll need babel or a transform layer to turn your jsx, which browsers can't grok, into a digestable esm or commonjs syntax. You could just use babel yourself and transpile, but you're more likely using webpack for a legacy or enterprise application and are using babel via the babel-loader to transform your source code. So you can't opt out of bundling just yet.
 
 Let's get into a practical react example.
 
 ## A Practical React Example
 
-> Disclaimer, I generated this example react app with Claude. This is what AI is for. Building out the useless throwaway source code examples that I need for my blog. If you're using AI for vibe coding for actual users, some angry rube with a kali linux distro on a Georgian host is going to eat you alive. You were warned.
+> Disclaimer, I generated this example react app with Claude. This is what AI is for. Building out the useless throwaway source code examples that I need for my blog. If you're using AI for vibe coding for actual users, there is a kali linux user out there licking their lips, and you're fucked. You were warned.
 
 Okay so we're gonna put our money where our mouth is here. We've scaffolded a Client Side Rendered react app with the following project structure:
 

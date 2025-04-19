@@ -1,9 +1,12 @@
 export function runTypewriterAnimation(element) {
   const textPhrases = [
-    'Welcome to my website',
-    "I'm a web developer",
-    'I love creating animations',
-    'Vanilla JavaScript is powerful'
+    'Hi, I\'m Nick <wave>',
+    "I am a Senior Software Engineer @ Charter Communications",
+    'Devourer of Pipeline Issues',
+    'Elder God of Modern Web Development',
+    'Dog Dad of the Year 4x Years Running',
+    'Opinionated SOLID Protocol Advocate',
+    'Raspberry Pi Owner and Tinkerer',
   ];
 
   let phraseIndex = 0;
@@ -32,7 +35,7 @@ export function runTypewriterAnimation(element) {
           isDeleting = false;
 
           // Move to next phrase
-          phraseIndex = (phraseIndex + 1) % textPhrases.length;
+          phraseIndex = phraseIndex === (textPhrases.length - 1) ? 0 : phraseIndex + 1;
 
           // Small pause before starting to type the next phrase
           typingSpeed = 500;

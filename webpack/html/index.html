@@ -13,11 +13,23 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"
     />
+
+    <link rel="preload" as="style" href="/css/styles.css">
+    <link rel="preload" as="style" href="/css/themes/sb.css">
+    <link rel="preload" as="style" href="/css/post.css">
+    <link rel="preload" as="style" href="/css/contact.css">
+
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/css/themes/sb.css" />
     <link rel="stylesheet" href="/css/post.css" />
+    <link rel="stylesheet" href="/css/contact.css" />
 
-    <!-- Import Maps for ES Modules -->
+    <link rel="modulepreload" crossorigin="anonymous" href="https://esm.sh/dompurify@3.2.5">
+    <link rel="modulepreload" crossorigin="anonymous" href="https://esm.sh/front-matter@4.0.2">
+    <link rel="modulepreload" crossorigin="anonymous" href="https://esm.sh/highlight.js@11.11.1">
+    <link rel="modulepreload" crossorigin="anonymous" href="https://esm.sh/gsap@3.12.7">
+    <link rel="modulepreload" crossorigin="anonymous" href="https://esm.sh/marked@15.0.8">
+    
     <script type="importmap">
       {
         "imports": {
@@ -53,9 +65,9 @@
         <nav>
           <ul>
             <li><a href="/" data-link>Home</a></li>
+            <li><a href="/posts" data-link>Posts</a></li>
             <li><a href="/about" data-link>About</a></li>
             <li><a href="/contact" data-link>Contact</a></li>
-            <li><a href="/posts" data-link>Posts</a></li>
             <li>
               <span id="gh-icon-link"
                 ><img height="24" width="auto" src="/assets/icons/github-mark-white.svg"

@@ -153,6 +153,80 @@ header nav a.active::after {
   }
 }
 
+/* Header Responsive Styles */
+
+/* For tablets and smaller screens */
+@media (max-width: 768px) {
+  header {
+    padding: 1rem 0;
+  }
+
+  header .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
+  }
+
+  header a {
+    margin-bottom: 0.5rem;
+  }
+
+  header nav ul {
+    justify-content: center;
+    padding-left: 0;
+    gap: 1.5rem;
+  }
+}
+
+/* For mobile screens */
+@media (max-width: 480px) {
+  header {
+    padding: 0.8rem 0;
+  }
+
+  header a h1 {
+    font-size: 1.5rem;
+  }
+
+  header a div#nav-profile-image {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+  }
+
+  header nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 1.25rem;
+  }
+
+  header nav a {
+    font-size: 0.9rem;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 350px) {
+  header a h1 {
+    font-size: 1.2rem;
+  }
+
+  header a div#nav-profile-image {
+    height: 35px;
+    width: 35px;
+    border-radius: 17.5px;
+    margin-right: 0.3rem;
+  }
+
+  header nav ul {
+    gap: 0.75rem;
+  }
+
+  header nav a {
+    font-size: 0.8rem;
+  }
+}
+
 /* Main Content */
 main {
   min-height: calc(100vh - 160px);
@@ -486,6 +560,7 @@ span#in-icon-link:hover {
 
 div.about-hero-section {
   width: 100%;
+  height: calc(100vh - 160px);
   box-sizing: border-box;
   margin: 0 auto;
   position: relative;
@@ -493,7 +568,7 @@ div.about-hero-section {
   padding: 16px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 2rem;
 
@@ -504,6 +579,7 @@ div.about-hero-section {
     align-items: center;
     gap: 1rem;
     width: 300px;
+    min-width: 300px;
     height: 300px;
     border-radius: 150px;
     border: 1.5px solid var(--primary-color);
@@ -512,23 +588,24 @@ div.about-hero-section {
     > img {
       background: transparent;
       width: auto !important;
-      height: 411px !important;
-      box-shadow: none !important;
+      height: 300px !important;
       object-fit: contain;
       object-position: left;
       aspect-ratio: 1;
-      border-radius: 4px;
     }
   }
 
   .about-hero-text-container {
     .about-text-typing-container {
       text-align: center;
-      padding: 20px;
+      padding: 4px;
 
-      h1 {
+      box-sizing: border-box;
+      padding-right: 8px;
+
+      h1.about-hero-text {
         font-size: 3rem;
-        color: #333;
+        color: #fff;
         position: relative;
         display: inline-block;
         margin: 0;
@@ -537,12 +614,250 @@ div.about-hero-section {
         min-width: 10px;
       }
 
-      h1::after {
+      h1.about-hero-text::after {
         content: '|';
         position: absolute;
-        right: -10px;
-        animation: blink 0.7s infinite;
+        color: var(--primary-color);
+        animation: blink 1s infinite;
       }
     }
+  }
+}
+
+/* Main Content Container */
+.about-content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* Card Styles */
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px var(--glass-shadow);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px var(--glass-shadow);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  color: var(--secondary-color);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.card-subtitle {
+  color: var(--text-color);
+  font-size: 1rem;
+  margin: 0.25rem 0 0;
+}
+
+.card-meta {
+  color: var(--muted-text);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.card-content ul {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+.card-content li {
+  margin-bottom: 0.5rem;
+  color: var(--muted-text);
+}
+
+.card-content li strong {
+  color: var(--text-color);
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tech-tag {
+  background-color: rgba(30, 167, 253, 0.2);
+  color: var(--secondary-color);
+  border-radius: 50px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  border: 1px solid rgba(30, 167, 253, 0.3);
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-title {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+.project-description {
+  margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-hero-section {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .about-hero-image-container img {
+    max-width: 60%;
+    margin-bottom: 2rem;
+  }
+
+  .about-hero-text-container {
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+  div.about-hero-section {
+    flex-direction: column;
+    height: auto;
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+  }
+
+  div.about-hero-section > div.about-hero-image-container {
+    width: 250px;
+    min-width: 250px;
+    height: 250px;
+    border-radius: 125px;
+  }
+
+  div.about-hero-section > div.about-hero-image-container > img {
+    height: 250px !important;
+  }
+
+  .about-hero-text-container .about-text-typing-container h1.about-hero-text {
+    font-size: 2.5rem;
+    min-height: 3.75rem;
+  }
+
+  .about-content-container {
+    padding: 1.5rem;
+  }
+
+  .about-content-container h2 {
+    font-size: 1.75rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .card-header {
+    flex-direction: column;
+  }
+
+  .card-meta {
+    text-align: left;
+    margin-top: 0.5rem;
+  }
+
+  .tech-tags {
+    gap: 0.4rem;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+  div.about-hero-section {
+    top: 32px;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  div.about-hero-section > div.about-hero-image-container {
+    width: 200px;
+    min-width: 200px;
+    height: 200px;
+    border-radius: 100px;
+  }
+
+  div.about-hero-section > div.about-hero-image-container > img {
+    height: 200px !important;
+  }
+
+  .about-hero-text-container .about-text-typing-container h1.about-hero-text {
+    font-size: 2rem;
+    min-height: 3rem;
+  }
+
+  .about-content-container {
+    padding: 1rem;
+  }
+
+  .about-content-container h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .card {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .card-content ul {
+    padding-left: 1rem;
+  }
+
+  .tech-tags {
+    gap: 0.3rem;
+  }
+
+  .tech-tag {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .project-title {
+    font-size: 1.1rem;
   }
 }
