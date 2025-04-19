@@ -1,5 +1,7 @@
+import { runTypewriterAnimation } from '../animations/typing.js';
 import MarkdownEngine from '../clients/Markdown.js';
 import Posts from '../clients/Posts.js';
+import Config from '../config/index.js';
 import { getAppContainerElement } from '../utils/getDOMElements.js';
 
 class ViewEngine {
@@ -11,6 +13,7 @@ class ViewEngine {
   constructor() {
     this.#views.set('home', this.#renderHomeView.bind(this));
     this.#views.set('about', this.#renderAboutView.bind(this));
+    this.#views.set('contact', this.#renderContactView.bind(this));
     this.#views.set('posts', this.#renderPostsView.bind(this));
     this.#views.set('post', this.#renderPostView.bind(this));
     this.#views.set('error', this.#renderErrorView.bind(this));
@@ -18,9 +21,7 @@ class ViewEngine {
   }
 
   async render(view, params = {}) {
-    let showWorkInProgressView = true;
-
-    if (showWorkInProgressView) {
+    if (Config.SHOW_WORK_IN_PROGRESS_VIEW) {
       this.#renderSiteWorkInProgressView();
       return;
     }
@@ -70,13 +71,29 @@ class ViewEngine {
         ${content}
       </div>
     `;
+
+    setTimeout(() => {
+      const element = this.#appContainer.querySelector('h1.about-hero-text');
+      runTypewriterAnimation(element);
+    }, 400);
+  }
+
+  async #renderContactView() {
+    const markdown = await this.#fetchView('contact.md');
+    const content = markdown.asHtml();
+
+    this.#appContainer.innerHTML = `
+      <div class="markdown-content">
+        ${content}
+      </div>
+    `;
   }
 
   async #renderPostsView() {
     const posts = await this.#posts.fetchPosts();
     const postsMarkup = this.#transformPostsToList(posts);
     this.#appContainer.innerHTML = `
-      <h1>Blog Posts</h1>
+      <h1 style="margin-block-start: 3rem;">Blog Posts</h1>
       <div class="post-list" id="all-posts">
         ${postsMarkup}
       </div>
@@ -100,7 +117,17 @@ class ViewEngine {
             <article class="article-root">
               
               <div class="article-supplementary-info-container text-container">
-                <span class="article-date fira-sans-semibold">${post.date}</span>
+                <span class="article-date" style="font-weight:600;">
+                  <time datetime="${post.date}">${new Date(post.date).toLocaleDateString(
+                    'en-US',
+                    {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    }
+                  )}</time>
+                </span>
+                <div style="margin: 0 8px;height:4px;width:4px;border-radius:2px;background:var(--secondary-color);"></div>
                 <span class="article-series fira-sans-semibold">
                   Estimated Reading Time:&nbsp;
                   <b>${post['readingTime'] || 'Quick One'}</b>
@@ -121,7 +148,7 @@ class ViewEngine {
                       style="aspect-ratio: 1 / 1; object-fit: cover; object-position: center; image-orientation: from-image; image-rendering: optimizeQuality; border-radius: 24px;" 
                       height="48" 
                       width="48" 
-                      src="/assets/headshot.jpg" 
+                      src="/assets/doodles-ember.avif" 
                       alt="Nick's Avatar, a class photo of Butters Stotch against a pink background" 
                       class="post-card__author-avatar"
                     >
@@ -134,16 +161,14 @@ class ViewEngine {
                   </div>
               </div>
       
-              <div class="article-headline-image-container">
+              <div class="article-headline-image-container" style="border-radius: 20px;overflow: hidden;">
                 <img
                   src="${post.image.src}"
                   alt="${post.image.alt}"
-                  style="aspect-ratio: ${post.image.aspectRatio}; object-fit: cover; object-position: center; image-orientation: from-image; image-rendering: optimizeQuality; border-radius: 8px;"
-                  class="article-headline-image"
+                  height="260"
+                  width="100%"
+                  style="aspect-ratio: ${post.image.aspectRatio}; object-fit: contain; object-position: center; image-orientation: from-image; image-rendering: optimizeQuality; border-radius: 8px;"
                 />
-                <span class="article-headline-image-publisher">
-                  ${post.$markdown.attribute('image')?.publisher ?? 'Doodles NFTs Collection, 2025'}
-                </span>
               </div>
 
               <section class="post-content markdown-content article__markdown-root">

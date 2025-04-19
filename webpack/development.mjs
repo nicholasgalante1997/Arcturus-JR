@@ -36,7 +36,7 @@ const dev = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'webpack/html/index.html',
+      template: 'webpack/html/dev.html',
       inject: 'body',
       chunks: 'all',
       publicPath: '/'

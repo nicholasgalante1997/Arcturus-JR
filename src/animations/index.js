@@ -1,0 +1,1 @@
+export { runTypewriterAnimation } from './typing.js';

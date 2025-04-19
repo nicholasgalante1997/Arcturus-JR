@@ -13,11 +13,23 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"
     />
-    <link rel="stylesheet" href="/css/styles.css" />
-    <link rel="stylesheet" href="/css/themes/sb.css" />
-    <link rel="stylesheet" href="/css/post.css" />
 
-    <!-- Import Maps for ES Modules -->
+    <link rel="preload" as="style" href="/css/styles.min.css">
+    <link rel="preload" as="style" href="/css/themes/sb.min.css">
+    <link rel="preload" as="style" href="/css/post.min.css">
+    <link rel="preload" as="style" href="/css/contact.min.css">
+
+    <link rel="stylesheet" href="/css/styles.min.css" />
+    <link rel="stylesheet" href="/css/themes/sb.min.css" />
+    <link rel="stylesheet" href="/css/post.min.css" />
+    <link rel="stylesheet" href="/css/contact.min.css" />
+
+    <link rel="modulepreload" crossorigin="anonymous" href="https://esm.sh/dompurify@3.2.5">
+    <link rel="modulepreload" crossorigin="anonymous" href="https://esm.sh/front-matter@4.0.2">
+    <link rel="modulepreload" crossorigin="anonymous" href="https://esm.sh/highlight.js@11.11.1">
+    <link rel="modulepreload" crossorigin="anonymous" href="https://esm.sh/gsap@3.12.7">
+    <link rel="modulepreload" crossorigin="anonymous" href="https://esm.sh/marked@15.0.8">
+    
     <script type="importmap">
       {
         "imports": {
@@ -53,8 +65,19 @@
         <nav>
           <ul>
             <li><a href="/" data-link>Home</a></li>
-            <li><a href="/about" data-link>About</a></li>
             <li><a href="/posts" data-link>Posts</a></li>
+            <li><a href="/about" data-link>About</a></li>
+            <li><a href="/contact" data-link>Contact</a></li>
+            <li>
+              <span id="gh-icon-link"
+                ><img height="24" width="auto" src="/assets/icons/github-mark-white.svg"
+              /></span>
+            </li>
+            <li>
+              <span id="in-icon-link"
+                ><img height="24" width="auto" src="/assets/icons/InBug-White.png"
+              /></span>
+            </li>
           </ul>
         </nav>
       </div>
@@ -63,5 +86,11 @@
     <main id="app" class="container">
       <!-- Content will be inserted here via JavaScript -->
     </main>
+
+    <footer>
+      <div class="container">
+        <small style="font-weight: 600">&copy; 2025 Nick Galante</small>
+      </div>
+    </footer>
   </body>
 </html>
