@@ -28,12 +28,12 @@ const prod = {
   externals: mapPeerDependenciesToExternals(PackageJson.peerDependencies),
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve('webpack/html/index.html'),
+      template: path.resolve('webpack/html/prod.html'),
       filename: 'index.html',
       inject: 'head',
       chunks: ['main'],
       publicPath: '/',
-      title: 'nickgbytes.co | A place for ideas.',
+      title: 'nickgalante.tech | A place for ideas about software.',
       minify: {
         html5: true
       },

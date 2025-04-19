@@ -1,5 +1,59 @@
 [
   {
+    "id": "webpack-externals-and-es6-import-maps",
+    "title": "Reduce Bundle Size with Webpack Externals and ES6 Import Maps",
+    "date": "2025-04-17",
+    "excerpt": "The modern web wants you to succeed to badly. Why do you not also want that?",
+    "tags": ["javascript", "webpack", "externals", "import maps", "ecmascript 6", "es6", "bundlers"],
+    "image": {
+      "src":  "/assets/doodles-marketplace.avif",
+      "alt": "Doodles nft cards for sale in a marketplace fashion",
+      "aspectRatio": "16 / 9"
+    },
+    "readingTime": "18 minutes",
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "Webpack",
+    "searchTerms": ["Web Development", "Javascript", "Webpack", "Externals", "Import Maps", "ECMAScript 6", "ES6", "Bundlers"],
+    "slug": "webpack-externals-and-es6-import-maps",
+    "visible": true
+  },
+  {
+    "id": "react-compiler-babel-plugin",
+    "title": "Getting Setup with the beta React Compiler",
+    "date": "2024-04-20",
+    "excerpt": "The React Compiler has been open sourced, so let's see what it can do!",
+    "tags": ["react", "react-dom", "babel", "react-compiler"],
+    "image": {
+      "src":  "/assets/doodles-marketplace.avif",
+      "alt": "Doodles nft cards for sale in a marketplace fashion",
+      "aspectRatio": "16 / 9"
+    },
+    "readingTime": "10 minutes",
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "React",
+    "searchTerms": ["Web Development", "Javascript", "React", "Babel", "React Compiler"],
+    "slug": "react-compiler-babel-plugin",
+    "visible": true
+  },
+  {
+    "id": "webdev-aws-static-website-hosting",
+    "title": "ES6 SPA Continuous Deployment with AWS and Github Actions",
+    "date": "2025-04-17",
+    "excerpt": "In this article, we'll cover scaffolding a CICD pipeline for a ESnext SPA and hosting it on AWS.",
+    "tags": ["javascript", "aws", "github actions", "cicd", "spa"],
+    "image": {
+      "src":  "/assets/doodles-marketplace.avif",
+      "alt": "Doodles nft cards for sale in a marketplace fashion",
+      "aspectRatio": "16 / 9"
+    },
+    "readingTime": "30 minutes",
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "Amazon Web Services",
+    "searchTerms": ["Web Development", "Javascript", "AWS", "Github Actions", "CICD", "SPA"],
+    "slug": "webdev-aws-static-website-hosting",
+    "visible": false
+  },
+  {
     "id": "lazyollama",
     "title": "LazyOllama: A lazy browser based Ollama resource manager.",
     "date": "2025-03-18",
@@ -20,7 +74,7 @@
     "subcategory": "large language models",
     "searchTerms": ["Large Language Models", "Ollama", "Bun", "Turborepo"],
     "slug": "building-lazy-ollama",
-    "visible": true
+    "visible": false
   },
   {
     "id": "webdev-project-setup",
@@ -38,7 +92,7 @@
     "subcategory": "web development",
     "searchTerms": ["Web Development", "Javascript", "React", "Bun", "Turborepo"],
     "slug": "frameworkless-react-bun-turborepo",
-    "visible": true
+    "visible": false
   },
   {
     "id": "springfield-ast-parser",
@@ -56,25 +110,25 @@
     "subcategory": "microfrontends + system audits",
     "searchTerms": ["Web Development", "Javascript", "Microfrontends", "AST"],
     "slug": "auditing-microfrontends-ast",
-    "visible": true
+    "visible": false
   },
   {
     "id": "tc39-signals",
     "title": "Implementing a tiny TC39 Signal API in Typescript in about ~200 SLOC using simple Graphs and Stacks.",
     "date": "2025-03-18",
-    "excerpt": "You can probably achieve anything with Graphs and Stacks. Im shocked the Israel-Palestine conflict hasn't been solved by a well-placed Digraph.",
+    "excerpt": "A year ago, I would have told you that all life is a derivation of string manipulation. Now I might tell you that the universe is one big quantum directional graph. Anyway, here's signals.",
     "tags": ["Typescript", "TC39 Proposal", "Signals"],
     "image": {
-      "src":  "/assets/doodles-adventurer.jpg",
+      "src":  "/assets/doodles.jpg",
       "alt": "Me, as a Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
-      "aspectRatio": "16 / 16"
+      "aspectRatio": "16 / 9"
     },
     "readingTime": "30 minutes",
     "category": "SOFTWARE ENGINEERING",
     "subcategory": "Signals",
     "searchTerms": ["Typescript", "TC39 Proposal", "Signals"],
     "slug": "tc39-signals",
-    "visible": true
+    "visible": false
   },
   {
     "id": "utf8-variation-selector-embeddings",
@@ -92,6 +146,6 @@
     "subcategory": "Unicode",
     "searchTerms": ["Unicode", "Variation Selectors"],
     "slug": "unicode-variation-selector-embeddings",
-    "visible": true
+    "visible": false
   }
 ]
