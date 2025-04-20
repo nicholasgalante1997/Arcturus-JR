@@ -114,6 +114,9 @@ Import maps and modulepreload are features that have become baseline available i
 [caniuse import maps](https://caniuse.com/?search=import%20maps)
 
 [caniuse modulepreload](https://caniuse.com/?search=modulepreload)
+
+> Caveat: Looks like firefox says they support this, but upon further testing, they do not support it at time of writing. You can use import maps, but modulepreload will throw a warning. This warning would be fine if it was just a warning, but it ultimately aborts import map resolution specifier swapping. Something to note. Without the modulepreload link tags, firefox seems to be working fine with import maps.
+
 <br />
 
 #### But Nick, I'm worried about things like <esm.sh> being down, or malicious actor attacks in external cdn providers. I have a high availability app

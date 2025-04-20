@@ -306,6 +306,11 @@ h2.recent-posts-label {
   color: var(--text-color);
   margin-bottom: 1.5rem;
   opacity: 0.9;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 }
 
 .read-more {
@@ -803,6 +808,8 @@ div.about-hero-section {
     top: 32px;
     padding: 1rem;
     gap: 1rem;
+
+    min-height: 104vh;
   }
 
   div.about-hero-section > div.about-hero-image-container {

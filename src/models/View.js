@@ -247,7 +247,7 @@ class ViewEngine {
                     day: 'numeric'
                   })}</time>
                 </div>
-                <p>${post.excerpt}</p>
+                <p class="post-excerpt">${post.excerpt}</p>
               </div>
             </a>
           </div>

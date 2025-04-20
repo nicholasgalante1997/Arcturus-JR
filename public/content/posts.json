@@ -3,7 +3,7 @@
     "id": "webpack-externals-and-es6-import-maps",
     "title": "Reduce Bundle Size with Webpack Externals and ES6 Import Maps",
     "date": "2025-04-17",
-    "excerpt": "The modern web wants you to succeed to badly. Why do you not also want that?",
+    "excerpt": "We can reduce the overall size of our bundles by selectively externalizing larger sized dependencies and using ES6 import maps to have the browser prioritize making that es-module available at runtime within the browser.",
     "tags": ["javascript", "webpack", "externals", "import maps", "ecmascript 6", "es6", "bundlers"],
     "image": {
       "src":  "/assets/doodles-marketplace.avif",
@@ -21,7 +21,7 @@
     "id": "react-compiler-babel-plugin",
     "title": "Getting Setup with the beta React Compiler",
     "date": "2024-04-20",
-    "excerpt": "The React Compiler has been open sourced, so let's see what it can do!",
+    "excerpt": "With very minimal lift, we can opt into the React Compiler with the `react-compiler-babel-plugin` and try out some of the proposed performance benefits.",
     "tags": ["react", "react-dom", "babel", "react-compiler"],
     "image": {
       "src":  "/assets/doodles-marketplace.avif",
