@@ -3,7 +3,7 @@
   Me, embarking on a crusade against Vercel's disposition to grossly overcomplicate modern web development.
 <span>
 
-This is a space I've created to share thoughts, opinions, technical essays, verbal assaults against malicious companies and actors, and anything that doesn't fit into a stricter category above.
+This is a space I've created to share thoughts, opinions, technical essays, instructional guides, tirades, and anything that doesn't fit into a stricter category above.
 
 <br />
 

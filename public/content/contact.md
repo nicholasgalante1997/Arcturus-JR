@@ -1,16 +1,16 @@
 <form
-  action="https://formspree.io/f/{FORM_ID}"
+  action="https://formspree.io/f/xnnpkkjo"
   class="fs-form"
   target="_top"
   method="POST"
 >
   <div class="fs-field">
     <label class="fs-label" for="name">Your Name</label>
-    <input class="fs-input" id="name" name="name" required />
+    <input placeholder="Ada Lovelace" class="fs-input" id="name" name="name" required />
   </div>
   <div class="fs-field">
     <label class="fs-label" for="email">Email</label>
-    <input class="fs-input" id="email" name="email" required />
+    <input placeholder="ada@lovelace.co" class="fs-input" id="email" name="email" required />
     <p class="fs-description">
       This will help me respond to your query via an email.
     </p>
@@ -21,6 +21,7 @@
       class="fs-textarea"
       id="message"
       name="message"
+      placeholder="Enter your message here"
       required
     ></textarea>
     <p class="fs-description">What would you like to discuss? I typically respond within a few days.</p>
