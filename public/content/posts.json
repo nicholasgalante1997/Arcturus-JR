@@ -1,5 +1,23 @@
 [
   {
+    "id": "rpi5-system-monitor",
+    "title": "Build a Real Time System Monitor for your Raspberry Pi using Rust, Actix Web, sysinfo, Docker, and Ngrok",
+    "date": "04-22-2025",
+    "excerpt": "Within like 30 minutes, you can build, test, and surface a public and visible endpoint where you can monitor the system vitals of your raspberry pi 5, all using rust and html.",
+    "tags": ["raspberry-pi", "rust", "actix-web", "ngrok", "docker"],
+    "image": {
+      "src":  "/assets/doodles.jpg",
+      "alt": "Me, as a Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
+      "aspectRatio": "16 / 9"
+    },
+    "category":"SOFTWARE ENGINEERING",
+    "subcategory": "raspberry-pi",
+    "readingTime":"30 minutes",
+    "searchTerms": ["raspberry-pi", "rust", "actix-web", "ngrok", "docker"],
+    "slug": "rpi5-system-monitor",
+    "visible": true
+  },
+  {
     "id": "webpack-externals-and-es6-import-maps",
     "title": "Reduce Bundle Size with Webpack Externals and ES6 Import Maps",
     "date": "2025-04-17",
