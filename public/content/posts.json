@@ -1,9 +1,9 @@
 [
   {
-    "id": "rpi5-system-monitor",
+    "id": "linux-system-monitor",
     "title": "Build a Real Time System Monitor for your Raspberry Pi using Rust, Actix Web, sysinfo, Docker, and Ngrok",
     "date": "04-22-2025",
-    "excerpt": "Within like 30 minutes, you can build, test, and surface a public and visible endpoint where you can monitor the system vitals of your raspberry pi 5, all using rust and html.",
+    "excerpt": "Within like 30 minutes, you can build, and expose a public and visible endpoint where you can monitor the system vitals of your linux host, all using rust, docker, and ngrok.",
     "tags": ["raspberry-pi", "rust", "actix-web", "ngrok", "docker"],
     "image": {
       "src":  "/assets/doodles.jpg",
