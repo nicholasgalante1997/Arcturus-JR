@@ -16,6 +16,7 @@ class ViewEngine {
     this.#views.set('contact', this.#renderContactView.bind(this));
     this.#views.set('posts', this.#renderPostsView.bind(this));
     this.#views.set('post', this.#renderPostView.bind(this));
+    this.#views.set('ee:addendum', this.#renderEasterEggView.bind(this, 'addendum'));
     this.#views.set('error', this.#renderErrorView.bind(this));
     this.#views.set('404', this.#renderNotFoundView.bind(this));
   }
@@ -189,6 +190,18 @@ class ViewEngine {
         <h1>404</h1>
         <p>Page not found</p>
         <p><a href="/" data-link>Go back home</a></p>
+      </div>
+    `;
+  }
+
+  async #renderEasterEggView(egg) {
+    const filepath = `ee/${egg}.ee.txt`;
+    const markdown = await this.#fetchView(filepath);
+    const content = markdown.asHtml();
+    
+    this.#appContainer.innerHTML = `
+      <div class="markdown-content">
+        ${content}
       </div>
     `;
   }
