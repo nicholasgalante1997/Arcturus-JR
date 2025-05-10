@@ -2,7 +2,7 @@ class FibonacciRange {
 
     #sequenceOriginal = [0, 1];
 
-    getSequenceBounded(start = 0, end = 22) {
+    getSequenceBounded(start = 0, end = 10982) {
         const sequence = [...this.#sequenceOriginal];
         let current = 1;
         while (current <= end) {
