@@ -362,19 +362,10 @@ footer p {
   }
 }
 
-.error {
-  color: #ff6b6b;
-  text-align: center;
-  padding: 2rem;
-  background-color: rgba(255, 107, 107, 0.1);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 107, 107, 0.3);
-}
-
 .alt-label {
   position: relative;
   display: inline-block;
-  font-size: 0.8em;
+  font-size: 0.6em;
   color: var(--muted-text);
   top: -40px;
 }

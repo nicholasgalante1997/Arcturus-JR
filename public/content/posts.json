@@ -1,5 +1,41 @@
 [
   {
+    "id": "caesar-ciphers",
+    "title": "Fun with Caesar Ciphers",
+    "date": "05-08-2025",
+    "excerpt": "Pdeo eo w bqj heppha wnpeyha pdwp'o ckejc pk pawyd ukq w heppha xep wxkqp Ywaown Yeldano.",
+    "tags": ["typescript", "rome"],
+    "image": {
+      "src":  "/assets/doodles-marketplace.avif",
+      "alt": "Doodles nft cards (web based cards, square containing an image of the nft and titular text) for sale in a marketplace fashion",
+      "aspectRatio": "16 / 9"
+    },
+    "category":"SOFTWARE ENGINEERING",
+    "subcategory": "encryption",
+    "readingTime":"8 - 10 minutes",
+    "searchTerms": ["typescript", "rome"],
+    "slug": "caesar-ciphers",
+    "visible": true
+  },
+  {
+    "id": "linux-system-monitor",
+    "title": "Build a Real Time System Monitor for your Raspberry Pi using Rust, Actix Web, sysinfo, Docker, and Ngrok",
+    "date": "04-22-2025",
+    "excerpt": "Within like 30 minutes, you can build, and expose a public and visible endpoint where you can monitor the system vitals of your linux host, all using rust, docker, and ngrok.",
+    "tags": ["raspberry-pi", "rust", "actix-web", "ngrok", "docker"],
+    "image": {
+      "src":  "/assets/doodles.jpg",
+      "alt": "Me, as a Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
+      "aspectRatio": "16 / 9"
+    },
+    "category":"SOFTWARE ENGINEERING",
+    "subcategory": "raspberry-pi",
+    "readingTime":"30 minutes",
+    "searchTerms": ["raspberry-pi", "linux", "rust", "actix-web", "ngrok", "docker"],
+    "slug": "linux-system-monitor",
+    "visible": false
+  },
+  {
     "id": "webpack-externals-and-es6-import-maps",
     "title": "Reduce Bundle Size with Webpack Externals and ES6 Import Maps",
     "date": "2025-04-17",

@@ -4,10 +4,17 @@ import routes from '../routes/routes.js';
 
 import Scroller from '../utils/scroll.js';
 
+/**
+ * @param {typeof routes} routes
+ */
+function getPublicRoutes(routes) {
+  return routes.filter((route) => Config.ROUTES.PUBLIC.includes(route.view));
+}
+
 class App {
   #router;
   constructor() {
-    this.#router = new AppRouter(routes);
+    this.#router = new AppRouter(getPublicRoutes(routes));
     this.#router.router();
     this.setupEventListeners();
   }
