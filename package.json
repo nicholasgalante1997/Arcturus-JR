@@ -20,6 +20,7 @@
     "copy:assets": "cp -R public/assets dist/",
     "copy:markdown": "cp -R public/content dist/",
     "copy:styles": "cp -R public/css dist/",
+    "copy:favicons": "cp public/*.png public/*.ico public/site.webmanifest dist/",
     "dev": "webpack serve --config webpack/development.mjs",
     "fmt": "run-p fmt:*",
     "fmt:javascript": "prettier --write ./src/**/*.js",
