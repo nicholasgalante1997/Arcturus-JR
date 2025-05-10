@@ -186,10 +186,15 @@ class ViewEngine {
 
   #renderNotFoundView() {
     this.#appContainer.innerHTML = `
-      <div class="error">
-        <h1>404</h1>
-        <p>Page not found</p>
-        <p><a href="/" data-link>Go back home</a></p>
+      <div class="error-container">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-title">Page Not Found</h2>
+        <p class="error-message">Oops! The page you're looking for seems to have wandered off. Maybe it's taking a break or exploring the digital void.</p>
+        <small>That 404 description text above was written by Claude AI, aren't they getting kind of annoying?</small>
+        
+        <div class="cta-buttons">
+          <a href="/" class="btn btn-primary" data-link>Return Home</a>
+        </div>
       </div>
     `;
   }

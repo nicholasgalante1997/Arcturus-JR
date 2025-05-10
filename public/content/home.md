@@ -1,6 +1,6 @@
 ![home-hero-doodles-adventurer](/assets/doodles-adventurer.jpg)
 <span class="alt-label" data-for="home-hero-doodles-adventurer">
-  Me, embarking on a crusade against Vercel's disposition to grossly overcomplicate modern web development.
+  Me, embarking on a crusade against Vercel's disposition to grossly overcomplicate modern web development, and then charge you more to host.
 <span>
 
 This is a space I've created to share thoughts, opinions, technical essays, instructional guides, tirades, and anything that doesn't fit into a stricter category above.

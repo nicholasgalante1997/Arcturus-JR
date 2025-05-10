@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test';
-import CaesarCipher from './CaesarCipher.js';
+import CaesarCipher, { CaesarCipherShiftDirection } from './CaesarCipher.js';
 
 describe('CaesarCipher', () => {
   describe('encrypt', () => {
@@ -36,7 +36,6 @@ describe('CaesarCipher', () => {
         const shift = 3;
         const expected = "Ebiil, Tloia!";
         const actual = cipher.encrypt(plaintext, shift);
-        console.log(actual);
         expect(actual).toBe(expected);
     })
   });
@@ -60,4 +59,24 @@ describe('CaesarCipher', () => {
         expect(actual).toBe(expected);
     })
   });
+
+  describe('crack', () => {
+    test('Cracks a Caesar Cipher', () => {
+      const cipher = new CaesarCipher().setShiftRight();
+      const plaintext = "Oh cool! Look a Ben 10 wrist rocket! That's exactly what I wanted for Stan's birthday!"
+      const encrypted = cipher.encrypt(plaintext, 22);
+      const { shift, text } = cipher.crack(encrypted, CaesarCipherShiftDirection.LEFT);
+
+      expect(text).toBe(plaintext);
+      expect(shift).toBe(22);
+    })
+
+    test('Cracks another Caesar Cipher, that it didn\'t encode', () => {
+      const cipher = new CaesarCipher().setShiftRight();
+      const unknownMessage = "WKLV LV D VHFUHW PHVVDJH";
+      const cracked = cipher.crack(unknownMessage);
+      expect(cracked.text).toBe('THIS IS A SECRET MESSAGE');
+      expect(cracked.shift).toBeOneOf([3, 23]); // Direction should be right shifted so in decode we left shift
+    })
+  })
 });
