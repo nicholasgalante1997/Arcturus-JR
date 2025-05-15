@@ -1,12 +1,9 @@
 export function runTypewriterAnimation(element) {
   const textPhrases = [
-    'Hi, I\'m Nick <wave>',
+    "Hi, I'm Nick <wave>",
     "I am a Senior Software Engineer @ Charter Communications",
-    'Devourer of Pipeline Issues',
-    'Elder God of Modern Web Development',
-    'Dog Dad of the Year 4x Years Running',
-    'Opinionated SOLID Protocol Advocate',
-    'Raspberry Pi Owner and Tinkerer',
+    "Opinonated about the Web",
+    "Unyielding Bar Raiser"
   ];
 
   let phraseIndex = 0;
