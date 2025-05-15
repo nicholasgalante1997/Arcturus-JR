@@ -164,6 +164,7 @@ class ViewEngine {
       
               <div class="article-headline-image-container" style="border-radius: 20px;overflow: hidden;">
                 <img
+                  id="post-headline-image"
                   src="${post.image.src}"
                   alt="${post.image.alt}"
                   height="260"

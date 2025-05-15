@@ -2,9 +2,9 @@
   {
     "id": "caesar-ciphers",
     "title": "Fun with Caesar Ciphers",
-    "date": "05-08-2025",
+    "date": "2025-05-08",
     "excerpt": "Pdeo eo w bqj heppha wnpeyha pdwp'o ckejc pk pawyd ukq w heppha xep wxkqp Ywaown Yeldano.",
-    "tags": ["typescript", "rome"],
+    "tags": ["typescript"],
     "image": {
       "src":  "/assets/doodles-marketplace.avif",
       "alt": "Doodles nft cards (web based cards, square containing an image of the nft and titular text) for sale in a marketplace fashion",
@@ -13,7 +13,7 @@
     "category":"SOFTWARE ENGINEERING",
     "subcategory": "encryption",
     "readingTime":"8 - 10 minutes",
-    "searchTerms": ["typescript", "rome"],
+    "searchTerms": ["typescript"],
     "slug": "caesar-ciphers",
     "visible": true
   },

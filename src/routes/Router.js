@@ -1,5 +1,5 @@
 import hljs from 'highlight.js';
-import ViewEngine from '../models/View.js';
+import ViewEngine from '../views/View.js';
 import { getAppContainerElement } from '../utils/getDOMElements.js';
 
 class AppRouter {
