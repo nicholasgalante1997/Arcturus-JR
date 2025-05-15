@@ -833,7 +833,7 @@ div.about-hero-section {
     max-width: 100%;
   }
   
-  img#article-headline-image {
+  img#post-headline-image {
     max-width: 100%;
     height: auto;
   }
@@ -919,7 +919,7 @@ div.about-hero-section {
     max-width: 95% !important;
   }
   
-  img {
+  img#post-headline-image {
     max-width: 100% !important;
     width: auto !important;
     height: auto !important;
