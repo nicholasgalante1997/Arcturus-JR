@@ -1,5 +1,23 @@
 [
   {
+    "id": "ext4-fs-1",
+    "title": "Build an ext4 compliant filesystem - part 1 (Genesis and also Superblocks)",
+    "date": "2025-05-26",
+    "excerpt": "Why do we do the things that we do? Is it simply because we can?",
+    "tags": ["ext4", "filesystem", "linux"],
+    "image": {
+      "src":  "/assets/doodles-adventurer.jpg",
+      "alt": "a male Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
+      "aspectRatio": "1 / 1"
+    },
+    "readingTime": "40 minutes",
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "Linux - ext4 filesystem",
+    "searchTerms": ["ext4", "linux"],
+    "slug": "ext4-1",
+    "visible": true
+  },
+  {
     "id": "caesar-ciphers",
     "title": "Fun with Caesar Ciphers",
     "date": "2025-05-08",
