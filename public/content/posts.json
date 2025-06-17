@@ -1,5 +1,23 @@
 [
   {
+    "id": "sign-of-life-1",
+    "title": "Sign of Life, Address 06-2025",
+    "date": "2025-06-15",
+    "excerpt": "Nick's June 2025 update.",
+    "tags": ["ext4", "waavy"],
+    "image": {
+      "src":  "/assets/doodles-adventurer.jpg",
+      "alt": "a male Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
+      "aspectRatio": "1 / 1"
+    },
+    "readingTime": "Under 5 minutes",
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "Sign of Life Update(s)",
+    "searchTerms": ["ext4", "linux", "waavy", "ssr", "react"],
+    "slug": "sol-06-2025",
+    "visible": true
+  },
+  {
     "id": "ext4-fs-1",
     "title": "Build an ext4 compliant filesystem - part 1 (Genesis and also Superblocks)",
     "date": "2025-05-26",
