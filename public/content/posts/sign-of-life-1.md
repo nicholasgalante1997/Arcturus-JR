@@ -152,9 +152,11 @@ export async function pipeComponentToNodeStream(
 }
 ```
 
+### Using the Server Renderer Utilities from Other Environments
+
 Okay so we aren't running these functions in a server, so we need a mechanism to make these function's invokable from an exterior context. A lot of languages support ffis. That would be a neat route to explore next. For now a simple mechanism is command line invocation. We can use `commander` to create a flexible command line tool in the interim, and most programming languages support command line invocation through spawned processes, so we can using Bun's "Single File Executable" build strategy, treat our typescript command line tool like a portable executable.
 
-So how are we getting these React components to this tool? Well you can just write normal React code in a regular old typescript or javascript file, and you can supply a path argument to the waavy executable's `render` subcommand, with some configurable arguments, and waavy will render the Component to stdout, a provided pipe, or whatever. It's just a stream of characters really.
+So how are we getting these React components to this tool? Well you can just write normal React code in a regular old typescript or javascript file, and you can supply a path argument to the waavy executable's `render` subcommand, with some configurable arguments, and waavy will render the Component to stdout, a provided pipe, or whatever. It's just a stream of data really.
 
 > Sidebar
 >
