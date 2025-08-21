@@ -1,8 +1,19 @@
 import path from 'path';
+import url from 'url';
 import webpack from 'webpack';
 
+var __filename = url.fileURLToPath(import.meta.url)
+
+/**
+ * @type {webpack.Configuration}
+ */
 export default {
-  cache: false,
+  cache: {
+    buildDependencies: {
+      config: [__filename]
+    },
+    type: 'filesystem',
+  },
   target: ['web', 'es2023'],
   module: {
     rules: [
@@ -17,13 +28,14 @@ export default {
         test: /\.(js|mjs)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
+          loader: 'swc-loader'
         }
       }
     ]
   },
   resolve: {
     extensions: ['.js', '.mjs'],
+    modules: ['node_modules'],
     alias: {
       '@': path.resolve(process.cwd(), 'public', 'js')
     },
@@ -31,7 +43,7 @@ export default {
       buffer: false,
       fs: false,
       path: false,
-      process: false,
+      process: false
     }
   },
   plugins: [
