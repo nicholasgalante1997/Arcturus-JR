@@ -1,8 +1,20 @@
+import os from "os";
 import path from 'path';
+import url from 'url';
 import webpack from 'webpack';
 
+var __filename = url.fileURLToPath(import.meta.url);
+
+/**
+ * @type {webpack.Configuration}
+ */
 export default {
-  cache: false,
+  cache: {
+    buildDependencies: {
+      config: [__filename]
+    },
+    type: 'filesystem'
+  },
   target: ['web', 'es2023'],
   module: {
     rules: [
@@ -16,14 +28,23 @@ export default {
       {
         test: /\.(js|mjs)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
+        use: [
+          {
+            loader: 'thread-loader',
+            options: {
+              workers: os.cpus().length - 1
+            },
+          },
+          {
+            loader: 'swc-loader'
+          }
+        ]
       }
     ]
   },
   resolve: {
     extensions: ['.js', '.mjs'],
+    modules: ['node_modules'],
     alias: {
       '@': path.resolve(process.cwd(), 'public', 'js')
     },
@@ -31,14 +52,13 @@ export default {
       buffer: false,
       fs: false,
       path: false,
-      process: false,
+      process: false
     }
   },
   plugins: [
     new webpack.ProvidePlugin({
       process: 'process/browser'
     }),
-    new webpack.EnvironmentPlugin({ ...process.env }),
-    new webpack.ProgressPlugin()
+    new webpack.EnvironmentPlugin({ ...process.env })
   ]
 };
