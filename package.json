@@ -13,6 +13,7 @@
   "scripts": {
     "build": "run-s clean bundle postcss copy",
     "bundle": "webpack --config webpack/prod.mjs",
+    "bundle:analyze": "webpack-bundle-analyzer dist/stats.json",
     "clean": "run-p clean:*",
     "clean:css": "rm -f public/css/*.min.css && rm -f public/css/themes/*.min.css",
     "clean:dist": "rm -rf dist/",
@@ -73,7 +74,9 @@
     "serve": "^14.2.4",
     "sleepydogs": "1.0.8-alpha.4",
     "swc-loader": "^0.2.6",
+    "thread-loader": "^4.0.4",
     "webpack": "^5.99.5",
+    "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.1",
     "webpack-merge": "^6.0.1"

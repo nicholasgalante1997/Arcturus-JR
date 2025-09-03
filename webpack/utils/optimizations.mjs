@@ -1,0 +1,64 @@
+import { merge } from 'webpack-merge';
+
+/**
+ * @param {import('webpack').Configuration} config
+ * @param {boolean} optimize
+ *
+ * @returns {import('webpack').Configuration}
+ */
+export function addSplitChunksWebpackOptimization(
+  config,
+  optimize = Boolean(process.env.ARCJR_WEBPACK_OPTIMIZE_SPLIT_CHUNKS)
+) {
+  if (!optimize) {
+    return config;
+  }
+
+  return merge(config, {
+    optimization: {
+      /** @see https://webpack.js.org/plugins/split-chunks-plugin */
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+            priority: 10,
+            reuseExistingChunk: true
+          },
+          common: {
+            name: 'common',
+            minChunks: 2,
+            chunks: 'all',
+            priority: 5,
+            reuseExistingChunk: true,
+            enforce: true
+          }
+        }
+      }
+    }
+  });
+}
+
+/**
+ * @param {import('webpack').Configuration} config
+ * @param {boolean} optimize
+ *
+ * @returns {import('webpack').Configuration}
+ */
+export function addWebpackRuntimeSplitChunkOptimization(
+  config,
+  optimize = Boolean(process.env.ARCJR_WEBPACK_OPTIMIZE_RUNTIME_CHUNK)
+) {
+  if (!optimize) {
+    return config;
+  }
+
+  return merge(config, {
+    optimization: {
+      /** @see https://webpack.js.org/configuration/optimization/#optimizationruntimechunk */
+      runtimeChunk: 'single'
+    }
+  });
+}

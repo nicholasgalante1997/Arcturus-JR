@@ -1,8 +1,9 @@
+import os from "os";
 import path from 'path';
 import url from 'url';
 import webpack from 'webpack';
 
-var __filename = url.fileURLToPath(import.meta.url)
+var __filename = url.fileURLToPath(import.meta.url);
 
 /**
  * @type {webpack.Configuration}
@@ -12,7 +13,7 @@ export default {
     buildDependencies: {
       config: [__filename]
     },
-    type: 'filesystem',
+    type: 'filesystem'
   },
   target: ['web', 'es2023'],
   module: {
@@ -27,9 +28,17 @@ export default {
       {
         test: /\.(js|mjs)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'swc-loader'
-        }
+        use: [
+          {
+            loader: 'thread-loader',
+            options: {
+              workers: os.cpus().length - 1
+            },
+          },
+          {
+            loader: 'swc-loader'
+          }
+        ]
       }
     ]
   },
@@ -50,7 +59,6 @@ export default {
     new webpack.ProvidePlugin({
       process: 'process/browser'
     }),
-    new webpack.EnvironmentPlugin({ ...process.env }),
-    new webpack.ProgressPlugin()
+    new webpack.EnvironmentPlugin({ ...process.env })
   ]
 };
