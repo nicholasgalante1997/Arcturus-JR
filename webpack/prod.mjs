@@ -1,14 +1,16 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import path from 'path';
 import { merge } from 'webpack-merge';
-import WebpackCommonConfig from './common.mjs';
 import PackageJson from '../package.json' with { type: 'json' };
-
-function mapPeerDependenciesToExternals(peerDependencies) {
-  return Object.keys(peerDependencies)
-    .map((dep) => ({ [dep]: dep }))
-    .reduce((acc, next) => Object.assign(acc, next), {});
-}
+import WebpackCommonConfig from './common.mjs';
+import { debugConfig } from './utils/debug.mjs';
+import { mapPeerDependenciesToExternals } from './utils/externals.mjs';
+import { pipeline } from './utils/pipeline.mjs';
+import {
+  addSplitChunksWebpackOptimization,
+  addWebpackRuntimeSplitChunkOptimization
+} from './utils/optimizations.mjs';
 
 /** @type {import('webpack').Configuration} */
 const prod = {
@@ -38,8 +40,22 @@ const prod = {
         html5: true
       },
       scriptLoading: 'module'
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled',
+      generateStatsFile: true
     })
   ]
 };
 
-export default merge(WebpackCommonConfig, prod);
+/** @type {import('webpack').Configuration} */
+const config = pipeline(
+  addSplitChunksWebpackOptimization,
+  addWebpackRuntimeSplitChunkOptimization
+)(merge(WebpackCommonConfig, prod));
+
+if (process.env.ARCJR_WEBPACK_DEBUG_CONFIG) {
+  debugConfig(config);
+}
+
+export default config;
