@@ -6,7 +6,7 @@
  *
  * @returns {Promise<Response>} The response from the fetch
  */
-export async function fetchWithTimeout(url, options = {}, timeoutMs = 5000) {
+export async function fetchWithTimeout(url: string | URL, options: RequestInit = {}, timeoutMs: number = 5000): Promise<Response> {
   // Create a new AbortController instance
   const controller = new AbortController();
 

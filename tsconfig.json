@@ -1,0 +1,110 @@
+{
+    "compilerOptions": {
+        // Language and Environment
+        // https://www.typescriptlang.org/tsconfig#target
+        "target": "ES2022", // Compile to ES2022 for modern browsers (supports class fields, top-level await, etc.)
+        // https://www.typescriptlang.org/tsconfig#lib
+        "lib": [
+            "ES2022",
+            "DOM",
+            "DOM.Iterable"
+        ], // Include ES2022 features + DOM APIs for browser environment
+        // JavaScript Support
+        // https://www.typescriptlang.org/tsconfig#allowJs
+        "allowJs": true, // Allow importing .js files alongside .ts files for gradual migration
+        // https://www.typescriptlang.org/tsconfig#skipLibCheck
+        "skipLibCheck": true, // Skip type checking of declaration files (.d.ts) for faster builds
+        // Module Resolution
+        // https://www.typescriptlang.org/tsconfig#esModuleInterop
+        "esModuleInterop": true, // Enables default imports from CommonJS modules (import React from 'react')
+        // https://www.typescriptlang.org/tsconfig#allowSyntheticDefaultImports
+        "allowSyntheticDefaultImports": true, // Allow default imports from modules without default export
+        // https://www.typescriptlang.org/tsconfig#module
+        "module": "ESNext", // Use latest ES module system (import/export)
+        // https://www.typescriptlang.org/tsconfig#moduleResolution
+        "moduleResolution": "bundler", // Modern resolution for bundlers like webpack/bun (replaces "node")
+        // https://www.typescriptlang.org/tsconfig#resolveJsonModule
+        "resolveJsonModule": true, // Allow importing .json files as modules
+        // Emit Settings
+        // https://www.typescriptlang.org/tsconfig#isolatedModules
+        "isolatedModules": true, // Ensure each file can be transpiled independently (required for SWC/Babel)
+        // https://www.typescriptlang.org/tsconfig#noEmit
+        "noEmit": true, // Don't emit JavaScript files (webpack/SWC handles compilation)
+        // https://www.typescriptlang.org/tsconfig#jsx
+        "jsx": "react-jsx", // Use React 17+ automatic JSX runtime (no need to import React)
+        // https://www.typescriptlang.org/tsconfig#declaration
+        "declaration": false, // Don't generate .d.ts files (not needed for app builds)
+        // https://www.typescriptlang.org/tsconfig#declarationMap
+        "declarationMap": false, // Don't generate declaration source maps
+        // https://www.typescriptlang.org/tsconfig#sourceMap
+        "sourceMap": true, // Generate source maps for debugging
+        // https://www.typescriptlang.org/tsconfig#outDir
+        "outDir": "dist", // Output directory (not used since noEmit: true, but good for tooling)
+        // https://www.typescriptlang.org/tsconfig#removeComments
+        "removeComments": true, // Remove comments from emitted code
+        // Type Checking - Strict Mode
+        // https://www.typescriptlang.org/tsconfig#strict
+        "strict": true, // Enable all strict type checking options (recommended for new projects)
+        // Individual strict options (included in "strict": true, but listed for clarity)
+        // https://www.typescriptlang.org/tsconfig#noImplicitAny
+        "noImplicitAny": true, // Error on expressions with implied 'any' type
+        // https://www.typescriptlang.org/tsconfig#noImplicitReturns
+        "noImplicitReturns": true, // Error when not all code paths return a value
+        // https://www.typescriptlang.org/tsconfig#noImplicitThis
+        "noImplicitThis": true, // Error on 'this' expressions with implied 'any' type
+        // Additional Strict Checks (not included in "strict")
+        // https://www.typescriptlang.org/tsconfig#noUnusedLocals
+        "noUnusedLocals": true, // Error on unused local variables
+        // https://www.typescriptlang.org/tsconfig#noUnusedParameters
+        "noUnusedParameters": true, // Error on unused function parameters
+        // https://www.typescriptlang.org/tsconfig#exactOptionalPropertyTypes
+        "exactOptionalPropertyTypes": true, // Enforce exact optional property types (undefined vs missing)
+        // https://www.typescriptlang.org/tsconfig#noUncheckedIndexedAccess
+        "noUncheckedIndexedAccess": true, // Add 'undefined' to index signature results (safer array access)
+        // Switch Statement Checking
+        // https://www.typescriptlang.org/tsconfig#noFallthroughCasesInSwitch
+        "noFallthroughCasesInSwitch": true, // Error on fallthrough cases in switch statements
+        // File System
+        // https://www.typescriptlang.org/tsconfig#forceConsistentCasingInFileNames
+        "forceConsistentCasingInFileNames": true, // Ensure consistent casing in file names
+        // Path Mapping
+        // https://www.typescriptlang.org/tsconfig#baseUrl
+        "baseUrl": ".", // Base directory for non-relative module names
+        // https://www.typescriptlang.org/tsconfig#paths
+        "paths": {
+            // Path aliases for cleaner imports - must match webpack resolve.alias
+            "@/*": [
+                "src/*"
+            ], // @/config/index → src/config/index
+            "@/components/*": [
+                "src/components/*"
+            ], // @/components/Header → src/components/Header  
+            "@/hooks/*": [
+                "src/hooks/*"
+            ], // @/hooks/usePosts → src/hooks/usePosts
+            "@/types/*": [
+                "src/types/*"
+            ], // @/types/Post → src/types/Post
+            "@/utils/*": [
+                "src/utils/*"
+            ], // @/utils/fetchWithTimeout → src/utils/fetchWithTimeout
+            "@/services/*": [
+                "src/services/*"
+            ] // @/services/markdownService → src/services/markdownService
+        }
+    },
+    // Project Files
+    // https://www.typescriptlang.org/tsconfig#include
+    "include": [
+        "src/**/*", // Include all files in src directory and subdirectories
+        "webpack/**/*" // Include webpack config files for type checking
+    ],
+    // https://www.typescriptlang.org/tsconfig#exclude  
+    "exclude": [
+        "node_modules", // Exclude dependencies (default, but explicit for clarity)
+        "dist", // Exclude build output
+        "**/*.test.ts", // Exclude test files from type checking in build
+        "**/*.test.tsx", // Exclude React test files,
+        "**/*.stories.tsx" // Exclude React Storybook CSF Files
+    ]
+}

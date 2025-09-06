@@ -1,4 +1,4 @@
-import os from "os";
+import os from 'os';
 import path from 'path';
 import url from 'url';
 import webpack from 'webpack';
@@ -26,14 +26,14 @@ export default {
         }
       },
       {
-        test: /\.(js|mjs)$/,
+        test: /\.(js|mjs|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: [
           {
             loader: 'thread-loader',
             options: {
               workers: os.cpus().length - 1
-            },
+            }
           },
           {
             loader: 'swc-loader'
@@ -43,10 +43,10 @@ export default {
     ]
   },
   resolve: {
-    extensions: ['.js', '.mjs'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.mjs'],
     modules: ['node_modules'],
     alias: {
-      '@': path.resolve(process.cwd(), 'public', 'js')
+      '@': path.resolve(process.cwd(), 'src')
     },
     fallback: {
       buffer: false,
