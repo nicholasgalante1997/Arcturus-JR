@@ -1,4 +1,4 @@
-import { fetchWithTimeout } from '../utils/fetchWithTimeout.js';
+import { fetchWithTimeout } from '../utils/fetchWithTimeout';
 import type { Post, PostWithMarkdown } from '../types/Post';
 import Markdown from './Markdown';
 
