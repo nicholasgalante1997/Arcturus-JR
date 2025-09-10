@@ -11,6 +11,7 @@ function Markdown({ markdown }: { markdown: string }) {
     <ReactMarkdown
       rehypePlugins={[rehypeRaw, [rehypeSanitize, modifiedSanitizationSchema]]}
       remarkPlugins={[remarkGfm]}
+      
     >
       {markdown}
     </ReactMarkdown>

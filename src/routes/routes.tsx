@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router';
+import AboutPage from '@/pages/About';
 import HomePage from '@/pages/Home';
 
 let routes: ReturnType<typeof createBrowserRouter> | null = null;
@@ -23,18 +24,18 @@ function getLazyLoadedRoutes() {
         path: '/about',
         element: <AboutPage />
       },
-      {
-        path: '/contact',
-        element: <ContactPage />
-      },
-      {
-        path: '/posts',
-        element: <PostsPage />
-      },
-      {
-        path: '/post/:id',
-        element: <PostPage />
-      }
+      // {
+      //   path: '/contact',
+      //   element: <ContactPage />
+      // },
+      // {
+      //   path: '/posts',
+      //   element: <PostsPage />
+      // },
+      // {
+      //   path: '/post/:id',
+      //   element: <PostPage />
+      // }
     ]);
   }
 

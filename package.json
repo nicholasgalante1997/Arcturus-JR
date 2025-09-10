@@ -4,26 +4,15 @@
   "description": "A simple markdown web site for my (probably wrong) tech blog/opinions.",
   "author": "Nick Galante <rustycloud42@protonmail.com> (https://github.com/nicholasgalante1997)",
   "type": "module",
-  "files": [
-    "src"
-  ],
   "bin": {
     "ngexec": "bin/cli.js"
   },
-  "packageManager": "bun@1.2.17",
-  "engines": {
-    "bun": "~1.2.4",
-    "node": ">=20",
-    "npm": ">=9"
-  },
-  "lint-staged": {
-    "package.json": [
-      "prettier-package-json --write",
-      "git add"
-    ]
-  },
+  "files": [
+    "src"
+  ],
   "scripts": {
     "build": "run-s clean bundle postcss copy",
+    "build-storybook": "storybook build",
     "bundle": "webpack --config webpack/prod.mjs",
     "bundle:analyze": "webpack-bundle-analyzer dist/stats.json",
     "clean": "run-p clean:*",
@@ -31,9 +20,9 @@
     "clean:dist": "rm -rf dist/",
     "copy": "run-p copy:*",
     "copy:assets": "cp -R public/assets dist/",
+    "copy:favicons": "cp public/*.png public/*.ico public/site.webmanifest dist/",
     "copy:markdown": "cp -R public/content dist/",
     "copy:styles": "cp -R public/css dist/",
-    "copy:favicons": "cp public/*.png public/*.ico public/site.webmanifest dist/",
     "dev": "webpack serve --config webpack/development.mjs",
     "fmt": "run-p fmt:*",
     "fmt:javascript": "prettier --write ./src/**/*.js",
@@ -45,9 +34,8 @@
     "precommit": "lint-staged",
     "serve": "serve -p 4200 dist/",
     "start": "bun run serve",
-    "test": "bun test",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "test": "bun test"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.87.1",
@@ -111,5 +99,17 @@
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.1",
     "webpack-merge": "^6.0.1"
-  }
+  },
+  "engines": {
+    "bun": "~1.2.4",
+    "node": ">=20",
+    "npm": ">=9"
+  },
+  "lint-staged": {
+    "package.json": [
+      "prettier-package-json --write",
+      "git add"
+    ]
+  },
+  "packageManager": "bun@1.2.17"
 }

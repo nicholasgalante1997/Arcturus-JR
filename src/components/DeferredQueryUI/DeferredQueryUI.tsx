@@ -14,16 +14,37 @@ import { DeferredQueryUIProps } from './types';
  * in flight. If not provided, the query is not rendered until the query
  * has completed.
  */
-function DeferredQueryUI({ q, children, fallback = null, placeholder = <Loader /> }: DeferredQueryUIProps) {
+function DeferredQueryUI({
+  q,
+  children,
+  fallback: Fallback = DefaultErrorComponent,
+  placeholder = <Loader />
+}: DeferredQueryUIProps) {
   const { data, error, isLoading, isPending, isError } = q;
-  const isInFlight = isLoading || isPending;
-
+  const isInFlight = (isLoading || isPending) && !isError;
   return (
-    <ErrorBoundary fallback={fallback}>
+    <ErrorBoundary forceErrorState={isError} fallback={<Fallback error={error} />}>
       {isInFlight && placeholder}
-      {!isInFlight && isError && fallback}
-      {!isInFlight && !isError && Boolean(data) && children}
+      {!isInFlight && Boolean(data) && children}
     </ErrorBoundary>
+  );
+}
+
+function DefaultErrorComponent({ error }: { error: unknown }) {
+  return (
+    <div className="error-message">
+      <h2>Something went wrong.</h2>
+      {error instanceof Error ? (
+        <>
+          <p>{error.message}</p>
+          <code>
+            <pre>{error.stack}</pre>
+          </code>
+        </>
+      ) : (
+        <p>{String(error)}</p>
+      )}
+    </div>
   );
 }
 

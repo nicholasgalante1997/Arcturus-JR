@@ -1,11 +1,11 @@
 import React from 'react';
 import AppLayout from '@/layout/Layout';
-import { About } from '@/components/About';
+import { AboutPage } from '@/components/About';
 
 function HomePage() {
   return (
     <AppLayout>
-      
+      <AboutPage />
     </AppLayout>
   );
 }
