@@ -1,37 +1,30 @@
 import { createBrowserRouter } from 'react-router';
 import AboutPage from '@/pages/About';
+import ContactPage from '@/pages/Contact';
 import HomePage from '@/pages/Home';
+import PostsPage from '@/pages/Posts';
 
 let routes: ReturnType<typeof createBrowserRouter> | null = null;
-
-const appRoutes = [
-  { path: '/', view: 'home' },
-  { path: '/about', view: 'about' },
-  { path: '/contact', view: 'contact' },
-  { path: '/posts', view: 'posts' },
-  { path: '/post/:id', view: 'post' },
-  { path: '/ee/addendum', view: 'ee:addendum' }
-];
 
 function getLazyLoadedRoutes() {
   if (!routes) {
     routes = createBrowserRouter([
       {
         path: '/',
-        element: <HomePage />
+        Component: HomePage
       },
       {
         path: '/about',
-        element: <AboutPage />
+        Component: AboutPage
       },
-      // {
-      //   path: '/contact',
-      //   element: <ContactPage />
-      // },
-      // {
-      //   path: '/posts',
-      //   element: <PostsPage />
-      // },
+      {
+        path: '/contact',
+        Component: ContactPage
+      },
+      {
+        path: '/posts',
+        Component: PostsPage
+      }
       // {
       //   path: '/post/:id',
       //   element: <PostPage />
