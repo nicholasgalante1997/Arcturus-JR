@@ -1,11 +1,11 @@
-import fm from "front-matter";
+import fm from 'front-matter';
 import { fetchWithTimeout } from '@/utils/fetchWithTimeout';
-import { MarkdownDocument } from "@/types/MarkdownDocument";
+import { MarkdownDocument } from '@/types/MarkdownDocument';
 
 export default class Markdown {
   async fetchMarkdown(file: string): Promise<MarkdownDocument> {
     try {
-      const timeoutMs = 3000;
+      const timeoutMs = 4000;
       const response = await fetchWithTimeout(file, this.getMarkdownFetchInit(), timeoutMs);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

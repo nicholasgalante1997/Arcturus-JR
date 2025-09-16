@@ -3,6 +3,7 @@ import AboutPage from '@/pages/About';
 import ContactPage from '@/pages/Contact';
 import HomePage from '@/pages/Home';
 import PostsPage from '@/pages/Posts';
+import PostPage from '@/pages/Post';
 
 let routes: ReturnType<typeof createBrowserRouter> | null = null;
 
@@ -24,11 +25,11 @@ function getLazyLoadedRoutes() {
       {
         path: '/posts',
         Component: PostsPage
+      },
+      {
+        path: '/post/:id',
+        Component: PostPage
       }
-      // {
-      //   path: '/post/:id',
-      //   element: <PostPage />
-      // }
     ]);
   }
 

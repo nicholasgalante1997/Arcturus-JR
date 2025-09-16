@@ -1,4 +1,4 @@
-import { MarkdownDocument } from "./MarkdownDocument";
+import { MarkdownDocument } from './MarkdownDocument';
 
 export interface PostImage {
   src: string;

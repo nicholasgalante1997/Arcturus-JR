@@ -1,4 +1,4 @@
-import fm from "front-matter";
+import fm from 'front-matter';
 
 export interface MarkdownDocument {
   markdown: string;

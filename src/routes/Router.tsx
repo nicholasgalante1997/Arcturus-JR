@@ -1,9 +1,8 @@
-import React from "react";
-import { RouterProvider } from "react-router/dom";
-import { getLazyLoadedRoutes } from "./routes";
+import { RouterProvider } from 'react-router/dom';
+import { getLazyLoadedRoutes } from './routes';
 
 function Router() {
-    return <RouterProvider router={getLazyLoadedRoutes()} />;
+  return <RouterProvider router={getLazyLoadedRoutes()} />;
 }
 
 export default Router;

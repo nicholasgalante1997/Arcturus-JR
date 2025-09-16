@@ -1,5 +1,5 @@
-import { Post } from "@/types";
+import { Post } from '@/types';
 
 export interface PostMinorInfoProps {
-    post: Post;
+  post: Post;
 }
