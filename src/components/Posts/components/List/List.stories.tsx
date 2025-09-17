@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import PostCardsList from './List';
+
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 type PostCardsListStoryMeta = Meta<typeof PostCardsList>;
 type PostCardsListStory = StoryObj<typeof PostCardsList>;

@@ -1,39 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { runTypewriterAnimation } from '@/animation';
+
 import { DQUI } from '@/components/DeferredQueryUI';
-import { Markdown } from '@/components/Markdown';
 import { useMarkdown } from '@/hooks/useMarkdown';
+import { useTypewriterAnimation } from '@/hooks/useTypewriterAnimation';
+import { pipeline } from '@/utils/pipeline';
+
+import AboutView from './View';
 
 function About() {
   const [markdownMounted, setMarkdownMounted] = useState(false);
-  const [animationTimeoutRef, setAnimationTimeoutRef] = useState<NodeJS.Timeout | null>(null);
   const $md = useMarkdown('/content/about.md');
 
   useEffect(() => {
-    if ($md.data) {
+    if ($md.data && !markdownMounted) {
       setMarkdownMounted(true);
     }
-  }, [$md.data]);
+  }, [$md.data, markdownMounted]);
 
-  useEffect(() => {
-    if (markdownMounted) {
-      const element: HTMLHeadingElement | null = window.document.querySelector('h1.about-hero-text');
-      if (element && !animationTimeoutRef) {
-        const timeout = setTimeout(() => {
-          runTypewriterAnimation(element);
-        }, 400);
-        setAnimationTimeoutRef(timeout);
-      }
-    }
-  }, [markdownMounted, animationTimeoutRef]);
+  useTypewriterAnimation({ enabled: markdownMounted, element: document.querySelector('h1.about-hero-text') });
 
   return (
     <DQUI q={$md}>
-      <div className="markdown-content">
-        <Markdown markdown={$md.data?.markdown || ''} />
-      </div>
+      <AboutView markdown={$md?.data?.markdown || ''} />
     </DQUI>
   );
 }
 
-export default React.memo(About);
+export default pipeline(React.memo)(About);

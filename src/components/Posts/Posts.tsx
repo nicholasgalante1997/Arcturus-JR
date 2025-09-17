@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { DQUI } from '@/components/DeferredQueryUI';
 import { useGetPosts } from '@/hooks/usePosts';
+
 import { PostCardsList } from './components/List';
 
 function PostsPage() {

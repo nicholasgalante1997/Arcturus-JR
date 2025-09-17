@@ -7,3 +7,4 @@ public/content/ee/*.md
 *.bak
 *storybook.log
 storybook-static
+.vscode

@@ -1,13 +1,15 @@
 import React from 'react';
-import AppLayout from '@/layout/Layout';
-import { AboutPage } from '@/components/About';
 
-function HomePage() {
+import { About } from '@/components/About';
+import AppLayout from '@/layout/Layout';
+import { pipeline } from '@/utils/pipeline';
+
+function AboutPage() {
   return (
     <AppLayout>
-      <AboutPage />
+      <About />
     </AppLayout>
   );
 }
 
-export default React.memo(HomePage);
+export default pipeline(React.memo)(AboutPage);

@@ -1,6 +1,7 @@
 import { memo } from 'react';
-import AppLayout from '@/layout/Layout';
+
 import Post from '@/components/Posts/Post/Component';
+import AppLayout from '@/layout/Layout';
 import { pipeline } from '@/utils/pipeline';
 
 function PostPage() {

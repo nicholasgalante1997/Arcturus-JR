@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+
 import PostsService from '@/services/Posts';
 
 async function getPosts() {

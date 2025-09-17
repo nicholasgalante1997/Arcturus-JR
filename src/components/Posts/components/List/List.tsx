@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { PostCard } from '../Card';
+
 import { PostCardListProps } from './types';
 
 function PostCardList({ posts }: PostCardListProps) {

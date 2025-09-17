@@ -9,7 +9,7 @@ var optimize = true;
  * @returns {import('webpack').Configuration}
  */
 export function addSplitChunksWebpackOptimization(
-  config,
+  config
   // optimize = Boolean(process.env.ARCJR_WEBPACK_OPTIMIZE_SPLIT_CHUNKS)
 ) {
   if (!optimize) {
@@ -34,7 +34,7 @@ export function addSplitChunksWebpackOptimization(
             name: 'react-runtime',
             chunks: 'all',
             priority: 15,
-            reuseExistingChunk: true,
+            reuseExistingChunk: true
           },
           common: {
             name: 'common',
@@ -58,10 +58,9 @@ export function addSplitChunksWebpackOptimization(
  * @returns {import('webpack').Configuration}
  */
 export function addWebpackRuntimeSplitChunkOptimization(
-  config,
+  config
   // optimize = Boolean(process.env.ARCJR_WEBPACK_OPTIMIZE_RUNTIME_CHUNK)
 ) {
-
   if (!optimize) {
     return config;
   }

@@ -1,6 +1,7 @@
 import fm from 'front-matter';
-import { fetchWithTimeout } from '@/utils/fetchWithTimeout';
+
 import { MarkdownDocument } from '@/types/MarkdownDocument';
+import { fetchWithTimeout } from '@/utils/fetchWithTimeout';
 
 export default class Markdown {
   async fetchMarkdown(file: string): Promise<MarkdownDocument> {

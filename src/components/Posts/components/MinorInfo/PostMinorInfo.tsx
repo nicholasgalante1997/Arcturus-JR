@@ -1,5 +1,6 @@
 import { PostReadingTime } from '../ReadingTime';
 import { PostReleaseDate } from '../ReleaseDate';
+
 import { PostMinorInfoProps } from './types';
 
 function PostMinorInfo({ post }: PostMinorInfoProps) {

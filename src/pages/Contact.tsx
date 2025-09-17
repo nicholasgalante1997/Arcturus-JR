@@ -1,6 +1,7 @@
 import React from 'react';
-import AppLayout from '@/layout/Layout';
+
 import { ContactPage } from '@/components/Contact';
+import AppLayout from '@/layout/Layout';
 
 function HomePage() {
   return (

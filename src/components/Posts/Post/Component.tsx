@@ -1,9 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router';
+
 import { DQUI } from '@/components/DeferredQueryUI';
 import { useGetPost } from '@/hooks/usePost';
 
-import PostMinorInfo from '../components/MinorInfo/PostMinorInfo'
+import PostMinorInfo from '../components/MinorInfo/PostMinorInfo';
 
 function PostPage() {
   const params = useParams();
@@ -14,7 +15,6 @@ function PostPage() {
       <section className="article-container">
         <article className="article-root">
           {/* InfoContainer */}
-          <
 
           <div className="article-title-container text-container">
             <h1 className="article-title">{post.title}</h1>
@@ -42,7 +42,7 @@ function PostPage() {
             </div>
           </div>
 
-          <div class="article-headline-image-container" style="border-radius: 20px;overflow: hidden;">
+          <div className="article-headline-image-container" style="border-radius: 20px;overflow: hidden;">
             <img
               id="post-headline-image"
               src="${post.image.src}"

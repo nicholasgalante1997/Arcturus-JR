@@ -76,7 +76,8 @@ export default {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.mjs'],
     modules: ['node_modules'],
     alias: {
-      '@': path.resolve(process.cwd(), 'src')
+      '@': path.resolve(process.cwd(), 'src'),
+      '@public': path.resolve(process.cwd(), 'public')
     },
     fallback: {
       buffer: false,

@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { Loader } from '@/components/Loader';
+
 import { DeferredQueryUIProps } from './types';
 
 /**

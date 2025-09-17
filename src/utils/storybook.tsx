@@ -1,5 +1,6 @@
-import type { Decorator } from '@storybook/react-webpack5';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+import type { Decorator } from '@storybook/react-webpack5';
 
 export class StorybookDecorators {
   static queryClient = new QueryClient();

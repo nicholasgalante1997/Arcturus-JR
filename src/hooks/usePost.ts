@@ -1,5 +1,6 @@
-import React from 'react';
 import { useQuery } from '@tanstack/react-query';
+import React from 'react';
+
 import PostsService from '@/services/Posts';
 
 async function getPost(id: string) {

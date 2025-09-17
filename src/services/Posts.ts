@@ -1,6 +1,8 @@
 import { fetchWithTimeout } from '../utils/fetchWithTimeout';
-import type { Post, PostWithMarkdown } from '../types/Post';
+
 import Markdown from './Markdown';
+
+import type { Post, PostWithMarkdown } from '../types/Post';
 
 export default class Posts {
   private static postsEndpoint = '/content/posts.json';

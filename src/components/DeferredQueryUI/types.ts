@@ -1,5 +1,6 @@
-import type { PropsWithChildren, ReactNode } from 'react';
 import { type UseQueryResult } from '@tanstack/react-query';
+
+import type { PropsWithChildren, ReactNode } from 'react';
 
 export type ErrorComponentAssumedProps = {
   error: unknown;

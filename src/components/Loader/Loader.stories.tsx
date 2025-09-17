@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import Loader from './Loader';
+
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 type LoaderStoryMeta = Meta<typeof Loader>;
 type LoaderStory = StoryObj<typeof Loader>;
