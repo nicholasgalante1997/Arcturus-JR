@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import Markdown from '@/components/Markdown/Markdown';
+import { Markdown } from '@/components/Base/Markdown';
 import { pipeline } from '@/utils/pipeline';
 
 import { AboutViewProps } from './types';

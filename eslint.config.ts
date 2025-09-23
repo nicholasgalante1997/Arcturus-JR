@@ -48,7 +48,9 @@ export default defineConfig([
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     rules: {
-      'react/react-in-jsx-scope': 'off'
+      'react/react-in-jsx-scope': 'off',
+      '@typescript-eslint/triple-slash-reference': 'off',
+      '@typescript-eslint/no-empty-object-type': 'warn'
     }
   },
   { files: ['**/*.json'], plugins: { json }, language: 'json/json', extends: ['json/recommended'] },
@@ -58,5 +60,6 @@ export default defineConfig([
     language: 'markdown/commonmark',
     extends: ['markdown/recommended']
   },
-  { files: ['**/*.css'], plugins: { css }, language: 'css/css', extends: ['css/recommended'] }
+  { files: ['**/*.css'], plugins: { css }, language: 'css/css', extends: ['css/recommended'] },
+  { ignores: ['**/*.d.ts'] }
 ]);

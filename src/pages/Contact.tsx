@@ -1,14 +1,15 @@
 import React from 'react';
 
-import { ContactPage } from '@/components/Contact';
+import { Contact } from '@/components/Contact';
 import AppLayout from '@/layout/Layout';
+import { pipeline } from '@/utils/pipeline';
 
-function HomePage() {
+function ContactPage() {
   return (
     <AppLayout>
-      <ContactPage />
+      <Contact />
     </AppLayout>
   );
 }
 
-export default React.memo(HomePage);
+export default pipeline(React.memo)(ContactPage);

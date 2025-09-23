@@ -13,7 +13,7 @@ export const useTypewriterAnimation = ({ element, enabled }: UseTypewriterAnimat
     if (enabled) {
       if (element && !animationTimeoutRef) {
         const timeout = setTimeout(() => {
-          console.log('Running typewriter animation')
+          console.log('Running typewriter animation');
           runTypewriterAnimation(element);
         }, 400);
         setAnimationTimeoutRef(timeout);
