@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 
 import { pipeline } from '@/utils/pipeline';
 
+import { CodeBlock } from './components/CodeBlock';
 import { modifiedSanitizationSchema } from './utils/rehype-sanitize';
 import { MarkdownViewProps } from './types';
 
@@ -14,6 +15,11 @@ function MarkdownView({ markdown }: MarkdownViewProps) {
     <ReactMarkdown
       rehypePlugins={[rehypeRaw, [rehypeSanitize, modifiedSanitizationSchema]]}
       remarkPlugins={[remarkGfm]}
+      components={{
+        code: CodeBlock as React.ComponentType<
+          React.ClassAttributes<HTMLElement> & React.HTMLAttributes<HTMLElement>
+        >
+      }}
     >
       {markdown}
     </ReactMarkdown>

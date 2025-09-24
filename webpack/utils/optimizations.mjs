@@ -8,10 +8,7 @@ var optimize = true;
  *
  * @returns {import('webpack').Configuration}
  */
-export function addSplitChunksWebpackOptimization(
-  config
-  // optimize = Boolean(process.env.ARCJR_WEBPACK_OPTIMIZE_SPLIT_CHUNKS)
-) {
+export function addSplitChunksWebpackOptimization(config) {
   if (!optimize) {
     return config;
   }
@@ -22,18 +19,18 @@ export function addSplitChunksWebpackOptimization(
       splitChunks: {
         chunks: 'all',
         cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
-            priority: 10,
-            reuseExistingChunk: true
-          },
           'react-runtime': {
             test: /[\\/]node_modules[\\/](^react$|^react-dom$)[\\/]/,
             name: 'react-runtime',
             chunks: 'all',
             priority: 15,
+            reuseExistingChunk: true
+          },
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+            priority: 10,
             reuseExistingChunk: true
           },
           common: {
@@ -57,10 +54,7 @@ export function addSplitChunksWebpackOptimization(
  *
  * @returns {import('webpack').Configuration}
  */
-export function addWebpackRuntimeSplitChunkOptimization(
-  config
-  // optimize = Boolean(process.env.ARCJR_WEBPACK_OPTIMIZE_RUNTIME_CHUNK)
-) {
+export function addWebpackRuntimeSplitChunkOptimization(config) {
   if (!optimize) {
     return config;
   }

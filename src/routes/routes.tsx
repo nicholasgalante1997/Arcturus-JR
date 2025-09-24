@@ -1,10 +1,6 @@
 import { createBrowserRouter } from 'react-router';
 
-import AboutPage from '@/pages/About';
-import ContactPage from '@/pages/Contact';
-import HomePage from '@/pages/Home';
-import PostPage from '@/pages/Post';
-import PostsPage from '@/pages/Posts';
+import { createLazyRouteConfiguration } from './utils/lazy';
 
 let routes: ReturnType<typeof createBrowserRouter> | null = null;
 
@@ -13,23 +9,23 @@ function getLazyLoadedRoutes() {
     routes = createBrowserRouter([
       {
         path: '/',
-        Component: HomePage
+        lazy: createLazyRouteConfiguration('Home')
       },
       {
         path: '/about',
-        Component: AboutPage
+        lazy: createLazyRouteConfiguration('About')
       },
       {
         path: '/contact',
-        Component: ContactPage
+        lazy: createLazyRouteConfiguration('Contact')
       },
       {
         path: '/posts',
-        Component: PostsPage
+        lazy: createLazyRouteConfiguration('Posts')
       },
       {
         path: '/post/:id',
-        Component: PostPage
+        lazy: createLazyRouteConfiguration('Post')
       }
     ]);
   }
