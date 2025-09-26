@@ -1,6 +1,8 @@
+import os from 'os';
 import path from 'path';
 import { merge } from 'webpack-merge';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 import WebpackCommonConfig from './common.mjs';
 
@@ -9,7 +11,7 @@ import WebpackCommonConfig from './common.mjs';
  */
 const dev = {
   mode: 'development',
-  entry: path.resolve(process.cwd(), 'src', 'bootstrap.js'),
+  entry: path.resolve(process.cwd(), 'src', 'main.tsx'),
   devServer: {
     hot: true,
     historyApiFallback: true,
@@ -27,14 +29,67 @@ const dev = {
       {
         directory: path.resolve(process.cwd(), 'public', 'content'),
         publicPath: '/content'
+      }
+    ]
+  },
+  module: {
+    rules: [
+      {
+        test: /\.m?js/,
+        type: 'javascript/auto',
+        resolve: {
+          fullySpecified: false
+        }
       },
       {
-        directory: path.resolve(process.cwd(), 'public', 'js'),
-        publicPath: '/js'
+        test: /\.(js|mjs|jsx|ts|tsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'thread-loader',
+            options: {
+              workers: os.cpus().length - 1
+            }
+          },
+          {
+            loader: 'swc-loader',
+            options: {
+              jsc: {
+                parser: {
+                  syntax: 'typescript',
+                  tsx: true,
+                  dynamicImport: true,
+                  topLevelAwait: true,
+                  importMeta: true,
+                  exportDefaultFrom: false
+                },
+                transform: {
+                  react: {
+                    runtime: 'automatic',
+                    development: true,
+                    refresh: true
+                  }
+                },
+                target: 'es2022',
+                loose: false,
+                externalHelpers: false,
+                keepClassNames: true
+              },
+              module: {
+                type: 'es6',
+                strict: false,
+                strictMode: true
+              },
+              sourceMaps: true,
+              minify: false
+            }
+          }
+        ]
       }
     ]
   },
   plugins: [
+    new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'webpack/html/dev.html',
       inject: 'body',

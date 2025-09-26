@@ -1,5 +1,23 @@
 [
   {
+    "id": "linux-gaming-nvda-driver-issues",
+    "title": "Patching Boot Issues due to Nvidia Driver Optimizations on Ubuntu Linux",
+    "date": "2025-09-10",
+    "excerpt": "Claude 4 Sonnet wants to break your gaming setup right under your nose. Here's how you can fix that, _when_ what happens",
+    "tags": ["linux", "gaming", "nvidia"],
+    "image": {
+      "src":  "/assets/doodles.jpg",
+      "alt": "Me, as a Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
+      "aspectRatio": "16 / 9"
+    },
+    "readingTime": "Under 5 minutes",
+    "category": "GENERAL",
+    "subcategory": "Introduction",
+    "searchTerms": ["introduction", "welcome"],
+    "slug": "linux-gaming-nvda-driver-issues",
+    "visible": true
+  },
+  {
     "id": "waavy-1",
     "title": "Release Updates for June 2025, Waavy v0.1.6 (Pre-Release)",
     "date": "2025-07-09",

@@ -4,12 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nick G. Software Engineering Posts</title>
-    <meta name="description" content="Nick Galante's technical blog website. Serious about Rust and Modern Javascript initiatives. An unserious effort to join the IndieWeb." />
+    <meta
+      name="description"
+      content="Nick Galante's technical blog website. Serious about Rust and Modern Javascript initiatives. An unserious effort to join the IndieWeb."
+    />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <link
       rel="stylesheet"
@@ -20,79 +23,17 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"
     />
 
-    <link rel="preload" as="style" href="/css/styles.css">
-    <link rel="preload" as="style" href="/css/themes/sb.css">
-    <link rel="preload" as="style" href="/css/post.css">
-    <link rel="preload" as="style" href="/css/contact.css">
-    <link rel="preload" as="style" href="/css/error.css">
+    <link rel="preload" as="style" href="/css/styles.css" />
+    <link rel="preload" as="style" href="/css/themes/sb.css" />
+    <link rel="preload" as="style" href="/css/post.css" />
+    <link rel="preload" as="style" href="/css/contact.css" />
+    <link rel="preload" as="style" href="/css/error.css" />
 
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/css/themes/sb.css" />
     <link rel="stylesheet" href="/css/post.css" />
     <link rel="stylesheet" href="/css/contact.css" />
-    <link rel="stylesheet"  href="/css/error.css">
-    
-    <script type="importmap">
-      {
-        "imports": {
-          "dompurify": "https://esm.sh/dompurify@3.2.5",
-          "front-matter": "https://esm.sh/front-matter@4.0.2",
-          "gsap": "https://esm.sh/gsap@3.12.7",
-          "highlight.js": "https://esm.sh/highlight.js@11.11.1",
-          "marked": "https://esm.sh/marked@15.0.8",
-          "sleepydogs/LazySingleton": "https://esm.sh/sleepydogs@1.0.8-alpha.4/LazySingleton"
-        }
-      }
-    </script>
-
-    <!-- Bootstrap JavaScript -->
-    <!-- <script type="module" src="js/bootstrap.js"></script> -->
+    <link rel="stylesheet" href="/css/error.css" />
   </head>
-  <body>
-    <header>
-      <div class="container">
-        <a href="/" data-link>
-          <div id="nav-profile-image">
-            <img
-              src="/assets/doodles-ember.avif"
-              alt="Profile Image"
-              height="50"
-              width="50"
-              style="object-fit: contain; object-position: center; aspect-ratio: 1"
-            />
-          </div>
-
-          <h1>nickgalante</h1>
-        </a>
-        <nav>
-          <ul>
-            <li><a href="/" data-link>Home</a></li>
-            <li><a href="/posts" data-link>Posts</a></li>
-            <li><a href="/about" data-link>About</a></li>
-            <li><a href="/contact" data-link>Contact</a></li>
-            <li>
-              <span id="gh-icon-link"
-                ><img height="24" width="auto" src="/assets/icons/github-mark-white.svg"
-              /></span>
-            </li>
-            <li>
-              <span id="in-icon-link"
-                ><img height="24" width="auto" src="/assets/icons/InBug-White.png"
-              /></span>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <main id="app" class="container">
-      <!-- Content will be inserted here via JavaScript -->
-    </main>
-
-    <footer>
-      <div class="container">
-        <small style="font-weight: 600">&copy; 2025 Nick Galante</small>
-      </div>
-    </footer>
-  </body>
+  <body id="root"></body>
 </html>

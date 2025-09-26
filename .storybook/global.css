@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+
+:root {
+  /* UI Workshop Theme */
+  --primary-color: #ff4785; /* Vibrant magenta-pink */
+  --secondary-color: #1ea7fd; /* Storybook's electric blue */
+  --bg-color: #1b1b25; /* Deep dark navy background */
+  --surface-color: rgba(36, 36, 50, 0.85); /* Glassy card-like surface */
+  --text-color: #ffffff; /* Clean, bright white for text */
+  --muted-text: #cccccc; /* Soft muted gray */
+  --card-bg: rgba(50, 50, 70, 0.6); /* Elevated but dark background */
+  --glass-border: rgba(255, 71, 133, 0.25); /* Subtle border with a pink tint */
+  --glass-shadow: rgba(0, 0, 0, 0.4); /* Heavier glassy shadow for depth */
+  --font-main: 'Nunito Sans', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-color);
+  color: var(--text-color);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(100, 255, 218, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 80% 80%, rgba(121, 134, 203, 0.03) 0%, transparent 20%);
+}
+
+.glass {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px var(--glass-shadow);
+}
+
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px var(--glass-shadow);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px var(--glass-shadow);
+}

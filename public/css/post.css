@@ -74,7 +74,7 @@ article.post {
           text-underline-offset: 2px;
         }
       }
-      
+
       > div.article-supplementary-info-container {
         gap: calc(var(--spacing-unit) * 0.5);
         margin-top: var(--spacing-unit);
@@ -263,4 +263,37 @@ article.post {
       }
     }
   }
+}
+
+.article-date {
+  font-weight: 700;
+}
+
+.article-divider {
+  margin: 0 8px;
+  height: 4px;
+  width: 4px;
+  border-radius: 2px;
+  background: var(--secondary-color);
+}
+
+.article-author-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.post-card__author-avatar {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  image-orientation: from-image;
+  image-rendering: optimizeQuality;
+  border-radius: 24px;
+}
+
+.post-card__author {
+  color: var(--secondary-color);
+  font-weight: 600;
 }
