@@ -1,21 +1,18 @@
-import Home from '../View';
+import Home from '../Component';
 
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 const meta: Meta<typeof Home> = {
   title: 'Components/Home',
   component: Home,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  decorators
 };
 
 type Story = StoryObj<typeof Home>;
 
 export const Primary: Story = {
-  args: {
-    markdown: '# Welcome Home',
-    posts: []
-  },
-  render: (args) => <Home {...args} />
+  render: () => <Home />
 };
 
 export default meta;

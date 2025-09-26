@@ -1,20 +1,21 @@
 import React from 'react';
 import { useParams } from 'react-router';
 
-import { DQUI } from '@/components/Base/DeferredQueryUI';
+import { SuspenseEnabledQueryProvider } from '@/components/Base/SEQ';
 import { useGetPost } from '@/hooks/usePost';
+import { pipeline } from '@/utils/pipeline';
 
 import PostView from './View';
 
-function PostPage() {
+function Post() {
   const params = useParams();
   const postId = params?.id;
   const postQuery = useGetPost(postId as string);
   return (
-    <DQUI q={postQuery}>
-      <PostView post={postQuery.data!} />
-    </DQUI>
+    <SuspenseEnabledQueryProvider>
+      <PostView queries={[postQuery]} />
+    </SuspenseEnabledQueryProvider>
   );
 }
 
-export default React.memo(PostPage);
+export default pipeline(React.memo)(Post) as React.MemoExoticComponent<typeof Post>;

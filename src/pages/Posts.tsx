@@ -1,4 +1,4 @@
-import { PostsPage as Posts } from '@/components/Posts';
+import { Posts } from '@/components/Posts';
 import AppLayout from '@/layout/Layout';
 
 function PostsPage() {

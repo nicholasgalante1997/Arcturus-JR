@@ -1,22 +1,20 @@
-import md from '@public/content/contact.md';
+import { StorybookDecorators } from '@/utils/storybook';
 
-import Contact from '../View';
+import Contact from '../Component';
 
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 const meta: Meta<typeof Contact> = {
   title: 'Components/Contact',
   component: Contact,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  decorators: [StorybookDecorators.withTanstackQuery]
 };
 
 type Story = StoryObj<typeof Contact>;
 
 export const Primary: Story = {
-  args: {
-    markdown: md as unknown as string
-  },
-  render: (args) => <Contact {...args} />
+  render: () => <Contact />
 };
 
 export default meta;

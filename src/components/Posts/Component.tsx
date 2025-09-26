@@ -1,18 +1,18 @@
 import React from 'react';
 
-import { DQUI } from '@/components/Base/DeferredQueryUI';
+import { SuspenseEnabledQueryProvider } from '@/components/Base/SEQ';
 import { useGetPosts } from '@/hooks/usePosts';
 
-import { PostCardsList } from './components/List';
+import PostsView from './View';
 
 function PostsPage() {
-  const $posts = useGetPosts();
+  const posts = useGetPosts();
   return (
     <React.Fragment>
       <h1 style={{ marginBlockStart: '3rem' }}>Blog Posts</h1>
-      <DQUI q={$posts}>
-        <PostCardsList posts={$posts.data || []} />
-      </DQUI>
+      <SuspenseEnabledQueryProvider>
+        <PostsView queries={[posts]} />
+      </SuspenseEnabledQueryProvider>
     </React.Fragment>
   );
 }

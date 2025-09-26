@@ -1,14 +1,16 @@
-import { memo } from 'react';
+import { memo, use } from 'react';
 
 import { Markdown } from '@/components/Base/Markdown';
 import { pipeline } from '@/utils/pipeline';
 
 import { ContactViewProps } from './types';
 
-function ContactView({ markdown }: ContactViewProps) {
+function ContactView({ queries }: ContactViewProps) {
+  const [_markdown] = queries;
+  const markdown = use(_markdown.promise);
   return (
     <div className="markdown-content">
-      <Markdown markdown={markdown} />
+      <Markdown markdown={markdown.markdown} />
     </div>
   );
 }

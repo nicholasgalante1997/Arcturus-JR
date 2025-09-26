@@ -1,6 +1,10 @@
-import { Post } from '@/types';
+import { UseQueryResult } from '@tanstack/react-query';
+
+import { MarkdownDocument, Post } from '@/types';
+
+type MarkdownQuery = UseQueryResult<MarkdownDocument>;
+type PostsQuery = UseQueryResult<Post[]>;
 
 export interface HomeViewProps {
-  markdown: string;
-  posts: Post[];
+  queries: [MarkdownQuery, PostsQuery];
 }

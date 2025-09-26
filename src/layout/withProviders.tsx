@@ -5,7 +5,16 @@ function withProviders<Props extends React.PropsWithChildren<P>, P extends objec
   Component: React.ComponentType<Props>
 ) {
   return React.memo(function AppWithProviders(props: Props) {
-    const [client] = React.useState(() => new QueryClient());
+    const [client] = React.useState(
+      () =>
+        new QueryClient({
+          defaultOptions: {
+            queries: {
+              experimental_prefetchInRender: true
+            }
+          }
+        })
+    );
     return (
       <QueryClientProvider client={client}>
         <Component {...props} />

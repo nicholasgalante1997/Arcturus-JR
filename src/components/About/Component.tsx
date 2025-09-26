@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { DQUI } from '@/components/Base/DeferredQueryUI';
+import { SuspenseEnabledQueryProvider } from '@/components/Base/SEQ';
 import { useMarkdown } from '@/hooks/useMarkdown';
 import { useTypewriterAnimation } from '@/hooks/useTypewriterAnimation';
 import { pipeline } from '@/utils/pipeline';
@@ -14,9 +14,9 @@ function About() {
   const element: HTMLHeadingElement | null = mounted ? document.querySelector('h1.about-hero-text') : null;
   useTypewriterAnimation({ enabled: mounted, element });
   return (
-    <DQUI q={markdownQuery}>
-      <AboutView markdown={markdownQuery.data?.markdown || ''} />
-    </DQUI>
+    <SuspenseEnabledQueryProvider>
+      <AboutView queries={[markdownQuery]} />
+    </SuspenseEnabledQueryProvider>
   );
 }
 

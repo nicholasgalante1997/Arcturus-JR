@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { use } from 'react';
 
 import { Markdown } from '@/components/Base/Markdown';
 import { pipeline } from '@/utils/pipeline';
 
 import { PostViewProps } from './types';
 
-function PostView({ post }: PostViewProps) {
+function PostView({ queries }: PostViewProps) {
+  const [_post] = queries;
+  const post = use(_post.promise);
   return (
     <article className="post">
       <section className="article-container">

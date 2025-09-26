@@ -99,7 +99,7 @@ const CodeComponent: React.FC<CodeComponentProps> = ({ inline, className, childr
       </SyntaxHighlighter>
     );
   }
-  
+
   return (
     <code className={className} {...props}>
       {children}
