@@ -1,3 +1,5 @@
+import { StorybookDecorators } from '@/utils/storybook';
+
 import Home from '../Component';
 
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
@@ -6,7 +8,7 @@ const meta: Meta<typeof Home> = {
   title: 'Components/Home',
   component: Home,
   tags: ['autodocs'],
-  decorators
+  decorators: [StorybookDecorators.withTanstackQuery]
 };
 
 type Story = StoryObj<typeof Home>;

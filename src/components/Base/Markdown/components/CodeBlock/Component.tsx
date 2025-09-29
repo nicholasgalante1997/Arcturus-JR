@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
 import css from 'react-syntax-highlighter/dist/esm/languages/prism/css';
@@ -13,21 +13,6 @@ import yaml from 'react-syntax-highlighter/dist/esm/languages/prism/yaml';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import { CodeComponentProps } from './types';
-
-// Register the languages with SyntaxHighlighter
-SyntaxHighlighter.registerLanguage('javascript', javascript);
-SyntaxHighlighter.registerLanguage('typescript', typescript);
-SyntaxHighlighter.registerLanguage('jsx', jsx);
-SyntaxHighlighter.registerLanguage('tsx', tsx);
-SyntaxHighlighter.registerLanguage('rust', rust);
-SyntaxHighlighter.registerLanguage('css', css);
-SyntaxHighlighter.registerLanguage('json', json);
-SyntaxHighlighter.registerLanguage('bash', bash);
-SyntaxHighlighter.registerLanguage('shell', bash); // alias
-SyntaxHighlighter.registerLanguage('sh', bash); // alias
-SyntaxHighlighter.registerLanguage('yaml', yaml);
-SyntaxHighlighter.registerLanguage('yml', yaml); // alias
-SyntaxHighlighter.registerLanguage('dockerfile', dockerfile);
 
 // Language mapping for aliases and common variations
 const languageMap: Record<string, string> = {
@@ -78,6 +63,23 @@ const CodeComponent: React.FC<CodeComponentProps> = ({ inline, className, childr
   const language = match?.[1]?.toLowerCase();
   const actualLanguage = language ? languageMap[language] || language : undefined;
   const shouldHighlight = !inline && actualLanguage && supportedLanguages.has(actualLanguage);
+
+  useEffect(() => {
+    // Register the languages with SyntaxHighlighter
+    SyntaxHighlighter.registerLanguage('javascript', javascript);
+    SyntaxHighlighter.registerLanguage('typescript', typescript);
+    SyntaxHighlighter.registerLanguage('jsx', jsx);
+    SyntaxHighlighter.registerLanguage('tsx', tsx);
+    SyntaxHighlighter.registerLanguage('rust', rust);
+    SyntaxHighlighter.registerLanguage('css', css);
+    SyntaxHighlighter.registerLanguage('json', json);
+    SyntaxHighlighter.registerLanguage('bash', bash);
+    SyntaxHighlighter.registerLanguage('shell', bash);
+    SyntaxHighlighter.registerLanguage('sh', bash);
+    SyntaxHighlighter.registerLanguage('yaml', yaml);
+    SyntaxHighlighter.registerLanguage('yml', yaml);
+    SyntaxHighlighter.registerLanguage('dockerfile', dockerfile);
+  }, []);
 
   if (shouldHighlight) {
     return (

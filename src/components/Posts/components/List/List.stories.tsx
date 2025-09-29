@@ -1,3 +1,5 @@
+import { BrowserRouter } from 'react-router';
+
 import PostCardsList from './List';
 
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
@@ -9,6 +11,13 @@ const meta: PostCardsListStoryMeta = {
   title: 'Components/Posts/List',
   component: PostCardsList,
   tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <BrowserRouter>
+        <Story />
+      </BrowserRouter>
+    )
+  ],
   args: {
     posts: [
       {
