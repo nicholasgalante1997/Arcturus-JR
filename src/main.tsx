@@ -13,12 +13,7 @@ if (container) {
   /** Attach it to the window object */
   Object.defineProperty(window, '_ArcJrReactDOMRoot', {
     writable: false,
-    get() {
-      return root;
-    },
-    set() {
-      console.warn('Mutating _ArcJrReactDOMRoot is prohibited.');
-    }
+    value: root
   });
 
   /** Mount the Application to the DOM with ReactDOM's `createRoot` */

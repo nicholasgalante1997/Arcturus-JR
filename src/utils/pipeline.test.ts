@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, test } from 'bun:test';
 
-import { pipeline } from '../../utils/pipeline';
+import { pipeline } from './pipeline';
 
 type NumberTransform = (n: number) => number;
 
