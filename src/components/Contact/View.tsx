@@ -1,20 +1,15 @@
-import { memo, use } from 'react';
+import { memo } from 'react';
 
-import { Markdown } from '@/components/Base/Markdown';
 import { pipeline } from '@/utils/pipeline';
 
-import { ContactViewProps } from './types';
+import { ContactForm } from './components/ContactForm';
 
-function ContactView({ queries }: ContactViewProps) {
-  const [_markdown] = queries;
-  const markdown = use(_markdown.promise);
+function ContactView() {
   return (
     <div className="markdown-content">
-      <Markdown markdown={markdown.markdown} />
+      <ContactForm />
     </div>
   );
 }
 
-export default pipeline(memo)(ContactView) as React.MemoExoticComponent<
-  React.ComponentType<ContactViewProps>
->;
+export default pipeline(memo)(ContactView) as React.MemoExoticComponent<React.ComponentType>;
