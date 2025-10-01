@@ -15,7 +15,7 @@ import {
 /** @type {import('webpack').Configuration} */
 const prod = {
   mode: 'production',
-  entry: path.resolve(process.cwd(), 'src', 'bootstrap.js'),
+  entry: path.resolve(process.cwd(), 'src', 'main.tsx'),
   output: {
     clean: false,
     path: path.resolve(process.cwd(), 'dist'),
@@ -26,8 +26,6 @@ const prod = {
   experiments: {
     outputModule: true
   },
-  externalsType: 'module',
-  externals: mapPeerDependenciesToExternals(PackageJson.peerDependencies),
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve('webpack/html/prod.html'),
