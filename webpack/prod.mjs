@@ -1,4 +1,5 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import path from 'path';
 import { merge } from 'webpack-merge';
@@ -11,6 +12,8 @@ import {
   addSplitChunksWebpackOptimization,
   addWebpackRuntimeSplitChunkOptimization
 } from './utils/optimizations.mjs';
+
+var inDockerEnv = (process.env.BUILD_ENV === 'docker');
 
 /** @type {import('webpack').Configuration} */
 const prod = {
@@ -25,6 +28,26 @@ const prod = {
   },
   experiments: {
     outputModule: true
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        minify: TerserPlugin.swcMinify,
+        parallel: !(inDockerEnv), // Avoid worker_threads issues
+        terserOptions: {
+          compress: {
+            ecma: 2020,
+            passes: 2
+          },
+          mangle: true,
+          format: {
+            ecma: 2020,
+            comments: false
+          }
+        }
+      })
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({

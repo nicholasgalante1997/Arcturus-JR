@@ -11,7 +11,7 @@ export default class CacheWithExpiry<K extends SerializableCacheKey = string, V 
 
   set(key: K, value: V, expiry = CacheWithExpiry.defaultExpirationTimeout) {
     this._cache.set(key, value);
-    const id = Bun.randomUUIDv7('hex');
+    const id = 'cwe-' + (performance ? "now" in performance ? performance.now() : Date.now() : Date.now());
     const timeout = setTimeout(() => {
       this._cache.delete(key);
       queueMicrotask(() => {
