@@ -4,17 +4,20 @@ import url from 'url';
 import webpack from 'webpack';
 
 var __filename = url.fileURLToPath(import.meta.url);
+var inDockerEnv = process.env.BUILD_ENV === 'docker';
 
 /**
  * @type {webpack.Configuration}
  */
 export default {
-  cache: {
-    buildDependencies: {
-      config: [__filename]
-    },
-    type: 'filesystem'
-  },
+  cache: inDockerEnv /** Unnecessary to cache in the docker environment */
+    ? false
+    : {
+        buildDependencies: {
+          config: [__filename]
+        },
+        type: 'filesystem'
+      },
   target: ['web', 'es2023'],
   module: {
     rules: [
