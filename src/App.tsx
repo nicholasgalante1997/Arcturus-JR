@@ -1,7 +1,13 @@
+import { createBrowserRouter } from 'react-router';
+import withProviders from './layout/withProviders';
 import Router from '@/routes/Router';
 
-function App() {
-  return <Router />;
+interface AppProps {
+  router: ReturnType<typeof createBrowserRouter>;
 }
 
-export default App;
+function App({ router }: AppProps) {
+  return <Router router={router} />;
+}
+
+export default withProviders(App);

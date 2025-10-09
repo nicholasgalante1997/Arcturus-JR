@@ -1,23 +1,16 @@
 import CacheWithExpiry from '@/models/CacheWithExpiry';
+import Markdown from '@/services/Markdown';
 import { fetchWithTimeout } from '@/utils/fetchWithTimeout';
 
-import IsomorphicPostsService from './Posts/PostsService';
-import Markdown from './Markdown';
-
+import type { IPostsService } from '../types';
 import type { Post, PostWithMarkdown } from '@/types/Post';
 
-/**
- * @deprecated
- */
 interface PostsStaticCache {
   posts?: Post[];
   post: CacheWithExpiry<string, PostWithMarkdown>;
 }
 
-/**
- * @deprecated
- */
-class Posts {
+class Posts implements IPostsService {
   private static __endpoint = '/content/posts.json';
   private static __caches: PostsStaticCache = {
     post: new CacheWithExpiry<string, PostWithMarkdown>()
@@ -142,4 +135,4 @@ class Posts {
   }
 }
 
-export default IsomorphicPostsService;
+export default Posts;

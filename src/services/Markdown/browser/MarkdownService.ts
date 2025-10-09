@@ -4,16 +4,9 @@ import CacheWithExpiry from '@/models/CacheWithExpiry';
 import { MarkdownDocument } from '@/types/MarkdownDocument';
 import { fetchWithTimeout } from '@/utils/fetchWithTimeout';
 
-import IsomorphicMarkdownService from './Markdown/MarkdownService';
+import { IMarkdownService, MarkdownStaticCaches } from '../types';
 
-interface MarkdownStaticCaches {
-  documents: CacheWithExpiry<string, MarkdownDocument>;
-}
-
-/**
- * @deprecated
- */
-class Markdown {
+class BrowserMarkdownService implements IMarkdownService {
   private static __caches: MarkdownStaticCaches = {
     documents: new CacheWithExpiry<string, MarkdownDocument>()
   };
@@ -23,8 +16,8 @@ class Markdown {
      * Step 0: Check the cache for the file
      * If it exists, return the cached result
      */
-    if (Markdown.__caches.documents.has(file)) {
-      return Markdown.__caches.documents.get(file) as MarkdownDocument;
+    if (BrowserMarkdownService.__caches.documents.has(file)) {
+      return BrowserMarkdownService.__caches.documents.get(file)!;
     }
 
     /**
@@ -44,7 +37,7 @@ class Markdown {
         markdown: $fm.body,
         fm: $fm
       };
-      Markdown.__caches.documents.set(file, $markdown);
+      BrowserMarkdownService.__caches.documents.set(file, $markdown);
       return $markdown;
     } catch (error) {
       console.error('Error fetching markdown:', error);
@@ -71,4 +64,4 @@ class Markdown {
   }
 }
 
-export default IsomorphicMarkdownService;
+export default BrowserMarkdownService;

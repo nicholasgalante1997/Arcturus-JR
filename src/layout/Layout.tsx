@@ -3,8 +3,6 @@ import React from 'react';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 
-import withProviders from './withProviders';
-
 interface LayoutProps extends React.PropsWithChildren {}
 
 function Layout({ children }: LayoutProps) {
@@ -19,4 +17,4 @@ function Layout({ children }: LayoutProps) {
   );
 }
 
-export default withProviders(React.memo(Layout));
+export default React.memo(Layout);
