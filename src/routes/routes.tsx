@@ -4,7 +4,7 @@ import { createLazyRouteConfiguration } from './utils/lazy';
 
 let routes: RouteObject[] | null = null;
 
-function getLazyLoadedRoutes() {
+function lazyRoutes() {
   if (!routes) {
     routes = [
       {
@@ -33,4 +33,4 @@ function getLazyLoadedRoutes() {
   return routes;
 }
 
-export { getLazyLoadedRoutes };
+export { lazyRoutes };

@@ -1,215 +1,161 @@
-/**
- * Converting this CSR App to an SSG App
- *
- * Our whole application has a single top level entrypoint: <App />
- * Which is itself, a very thin wrapper around a BrowserRouter (react-router)
- *
- * Our pages derive their content from the following pattern:
- *
- * 1. Page Mounts
- * 2. useQuery is dispatched to fetch data/markdown for the page
- * 3. The page suspends using React.Suspense in conjunction with react-query's
- *    use(useQuery(...).promise) experimental pattern
- *
- * We will also need to fetch the react-query useQueries while prerendering so
- * that our pages have meaningful content.
- *
- * Sources:
- *
- * [React-Router Static Site Gen Custom Framework docs](https://reactrouter.com/start/data/custom#server-rendering)
- * [React-Query Server Rendering and Hydration](https://tanstack.com/query/latest/docs/framework/react/guides/ssr)
- * [React prerender docs](https://react.dev/reference/react-dom/static/prerender)
- *
- * To convert this to an SSG app, we need to:
- *
- * 1.
- */
 import 'dotenv/config';
 
-import posts from '@public/content/posts.json';
-
+import { dehydrate, QueryClient } from '@tanstack/react-query';
+import debug from 'debug';
+import _path from 'path';
 import React, { StrictMode } from 'react';
 import { prerender } from 'react-dom/static.edge';
-import { createStaticHandler, createStaticRouter, StaticRouterProvider } from 'react-router';
-import { dehydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { createStaticHandler, createStaticRouter } from 'react-router';
 
-import { getMarkdown } from '@/hooks/useMarkdown';
-import { getPost } from '@/hooks/usePost';
-import { getPosts } from '@/hooks/usePosts';
-import { getLazyLoadedRoutes } from '@/routes/routes';
+import App from '@/App';
+import { lazyRoutes } from '@/routes/routes';
 
+import { getBrowserESMBundles } from './lib/browser-scripts';
+import { createDehydrationWindowAssignmentScript } from './lib/dehydration';
+import { getWebpackBundledHTML } from './lib/html';
+import HTMLRewriterEmbedder from './lib/models/HTMLRewriter';
+import { getOutputFilePath } from './lib/output';
+import { createStaticPageObjects } from './lib/pages';
 import { createMockRequest } from './lib/request';
 
-process.env['ARCJR_PRERENDERING'] = 'true';
-
 /**
- * 2. Determine paths
+ * The 'Prerender' Task
+ *
+ * This script iterates through a number of predefined Page DTOs
+ * and prefetches all applicable network requests on the server,
+ * using @tanstack/react-query's QueryClient.prefetchQuery method,
+ * and dehydrates the saturated Query Client instance on the server.
+ * Then, it will setup a StaticRouter using react-router's createStaticHandler,
+ * and our exported lazyRoutes RouteObject array.
+ *
+ * typically, createStaticHandler is used in Http Servers, and can convert a Request
+ * to a collection of dataRoutes, and an asynchronous query callback based on configured routes.
+ * This pattern
  */
-const NON_DYNAMIC_ROUTES = {
-  HOME: 'https://nickgalante.tech/',
-  POSTS: 'https://nickgalante.tech/posts',
-  ABOUT: 'https://nickgalante.tech/about',
-  CONTACT: 'https://nickgalante.tech/contact'
-} as const;
-const DYNAMIC_ROUTES = { POST: 'https://nickgalante.tech/post/:id' } as const;
-const slugs = posts.filter(({ visible }) => visible).map((post) => post.id);
+async function $prerender() {
+  /**
+   * Denote in the process environment that we are in a 'prerendering' task
+   */
+  process.env['ARCJR_PRERENDERING'] = 'true';
 
-/**
- * 3. Create a static route handler for our routes
- *
- * What happens when we call `createStaticHandler`
- * @see https://github.com/remix-run/react-router/blob/d1c272a724c7bbbfb7705dd3bd0cdff156c70e17/packages/react-router/lib/router/router.ts#L3524
- *
- * TLDR -
- *
- * 1. Checks if routes is a valid Array<RouteObject>
- * 2. Creates dataRoutes using `convertRoutesToDataRoutes(routes)` @see https://github.com/remix-run/react-router/blob/main/packages/react-router/lib/router/utils.ts#L788
- *    Which maps through our provided routes, and returns a AgnosticDataIndexRouteObject or a AgnosticDataNonIndexRouteObject accordingly.
- * 3. Creates a bound async `query` fn used to prefetch data loaders on the server (We dont use data loaders in this app)
- *    `query` accepts a Request as a required argument, and options as an optional second argument
- *    The `query` fn does the following:
- *      - Creates a URL from new URL(req.url)
- *      -
- *
- */
+  /**
+   * Setup a debugger
+   */
+  const prerenderer_logger = debug('arc:prerenderer');
 
-console.log('Creating the prerender [react-router] StaticHandler');
-const { query, dataRoutes } = createStaticHandler(getLazyLoadedRoutes());
+  /**
+   * Creating a static route handler for our routes
+   *
+   * What happens when we call `createStaticHandler`
+   * @see https://github.com/remix-run/react-router/blob/d1c272a724c7bbbfb7705dd3bd0cdff156c70e17/packages/react-router/lib/router/router.ts#L3524
+   */
+  prerenderer_logger('Creating a StaticHandler instance...');
+  const { query, dataRoutes } = createStaticHandler(lazyRoutes());
+  prerenderer_logger('StaticHandler created!');
 
-for (const pageObject of createStaticPageObjects()) {
-  console.log(`Attempting Prerendering ${pageObject.path}`);
-  try {
-    console.log('Creating a query client');
-    const queryClient = new QueryClient();
+  for (const { path, queries } of createStaticPageObjects()) {
+    const url = new URL(path);
+    prerenderer_logger(`Starting "prerender" task for ${url.pathname}`);
 
-    console.log('Prefetching queries for page %s', pageObject.path);
-    // Prefetch all queries for this page
-    await Promise.all(
-      pageObject.queries.map((q) =>
-        queryClient.prefetchQuery({
-          queryKey: q.queryKey,
-          queryFn: q.queryFn
-        })
-      )
-    );
+    try {
+      prerenderer_logger('Starting "prefetch" subtask...');
+      prerenderer_logger('Creating a fresh @tanstack/react-query QueryClient instance...');
+      const queryClient = new QueryClient();
 
-    console.log('Finished prefetching all queries!');
+      prerenderer_logger('Prefetching queries for page %s', url.pathname);
+      await Promise.all(
+        queries.map((q) =>
+          queryClient.prefetchQuery({
+            queryKey: q.queryKey,
+            queryFn: q.queryFn
+          })
+        )
+      );
+      prerenderer_logger('Finished prefetching all queries! Prefetching job complete for %s', url.pathname);
 
-    // dehydrate queryClient state to store later
-    const dehydrated = dehydrate(queryClient);
+      prerenderer_logger('Starting "dehydration" subtask...');
+      const dehydrated = dehydrate(queryClient);
+      prerenderer_logger('Finished serializing the dehydrated query client!');
 
-    console.log('Dehydrated query client state');
+      prerenderer_logger('Starting "react-router-static-context" subtasks...');
 
-    console.log('Trying to create a mock request...');
-    const mockRequest = createMockRequest(pageObject.path);
-    console.log('Created mock request %s', mockRequest.url);
+      prerenderer_logger('Trying to create a mock request for %s...', url.pathname);
+      const mockRequest = createMockRequest(path);
+      prerenderer_logger('Created mock request %s', mockRequest.url);
 
-    console.log('Querying react router static conetxt');
-    const staticContext = await query(mockRequest);
-    console.log('Finished querying static conetxt');
+      prerenderer_logger('Querying react router static context');
+      const staticContext = await query(mockRequest);
+      prerenderer_logger('Finished querying static context');
 
-    console.log('Checking if "staticContext" is a Response');
-    if (staticContext instanceof Response) throw new Error('');
-    console.log('Looks like its not a Response! Nice!');
+      prerenderer_logger('Checking if react-router-query returned a Response instead of a StaticContext...');
+      if (staticContext instanceof Response) throw new Error('');
+      prerenderer_logger('Whew, it didnt.');
 
-    console.log('Creating a [react-router] StaticRouter');
-    const router = createStaticRouter(dataRoutes, staticContext);
-    console.log('Finished creating a react-router StaticRouter');
+      prerenderer_logger('Creating a [react-router] StaticRouter');
+      const router = createStaticRouter(dataRoutes, staticContext);
+      prerenderer_logger('Finished creating a react-router StaticRouter');
 
-    console.log('Prerendering the StaticRouterProvider');
-    const { prelude, postponed } = await prerender(
-      <StrictMode>
-        <QueryClientProvider client={queryClient}>
-          <StaticRouterProvider router={router} context={staticContext} />
-        </QueryClientProvider>
-      </StrictMode>
-    );
+      /**
+       * Okay now <App /> contains the whole app, so we don't need to 
+       */
 
-    console.log('Prerendered!');
+      prerenderer_logger('Starting "prerender" subtask...');
+      const jsr = 'server' as const;
+      const { prelude } = await prerender(
+        <StrictMode>
+          <App
+            layers={{
+              data: { javascriptRuntime: jsr, server: { client: queryClient } },
+              router: { javascriptRuntime: jsr, server: { router, context: staticContext } }
+            }}
+          />
+        </StrictMode>,
+        {
+          bootstrapModules: getBrowserESMBundles(),
+          bootstrapScriptContent: createDehydrationWindowAssignmentScript(dehydrated),
 
-    const mockResponse = new Response(prelude, {
-      headers: {
-        'Content-Type': 'text/html; charset=utf-8'
+        }
+      );
+      prerenderer_logger('Finished "prerender" subtask...');
+
+      /**
+       * TODO Nick we might not need the below now that App is a self contained document
+       */
+
+      prerenderer_logger('Starting "stream-transform" subtask...');
+      const html = new Response(prelude, {
+        headers: {
+          'Content-Type': 'text/html; charset=utf-8'
+        }
+      });
+
+      const text = await html.text();
+      prerenderer_logger('Finished "stream-transform" subtask...');
+
+      // prerenderer_logger('Starting "html-embedding" subtask...');
+      // const webpackHTML = await getWebpackBundledHTML();
+      // const rewriter = new HTMLRewriterEmbedder({
+      //   body: text,
+      //   head: createDehydrationWindowAssignmentScript(dehydrated)
+      // });
+      // const outputHTML = rewriter.transform(webpackHTML);
+      // prerenderer_logger('Finished "html-embedding" subtask!');
+
+      try {
+        const outputPath = _path.resolve(process.cwd(), 'dist', getOutputFilePath(url.pathname));
+        await Bun.write(outputPath, text, { createPath: true });
+        prerenderer_logger('Wrote prerendered HTML to %s', outputPath);
+      } catch (e) {
+        prerenderer_logger.extend('error')('Error writing prerendered HTML file for %s', url.pathname, e);
+        throw e;
       }
-    });
 
-    const text = await mockResponse.text();
-
-    console.log(`Prerendered ${pageObject.path}`, text);
-  } catch (e) {
-    console.error(`Error prerendering ${pageObject.path}`, e);
-    process.exit(1);
+      prerenderer_logger(`Prerendered ${url.pathname}`);
+    } catch (e) {
+      prerenderer_logger.extend('error')(`Error prerendering ${path}`, e);
+      process.exit(1);
+    }
   }
 }
 
-/**
- * What does a page need to know for it to be prerendered?
- *
- * - It needs to know its path/url
- * - It needs to know all the queries that it needs to prefetch
- *
- * Is that it?
- */
-
-type PrefetchQueryOptions<R = any> = {
-  queryKey: string[];
-  queryFn: () => Promise<R>;
-};
-
-type StaticPageObject = {
-  path: string;
-  queries: PrefetchQueryOptions[];
-};
-
-function createStaticPageObjects(): StaticPageObject[] {
-  return [
-    {
-      path: NON_DYNAMIC_ROUTES.HOME,
-      queries: [
-        {
-          queryKey: ['markdown', '/content/home.md'],
-          queryFn: () => getMarkdown('/content/home.md')
-        },
-        {
-          queryKey: ['posts'],
-          queryFn: () => getPosts()
-        }
-      ]
-    },
-    {
-      path: NON_DYNAMIC_ROUTES.ABOUT,
-      queries: [
-        {
-          queryKey: ['markdown', '/content/about.md'],
-          queryFn: () => getMarkdown('/content/about.md')
-        }
-      ]
-    },
-    {
-      path: NON_DYNAMIC_ROUTES.CONTACT,
-      queries: []
-    },
-    {
-      path: NON_DYNAMIC_ROUTES.POSTS,
-      queries: [
-        {
-          queryKey: ['posts'],
-          queryFn: () => getPosts()
-        }
-      ]
-    },
-    ...createStaticPostPageObjects()
-  ];
-}
-
-function createStaticPostPageObjects(): StaticPageObject[] {
-  return slugs.map((postId) => ({
-    path: DYNAMIC_ROUTES.POST.replace(':id', encodeURIComponent(postId)),
-    queries: [
-      {
-        queryKey: ['post', postId],
-        queryFn: () => getPost(postId)
-      }
-    ]
-  }));
-}
+$prerender().then().catch();

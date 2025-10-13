@@ -11,12 +11,12 @@ export async function getPost(id: string) {
 export function useGetPost(id: string) {
   const queryClient = useQueryClient();
   const queryKey = ['post', id];
-  
+
   if (getJavascriptEnvironment() === 'server') {
     const data = queryClient.getQueryData(queryKey);
     return { data, promise: Promise.resolve(data) };
   }
-  
+
   return useQuery({
     queryKey,
     queryFn: () => getPost(id)

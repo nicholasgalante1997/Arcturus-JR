@@ -1,29 +1,38 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { hydrateRoot } from 'react-dom/client';
 import { createBrowserRouter } from 'react-router';
 
+import { createQueryClient, getDehydratedState } from './layout/layers/data/utils/browser';
+import { lazyRoutes } from './routes/routes';
+import { getDefaultReactRouterStaticHydrationData } from './routes/utils/hydration';
 import App from './App';
 import { withRootProxy } from './react-mods';
-import { getLazyLoadedRoutes } from './routes/routes';
 
 const container = document.getElementById('root');
 
 if (container) {
-  /** Create a modified React Root */
-  const root = withRootProxy(createRoot(container));
+  const jsr = 'browser' as const;
 
-  /** Attach it to the window object */
+  const qclient = createQueryClient();
+  const dstate = getDehydratedState();
+
+  const router = createBrowserRouter(lazyRoutes(), {
+    hydrationData: window?.__staticRouterHydrationData || getDefaultReactRouterStaticHydrationData()
+  });
+
+  const root = withRootProxy(
+    hydrateRoot(
+      container,
+      <App
+        layers={{
+          data: { javascriptRuntime: jsr, browser: { client: qclient, state: dstate! } },
+          router: { javascriptRuntime: jsr, browser: { router } }
+        }}
+      />
+    )
+  );
   Object.defineProperty(window, '_ArcJrReactDOMRoot', {
     writable: false,
     value: root
   });
-
-  const router = createBrowserRouter(getLazyLoadedRoutes());
-
-  /** Mount the Application to the DOM with ReactDOM's `createRoot` */
-  root.render(
-    <React.StrictMode>
-      <App router={router} />
-    </React.StrictMode>
-  );
 }

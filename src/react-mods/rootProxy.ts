@@ -1,6 +1,6 @@
-import { createRoot } from 'react-dom/client';
+import { hydrateRoot } from 'react-dom/client';
 
-export function withRootProxy(root: ReturnType<typeof createRoot>) {
+export function withRootProxy(root: ReturnType<typeof hydrateRoot>) {
   return new Proxy(root, {
     get(target, property, receiver) {
       return Reflect.get(target, property, receiver);

@@ -50,18 +50,19 @@ const prod = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve('webpack/html/prod.html'),
-      filename: 'index.html',
-      inject: 'head',
-      chunks: ['main'],
-      publicPath: '/',
-      title: 'nickgalante.tech | A place for ideas about software.',
-      minify: {
-        html5: true
-      },
-      scriptLoading: 'module'
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: path.resolve('webpack/html/prod.html'),
+    //   filename: '_index.html',
+    //   inject: 'body',
+    //   chunks: ['main'],
+    //   publicPath: '/',
+    //   title: 'nickgalante.tech | A place for ideas about software.',
+    //   minify: {
+    //     html5: true,
+    //     removeComments: false
+    //   },
+    //   scriptLoading: 'module'
+    // }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'disabled',
       generateStatsFile: true

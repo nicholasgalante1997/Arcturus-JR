@@ -1,13 +1,27 @@
-import { createBrowserRouter } from 'react-router';
-import withProviders from './layout/withProviders';
-import Router from '@/routes/Router';
+import React from 'react';
+
+import { IsomorphicDataLayer } from './layout/layers/data';
+import { type DataLayerProps } from './layout/layers/data/types';
+import { RouterLayer as IsomorphicRouterLayer } from './layout/layers/router';
+import { type RouterLayerProps } from './layout/layers/router/types';
+import { Document } from './layout/Layout';
+import { pipeline } from './utils/pipeline';
 
 interface AppProps {
-  router: ReturnType<typeof createBrowserRouter>;
+  layers: {
+    data: DataLayerProps;
+    router: RouterLayerProps;
+  };
 }
 
-function App({ router }: AppProps) {
-  return <Router router={router} />;
+function App({ layers }: AppProps) {
+  return (
+    <Document>
+      <IsomorphicDataLayer {...layers.data}>
+        <IsomorphicRouterLayer {...layers.router} />
+      </IsomorphicDataLayer>
+    </Document>
+  );
 }
 
-export default withProviders(App);
+export default pipeline(React.memo)(App) as React.MemoExoticComponent<typeof App>;
