@@ -12,9 +12,9 @@ import type { DataLayerProps } from '../types';
 
 type Props = React.PropsWithChildren<Exclude<DataLayerProps['server'], undefined>>;
 
-function BrowserDataLayer({ children, client }: Props) {
+function ServerDataLayer({ children, client }: Props) {
   const [_client] = useState(client);
   return <QueryClientProvider client={_client}>{children}</QueryClientProvider>;
 }
 
-export default pipeline(React.memo)(BrowserDataLayer) as React.MemoExoticComponent<typeof BrowserDataLayer>;
+export default pipeline(React.memo)(ServerDataLayer) as React.MemoExoticComponent<typeof ServerDataLayer>;

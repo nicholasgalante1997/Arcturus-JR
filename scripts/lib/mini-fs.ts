@@ -79,7 +79,7 @@ const BunMiniFileServer: BunMiniFileServer = {
 
     this._server = this._createServer(port, host);
     this._state.init = true;
-    this._state.running;
+    this._state.running = true;
   },
   stop() {
     delete this._server;

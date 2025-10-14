@@ -1,4 +1,3 @@
-import React from 'react';
 import { createBrowserRouter, createStaticRouter, type StaticHandlerContext } from 'react-router';
 
 export interface ServerRouterLayerProps {

@@ -11,7 +11,7 @@
     "src"
   ],
   "scripts": {
-    "build": "run-s clean bundle postcss copy",
+    "build": "run-s clean bundle prerender postcss copy",
     "build-storybook": "storybook build",
     "bundle": "webpack --config webpack/prod.mjs",
     "bundle:analyze": "webpack-bundle-analyzer dist/stats.json",
@@ -32,6 +32,7 @@
     "postcss:styles": "postcss ./public/css/styles.css --dir ./public/css --ext .min.css && postcss ./public/css/post.css --dir ./public/css --ext .min.css && postcss ./public/css/contact.css --dir ./public/css --ext .min.css",
     "postcss:themes": "postcss ./public/css/themes/*.css --dir ./public/css/themes --ext .min.css",
     "precommit": "lint-staged",
+    "prerender": "DEBUG=\"arc:prerenderer:success\" bun run scripts/prerender.tsx",
     "serve": "serve -p 4200 dist/",
     "start": "bun run serve",
     "storybook": "storybook dev -p 6006",
@@ -110,6 +111,7 @@
     "rehype-sanitize": "^6.0.0",
     "serve": "^14.2.4",
     "storybook": "^9.1.5",
+    "supports-color": "^10.2.2",
     "swc-loader": "^0.2.6",
     "terser-webpack-plugin": "^5.3.14",
     "thread-loader": "^4.0.4",

@@ -6,9 +6,9 @@ interface HTMLEmbedderConstructorOptions {
 }
 
 /**
+ * @deprecated
  * @see https://bun.com/docs/api/html-rewriter#comment-operations
  */
-
 class HTMLEmbedder {
   private static logger = debug('arc:prerenderer:html-rewriter');
 

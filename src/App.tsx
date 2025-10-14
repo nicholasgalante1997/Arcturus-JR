@@ -16,12 +16,14 @@ interface AppProps {
 
 function App({ layers }: AppProps) {
   return (
-    <Document>
+    <div id="arc_root">
       <IsomorphicDataLayer {...layers.data}>
         <IsomorphicRouterLayer {...layers.router} />
       </IsomorphicDataLayer>
-    </Document>
+    </div>
   );
 }
+
+export { App, Document };
 
 export default pipeline(React.memo)(App) as React.MemoExoticComponent<typeof App>;

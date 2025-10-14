@@ -1,3 +1,5 @@
+/* eslint @typescript-eslint/no-unused-vars: "off" */
+
 import fm from 'front-matter';
 
 import CacheWithExpiry from '@/models/CacheWithExpiry';

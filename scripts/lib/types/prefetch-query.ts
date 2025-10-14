@@ -1,4 +1,4 @@
-export type PrefetchQueryOptions<R = any> = {
+export type PrefetchQueryOptions<R = unknown> = {
   queryKey: string[];
   queryFn: () => Promise<R>;
 };

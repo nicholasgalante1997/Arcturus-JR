@@ -1,3 +1,5 @@
+/* eslint @typescript-eslint/no-unused-vars: "off" */
+
 import CacheWithExpiry from '@/models/CacheWithExpiry';
 import { fetchWithTimeout } from '@/utils/fetchWithTimeout';
 

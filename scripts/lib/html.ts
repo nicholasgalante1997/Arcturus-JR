@@ -1,5 +1,8 @@
 import path from 'path';
 
+/**
+ * @deprecated
+ */
 export async function getWebpackBundledHTML() {
   const webpackBundledHTMLPath = path.resolve(process.cwd(), 'dist', '_index.html');
   try {

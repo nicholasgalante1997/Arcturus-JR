@@ -15,6 +15,7 @@ export function createQueryClient() {
 
 export function getDehydratedState(): DehydratedState | undefined {
   if (getJavascriptEnvironment() === 'browser') {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (window as any)?.__REACT_QUERY_STATE__;
   }
   return undefined;
