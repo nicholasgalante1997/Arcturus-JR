@@ -1,20 +1,25 @@
-import os from "os";
+import os from 'os';
 import path from 'path';
 import url from 'url';
 import webpack from 'webpack';
 
+import swc_prod from './swc/prod.mjs';
+
 var __filename = url.fileURLToPath(import.meta.url);
+var inDockerEnv = process.env.BUILD_ENV === 'docker';
 
 /**
  * @type {webpack.Configuration}
  */
 export default {
-  cache: {
-    buildDependencies: {
-      config: [__filename]
-    },
-    type: 'filesystem'
-  },
+  cache: inDockerEnv /** Unnecessary to cache in the docker environment */
+    ? false
+    : {
+        buildDependencies: {
+          config: [__filename]
+        },
+        type: 'filesystem'
+      },
   target: ['web', 'es2023'],
   module: {
     rules: [
@@ -26,27 +31,33 @@ export default {
         }
       },
       {
-        test: /\.(js|mjs)$/,
+        test: /\.(js|mjs|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: [
           {
             loader: 'thread-loader',
             options: {
               workers: os.cpus().length - 1
-            },
+            }
           },
           {
-            loader: 'swc-loader'
+            loader: 'swc-loader',
+            options: swc_prod
           }
         ]
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   },
   resolve: {
-    extensions: ['.js', '.mjs'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.mjs'],
     modules: ['node_modules'],
     alias: {
-      '@': path.resolve(process.cwd(), 'public', 'js')
+      '@': path.resolve(process.cwd(), 'src'),
+      '@public': path.resolve(process.cwd(), 'public')
     },
     fallback: {
       buffer: false,

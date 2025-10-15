@@ -1,4 +1,5 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import path from 'path';
 import { merge } from 'webpack-merge';
@@ -12,10 +13,12 @@ import {
   addWebpackRuntimeSplitChunkOptimization
 } from './utils/optimizations.mjs';
 
+var inDockerEnv = process.env.BUILD_ENV === 'docker';
+
 /** @type {import('webpack').Configuration} */
 const prod = {
   mode: 'production',
-  entry: path.resolve(process.cwd(), 'src', 'bootstrap.js'),
+  entry: path.resolve(process.cwd(), 'src', 'main.tsx'),
   output: {
     clean: false,
     path: path.resolve(process.cwd(), 'dist'),
@@ -26,21 +29,27 @@ const prod = {
   experiments: {
     outputModule: true
   },
-  externalsType: 'module',
-  externals: mapPeerDependenciesToExternals(PackageJson.peerDependencies),
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        minify: TerserPlugin.swcMinify,
+        parallel: !inDockerEnv, // Avoid worker_threads issues
+        terserOptions: {
+          compress: {
+            ecma: 2020,
+            passes: 2
+          },
+          mangle: true,
+          format: {
+            ecma: 2020,
+            comments: false
+          }
+        }
+      })
+    ]
+  },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve('webpack/html/prod.html'),
-      filename: 'index.html',
-      inject: 'head',
-      chunks: ['main'],
-      publicPath: '/',
-      title: 'nickgalante.tech | A place for ideas about software.',
-      minify: {
-        html5: true
-      },
-      scriptLoading: 'module'
-    }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'disabled',
       generateStatsFile: true

@@ -1,0 +1,9 @@
+.git
+.github
+.gitignore
+.markdownlint.json
+.prettierrc
+dist
+doc
+examples
+node_modules
