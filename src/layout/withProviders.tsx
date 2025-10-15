@@ -21,6 +21,9 @@ function getDehydratedState(): DehydratedState | undefined {
   return undefined;
 }
 
+/**
+ * @deprecated
+ */
 function withProviders<Props extends React.PropsWithChildren<P>, P extends object>(
   Component: React.ComponentType<Props>
 ) {
