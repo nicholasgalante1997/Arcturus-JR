@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { pipeline } from "@/utils/pipeline";
+import { pipeline } from '@/utils/pipeline';
 
-import ContactFormView from "./View";
+import ContactFormView from './View';
 
 function ContactForm() {
   return <ContactFormView />;

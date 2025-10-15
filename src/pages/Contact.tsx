@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Contact } from '@/components/Contact';
-import AppLayout from '@/layout/Layout';
+import { AppLayout } from '@/layout/Layout';
 import { pipeline } from '@/utils/pipeline';
 
 function ContactPage() {

@@ -1,7 +1,29 @@
-import Router from '@/routes/Router';
+import React from 'react';
 
-function App() {
-  return <Router />;
+import { IsomorphicDataLayer } from './layout/layers/data';
+import { type DataLayerProps } from './layout/layers/data/types';
+import { RouterLayer as IsomorphicRouterLayer } from './layout/layers/router';
+import { type RouterLayerProps } from './layout/layers/router/types';
+import { Document } from './layout/Layout';
+import { pipeline } from './utils/pipeline';
+
+interface AppProps {
+  layers: {
+    data: DataLayerProps;
+    router: RouterLayerProps;
+  };
 }
 
-export default App;
+function App({ layers }: AppProps) {
+  return (
+    <div id="arc_root">
+      <IsomorphicDataLayer {...layers.data}>
+        <IsomorphicRouterLayer {...layers.router} />
+      </IsomorphicDataLayer>
+    </div>
+  );
+}
+
+export { App, Document };
+
+export default pipeline(React.memo)(App) as React.MemoExoticComponent<typeof App>;

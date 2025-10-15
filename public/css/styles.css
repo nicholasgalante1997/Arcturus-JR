@@ -22,7 +22,7 @@
   scroll-behavior: smooth;
 }
 
-body {
+body, div#arc_root {
   width: 100%;
   min-height: 100vh;
   font-family: var(--font-main);

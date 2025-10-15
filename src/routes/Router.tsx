@@ -1,9 +1,12 @@
+import { createBrowserRouter } from 'react-router';
 import { RouterProvider } from 'react-router/dom';
 
-import { getLazyLoadedRoutes } from './routes';
+interface RouterProps {
+  router: ReturnType<typeof createBrowserRouter>;
+}
 
-function Router() {
-  return <RouterProvider router={getLazyLoadedRoutes()} />;
+function Router({ router }: RouterProps) {
+  return <RouterProvider router={router} />;
 }
 
 export default Router;

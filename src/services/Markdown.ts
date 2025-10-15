@@ -1,14 +1,21 @@
+/* eslint @typescript-eslint/no-unused-vars: "off" */
+
 import fm from 'front-matter';
 
 import CacheWithExpiry from '@/models/CacheWithExpiry';
 import { MarkdownDocument } from '@/types/MarkdownDocument';
 import { fetchWithTimeout } from '@/utils/fetchWithTimeout';
 
+import IsomorphicMarkdownService from './Markdown/MarkdownService';
+
 interface MarkdownStaticCaches {
   documents: CacheWithExpiry<string, MarkdownDocument>;
 }
 
-export default class Markdown {
+/**
+ * @deprecated
+ */
+class Markdown {
   private static __caches: MarkdownStaticCaches = {
     documents: new CacheWithExpiry<string, MarkdownDocument>()
   };
@@ -65,3 +72,5 @@ export default class Markdown {
     };
   }
 }
+
+export default IsomorphicMarkdownService;

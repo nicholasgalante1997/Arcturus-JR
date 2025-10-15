@@ -13,7 +13,7 @@ import {
   addWebpackRuntimeSplitChunkOptimization
 } from './utils/optimizations.mjs';
 
-var inDockerEnv = (process.env.BUILD_ENV === 'docker');
+var inDockerEnv = process.env.BUILD_ENV === 'docker';
 
 /** @type {import('webpack').Configuration} */
 const prod = {
@@ -34,7 +34,7 @@ const prod = {
     minimizer: [
       new TerserPlugin({
         minify: TerserPlugin.swcMinify,
-        parallel: !(inDockerEnv), // Avoid worker_threads issues
+        parallel: !inDockerEnv, // Avoid worker_threads issues
         terserOptions: {
           compress: {
             ecma: 2020,
@@ -50,18 +50,6 @@ const prod = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve('webpack/html/prod.html'),
-      filename: 'index.html',
-      inject: 'head',
-      chunks: ['main'],
-      publicPath: '/',
-      title: 'nickgalante.tech | A place for ideas about software.',
-      minify: {
-        html5: true
-      },
-      scriptLoading: 'module'
-    }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'disabled',
       generateStatsFile: true

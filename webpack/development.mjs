@@ -5,6 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 import WebpackCommonConfig from './common.mjs';
+import swc_dev from './swc/dev.mjs';
 
 /**
  * @type {import('webpack').Configuration}
@@ -53,36 +54,7 @@ const dev = {
           },
           {
             loader: 'swc-loader',
-            options: {
-              jsc: {
-                parser: {
-                  syntax: 'typescript',
-                  tsx: true,
-                  dynamicImport: true,
-                  topLevelAwait: true,
-                  importMeta: true,
-                  exportDefaultFrom: false
-                },
-                transform: {
-                  react: {
-                    runtime: 'automatic',
-                    development: true,
-                    refresh: true
-                  }
-                },
-                target: 'es2022',
-                loose: false,
-                externalHelpers: false,
-                keepClassNames: true
-              },
-              module: {
-                type: 'es6',
-                strict: false,
-                strictMode: true
-              },
-              sourceMaps: true,
-              minify: false
-            }
+            options: swc_dev
           }
         ]
       }

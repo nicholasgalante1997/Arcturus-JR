@@ -1,12 +1,12 @@
-import { createBrowserRouter } from 'react-router';
+import { type RouteObject } from 'react-router';
 
 import { createLazyRouteConfiguration } from './utils/lazy';
 
-let routes: ReturnType<typeof createBrowserRouter> | null = null;
+let routes: RouteObject[] | null = null;
 
-function getLazyLoadedRoutes() {
+function lazyRoutes() {
   if (!routes) {
-    routes = createBrowserRouter([
+    routes = [
       {
         path: '/',
         lazy: createLazyRouteConfiguration('Home')
@@ -27,10 +27,10 @@ function getLazyLoadedRoutes() {
         path: '/post/:id',
         lazy: createLazyRouteConfiguration('Post')
       }
-    ]);
+    ];
   }
 
   return routes;
 }
 
-export { getLazyLoadedRoutes };
+export { lazyRoutes };

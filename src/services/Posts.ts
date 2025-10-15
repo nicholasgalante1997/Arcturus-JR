@@ -1,17 +1,25 @@
+/* eslint @typescript-eslint/no-unused-vars: "off" */
+
 import CacheWithExpiry from '@/models/CacheWithExpiry';
+import { fetchWithTimeout } from '@/utils/fetchWithTimeout';
 
-import { fetchWithTimeout } from '../utils/fetchWithTimeout';
-
+import IsomorphicPostsService from './Posts/PostsService';
 import Markdown from './Markdown';
 
-import type { Post, PostWithMarkdown } from '../types/Post';
+import type { Post, PostWithMarkdown } from '@/types/Post';
 
+/**
+ * @deprecated
+ */
 interface PostsStaticCache {
   posts?: Post[];
   post: CacheWithExpiry<string, PostWithMarkdown>;
 }
 
-export default class Posts {
+/**
+ * @deprecated
+ */
+class Posts {
   private static __endpoint = '/content/posts.json';
   private static __caches: PostsStaticCache = {
     post: new CacheWithExpiry<string, PostWithMarkdown>()
@@ -135,3 +143,5 @@ export default class Posts {
     }
   }
 }
+
+export default IsomorphicPostsService;

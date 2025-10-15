@@ -1,5 +1,6 @@
-import { pipeline } from "@/utils/pipeline";
-import React from "react";
+import React from 'react';
+
+import { pipeline } from '@/utils/pipeline';
 
 function ContactFormView() {
   return (
@@ -28,7 +29,9 @@ function ContactFormView() {
           placeholder="Enter your message here"
           required
         ></textarea>
-        <p className="fs-description">What would you like to discuss? I typically respond within a few days.</p>
+        <p className="fs-description">
+          What would you like to discuss? I typically respond within a few days.
+        </p>
       </div>
       <div className="fs-button-group">
         <button className="fs-button" type="submit">

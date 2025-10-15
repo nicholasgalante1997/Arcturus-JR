@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { About } from '@/components/About';
-import AppLayout from '@/layout/Layout';
+import { AppLayout } from '@/layout/Layout';
 import { pipeline } from '@/utils/pipeline';
 
 function AboutPage() {

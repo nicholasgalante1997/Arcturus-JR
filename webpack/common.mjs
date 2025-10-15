@@ -3,6 +3,8 @@ import path from 'path';
 import url from 'url';
 import webpack from 'webpack';
 
+import swc_prod from './swc/prod.mjs';
+
 var __filename = url.fileURLToPath(import.meta.url);
 var inDockerEnv = process.env.BUILD_ENV === 'docker';
 
@@ -40,36 +42,7 @@ export default {
           },
           {
             loader: 'swc-loader',
-            options: {
-              jsc: {
-                parser: {
-                  syntax: 'typescript',
-                  tsx: true,
-                  dynamicImport: true,
-                  topLevelAwait: true,
-                  importMeta: true,
-                  exportDefaultFrom: false
-                },
-                transform: {
-                  react: {
-                    runtime: 'automatic',
-                    development: false,
-                    refresh: false
-                  }
-                },
-                target: 'es2022',
-                loose: false,
-                externalHelpers: false,
-                keepClassNames: true
-              },
-              module: {
-                type: 'es6',
-                strict: false,
-                strictMode: true
-              },
-              sourceMaps: true,
-              minify: false
-            }
+            options: swc_prod
           }
         ]
       },

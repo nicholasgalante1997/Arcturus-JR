@@ -1,25 +1,41 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { hydrateRoot } from 'react-dom/client';
+import { createBrowserRouter } from 'react-router';
 
+import { createQueryClient, getDehydratedState } from './layout/layers/data/utils/browser';
+import { lazyRoutes } from './routes/routes';
+import { getDefaultReactRouterStaticHydrationData } from './routes/utils/hydration';
 import App from './App';
-import { withRootProxy } from './react-mods';
 
-const container = document.getElementById('root');
+const ARC_ROOT = document.getElementById('arc_root');
 
-if (container) {
-  /** Create a modified React Root */
-  const root = withRootProxy(createRoot(container));
+if (ARC_ROOT) {
+  console.log('Found div[id="arc_root"]; Attempting to hydrate root...');
 
-  /** Attach it to the window object */
-  Object.defineProperty(window, '_ArcJrReactDOMRoot', {
-    writable: false,
-    value: root
+  const jsr = 'browser' as const;
+
+  const qclient = createQueryClient();
+  const dstate = getDehydratedState();
+
+  const router = createBrowserRouter(lazyRoutes(), {
+    hydrationData: window?.__staticRouterHydrationData || getDefaultReactRouterStaticHydrationData()
   });
 
-  /** Mount the Application to the DOM with ReactDOM's `createRoot` */
-  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+  const root = hydrateRoot(
+    ARC_ROOT,
+    <App
+      layers={{
+        data: { javascriptRuntime: jsr, browser: { client: qclient, state: dstate! } },
+        router: { javascriptRuntime: jsr, browser: { router } }
+      }}
+    />
   );
+
+  Object.defineProperty(window, '__ARC_JR_REACT_DOM_ROOT__', {
+    value: root,
+    writable: false,
+    enumerable: true
+  });
+
+  console.log('React mounted!');
 }
