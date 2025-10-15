@@ -25,7 +25,7 @@
     "copy:styles": "cp -R public/css dist/",
     "dev": "webpack serve --config webpack/development.mjs",
     "fmt": "run-p fmt:*",
-    "fmt:javascript": "prettier --write src tsconfig.json webpack/",
+    "fmt:javascript": "prettier --write scripts src tsconfig.json webpack/",
     "fmt:package-json": "prettier-package-json --write package.json",
     "lint": "eslint src scripts --fix",
     "postcss": "run-p postcss:*",

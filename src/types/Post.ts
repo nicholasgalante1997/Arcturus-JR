@@ -1,4 +1,4 @@
-import { isMarkdownDocument,type MarkdownDocument } from './MarkdownDocument';
+import { isMarkdownDocument, type MarkdownDocument } from './MarkdownDocument';
 
 export interface PostImage {
   src: string;

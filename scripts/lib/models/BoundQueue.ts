@@ -12,15 +12,15 @@ class BoundQueue<T> {
     }
   }
 
-  push(item: T){
+  push(item: T) {
     if (this.queue.length === this.bound) {
-        this.queue = [...this.queue.slice(1, this.bound), item];
+      this.queue = [...this.queue.slice(1, this.bound), item];
     } else {
-        this.queue.push(item);
+      this.queue.push(item);
     }
   }
 
-  pop(): T | null{
+  pop(): T | null {
     if (this.queue.length === 0) return null;
     const item = this.queue.at(0)!;
     this.queue = this.queue.slice(1, this.bound);

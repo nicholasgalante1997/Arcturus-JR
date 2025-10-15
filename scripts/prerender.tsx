@@ -38,14 +38,13 @@ $prerender()
   .then(() => {
     const end = performance.now();
     prerenderer_logger_success(`Prerendering completed in ${(end - start).toFixed(2)}ms`);
-    prerenderer_logger_success('############ Prerender Report ############')
-    prerenderer_logger_success(`Built: ${getNumOfSucceededPrerenderJobs()} Artifacts`)
-    prerenderer_logger_success(`Failed: ${getNumOfFailedPrerenderJobs()} Prerender Tasks`)
+    prerenderer_logger_success('############ Prerender Report ############');
+    prerenderer_logger_success(`Built: ${getNumOfSucceededPrerenderJobs()} Artifacts`);
+    prerenderer_logger_success(`Failed: ${getNumOfFailedPrerenderJobs()} Prerender Tasks`);
 
     const [task, duration] = getLongestPrerenderJob();
-    prerenderer_logger_success(`Longest Prerender Job: ${task} ${duration.toFixed(2)}ms`)
-    prerenderer_logger_success('##########################################')
-
+    prerenderer_logger_success(`Longest Prerender Job: ${task} ${duration.toFixed(2)}ms`);
+    prerenderer_logger_success('##########################################');
   })
   .catch((e) => {
     debug(namespace + ':fatal')('Fatal error during prerender task', e);
@@ -295,17 +294,17 @@ async function $prerender() {
 }
 
 function getConsolidatedReportOutcomes() {
-  return Object.entries(reportMetrics).map(([k,v]) => ({ key: k, ...v }));
+  return Object.entries(reportMetrics).map(([k, v]) => ({ key: k, ...v }));
 }
 
 function getNumOfSucceededPrerenderJobs() {
   const outcomes = getConsolidatedReportOutcomes();
-  return outcomes.filter(o => o.status === PrerenderOutcome.SUCCESS).length;
+  return outcomes.filter((o) => o.status === PrerenderOutcome.SUCCESS).length;
 }
 
 function getNumOfFailedPrerenderJobs() {
   const outcomes = getConsolidatedReportOutcomes();
-  return outcomes.filter(o => o.status === PrerenderOutcome.FAILED).length;
+  return outcomes.filter((o) => o.status === PrerenderOutcome.FAILED).length;
 }
 
 function getLongestPrerenderJob(): [string, number] {
