@@ -23,7 +23,7 @@
     "copy:favicons": "cp public/*.png public/*.ico public/site.webmanifest dist/",
     "copy:markdown": "cp -R public/content dist/",
     "copy:styles": "cp -R public/css dist/",
-    "dev": "webpack serve --config webpack/development.mjs",
+    "dev": "NODE_ENV=development bun run --watch src/dev/bootstrap.ts",
     "fmt": "run-p fmt:*",
     "fmt:javascript": "prettier --write scripts src tsconfig.json webpack/",
     "fmt:package-json": "prettier-package-json --write package.json",
