@@ -17,6 +17,7 @@ var inDockerEnv = process.env.BUILD_ENV === 'docker';
 
 /** @type {import('webpack').Configuration} */
 const prod = {
+  devtool: 'source-map',
   mode: 'production',
   entry: path.resolve(process.cwd(), 'src', 'main.tsx'),
   output: {
