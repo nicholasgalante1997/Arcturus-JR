@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Sentry Browser Library Demo</title>
+    <script
+      src="https://browser.sentry-cdn.com/10.21.0/bundle.tracing.min.js"
+      integrity="sha384-fQKouBrIlG4ECjLQs/0BY5OzUPmJeuiDCSIN01W8595DY79VmQKTDeCZcIGDM9q7"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>Sentry Test Page</h1>
+    <button onclick="testSentry()">Send Test Event</button>
+
+    <script>
+      // Replace with your actual DSN
+      const DSN = 'REPLACE_WITH_SENTRY_DSN';
+
+      console.log('Initializing Sentry with DSN:', DSN.substring(0, 30) + '...');
+
+      Sentry.init({
+        dsn: DSN,
+        debug: true,
+        enableLogs: true,
+        environment: 'html-demo-test'
+      });
+
+      function testSentry() {
+        console.log('Sending test message...');
+        Sentry.captureMessage('Test message from minimal setup', 'info');
+        alert('Test event sent! Check Sentry dashboard in a few seconds.');
+      }
+
+      // Auto-test on load
+      setTimeout(() => {
+        console.log('Sending automatic test...');
+        testSentry();
+      }, 1000);
+    </script>
+  </body>
+</html>

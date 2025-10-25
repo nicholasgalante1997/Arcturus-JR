@@ -30,8 +30,18 @@ env:
   STAGING_DOMAIN: ${{ secrets.STAGING_DOMAIN }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  ARCJR_WEBPACK_OPTIMIZE_SPLIT_CHUNKS: ${{ secrets.ARCJR_WEBPACK_OPTIMIZE_SPLIT_CHUNKS }}
+  ARCJR_WEBPACK_OPTIMIZE_RUNTIME_CHUNK: ${{ secrets.ARCJR_WEBPACK_OPTIMIZE_RUNTIME_CHUNK }}
+  SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+  SENTRY_RELEASE: ${{ SENTRY_RELEASE }}
 
 jobs:
+  inspect:
+    name: Inspect Environment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Environment Variables
+        run: printenv | sort
   checkout:
     name: Checkout
     runs-on: ubuntu-latest
@@ -63,6 +73,10 @@ jobs:
           bun-version: latest         
       - name: Install dependencies
         run: bun install
+      - name: Built Config Optimization Settings
+        run: |
+          echo "ARCJR_WEBPACK_OPTIMIZE_SPLIT_CHUNKS: $(ARCJR_WEBPACK_OPTIMIZE_SPLIT_CHUNKS)"
+          echo "ARCJR_WEBPACK_OPTIMIZE_RUNTIME_CHUNK: $(ARCJR_WEBPACK_OPTIMIZE_RUNTIME_CHUNK)"
       - name: Build static site
         run: bun run build
       - name: Upload build artifacts
@@ -97,7 +111,7 @@ jobs:
               echo "CLOUDFRONT_ID=${{ env.PRODUCTION_CLOUDFRONT_ID }}" >> $GITHUB_OUTPUT
               echo "ENVIRONMENT=production" >> $GITHUB_OUTPUT
             fi
-              # Configure AWS credentials
+        # Configure AWS credentials
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:

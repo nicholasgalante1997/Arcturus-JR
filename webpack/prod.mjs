@@ -1,9 +1,13 @@
+import 'dotenv/config.js';
+
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import path from 'path';
 import { merge } from 'webpack-merge';
+
 import PackageJson from '../package.json' with { type: 'json' };
+
 import WebpackCommonConfig from './common.mjs';
 import { debugConfig } from './utils/debug.mjs';
 import { mapPeerDependenciesToExternals } from './utils/externals.mjs';

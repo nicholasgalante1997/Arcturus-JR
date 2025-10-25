@@ -2,10 +2,11 @@ import { QueryErrorResetBoundary } from '@tanstack/react-query';
 import React, { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
+import { DefaultFallbackErrorComponent } from '@/components/Base/Error';
 import { Loader } from '@/components/Base/Loader';
+import ArcSentry from '@/config/sentry/config';
 import { pipeline } from '@/utils/pipeline';
 
-import DefaultErrorComponent from './components/DefaultErrorComponent';
 import { type SEQProps } from './types';
 
 /**
@@ -132,7 +133,7 @@ import { type SEQProps } from './types';
  * ```
  */
 function SuspenseEnabledQuery({
-  fallback: Fallback = DefaultErrorComponent,
+  fallback: Fallback = DefaultFallbackErrorComponent,
   placeholder = <Loader />,
   children
 }: SEQProps) {
@@ -140,6 +141,7 @@ function SuspenseEnabledQuery({
     <QueryErrorResetBoundary>
       {({ reset }) => (
         <ErrorBoundary
+          onError={ArcSentry.sentryReactDefaultErrorHandler}
           onReset={reset}
           fallbackRender={({ error, resetErrorBoundary }) => (
             <Fallback error={error} reset={resetErrorBoundary} />
