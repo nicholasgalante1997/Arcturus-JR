@@ -12,8 +12,8 @@ on:
         default: 'production'
         type: choice
         options:
-            - production
-            - staging
+          - production
+          - staging
       invalidate_cache:
         description: 'Invalidate CloudFront cache'
         required: false
@@ -21,17 +21,18 @@ on:
         type: boolean
 
 env:
-  PRODUCTION_S3_BUCKET: ${{ secrets.PRODUCTION_S3_BUCKET }}
-  STAGING_S3_BUCKET: ${{ secrets.STAGING_S3_BUCKET }}
-  PRODUCTION_CLOUDFRONT_ID: ${{ secrets.PRODUCTION_CLOUDFRONT_ID }}
-  STAGING_CLOUDFRONT_ID: ${{ secrets.STAGING_CLOUDFRONT_ID }}
-  AWS_REGION: ${{ secrets.AWS_REGION }}
-  PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
-  STAGING_DOMAIN: ${{ secrets.STAGING_DOMAIN }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  PRODUCTION_CLOUDFRONT_ID: ${{ secrets.PRODUCTION_CLOUDFRONT_ID }}
+  STAGING_CLOUDFRONT_ID: ${{ secrets.STAGING_CLOUDFRONT_ID }}
+  PRODUCTION_S3_BUCKET: ${{ secrets.PRODUCTION_S3_BUCKET }}
+  STAGING_S3_BUCKET: ${{ secrets.STAGING_S3_BUCKET }}
+  PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
+  STAGING_DOMAIN: ${{ secrets.STAGING_DOMAIN }}
   ARCJR_WEBPACK_OPTIMIZE_SPLIT_CHUNKS: ${{ secrets.ARCJR_WEBPACK_OPTIMIZE_SPLIT_CHUNKS }}
   ARCJR_WEBPACK_OPTIMIZE_RUNTIME_CHUNK: ${{ secrets.ARCJR_WEBPACK_OPTIMIZE_RUNTIME_CHUNK }}
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
   SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
   SENTRY_RELEASE: ${{ SENTRY_RELEASE }}
 
@@ -70,7 +71,7 @@ jobs:
       - name: Setup Bun Runtime
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest         
+          bun-version: latest
       - name: Install dependencies
         run: bun install
       - name: Built Config Optimization Settings
@@ -93,7 +94,7 @@ jobs:
       name: ${{ github.event.inputs.environment || 'production' }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3      
+        uses: actions/checkout@v3
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -102,15 +103,15 @@ jobs:
       - name: Set environment-specific variables
         id: vars
         run: |
-            if [[ "${{ github.event.inputs.environment }}" == "staging" || "${{ github.ref_name }}" != "main" ]]; then
-              echo "S3_BUCKET=${{ env.STAGING_S3_BUCKET }}" >> $GITHUB_OUTPUT
-              echo "CLOUDFRONT_ID=${{ env.STAGING_CLOUDFRONT_ID }}" >> $GITHUB_OUTPUT
-              echo "ENVIRONMENT=staging" >> $GITHUB_OUTPUT
-            else
-              echo "S3_BUCKET=${{ env.PRODUCTION_S3_BUCKET }}" >> $GITHUB_OUTPUT
-              echo "CLOUDFRONT_ID=${{ env.PRODUCTION_CLOUDFRONT_ID }}" >> $GITHUB_OUTPUT
-              echo "ENVIRONMENT=production" >> $GITHUB_OUTPUT
-            fi
+          if [[ "${{ github.event.inputs.environment }}" == "staging" || "${{ github.ref_name }}" != "main" ]]; then
+            echo "S3_BUCKET=${{ env.STAGING_S3_BUCKET }}" >> $GITHUB_OUTPUT
+            echo "CLOUDFRONT_ID=${{ env.STAGING_CLOUDFRONT_ID }}" >> $GITHUB_OUTPUT
+            echo "ENVIRONMENT=staging" >> $GITHUB_OUTPUT
+          else
+            echo "S3_BUCKET=${{ env.PRODUCTION_S3_BUCKET }}" >> $GITHUB_OUTPUT
+            echo "CLOUDFRONT_ID=${{ env.PRODUCTION_CLOUDFRONT_ID }}" >> $GITHUB_OUTPUT
+            echo "ENVIRONMENT=production" >> $GITHUB_OUTPUT
+          fi
         # Configure AWS credentials
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -155,7 +156,7 @@ jobs:
         run: |
           echo "🚀 Deployment to ${{ steps.vars.outputs.ENVIRONMENT }} completed successfully!"
           echo "Website URL: https://${{ steps.vars.outputs.ENVIRONMENT == 'production' && env.PRODUCTION_DOMAIN || env.STAGING_DOMAIN }}"
-    
+
   validate-deployment:
     name: Validate Deployment
     needs: deploy
@@ -184,7 +185,7 @@ jobs:
     needs:
       - validate-deployment
     runs-on: ubuntu-latest
-    if: always()  # Run regardless of previous job status
+    if: always() # Run regardless of previous job status
     steps:
       - name: Print summary
         run: |
