@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { runTypewriterAnimation } from '@/animation/typing';
+import { jlog } from '@/utils/log';
 
 export interface UseTypewriterAnimationOptions {
   enabled?: boolean;
@@ -13,7 +14,10 @@ export const useTypewriterAnimation = ({ element, enabled }: UseTypewriterAnimat
     if (enabled) {
       if (element && !animationTimeoutRef) {
         const timeout = setTimeout(() => {
-          console.log('Running typewriter animation');
+          jlog.label('react-hooks', 'use-typewriter-animation');
+          jlog('Running typewriter animation!');
+          jlog.unlabel();
+
           runTypewriterAnimation(element);
         }, 400);
         setAnimationTimeoutRef(timeout);

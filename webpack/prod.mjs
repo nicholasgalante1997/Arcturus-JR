@@ -1,17 +1,18 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import 'dotenv/config.js';
+
+import { sentryWebpackPlugin } from '@sentry/webpack-plugin';
+import path from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import path from 'path';
 import { merge } from 'webpack-merge';
-import PackageJson from '../package.json' with { type: 'json' };
-import WebpackCommonConfig from './common.mjs';
+
 import { debugConfig } from './utils/debug.mjs';
-import { mapPeerDependenciesToExternals } from './utils/externals.mjs';
-import { pipeline } from './utils/pipeline.mjs';
 import {
   addSplitChunksWebpackOptimization,
   addWebpackRuntimeSplitChunkOptimization
 } from './utils/optimizations.mjs';
+import { pipeline } from './utils/pipeline.mjs';
+import WebpackCommonConfig from './common.mjs';
 
 var inDockerEnv = process.env.BUILD_ENV === 'docker';
 
@@ -54,6 +55,11 @@ const prod = {
     new BundleAnalyzerPlugin({
       analyzerMode: 'disabled',
       generateStatsFile: true
+    }),
+    sentryWebpackPlugin({
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+      org: 'nickg',
+      project: 'sentry-arc'
     })
   ]
 };
