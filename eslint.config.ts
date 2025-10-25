@@ -1,12 +1,12 @@
+import css from '@eslint/css';
 import js from '@eslint/js';
-import globals from 'globals';
-import tseslint from 'typescript-eslint';
-import pluginReact from 'eslint-plugin-react';
-import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import json from '@eslint/json';
 import markdown from '@eslint/markdown';
-import css from '@eslint/css';
 import { defineConfig } from 'eslint/config';
+import pluginReact from 'eslint-plugin-react';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 export default defineConfig([
   {
@@ -16,7 +16,15 @@ export default defineConfig([
     languageOptions: { globals: { ...globals.browser, ...globals.node } }
   },
   tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
+  {
+    ...pluginReact.configs.flat.recommended,
+    settings: {
+      react: {
+        version: 'detect',
+        runtime: 'automatic'
+      }
+    }
+  },
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     plugins: { 'simple-import-sort': simpleImportSort },

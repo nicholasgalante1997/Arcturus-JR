@@ -8,3 +8,6 @@ public/content/ee/*.md
 *storybook.log
 storybook-static
 .vscode
+
+# Sentry Config File
+.env.sentry-build-plugin

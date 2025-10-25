@@ -1,7 +1,10 @@
 import React from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 
+import { DefaultFallbackErrorComponent } from '@/components/Base/Error';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
+import ArcSentry from '@/config/sentry/config';
 import { pipeline } from '@/utils/pipeline';
 
 interface DocumentProps extends React.PropsWithChildren {}
@@ -57,13 +60,18 @@ interface LayoutProps extends React.PropsWithChildren {}
 
 function _Layout({ children }: LayoutProps) {
   return (
-    <React.Fragment>
+    <ErrorBoundary
+      onError={ArcSentry.sentryReactDefaultErrorHandler}
+      fallbackRender={({ error, resetErrorBoundary }) => (
+        <DefaultFallbackErrorComponent error={error} reset={resetErrorBoundary} />
+      )}
+    >
       <Header />
       <main id="app" className="container">
         {children}
       </main>
       <Footer />
-    </React.Fragment>
+    </ErrorBoundary>
   );
 }
 

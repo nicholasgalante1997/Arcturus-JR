@@ -1,11 +1,13 @@
+import 'dotenv/config.js';
+
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import os from 'os';
 import path from 'path';
 import { merge } from 'webpack-merge';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
-import WebpackCommonConfig from './common.mjs';
 import swc_dev from './swc/dev.mjs';
+import WebpackCommonConfig from './common.mjs';
 
 /**
  * @type {import('webpack').Configuration}
