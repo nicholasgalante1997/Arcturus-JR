@@ -18,7 +18,7 @@ const dev = {
   devServer: {
     hot: true,
     historyApiFallback: true,
-    port: 4200,
+    port: 3000,
     open: true,
     static: [
       {
@@ -65,7 +65,7 @@ const dev = {
   plugins: [
     new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: 'webpack/html/dev.html',
+      template: 'src/dev/index.html',
       inject: 'body',
       chunks: 'all',
       publicPath: '/'

@@ -32,10 +32,6 @@ function _Document({ children }: DocumentProps) {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
         />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"
-        />
 
         <link rel="preload" as="style" href="/css/styles.min.css" />
         <link rel="preload" as="style" href="/css/themes/sb.min.css" />
@@ -49,7 +45,9 @@ function _Document({ children }: DocumentProps) {
         <link rel="stylesheet" href="/css/contact.min.css" />
         <link rel="stylesheet" href="/css/error.min.css" />
       </head>
-      <body>{children}</body>
+      <body>
+        <div id="arc_root">{children}</div>
+      </body>
     </html>
   );
 }
