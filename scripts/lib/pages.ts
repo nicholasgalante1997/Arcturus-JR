@@ -1,8 +1,11 @@
+import { getCipher } from '@/hooks/useCipher';
+import { getCiphers } from '@/hooks/useCiphers';
 import { getMarkdown } from '@/hooks/useMarkdown';
 import { getPost } from '@/hooks/usePost';
 import { getPosts } from '@/hooks/usePosts';
 
 import { StaticPageObject } from './types/static-page';
+import { cipher_slugs } from './ciphers';
 import { slugs } from './posts';
 import { DYNAMIC_ROUTES, NON_DYNAMIC_ROUTES } from './routes';
 
@@ -43,7 +46,17 @@ export function createStaticPageObjects(): StaticPageObject[] {
         }
       ]
     },
-    ...createStaticPostPageObjects()
+    ...createStaticPostPageObjects(),
+    {
+      path: NON_DYNAMIC_ROUTES.CIPHERS,
+      queries: [
+        {
+          queryKey: ['ciphers'],
+          queryFn: () => getCiphers()
+        }
+      ]
+    },
+    ...createStaticCipherPageObjects()
   ];
 }
 
@@ -54,6 +67,18 @@ function createStaticPostPageObjects(): StaticPageObject[] {
       {
         queryKey: ['post', postId],
         queryFn: () => getPost(postId)
+      }
+    ]
+  }));
+}
+
+function createStaticCipherPageObjects(): StaticPageObject[] {
+  return cipher_slugs.map((cipher_name) => ({
+    path: DYNAMIC_ROUTES.POST.replace(':id', encodeURIComponent(cipher_name)),
+    queries: [
+      {
+        queryKey: ['cipher', cipher_name],
+        queryFn: () => getCipher(cipher_name)
       }
     ]
   }));

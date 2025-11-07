@@ -1,12 +1,30 @@
+# Javascript dependencies
 node_modules
+
+# Environment Variables
 .env*
+
+# Mac specific Finder cache
 .DS_Store
+
+# Build outputs
 dist
 out
+
+# Easter Eggs/Ciphers
 public/content/ee/*.md
+.cipher/ciphertexts
+.cipher/keys
+.cipher/plaintexts
+
+# Logs and backups
 *.bak
+
+# Storybook files
 *storybook.log
 storybook-static
+
+# VSCode settings
 .vscode
 
 # Sentry Config File
