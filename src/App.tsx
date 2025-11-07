@@ -16,11 +16,9 @@ interface AppProps {
 
 function App({ layers }: AppProps) {
   return (
-    <div id="arc_root">
-      <IsomorphicDataLayer {...layers.data}>
-        <IsomorphicRouterLayer {...layers.router} />
-      </IsomorphicDataLayer>
-    </div>
+    <IsomorphicDataLayer {...layers.data}>
+      <IsomorphicRouterLayer {...layers.router} />
+    </IsomorphicDataLayer>
   );
 }
 
