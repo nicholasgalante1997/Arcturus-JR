@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient, UseQueryResult } from '@tanstack/react-query';
+import { useQuery, useQueryClient, UseQueryOptions, UseQueryResult } from '@tanstack/react-query';
 
 import { CipherFetchService } from '@/services/Cipher';
 import { isCipherDTO } from '@/services/Cipher/CipherFetchService/types/ICipherFetchService';
@@ -11,7 +11,10 @@ export async function getCipher(cipher_name: string) {
 
 export type GetCipherDataResult = Awaited<ReturnType<typeof getCipher>>;
 
-export function useGetCipher(cipher_name: string): UseQueryResult<GetCipherDataResult> {
+export function useGetCipher(
+  cipher_name: string,
+  options: Pick<UseQueryOptions<GetCipherDataResult>, 'enabled'> = {}
+): UseQueryResult<GetCipherDataResult> {
   const queryClient = useQueryClient();
   const queryKey = ['cipher', cipher_name];
 
@@ -26,6 +29,7 @@ export function useGetCipher(cipher_name: string): UseQueryResult<GetCipherDataR
   }
 
   return useQuery({
+    ...options,
     queryKey,
     queryFn: () => getCipher(cipher_name)
   });

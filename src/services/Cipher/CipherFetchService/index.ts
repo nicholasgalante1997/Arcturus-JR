@@ -1,1 +1,1 @@
-export { default as CipherFetchService } from "./CipherFetchService";
+export { default as CipherFetchService } from './CipherFetchService';

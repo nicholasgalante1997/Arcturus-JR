@@ -15,12 +15,12 @@ class BrowserCipherFetchService implements ICipherFetchService {
   };
 
   private static __endpoints = {
-    ciphers_index: '/ciphers.json',
+    ciphers_index: '/ciphertexts/ciphers.json',
     cipher_by_id: '/ciphertexts'
   };
 
   async fetchCipherTextsIndex(): Promise<Array<CipherJSON>> {
-    if (BrowserCipherFetchService.cache.ciphers_index) {
+    if (BrowserCipherFetchService.cache.ciphers_index?.length) {
       return BrowserCipherFetchService.cache.ciphers_index;
     }
 

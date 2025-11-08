@@ -1,4 +1,4 @@
-import _ciphers from '@public/ciphers.json';
+import _ciphers from '@public/ciphertexts/ciphers.json';
 
 import { CipherJSON } from '@/services/Cipher/CipherFetchService/types/ICipherFetchService';
 

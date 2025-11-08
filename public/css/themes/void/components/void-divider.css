@@ -1,0 +1,27 @@
+.void-theme {
+  /**
+ * Divider
+ */
+  .divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: var(--void-spacing-6) 0;
+    color: var(--void-gray-400);
+  }
+
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--void-gray-700);
+  }
+
+  .divider:not(:empty)::before {
+    margin-right: var(--void-spacing-4);
+  }
+
+  .divider:not(:empty)::after {
+    margin-left: var(--void-spacing-4);
+  }
+}

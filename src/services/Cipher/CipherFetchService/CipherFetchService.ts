@@ -1,3 +1,5 @@
+import { getJavascriptEnvironment } from '@/utils/env';
+
 import BrowserCipherFetchService from './browser/CipherFetchService';
 
 import type { CipherDTO, CipherJSON, ICipherFetchService } from './types/ICipherFetchService';
@@ -14,7 +16,7 @@ class CipherFetchService implements ICipherFetchService {
   constructor() {
     this._state = {
       initialized: false,
-      runtime: 'server'
+      runtime: getJavascriptEnvironment()
     };
   }
 
@@ -34,7 +36,16 @@ class CipherFetchService implements ICipherFetchService {
     this._state.initialized = true;
   }
 
-  fetchCipherTextsIndex(): Promise<Array<CipherJSON>> {
+  async fetchCipherTextsIndex(): Promise<Array<CipherJSON>> {
+    if (!this._state.initialized) {
+      try {
+        await this.initialize();
+      } catch (e) {
+        console.error('An error occurred while trying to initialize RootCipherFetchService');
+        throw e;
+      }
+    }
+
     if (this._state.initialized) {
       if (this._client) {
         return this._client.fetchCipherTextsIndex();
@@ -46,7 +57,15 @@ class CipherFetchService implements ICipherFetchService {
     throw new Error('RootCipherFetchService: was not initalized leading to error state.');
   }
 
-  fetchCipherText(cipher_name: string): Promise<CipherDTO> {
+  async fetchCipherText(cipher_name: string): Promise<CipherDTO> {
+    if (!this._state.initialized) {
+      try {
+        await this.initialize();
+      } catch (e) {
+        console.error('An error occurred while trying to initialize RootCipherFetchService');
+        throw e;
+      }
+    }
     if (this._state.initialized) {
       if (this._client) {
         return this._client.fetchCipherText(cipher_name);

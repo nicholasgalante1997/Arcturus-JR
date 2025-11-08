@@ -1,14 +1,21 @@
 import React from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 
-import { Home } from '@/components/Home';
-import { AppLayout } from '@/layout/Layout';
+import { DefaultFallbackErrorComponent } from '@/components/Base/Error';
+import { Ciphers } from '@/components/Ciphers';
+import ArcSentry from '@/config/sentry/config';
 
-function HomePage() {
+function CiphersPage() {
   return (
-    <AppLayout>
-      <Home />
-    </AppLayout>
+    <ErrorBoundary
+      onError={ArcSentry.sentryReactDefaultErrorHandler}
+      fallbackRender={({ error, resetErrorBoundary }) => (
+        <DefaultFallbackErrorComponent error={error} reset={resetErrorBoundary} />
+      )}
+    >
+      <Ciphers />
+    </ErrorBoundary>
   );
 }
 
-export default React.memo(HomePage);
+export default React.memo(CiphersPage);

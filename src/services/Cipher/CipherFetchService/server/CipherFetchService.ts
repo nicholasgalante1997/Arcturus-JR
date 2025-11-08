@@ -7,7 +7,7 @@ import type { CipherDTO, CipherJSON, ICipherFetchService } from '../types/ICiphe
 class ServerCipherFetchService implements ICipherFetchService {
   async fetchCipherTextsIndex(): Promise<Array<CipherJSON>> {
     try {
-      const ciphers_json_path = path.resolve(process.cwd(), 'public', 'ciphers.json');
+      const ciphers_json_path = path.resolve(process.cwd(), 'public', 'ciphertexts', 'ciphers.json');
       const ciphers_json = await Bun.file(ciphers_json_path, { type: 'application/json' }).json();
       return ciphers_json as Array<CipherJSON>;
     } catch (e: unknown) {

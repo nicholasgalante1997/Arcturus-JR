@@ -346,7 +346,7 @@ class AgnosticKeyCipher<Input extends CipherInputTypeConstraints, Output extends
       }
     }
 
-    if (typeof ciphertext === "number") {
+    if (typeof ciphertext === 'number') {
       return this.decrypt_char(ciphertext as Output);
     }
 

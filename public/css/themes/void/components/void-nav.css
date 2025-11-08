@@ -1,0 +1,42 @@
+.void-theme {
+  /**
+ * Navigation
+ */
+  nav {
+    background-color: var(--void-gray-950);
+    border-bottom: 1px solid var(--void-azure);
+  }
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: var(--void-spacing-2);
+  }
+
+  nav li {
+    margin: 0;
+  }
+
+  nav a {
+    display: block;
+    padding: var(--void-spacing-3) var(--void-spacing-4);
+    color: var(--void-gray-200);
+    text-decoration: none;
+    transition:
+      color var(--void-transition-fast),
+      background-color var(--void-transition-fast);
+    border-radius: var(--void-radius-md);
+  }
+
+  nav a:hover {
+    color: var(--void-azure);
+    background-color: var(--void-gray-800);
+  }
+
+  nav a.active {
+    color: var(--void-rose);
+    border-bottom: 2px solid var(--void-rose);
+  }
+}

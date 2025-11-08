@@ -1,0 +1,42 @@
+.void-theme {
+  /**
+ * Tabs
+ */
+  .tabs {
+    border-bottom: 1px solid var(--void-gray-700);
+    margin-bottom: var(--void-spacing-4);
+  }
+
+  .tabs-list {
+    display: flex;
+    gap: var(--void-spacing-2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tabs-list button {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--void-gray-300);
+    padding: var(--void-spacing-3) var(--void-spacing-4);
+    cursor: pointer;
+    transition:
+      color var(--void-transition-fast),
+      border-color var(--void-transition-fast);
+  }
+
+  .tabs-list button:hover {
+    color: var(--void-azure);
+  }
+
+  .tabs-list button.active {
+    color: var(--void-white);
+    border-bottom-color: var(--void-azure);
+  }
+
+  .tab-content {
+    padding: var(--void-spacing-4) 0;
+  }
+}
