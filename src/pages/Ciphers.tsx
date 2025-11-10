@@ -13,6 +13,8 @@ function CiphersPage() {
         <DefaultFallbackErrorComponent error={error} reset={resetErrorBoundary} />
       )}
     >
+      <link rel="preload" as="style" href="/css/post.min.css" precedence="high" />
+      <link rel="stylesheet" href="/css/post.min.css" precedence="high" />
       <Ciphers />
     </ErrorBoundary>
   );

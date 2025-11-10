@@ -1,5 +1,4 @@
 class ASCII {
-
   private static getNumericCharsCodesRange(): [number, number] {
     return ['0'.charCodeAt(0), '9'.charCodeAt(0)];
   }
