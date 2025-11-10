@@ -1,4 +1,6 @@
-export interface VoidCardProps {
+import React from 'react';
+
+export interface VoidCardProps extends Omit<React.HTMLProps<HTMLDivElement>, 'action' | 'title'> {
   title: string | React.ReactNode;
   subtitle: string | React.ReactNode;
   body: React.ReactNode;

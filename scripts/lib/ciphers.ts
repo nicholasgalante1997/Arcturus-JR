@@ -1,6 +1,6 @@
 import _ciphers from '@public/ciphertexts/ciphers.json';
 
-import { CipherJSON } from '@/services/Cipher/CipherFetchService/types/ICipherFetchService';
+import type { CipherJSON } from '@/services/Cipher/CipherFetchService/types/ICipherFetchService';
 
 export const ciphers = _ciphers as Array<CipherJSON>;
 

@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient, UseQueryOptions, UseQueryResult } from '@tanstack/react-query';
+import { useQuery, useQueryClient, type UseQueryOptions, type UseQueryResult } from '@tanstack/react-query';
 
 import { CipherFetchService } from '@/services/Cipher';
 import { isCipherDTO } from '@/services/Cipher/CipherFetchService/types/ICipherFetchService';

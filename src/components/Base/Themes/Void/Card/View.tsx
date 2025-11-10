@@ -10,25 +10,31 @@ const ReactRouterLink = React.lazy(() =>
   }))
 );
 
-function VoidCard(props: VoidCardProps) {
+function VoidCard({ action, badge, body, subtitle, title, className, ...props }: VoidCardProps) {
   return (
-    <div className="card">
+    <div className={classnames('card', className)} {...props}>
       <div className="card-header">
-        <h3 className="card-title">{props.title}</h3>
-        <p className="card-subtitle">{props.subtitle}</p>
+        <h3 className="card-title">{title}</h3>
+        <p className="card-subtitle">{subtitle}</p>
       </div>
-      <div className="card-body">{props.body}</div>
+      <div className="card-body">{body}</div>
       <div className="card-footer">
-        {props.badge && <span className={classnames('badge', props.badge?.type)}>{props.badge?.label}</span>}
-        {!props.action._preferReactRouterLink && (
-          <a target={props.action.target} href={props.action.href}>
-            {props.action.label}
+        {badge && <span className={classnames('badge', badge?.type)}>{badge?.label}</span>}
+        {!action._preferReactRouterLink && (
+          <a target={action.target} href={action.href}>
+            {action.label}
           </a>
         )}
-        {props.action._preferReactRouterLink && (
-          <Suspense>
-            <ReactRouterLink target={props.action.target} to={props.action.href}>
-              {props.action.label}
+        {action._preferReactRouterLink && (
+          <Suspense
+            fallback={
+              <a target={action.target} href={action.href}>
+                {action.label}
+              </a>
+            }
+          >
+            <ReactRouterLink target={action.target} to={action.href}>
+              {action.label}
             </ReactRouterLink>
           </Suspense>
         )}

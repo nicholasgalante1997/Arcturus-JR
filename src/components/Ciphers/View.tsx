@@ -7,22 +7,38 @@ import type { CiphersViewProps } from './types';
 function CiphersView({ queries }: CiphersViewProps) {
   const [ciphersQuery] = queries;
   const ciphers = use(ciphersQuery.promise);
-  console.log('CiphersView Rendered with ciphers:', ciphers);
 
   return (
-    <React.Fragment>
-      {/* Ciphers Page Specific CSS */}
-      <link rel="preload" as="stylesheet" href="/css/ciphers.css" precedence="low" />
-      <link rel="stylesheet" href="/css/ciphers.css" precedence="high" />
-
-      {/* Markup */}
-      <section id="ciphers-page___container">
+    <section className="void-theme" id="ciphers-page___container">
+      <h2>ciphertexts</h2>
+      <p>
+        <i>Congratulations</i> You have found an easter egg. Can you find any more?
+      </p>
+      <div id="ciphers-page___cipher-card-grid">
         {ciphers.map((cipher) => (
           <VoidCard
             key={cipher.cipher_name}
+            className="ciphers-page___card"
             title={cipher.readable_name}
-            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            body={<span>placeholder</span>}
+            subtitle={null}
+            body={
+              <ul>
+                <li>
+                  <i>Novice:</i>&nbsp;
+                  <b style={{ color: 'var(--void-azure)' }}>{cipher.estimated_completion_time.novice}</b>
+                </li>
+                <li>
+                  <i>Black Ops III Enthusiast</i>&nbsp;
+                  <b style={{ color: 'var(--void-amber)' }}>
+                    {cipher.estimated_completion_time.intermediate}
+                  </b>
+                </li>
+                <li>
+                  <i>Herbert Yardley</i>&nbsp;
+                  <b style={{ color: 'var(--void-rose)' }}>{cipher.estimated_completion_time.expert}</b>
+                </li>
+              </ul>
+            }
             action={{
               href: `/ee/cipher/${cipher.cipher_name}`,
               label: 'View Ciphertext',
@@ -31,8 +47,8 @@ function CiphersView({ queries }: CiphersViewProps) {
             }}
           />
         ))}
-      </section>
-    </React.Fragment>
+      </div>
+    </section>
   );
 }
 

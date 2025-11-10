@@ -7,10 +7,10 @@ function CipherView({ queries }: CipherViewProps) {
   const cipher = use(cipherQuery.promise);
 
   return (
-    <div>
-      <h1>{cipher.readable_name}</h1>
-      <pre>{cipher.cipher_text}</pre>
-    </div>
+    <section className="void-theme" id="ciphers-page___container">
+      <p id="cipher-name">{cipher.readable_name}</p>
+      <pre id="ciphertext">{cipher.cipher_text}</pre>
+    </section>
   );
 }
 
