@@ -7,18 +7,20 @@ import { Header } from '@/components/Header';
 import ArcSentry from '@/config/sentry/config';
 import { pipeline } from '@/utils/pipeline';
 
-interface DocumentProps extends React.PropsWithChildren {}
+interface DocumentProps extends React.PropsWithChildren {
+  styles?: React.ReactNode[];
+}
 
-function _Document({ children }: DocumentProps) {
+function _Document({ children, styles }: DocumentProps) {
   return (
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Nick G. Software Engineering Posts</title>
+        <title>Nick&apos;s Software Engineering Posts</title>
         <meta
           name="description"
-          content="Nick Galante's technical blog website. Serious about Rust and Modern Javascript initiatives. An unserious effort to join the IndieWeb."
+          content="Nick's technical blog website. Serious about Rust and Modern Javascript/Web Development initiatives. An unserious effort to join the IndieWeb."
         />
 
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -33,17 +35,7 @@ function _Document({ children }: DocumentProps) {
           href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
         />
 
-        <link rel="preload" as="style" href="/css/styles.min.css" />
-        <link rel="preload" as="style" href="/css/themes/sb.min.css" />
-        <link rel="preload" as="style" href="/css/post.min.css" />
-        <link rel="preload" as="style" href="/css/contact.min.css" />
-        <link rel="preload" as="style" href="/css/error.min.css" />
-
-        <link rel="stylesheet" href="/css/styles.min.css" />
-        <link rel="stylesheet" href="/css/themes/sb.min.css" />
-        <link rel="stylesheet" href="/css/post.min.css" />
-        <link rel="stylesheet" href="/css/contact.min.css" />
-        <link rel="stylesheet" href="/css/error.min.css" />
+        {styles}
       </head>
       <body>
         <div id="arc_root">{children}</div>

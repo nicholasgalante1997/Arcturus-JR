@@ -6,6 +6,7 @@ import { RouterLayer as IsomorphicRouterLayer } from './layout/layers/router';
 import { type RouterLayerProps } from './layout/layers/router/types';
 import { Document } from './layout/Layout';
 import { pipeline } from './utils/pipeline';
+import { WorkerProvider } from './workers/lib';
 
 interface AppProps {
   layers: {
@@ -17,7 +18,9 @@ interface AppProps {
 function App({ layers }: AppProps) {
   return (
     <IsomorphicDataLayer {...layers.data}>
-      <IsomorphicRouterLayer {...layers.router} />
+      <WorkerProvider>
+        <IsomorphicRouterLayer {...layers.router} />
+      </WorkerProvider>
     </IsomorphicDataLayer>
   );
 }

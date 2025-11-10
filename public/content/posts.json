@@ -1,5 +1,23 @@
 [
   {
+    "id": "ubuntu-24.04-dev-env-setup",
+    "title": "Ubuntu 24.04 Developer Environment Setup Guide",
+    "date": "2025-11-10",
+    "excerpt": "This guide provides reproducible steps for setting up a consistent software developer environment across different Ubuntu 24.04 installation types. This guide elicits my preferences in an Ubuntu linux environment, but can be scaled up or down rather easily.",
+    "tags": ["linux", "ubuntu", "developer"],
+    "image": {
+      "src": "/assets/doodles-marketplace.avif",
+      "alt": "Doodles nft cards (web based cards, square containing an image of the nft and titular text) for sale in a marketplace fashion",
+      "aspectRatio": "16 / 9"
+    },
+    "readingTime": "Under 15 minutes",
+    "category": "GENERAL",
+    "subcategory": "linux",
+    "searchTerms": ["ubuntu", "developer-environment-setup"],
+    "slug": "ubuntu-24.04-dev-env-setup",
+    "visible": true
+  },
+  {
     "id": "linux-gaming-nvda-driver-issues",
     "title": "Patching Boot Issues due to Nvidia Driver Optimizations on Ubuntu Linux",
     "date": "2025-09-10",
