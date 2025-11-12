@@ -1,4 +1,22 @@
 [
+    {
+    "id": "amazon-q-sdlc-setup",
+    "title": "A Brief Efficient Guide to Integrating Amazon Q into Moderate Sized Applications",
+    "date": "2025-11-11",
+    "excerpt": "This guide goes into patterns that I have found to increase efficiency when attempting Spec Driven Development with Amazon Q",
+    "tags": ["amazon-q", "spec driven development"],
+    "image": {
+      "src": "/assets/doodles-marketplace.avif",
+      "alt": "Doodles nft cards (web based cards, square containing an image of the nft and titular text) for sale in a marketplace fashion",
+      "aspectRatio": "16 / 9"
+    },
+    "readingTime": "Under 5 minutes",
+    "category": "GENERAL",
+    "subcategory": "spec driven development",
+    "searchTerms": ["amazon-q", "spec driven development"],
+    "slug": "amazon-q-sdlc-setup",
+    "visible": true
+  },
   {
     "id": "ubuntu-24.04-dev-env-setup",
     "title": "Ubuntu 24.04 Developer Environment Setup Guide",
