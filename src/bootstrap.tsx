@@ -56,16 +56,16 @@ export function bootstrap({ env }: BootstrapOptions = { env: 'production' }) {
          * It can't seem to find it in hydration when it comes time to hydrate
          * And we end up with TWO COUNT EM TWO whole fucking apps being mounted to the DOM
          * Which we ultimately don't want in any case,
-         * 
+         *
          * So this has been the most reliable way to avoid it,
          * making the top level of the app an HTML element,
          * instead of Providers
-         * 
+         *
          * React will tell you to use hydrateRoot(document)
          * But they dont know wtf they're talking about
          * Bc that also still amounts to two Apps rendering/hydrating
          * So clearly they have not worked out all the kinks around prerendering on the edge
-         * 
+         *
          * Wild stuff - Johnny Carson
          */
         <div id="arc_root">
@@ -112,7 +112,7 @@ export function bootstrap({ env }: BootstrapOptions = { env: 'production' }) {
 
     jlog('React mounted!');
   } else {
-    jlog.label("error");
+    jlog.label('error');
     jlog('Unable to find [ARC_ROOT] (#arc_root), regressing to static site behavior...');
     jlog.unlabel();
   }

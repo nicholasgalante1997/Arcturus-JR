@@ -32,6 +32,14 @@ const dev = {
       {
         directory: path.resolve(process.cwd(), 'public', 'content'),
         publicPath: '/content'
+      },
+      {
+        directory: path.resolve(process.cwd(), 'public', 'ciphertexts'),
+        publicPath: '/ciphertexts'
+      },
+      {
+        directory: path.resolve(process.cwd(), 'src', 'workers'),
+        publicPath: '/workers'
       }
     ]
   },

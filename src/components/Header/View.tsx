@@ -4,6 +4,25 @@ import { Link } from 'react-router';
 import CONFIG from '@/config/config';
 import { pipeline } from '@/utils/pipeline';
 
+enum ARCJR_TABS {
+  HOME = '/',
+  POSTS = '/posts',
+  ABOUT = '/about',
+  CONTACT = '/contact'
+}
+
+function getActiveTabByPathname(tab: string) {
+  if (typeof window === 'undefined') return 'default' as const;
+  const url = new URL(window.location.href);
+  const pathname = url.pathname;
+  if (tab === '/') {
+    if (pathname === '/' || pathname === '') return 'active' as const;
+    return 'default' as const;
+  }
+
+  return pathname.startsWith(tab) ? ('active' as const) : ('default' as const);
+}
+
 function Header() {
   return (
     <header>
@@ -24,24 +43,32 @@ function Header() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.HOME)} to="/">
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="/posts">Posts</Link>
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.POSTS)} to="/posts">
+                Posts
+              </Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.ABOUT)} to="/about">
+                About
+              </Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.CONTACT)} to="/contact">
+                Contact
+              </Link>
             </li>
             <li>
-              <Link to={CONFIG.LINKS.GITHUB} id="gh-icon-link">
+              <Link target="_blank" to={CONFIG.LINKS.GITHUB} id="gh-icon-link">
                 <img height="24px" width="auto" src="/assets/icons/github-mark-white.svg" />
               </Link>
             </li>
             <li>
-              <Link to={CONFIG.LINKS.LINKEDIN} id="in-icon-link">
+              <Link target="_blank" to={CONFIG.LINKS.LINKEDIN} id="in-icon-link">
                 <img height="24px" width="auto" src="/assets/icons/InBug-White.png" />
               </Link>
             </li>

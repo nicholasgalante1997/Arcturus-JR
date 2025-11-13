@@ -7,6 +7,8 @@ import { pipeline } from '@/utils/pipeline';
 function PostPage() {
   return (
     <AppLayout>
+      <link rel="preload" as="style" href="/css/post.min.css" precedence="high" />
+      <link rel="stylesheet" href="/css/post.min.css" precedence="high" />
       <Post />
     </AppLayout>
   );
