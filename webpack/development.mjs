@@ -38,6 +38,10 @@ const dev = {
         publicPath: '/ciphertexts'
       },
       {
+        directory: path.resolve(process.cwd(), 'public', 'docs'),
+        publicPath: '/docs',
+      },
+      {
         directory: path.resolve(process.cwd(), 'src', 'workers'),
         publicPath: '/workers'
       }
