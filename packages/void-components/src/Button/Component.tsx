@@ -26,4 +26,4 @@ function Button(props: ButtonProps) {
   return <ButtonView {...props} />;
 }
 
-export default pipeline(React.memo)(Button);
+export default pipeline(React.memo)(Button) as React.MemoExoticComponent<typeof Button>;

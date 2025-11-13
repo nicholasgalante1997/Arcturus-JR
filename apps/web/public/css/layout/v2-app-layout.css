@@ -1,0 +1,132 @@
+/**
+ * V2 App Layout
+ * Main layout structure for V2 pages
+ */
+
+.v2-app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--void-color-base-black);
+  color: var(--void-color-base-white);
+}
+
+.v2-app-layout__main {
+  flex: 1;
+  padding-top: 64px; /* Header height */
+  width: 100%;
+}
+
+/* Container utility for page content */
+.v2-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--void-spacing-4);
+}
+
+@media (min-width: 640px) {
+  .v2-container {
+    padding: 0 var(--void-spacing-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .v2-container {
+    padding: 0 var(--void-spacing-8);
+  }
+}
+
+/* Section spacing utilities */
+.v2-section {
+  padding: var(--void-spacing-12) 0;
+}
+
+@media (min-width: 768px) {
+  .v2-section {
+    padding: var(--void-spacing-16) 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .v2-section {
+    padding: var(--void-spacing-20) 0;
+  }
+}
+
+/* Page transitions */
+@media (prefers-reduced-motion: no-preference) {
+  .v2-app-layout__main > * {
+    animation: fade-in 0.3s ease-out;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading State */
+.v2-page-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: var(--void-spacing-4);
+}
+
+.v2-page-loading__spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--void-color-gray-800);
+  border-top-color: var(--void-color-brand-violet);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.v2-page-loading__text {
+  font-size: 0.875rem;
+  color: var(--void-color-gray-400);
+  margin: 0;
+}
+
+/* Skip to main content link for accessibility */
+.v2-skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: var(--void-spacing-2) var(--void-spacing-4);
+  background-color: var(--void-color-brand-violet);
+  color: var(--void-color-base-white);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.v2-skip-link:focus {
+  left: var(--void-spacing-4);
+  top: var(--void-spacing-4);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .v2-app-layout__main > * {
+    animation: none;
+  }
+
+  .v2-page-loading__spinner {
+    animation: none;
+    border-top-color: var(--void-color-brand-violet);
+  }
+}

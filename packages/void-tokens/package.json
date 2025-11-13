@@ -13,8 +13,8 @@
       "types": "./dist/esm/tokens.d.ts",
       "default": "./dist/esm/tokens.js"
     },
-    "./package.json": "./package.json",
-    "./dist/css/void-tokens.css": "./dist/css/void-tokens.css"
+    "./dist/css/void-tokens.css": "./dist/css/void-tokens.css",
+    "./package.json": "./package.json"
   },
   "scripts": {
     "build": "bun run build.ts",

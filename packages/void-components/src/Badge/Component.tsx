@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import { pipeline } from '../utils/pipeline';
-import BadgeView from './View';
-import type { BadgeProps } from './types';
+import { pipeline } from "../utils/pipeline";
+import BadgeView from "./View";
+import type { BadgeProps } from "./types";
 
 /**
  * Badge component for labels and status indicators
@@ -17,4 +17,6 @@ function Badge(props: BadgeProps) {
   return <BadgeView {...props} />;
 }
 
-export default pipeline(React.memo)(Badge);
+export default pipeline(React.memo)(Badge) as React.MemoExoticComponent<
+  typeof Badge
+>;

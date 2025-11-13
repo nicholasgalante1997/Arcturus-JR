@@ -1,5 +1,10 @@
 #!/usr/bin/env bun
 
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
+import postcss from 'postcss';
+import { build } from './build/index';
+
 export {};
 
 console.log("🌌 Building Void Components...\n");
@@ -30,25 +35,7 @@ try {
 }
 
 async function bundle() {
-  // Bundle JS/TS
-  const result = await Bun.build({
-    entrypoints: ["./src/index.ts"],
-    outdir: "./dist",
-    target: "browser",
-    format: "esm",
-    sourcemap: "external",
-    minify: false,
-    splitting: false,
-    external: ["react", "react-dom"],
-  });
-
-  if (!result.success) {
-    console.error("❌ Build failed");
-    for (const log of result.logs) {
-      console.error(log);
-    }
-    process.exit(1);
-  }
+  await build();
 }
 
 async function bundleCSS() {
@@ -58,7 +45,11 @@ async function bundleCSS() {
 
   for await (const file of cssFiles.scan(".")) {
     const content = await Bun.file(file).text();
-    cssContent.push(`/* ${file} */\n${content}\n`);
+    const transform = await postcss([autoprefixer, cssnano]).process(content, {
+      from: file,
+      to: file
+    })
+    cssContent.push(`/* ${file} */\n${transform.css}\n`);
   }
 
   await Bun.write("dist/index.css", cssContent.join("\n"));

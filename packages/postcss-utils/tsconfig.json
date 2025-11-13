@@ -1,0 +1,35 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "lib": [
+            "ESNext"
+        ],
+        "moduleResolution": "bundler",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true,
+        "outDir": "./dist",
+        "typeRoots": [
+            "node_modules/@types",
+            "../../node_modules/@types"
+        ],
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "sourceMap": true,
+        "listEmittedFiles": true
+    },
+    "include": [
+        "bin/index.js",
+        "build.ts",
+        "lib/**/*",
+        "__tests__/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}

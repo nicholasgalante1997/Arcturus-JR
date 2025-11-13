@@ -47,7 +47,7 @@
   --void-transition-duration-slow: 350ms;
   --void-transition-easing-ease: ease-in-out;
   --void-transition-easing-linear: linear;
-  --void-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --void-font-family-base: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   --void-font-family-mono: 'JetBrains Mono', 'Courier New', Courier, monospace;
   --void-font-size-base: 15px;
   --void-font-size-xs: 0.75rem;

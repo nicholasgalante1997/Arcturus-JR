@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(**/*.{ts,tsx,js,jsx,json,md,css})",
+      "Write(apps/web/**/*.{ts,tsx,css})",
+      "Write(packages/**/*.{ts,tsx,css})",
+      "Write(scripts/**/*.{ts,tsx})",
+      "Write(.claude/**)",
+      "Bash(bun :*)",
+      "Bash(mise :*)",
+      "Bash(git log :*)"
+    ],
+    "deny": [
+      "Read(.env*)",
+      "Read(node_modules/**)",
+      "Write(node_modules/**)",
+      "Write(.env*)",
+      "Bash(rm -rf :*)",
+      "Bash(sudo :*)",
+      "Bash(git add :*)",
+      "Bash(git commit :*)",
+      "Bash(git push :*)",
+      "Bash(git pull :*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write(src/**/*.{ts,tsx})",
+        "hooks": []
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write(src/**/*.{ts,tsx})",
+        "hooks": []
+      }
+    ]
+  }
+}
