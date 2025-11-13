@@ -1,0 +1,112 @@
+/* Tailwind v4 CSS-first configuration */
+@import "tailwindcss";
+
+/* Import void design tokens as CSS custom properties */
+@import "@arcjr/void-tokens/dist/css/void-tokens.css";
+
+/* Configure Tailwind theme using void tokens */
+@theme {
+  /* Colors - mapped from void tokens */
+  --color-void-black: var(--void-color-base-black);
+  --color-void-white: var(--void-color-base-white);
+  --color-void-gray-100: var(--void-color-gray-100);
+  --color-void-gray-200: var(--void-color-gray-200);
+  --color-void-gray-300: var(--void-color-gray-300);
+  --color-void-gray-400: var(--void-color-gray-400);
+  --color-void-gray-600: var(--void-color-gray-600);
+  --color-void-gray-700: var(--void-color-gray-700);
+  --color-void-gray-800: var(--void-color-gray-800);
+  --color-void-gray-900: var(--void-color-gray-900);
+  --color-void-gray-950: var(--void-color-gray-950);
+
+  /* Brand colors */
+  --color-void-violet: var(--void-color-brand-violet);
+  --color-void-azure: var(--void-color-brand-azure);
+  --color-void-rose: var(--void-color-brand-rose);
+  --color-void-amber: var(--void-color-brand-amber);
+  --color-void-orange: var(--void-color-brand-orange);
+
+  /* Semantic colors */
+  --color-void-primary: var(--void-color-semantic-primary);
+  --color-void-secondary: var(--void-color-semantic-secondary);
+  --color-void-accent: var(--void-color-semantic-accent);
+  --color-void-success: var(--void-color-semantic-success);
+  --color-void-warning: var(--void-color-semantic-warning);
+  --color-void-danger: var(--void-color-semantic-danger);
+
+  /* Background colors */
+  --color-void-bg-base: var(--void-color-background-base);
+  --color-void-bg-elevated: var(--void-color-background-elevated);
+  --color-void-bg-surface: var(--void-color-background-surface);
+  --color-void-bg-overlay: var(--void-color-background-overlay);
+
+  /* Text colors */
+  --color-void-text-primary: var(--void-color-text-primary);
+  --color-void-text-secondary: var(--void-color-text-secondary);
+  --color-void-text-tertiary: var(--void-color-text-tertiary);
+  --color-void-text-disabled: var(--void-color-text-disabled);
+  --color-void-text-heading: var(--void-color-text-heading);
+
+  /* Border colors */
+  --color-void-border-default: var(--void-color-border-default);
+  --color-void-border-subtle: var(--void-color-border-subtle);
+  --color-void-border-primary: var(--void-color-border-primary);
+
+  /* Typography - override Tailwind's default font stacks */
+  --font-sans: var(--void-font-family-base);
+  --font-mono: var(--void-font-family-mono);
+  --font-family-base: var(--void-font-family-base);
+  --font-family-mono: var(--void-font-family-mono);
+
+  /* Spacing scale (extends Tailwind defaults) */
+  --spacing-px: 1px;
+  --spacing-0: 0;
+  --spacing-1: var(--void-spacing-1);
+  --spacing-2: var(--void-spacing-2);
+  --spacing-3: var(--void-spacing-3);
+  --spacing-4: var(--void-spacing-4);
+  --spacing-5: var(--void-spacing-5);
+  --spacing-6: var(--void-spacing-6);
+  --spacing-8: var(--void-spacing-8);
+  --spacing-10: var(--void-spacing-10);
+
+  /* Border radius */
+  --radius-sm: var(--void-border-radius-sm);
+  --radius-md: var(--void-border-radius-md);
+  --radius-lg: var(--void-border-radius-lg);
+  --radius-xl: var(--void-border-radius-xl);
+  --radius-full: var(--void-border-radius-full);
+
+  /* Shadows */
+  --shadow-sm: var(--void-shadow-sm);
+  --shadow-md: var(--void-shadow-md);
+  --shadow-lg: var(--void-shadow-lg);
+  --shadow-glow-primary: var(--void-shadow-glow-primary);
+  --shadow-glow-accent: var(--void-shadow-glow-accent);
+
+  /* Transitions */
+  --transition-fast: var(--void-transition-duration-fast);
+  --transition-normal: var(--void-transition-duration-base);
+  --transition-slow: var(--void-transition-duration-slow);
+  --ease-default: var(--void-transition-easing-ease);
+}
+
+/* Base layer customizations */
+@layer base {
+  html {
+    font-family: var(--font-family-base);
+    background-color: var(--color-void-black);
+    color: var(--color-void-white);
+  }
+
+  ::selection {
+    background-color: var(--color-void-violet);
+    color: var(--color-void-white);
+  }
+
+  /* Focus visible styles */
+  :focus-visible {
+    outline: 2px solid var(--color-void-violet);
+    outline-offset: 2px;
+  }
+}

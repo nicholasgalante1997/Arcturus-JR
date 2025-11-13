@@ -55,7 +55,11 @@ class ArcJrSentry {
       release: process.env.SENTRY_RELEASE || 'local.dev',
       // Adds request headers and IP for users, for more info visit:
       // https://docs.sentry.io/platforms/javascript/guides/react/configuration/options/#sendDefaultPii
-      sendDefaultPii: true,
+      // We need to disable this for now due to
+      // SNYK-JS-SENTRYCORE-14105053: Insertion of Sensitive Information Into Sent Data affecting @sentry/core package
+      // Vulnerability | CVE-2025-65944 | CWE-201 | SNYK-JS-SENTRYCORE-14105053
+      // Fixed in: @10.27.0 | Exploit maturity: HIGH
+      sendDefaultPii: false,
       tracesSampleRate: 0.1,
       transport: Sentry.makeFetchTransport,
       transportOptions: {

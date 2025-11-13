@@ -35,4 +35,4 @@ function Card(props: CardProps) {
   return <CardView {...props} />;
 }
 
-export default pipeline(React.memo)(Card);
+export default pipeline(React.memo)(Card) as React.MemoExoticComponent<typeof Card>;
