@@ -1,0 +1,13 @@
+dialog {
+  background-color: var(--void-gray-950);
+  border: 1px solid var(--void-azure);
+  border-radius: var(--void-radius-lg);
+  padding: 0;
+  max-width: 600px;
+  box-shadow: var(--void-shadow-lg);
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+}

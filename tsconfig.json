@@ -33,6 +33,6 @@
     },
     "typeRoots": ["node_modules/@types", "src/__tests__"]
   },
-  "include": ["scripts/**/*", "src/**/*", "webpack/**/*"],
+  "include": [".cipher/**/*.ts", "scripts/**/*", "src/**/*", "webpack/**/*"],
   "exclude": ["node_modules", "dist"]
 }

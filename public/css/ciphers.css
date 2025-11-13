@@ -1,0 +1,50 @@
+@import './themes/void/void.css';
+
+#ciphers-page___container {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--void-spacing-4);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--void-spacing-4);
+}
+
+#ciphers-page___cipher-card-grid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--void-spacing-4);
+  width: 100%;
+}
+
+.ciphers-page___card {
+  --width: 275px;
+
+  width: var(--width);
+  min-width: var(--width);
+
+  h3 {
+    color: var(--void-amber) !important;
+  }
+
+  .card-footer {
+    margin-top: auto !important;
+  }
+}
+
+#cipher-name {
+  font-weight: 700;
+  color: var(--void-amber);
+}
+
+/* @see https://stackoverflow.com/questions/248011/how-do-i-wrap-text-in-a-pre-tag */
+pre#ciphertext {
+  color: var(--void-amber);
+  max-width: 95%;
+  white-space: pre-wrap;
+}

@@ -1,8 +1,9 @@
 import { Command } from 'commander';
 import debug from 'debug';
-import path from 'path';
-import { CaesarCipher, FibonacciRange } from './lib/index.js';
 import { rm } from 'fs/promises';
+import path from 'path';
+
+import { CaesarCipher, FibonacciRange } from './lib/index.js';
 
 const program = new Command();
 

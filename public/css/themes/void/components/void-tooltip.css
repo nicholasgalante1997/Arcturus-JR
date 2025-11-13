@@ -1,0 +1,33 @@
+.void-theme {
+  /**
+ * Tooltip
+ */
+  [data-tooltip] {
+    position: relative;
+    cursor: help;
+  }
+
+  [data-tooltip]::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-0.5rem);
+    padding: var(--void-spacing-2) var(--void-spacing-3);
+    background-color: var(--void-gray-900);
+    color: var(--void-gray-100);
+    font-size: 0.875rem;
+    border-radius: var(--void-radius-md);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--void-transition-fast);
+    border: 1px solid var(--void-azure);
+    box-shadow: var(--void-shadow-md);
+    z-index: 1000;
+  }
+
+  [data-tooltip]:hover::before {
+    opacity: 1;
+  }
+}

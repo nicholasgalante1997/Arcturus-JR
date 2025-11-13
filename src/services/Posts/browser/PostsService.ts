@@ -37,7 +37,17 @@ class Posts implements IPostsService {
      * Which contains an Array<Post> structure
      */
     try {
-      const response = await fetchWithTimeout(Posts.__endpoint);
+      const response = await fetchWithTimeout(Posts.__endpoint, {
+        cache: 'default',
+        mode: 'same-origin',
+        headers: {
+          Accept: 'application/json',
+          'Accept-Encoding': 'gzip, br',
+          'X-Client-ID': 'minvans-swa'
+        },
+        method: 'GET',
+        priority: 'high'
+      });
 
       /**
        * Step 1.1

@@ -16,6 +16,7 @@ import { createDehydrationWindowAssignmentScript } from './lib/dehydration';
 import { getOutputFilePath } from './lib/output';
 import { createStaticPageObjects } from './lib/pages';
 import { createMockRequest } from './lib/request';
+import { mapHREFToReactLinkJSX } from './lib/styles';
 
 const namespace = 'arc:prerenderer';
 const start = performance.now();
@@ -121,7 +122,7 @@ async function $prerender() {
   /**
    * Iterate through each Page DTO
    */
-  for (const { path, queries } of createStaticPageObjects()) {
+  for (const { path, queries, styles = [] } of createStaticPageObjects()) {
     /**
      * Metric tracking + Observability
      */
@@ -233,7 +234,7 @@ async function $prerender() {
       prerenderer_logger_debugger('Starting "prerender" subtask...');
       const jsr = 'server' as const;
       const { prelude } = await prerender(
-        <Document>
+        <Document styles={styles.map(mapHREFToReactLinkJSX)}>
           <App
             layers={{
               data: { javascriptRuntime: jsr, server: { client: queryClient } },

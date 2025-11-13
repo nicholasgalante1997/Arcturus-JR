@@ -1,11 +1,11 @@
 import '../public/css/styles.css';
 import '../public/css/themes/sb.css';
 import '../public/css/post.css';
-
 import './global.css';
 
-import type { Preview } from '@storybook/react-webpack5';
 import theme from './theme';
+
+import type { Preview } from '@storybook/react-webpack5';
 
 const preview: Preview = {
   parameters: {

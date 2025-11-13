@@ -2,12 +2,26 @@ import { type DehydratedState, QueryClient } from '@tanstack/react-query';
 
 import { getJavascriptEnvironment } from '@/utils/env';
 
-export function createQueryClient() {
+interface CreateQueryClientOptions {
+  env?: 'production' | 'development';
+}
+
+export function createQueryClient({ env }: CreateQueryClientOptions = { env: 'production' }) {
+  const DEV_STALE_TIME = 0;
+  const PROD_STALE_TIME = 7 * 60 * 60 * 1000;
   return new QueryClient({
     defaultOptions: {
       queries: {
+        /**
+         * We need this enabled for our experimental
+         * .promise and use() suspense enabled querying to work
+         */
         experimental_prefetchInRender: true,
-        staleTime: 10 * 60 * 1000 // This data doesnt change consider a more aggressive stale time
+        /**
+         * We likely want a 0 second stale time in dev
+         * In prod, this data doesnt change consider a more aggressive stale time
+         */
+        staleTime: env === 'production' ? PROD_STALE_TIME : DEV_STALE_TIME
       }
     }
   });

@@ -142,6 +142,17 @@ article.post {
         max-width: var(--inner-article-max-width);
         width: var(--inner-article-max-width);
 
+        a {
+          color: var(--secondary-color);
+          text-decoration: underline;
+          text-underline-offset: 2px;
+          font-weight: 600;
+        }
+
+        a:hover {
+          opacity: 0.8;
+        }
+
         > p {
           margin-left: auto;
           margin-right: auto;

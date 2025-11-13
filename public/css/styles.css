@@ -128,8 +128,9 @@ header nav a::after {
 }
 
 header nav a:hover,
-header nav a.active {
+header nav a[data-active-tab="active"] {
   color: var(--primary-color);
+  text-decoration: underline;
 }
 
 header nav a:hover::after,

@@ -9,11 +9,20 @@ function lazyRoutes() {
     routes = [
       {
         path: '/',
-        lazy: createLazyRouteConfiguration('Home')
+        lazy: createLazyRouteConfiguration('Home'),
+        index: true
       },
       {
         path: '/about',
         lazy: createLazyRouteConfiguration('About')
+      },
+      {
+        path: '/ee/ciphers',
+        lazy: createLazyRouteConfiguration('Ciphers')
+      },
+      {
+        path: '/ee/cipher/:id',
+        lazy: createLazyRouteConfiguration('Cipher')
       },
       {
         path: '/contact',

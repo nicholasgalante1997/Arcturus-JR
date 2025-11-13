@@ -7,6 +7,11 @@ export interface UseAboutMarkdownMountedOptions {
   query: UseQueryResult<MarkdownDocument, unknown>;
 }
 
+/**
+ * @deprecated
+ *
+ * TODO look into if this is deprecated
+ */
 export function useAboutMarkdownMounted({ query }: UseAboutMarkdownMountedOptions) {
   const [mounted, setMounted] = useState(false);
   const { data, isFetching, isLoading, isPending, isError, error } = query;

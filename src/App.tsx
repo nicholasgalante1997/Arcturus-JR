@@ -6,6 +6,7 @@ import { RouterLayer as IsomorphicRouterLayer } from './layout/layers/router';
 import { type RouterLayerProps } from './layout/layers/router/types';
 import { Document } from './layout/Layout';
 import { pipeline } from './utils/pipeline';
+import { WorkerProvider } from './workers/lib';
 
 interface AppProps {
   layers: {
@@ -16,11 +17,11 @@ interface AppProps {
 
 function App({ layers }: AppProps) {
   return (
-    <div id="arc_root">
-      <IsomorphicDataLayer {...layers.data}>
+    <IsomorphicDataLayer {...layers.data}>
+      <WorkerProvider>
         <IsomorphicRouterLayer {...layers.router} />
-      </IsomorphicDataLayer>
-    </div>
+      </WorkerProvider>
+    </IsomorphicDataLayer>
   );
 }
 

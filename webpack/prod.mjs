@@ -56,12 +56,13 @@ const prod = {
       analyzerMode: 'disabled',
       generateStatsFile: true
     }),
-    sentryWebpackPlugin({
-      authToken: process.env.SENTRY_AUTH_TOKEN,
-      org: 'nickg',
-      project: 'sentry-arc'
-    })
-  ]
+    process.env?.CI &&
+      sentryWebpackPlugin({
+        authToken: process.env.SENTRY_AUTH_TOKEN,
+        org: 'nickg',
+        project: 'sentry-arc'
+      })
+  ].filter(Boolean)
 };
 
 /** @type {import('webpack').Configuration} */
