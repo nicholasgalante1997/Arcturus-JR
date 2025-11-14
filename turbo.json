@@ -8,6 +8,11 @@
   "globalDependencies": [".env"],
   "noUpdateNotifier": true,
   "tasks": {
+    "start": {
+      "dependsOn": ["^start"],
+      "persistent": true,
+      "cache": false
+    },
     "serve": {
       "persistent": true,
       "cache": false
