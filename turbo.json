@@ -1,0 +1,53 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "ui": "tui",
+  "cacheDir": ".turbo/cache",
+  "concurrency": "100%",
+  "daemon": false,
+  "envMode": "loose",
+  "globalDependencies": [".env"],
+  "noUpdateNotifier": true,
+  "tasks": {
+    "serve": {
+      "persistent": true,
+      "cache": false
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "!.turbo/**"],
+      "outputs": ["dist/**", "public/css/**/*.min.css"],
+      "cache": true
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "fmt": {
+      "cache": false
+    },
+    "test": {
+      "dependsOn": ["^test"]
+    },
+    "storybook": {
+      "persistent": true,
+      "cache": false
+    },
+    "prerender": {
+      "dependsOn": ["bundle"],
+      "outputs": ["dist/**"]
+    },
+    "bundle": {
+      "outputs": ["dist/**"],
+      "cache": true
+    },
+    "postcss": {
+      "outputs": ["public/css/**/*.min.css"]
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}

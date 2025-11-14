@@ -15,7 +15,7 @@
     "declaration": false,
     "declarationMap": false,
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "apps/web/dist",
     "removeComments": true,
     "strict": true,
     "noImplicitAny": true,
@@ -31,8 +31,8 @@
       "@/*": ["./src/*"],
       "@public/*": ["./public/*"]
     },
-    "typeRoots": ["node_modules/@types", "src/__tests__"]
+    "typeRoots": ["node_modules/@types", "src/__tests__", "../../node_modules/@types"]
   },
-  "include": [".cipher/**/*.ts", "scripts/**/*", "src/**/*", "webpack/**/*"],
+  "include": ["./.cipher/**/*.ts", "./scripts/**/*", "src/**/*", "webpack/**/*"],
   "exclude": ["node_modules", "dist"]
 }

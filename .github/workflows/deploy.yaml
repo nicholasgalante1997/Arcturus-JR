@@ -84,7 +84,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-output
-          path: ./dist
+          path: ./apps/web/dist
           retention-days: 1
   deploy:
     name: Deploy
@@ -99,7 +99,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-output
-          path: ./dist
+          path: ./apps/web/dist
       - name: Set environment-specific variables
         id: vars
         run: |
@@ -127,7 +127,7 @@ jobs:
           # Use --size-only to only upload files that differ in size
           # Use --delete to remove files from S3 that are not in the local directory
           # For now, set no-cache policy. In the future, when stable, set this block's cache policy to "max-age=31536000, public" (1year)
-          aws s3 sync ./dist s3://${{ steps.vars.outputs.S3_BUCKET }} \
+          aws s3 sync ./apps/web/dist s3://${{ steps.vars.outputs.S3_BUCKET }} \
             --delete \
             --cache-control "max-age=0, no-cache, no-store, must-revalidate" \
             --exclude "*.html" \
@@ -136,7 +136,7 @@ jobs:
             --exclude "*.txt"
             
           # Upload HTML, JSON, XML, and TXT files with different cache settings
-          aws s3 sync ./dist s3://${{ steps.vars.outputs.S3_BUCKET }} \
+          aws s3 sync ./apps/web/dist s3://${{ steps.vars.outputs.S3_BUCKET }} \
             --delete \
             --cache-control "max-age=0, no-cache, no-store, must-revalidate" \
             --include "*.html" \
