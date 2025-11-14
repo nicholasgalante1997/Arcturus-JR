@@ -1,25 +1,14 @@
 import os from 'os';
 import path from 'path';
-import url from 'url';
 import webpack from 'webpack';
 
 import swc_prod from './swc/prod.mjs';
-
-var __filename = url.fileURLToPath(import.meta.url);
-var inDockerEnv = process.env.BUILD_ENV === 'docker';
 
 /**
  * @type {webpack.Configuration}
  */
 export default {
-  cache: inDockerEnv /** Unnecessary to cache in the docker environment */
-    ? false
-    : {
-        buildDependencies: {
-          config: [__filename]
-        },
-        type: 'filesystem'
-      },
+  cache: false,
   target: ['web', 'es2023'],
   module: {
     rules: [

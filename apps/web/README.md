@@ -8,7 +8,6 @@
 ## Table of Contents
 
 - [Background](#background)
-- [Monorepo Structure](#monorepo-structure)
 - [Architecture](#architecture)
 - [Tech Stack](#tech-stack)
 - [Install](#install)
@@ -28,28 +27,6 @@ It specifically did not leverage React/JSX, a conscious decision that not every 
 In any case, I had committed to not using React here. But then something hit me, and I've had a renewed vigor to challenge my own distaste. React codebases can be beautiful. They can be clean, readable, modular and sustainable. If I'm struck by lightning, you should be able to keep this blog alive without banging your head too hard against a wall. That's the new goal. A scalable, readable React architecture that makes no compromises on performance, developer experience, or simplicity.
 
 If you made it to the end of this diatribe, you deserve something. You won't get anything, but just know you deserve it.
-
-## Monorepo Structure
-
-This project uses **Turborepo** for monorepo management, providing intelligent caching, parallel execution, and optimized build pipelines.
-
-```
-Arc-JR/
-├── apps/
-│   └── web/              # Main blog application
-├── packages/             # Shared packages (future)
-├── turbo.json            # Turborepo pipeline configuration
-├── package.json          # Root workspace configuration
-└── .amazonq/             # Amazon Q CLI configuration
-```
-
-### Apps
-
-- **web** - Server-side rendered React blog with static prerendering
-
-### Packages
-
-Reserved for future shared libraries and utilities.
 
 ## Architecture
 
@@ -71,11 +48,6 @@ This is a **server-side rendered (SSR) React application** with static prerender
 - **Pipeline composition**: Functional composition pattern for HOCs and configuration
 
 ## Tech Stack
-
-### Monorepo & Build Tools
-
-- **Turborepo 2.6** - High-performance build system for monorepos
-- **Bun 1.3** - JavaScript runtime and package manager
 
 ### Core
 
@@ -139,7 +111,7 @@ This is a **server-side rendered (SSR) React application** with static prerender
 
 ### Prerequisites
 
-- **Bun** ~1.3.2 (required)
+- **Bun** ~1.2.22 (required)
 - **Node.js** >=24 (optional, for compatibility)
 - **Docker** (optional, for containerized deployment)
 
@@ -155,8 +127,6 @@ cd Arcturus-JR
 ```bash
 bun install
 ```
-
-This installs dependencies for all workspaces in the monorepo.
 
 ### Environment Setup
 
@@ -249,7 +219,7 @@ bun run bundle:analyze
 
 ```bash
 # Build image
-docker build -t arc-jr ./apps/web
+docker build -t arc-jr .
 
 # Run container
 docker run -p 8080:80 arc-jr
@@ -259,74 +229,60 @@ docker run -p 8080:80 arc-jr
 
 ```
 Arc-JR/
-├── apps/
-│   └── web/
-│       ├── src/
-│       │   ├── components/       # React components organized by feature
-│       │   │   ├── About/
-│       │   │   ├── Base/        # Shared/base components
-│       │   │   ├── Ciphers/
-│       │   │   ├── Contact/
-│       │   │   ├── Footer/
-│       │   │   ├── Header/
-│       │   │   ├── Home/
-│       │   │   └── Posts/
-│       │   ├── pages/           # Page-level components (thin wrappers)
-│       │   ├── routes/          # React Router configuration
-│       │   ├── layout/          # Layout components and provider layers
-│       │   │   └── layers/
-│       │   │       ├── data/    # TanStack Query provider
-│       │   │       └── router/  # React Router provider
-│       │   ├── services/        # API/data fetching services
-│       │   │   ├── Markdown.ts
-│       │   │   ├── Posts.ts
-│       │   │   └── Cipher/
-│       │   ├── hooks/           # Custom React hooks
-│       │   ├── utils/           # Utility functions
-│       │   ├── workers/         # Web Workers for heavy computation
-│       │   ├── animation/       # GSAP animation utilities
-│       │   ├── config/          # App configuration (Sentry, etc.)
-│       │   ├── types/           # TypeScript type definitions
-│       │   ├── models/          # Data models and classes
-│       │   ├── App.tsx          # Root App component
-│       │   ├── bootstrap.tsx    # Client-side bootstrap logic
-│       │   └── main.tsx         # Entry point
-│       ├── webpack/
-│       │   ├── common.mjs       # Shared Webpack config
-│       │   ├── development.mjs  # Dev server config
-│       │   ├── prod.mjs         # Production config
-│       │   ├── swc/             # SWC compiler options
-│       │   ├── html/            # HTML template utilities
-│       │   └── utils/           # Webpack utilities
-│       ├── scripts/
-│       │   ├── prerender.tsx    # SSR prerendering script
-│       │   └── lib/             # Prerender utilities
-│       ├── public/
-│       │   ├── content/         # Markdown content and posts.json
-│       │   ├── css/             # Stylesheets and themes
-│       │   ├── assets/          # Images and static assets
-│       │   └── ciphertexts/     # Encrypted content
-│       ├── .cipher/             # Cipher encryption utilities
-│       ├── .storybook/          # Storybook configuration
-│       ├── dist/                # Production build output
-│       ├── Dockerfile           # Multi-stage Docker build
-│       ├── nginx.conf           # Nginx configuration
-│       └── package.json         # Dependencies and scripts
-├── packages/                    # Future shared packages
-├── turbo.json                   # Turborepo pipeline configuration
-├── package.json                 # Root workspace configuration
-└── .amazonq/                    # Amazon Q CLI configuration
+├── src/
+│   ├── components/       # React components organized by feature
+│   │   ├── About/
+│   │   ├── Base/        # Shared/base components
+│   │   ├── Ciphers/
+│   │   ├── Contact/
+│   │   ├── Footer/
+│   │   ├── Header/
+│   │   ├── Home/
+│   │   └── Posts/
+│   ├── pages/           # Page-level components (thin wrappers)
+│   ├── routes/          # React Router configuration
+│   ├── layout/          # Layout components and provider layers
+│   │   └── layers/
+│   │       ├── data/    # TanStack Query provider
+│   │       └── router/  # React Router provider
+│   ├── services/        # API/data fetching services
+│   │   ├── Markdown.ts
+│   │   ├── Posts.ts
+│   │   └── Cipher/
+│   ├── hooks/           # Custom React hooks
+│   ├── utils/           # Utility functions
+│   ├── workers/         # Web Workers for heavy computation
+│   ├── animation/       # GSAP animation utilities
+│   ├── config/          # App configuration (Sentry, etc.)
+│   ├── types/           # TypeScript type definitions
+│   ├── models/          # Data models and classes
+│   ├── App.tsx          # Root App component
+│   ├── bootstrap.tsx    # Client-side bootstrap logic
+│   └── main.tsx         # Entry point
+├── webpack/
+│   ├── common.mjs       # Shared Webpack config
+│   ├── development.mjs  # Dev server config
+│   ├── prod.mjs         # Production config
+│   ├── swc/             # SWC compiler options
+│   ├── html/            # HTML template utilities
+│   └── utils/           # Webpack utilities
+├── scripts/
+│   ├── prerender.tsx    # SSR prerendering script
+│   └── lib/             # Prerender utilities
+├── public/
+│   ├── content/         # Markdown content and posts.json
+│   ├── css/             # Stylesheets and themes
+│   ├── assets/          # Images and static assets
+│   └── ciphertexts/     # Encrypted content
+├── .cipher/             # Cipher encryption utilities
+├── .storybook/          # Storybook configuration
+├── dist/                # Production build output
+├── Dockerfile           # Multi-stage Docker build
+├── nginx.conf           # Nginx configuration
+└── package.json         # Dependencies and scripts
 ```
+
 ## Build System
-
-### Turborepo Configuration
-
-Turborepo orchestrates all build tasks with intelligent caching and parallel execution:
-
-- **Pipeline**: Defined in `turbo.json` with task dependencies
-- **Caching**: Automatic caching of build outputs for faster rebuilds
-- **Parallel Execution**: Runs independent tasks concurrently
-- **Remote Caching**: Optional remote cache for team collaboration
 
 ### Webpack Configuration
 
