@@ -1,0 +1,17 @@
+.void-theme {
+  /**
+ * Display Utilities
+ */
+  .block, .void-block {
+    display: block;
+  }
+  .inline-block, .void-inline-block {
+    display: inline-block;
+  }
+  .inline, .void-inline {
+    display: inline;
+  }
+  .hidden, .void-hidden {
+    display: none;
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "component": {
+    "button": {
+      "primary": {
+        "background": {
+          "value": "{color.semantic.primary.value}",
+          "type": "color"
+        },
+        "background-hover": {
+          "value": "{color.semantic.accent.value}",
+          "type": "color"
+        },
+        "text": {
+          "value": "{color.base.white.value}",
+          "type": "color"
+        }
+      },
+      "secondary": {
+        "background": {
+          "value": "{color.semantic.secondary.value}",
+          "type": "color"
+        },
+        "background-hover": {
+          "value": "{color.semantic.accent.value}",
+          "type": "color"
+        },
+        "text": {
+          "value": "{color.base.white.value}",
+          "type": "color"
+        }
+      },
+      "padding": {
+        "value": "{spacing.3.value} {spacing.5.value}",
+        "type": "spacing"
+      },
+      "border-radius": {
+        "value": "{border.radius.md.value}",
+        "type": "borderRadius"
+      }
+    },
+    "card": {
+      "background": {
+        "value": "{color.background.elevated.value}",
+        "type": "color"
+      },
+      "border-color": {
+        "value": "{color.border.default.value}",
+        "type": "color"
+      },
+      "border-color-hover": {
+        "value": "{color.semantic.primary.value}",
+        "type": "color"
+      },
+      "padding": {
+        "value": "{spacing.5.value}",
+        "type": "spacing"
+      },
+      "border-radius": {
+        "value": "{border.radius.lg.value}",
+        "type": "borderRadius"
+      },
+      "shadow": {
+        "value": "{shadow.lg.value}",
+        "type": "boxShadow"
+      }
+    },
+    "input": {
+      "background": {
+        "value": "{color.background.overlay.value}",
+        "type": "color"
+      },
+      "border-color": {
+        "value": "{color.border.subtle.value}",
+        "type": "color"
+      },
+      "border-color-focus": {
+        "value": "{color.semantic.primary.value}",
+        "type": "color"
+      },
+      "text": {
+        "value": "{color.text.primary.value}",
+        "type": "color"
+      },
+      "padding": {
+        "value": "{spacing.3.value} {spacing.4.value}",
+        "type": "spacing"
+      },
+      "border-radius": {
+        "value": "{border.radius.md.value}",
+        "type": "borderRadius"
+      }
+    },
+    "badge": {
+      "background": {
+        "value": "{color.semantic.primary.value}",
+        "type": "color"
+      },
+      "text": {
+        "value": "{color.base.white.value}",
+        "type": "color"
+      },
+      "padding": {
+        "value": "{spacing.1.value} {spacing.3.value}",
+        "type": "spacing"
+      },
+      "border-radius": {
+        "value": "{border.radius.xl.value}",
+        "type": "borderRadius"
+      },
+      "font-size": {
+        "value": "{font.size.xs.value}",
+        "type": "fontSize"
+      }
+    }
+  }
+}

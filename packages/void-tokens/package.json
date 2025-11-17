@@ -1,0 +1,36 @@
+{
+  "name": "@arcjr/void-tokens",
+  "version": "1.0.0",
+  "description": "Design tokens for the Void theme built with Style Dictionary",
+  "module": "./dist/esm/tokens.js",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/esm/tokens.js",
+      "types": "./dist/esm/tokens.d.ts",
+      "default": "./dist/esm/tokens.js"
+    },
+    "./package.json": "./package.json",
+    "./dist/css/void-tokens.css": "./dist/css/void-tokens.css"
+  },
+  "scripts": {
+    "build": "bun run build.ts",
+    "build:watch": "bun run build.ts --watch",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "style-dictionary": "^4.0.0"
+  },
+  "keywords": [
+    "design-tokens",
+    "style-dictionary",
+    "void-theme",
+    "dark-theme"
+  ],
+  "author": "Nick Galante",
+  "license": "MIT"
+}
