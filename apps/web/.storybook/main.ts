@@ -37,6 +37,14 @@ const config: StorybookConfig = {
       '@': path.resolve(process.cwd(), 'src'),
       '@public': path.resolve(process.cwd(), 'public')
     };
+    config.resolve.fallback ||= {};
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      buffer: false,
+      fs: false,
+      path: false,
+      process: false
+    };
     return config;
   }
 };

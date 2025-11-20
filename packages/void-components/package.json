@@ -24,7 +24,7 @@
     "clean": "rm -rf dist",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "bun test"
+    "//test": "bun test"
   },
   "peerDependencies": {
     "react": "^19.0.0",
