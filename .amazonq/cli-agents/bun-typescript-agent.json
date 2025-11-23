@@ -1,0 +1,38 @@
+{
+  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
+  "name": "bun-typescript-agent",
+  "description": "An agent specialized for typescript development for the Bun runtime",
+  "prompt": "file://./prompts/bun-typescript-agent.md",
+  "mcpServers": {},
+  "tools": [
+    "@builtin"
+  ],
+  "toolAliases": {},
+  "allowedTools": ["fs_*"],
+  "resources": [
+    "file://package.json",
+    "file://tsconfig.json",
+    "file://README.md",
+    "file://.amazonq/rules/**/*.md",
+    "file://docs/amazon-q/amazon-q-developer-cli/docs/**/*.md",
+    "file://docs/bun/bundler/index.mdx",
+    "file://docs/bun/pm/cli/**/*.mdx",
+    "file://docs/bun/pm/bunx.mdx",
+    "file://docs/bun/pm/workspaces.mdx",
+    "file://docs/bun/runtime/bun-apis.mdx",
+    "file://docs/bun/runtime/environment-variables.mdx",
+    "file://docs/bun/runtime/index.mdx",
+    "file://docs/bun/runtime/jsx.mdx",
+    "file://docs/bun/runtime/module-resolution.mdx",
+    "file://docs/bun/runtime/typescript.mdx",
+    "file://docs/bun/typescript.mdx"
+  ],
+  "hooks": {},
+  "toolsSettings": {
+    "fs_write": {
+      "allowedPaths": ["./**"]
+    }
+  },
+  "useLegacyMcpJson": true,
+  "model": "claude-sonnet-4.5"
+}

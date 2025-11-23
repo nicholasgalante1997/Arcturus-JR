@@ -1,0 +1,11 @@
+section.arc-v2__home-hero-widget {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: var(--void-spacing-4);
+    background: -webkit-linear-gradient(var(--void-color-brand-amber), var(--void-color-brand-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

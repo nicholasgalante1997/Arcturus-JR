@@ -1,0 +1,20 @@
+.void-theme {
+  /**
+ * Position Utilities
+ */
+  .static, .void-static {
+    position: static;
+  }
+  .fixed, .void-fixed {
+    position: fixed;
+  }
+  .absolute, .void-absolute {
+    position: absolute;
+  }
+  .relative, .void-relative {
+    position: relative;
+  }
+  .sticky, .void-sticky {
+    position: sticky;
+  }
+}

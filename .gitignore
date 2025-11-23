@@ -1,13 +1,42 @@
+# Javascript dependencies
 node_modules
+
+# Environment Variables
 .env*
+
+# Mac specific Finder cache
 .DS_Store
+
+# Build outputs
 dist
 out
-public/content/ee/*.md
+
+# Easter Eggs/Ciphers
+apps/web/public/content/ee/*.md
+apps/web/.cipher/ciphertexts
+apps/web/.cipher/keys
+apps/web/.cipher/plaintexts
+
+# Logs and backups
 *.bak
+
+# Storybook files
 *storybook.log
 storybook-static
+
+# VSCode settings
 .vscode
 
 # Sentry Config File
 .env.sentry-build-plugin
+
+# turborepo
+.turbo
+
+# Webpack Cache Dir
+.webpack-cache
+
+# amazon q save states
+.amazonq/db/saves/*.json
+# Snyk Security Extension - AI Rules (auto-generated)
+.github/instructions/snyk_rules.instructions.md

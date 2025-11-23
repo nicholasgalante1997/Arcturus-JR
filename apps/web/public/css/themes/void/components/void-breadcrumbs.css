@@ -1,0 +1,31 @@
+.void-theme {
+  /**
+ * Breadcrumbs
+ */
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: var(--void-spacing-2);
+    margin-bottom: var(--void-spacing-4);
+    color: var(--void-gray-300);
+  }
+
+  .breadcrumbs a {
+    color: var(--void-azure);
+  }
+
+  .breadcrumbs a:hover {
+    color: var(--void-rose);
+  }
+
+  .breadcrumbs li {
+    display: flex;
+    align-items: center;
+    gap: var(--void-spacing-2);
+  }
+
+  .breadcrumbs li:not(:last-child)::after {
+    content: '›';
+    color: var(--void-gray-400);
+  }
+}
