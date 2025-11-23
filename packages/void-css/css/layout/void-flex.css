@@ -1,0 +1,49 @@
+.void-theme {
+  /**
+ * Flexbox Utilities
+ */
+  .flex, .void-flex { display: flex; }
+  .inline-flex, .void-inline-flex { display: inline-flex; }
+
+  /* Direction */
+  .flex-row, .void-flex-row { flex-direction: row; }
+  .flex-row-reverse, .void-flex-row-reverse { flex-direction: row-reverse; }
+  .flex-col, .void-flex-col { flex-direction: column; }
+  .flex-col-reverse, .void-flex-col-reverse { flex-direction: column-reverse; }
+
+  /* Wrap */
+  .flex-wrap, .void-flex-wrap { flex-wrap: wrap; }
+  .flex-nowrap, .void-flex-nowrap { flex-wrap: nowrap; }
+
+  /* Justify Content */
+  .justify-start, .void-justify-start { justify-content: flex-start; }
+  .justify-end, .void-justify-end { justify-content: flex-end; }
+  .justify-center, .void-justify-center { justify-content: center; }
+  .justify-between, .void-justify-between { justify-content: space-between; }
+  .justify-around, .void-justify-around { justify-content: space-around; }
+  .justify-evenly, .void-justify-evenly { justify-content: space-evenly; }
+
+  /* Align Items */
+  .items-start, .void-items-start { align-items: flex-start; }
+  .items-end, .void-items-end { align-items: flex-end; }
+  .items-center, .void-items-center { align-items: center; }
+  .items-baseline, .void-items-baseline { align-items: baseline; }
+  .items-stretch, .void-items-stretch { align-items: stretch; }
+
+  /* Align Content */
+  .content-start, .void-content-start { align-content: flex-start; }
+  .content-end, .void-content-end { align-content: flex-end; }
+  .content-center, .void-content-center { align-content: center; }
+  .content-between, .void-content-between { align-content: space-between; }
+  .content-around, .void-content-around { align-content: space-around; }
+
+  /* Flex Grow/Shrink */
+  .flex-1, .void-flex-1 { flex: 1 1 0%; }
+  .flex-auto, .void-flex-auto { flex: 1 1 auto; }
+  .flex-initial, .void-flex-initial { flex: 0 1 auto; }
+  .flex-none, .void-flex-none { flex: none; }
+  .grow, .void-grow { flex-grow: 1; }
+  .grow-0, .void-grow-0 { flex-grow: 0; }
+  .shrink, .void-shrink { flex-shrink: 1; }
+  .shrink-0, .void-shrink-0 { flex-shrink: 0; }
+}

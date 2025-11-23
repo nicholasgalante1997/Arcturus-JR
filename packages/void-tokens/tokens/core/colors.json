@@ -1,0 +1,81 @@
+{
+  "color": {
+    "brand": {
+      "amber": {
+        "value": "#ffbe0b",
+        "type": "color",
+        "description": "Warning and highlight color"
+      },
+      "orange": {
+        "value": "#fb5607",
+        "type": "color",
+        "description": "Danger and error color"
+      },
+      "rose": {
+        "value": "#ff006e",
+        "type": "color",
+        "description": "Accent and active state color"
+      },
+      "violet": {
+        "value": "#8338ec",
+        "type": "color",
+        "description": "Secondary action color"
+      },
+      "azure": {
+        "value": "#3a86ff",
+        "type": "color",
+        "description": "Primary action and link color"
+      }
+    },
+    "base": {
+      "black": {
+        "value": "#000000",
+        "type": "color",
+        "description": "Pure black background"
+      },
+      "white": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "Pure white for headings"
+      }
+    },
+    "gray": {
+      "950": {
+        "value": "#0a0a0a",
+        "type": "color"
+      },
+      "900": {
+        "value": "#0f0f0f",
+        "type": "color"
+      },
+      "800": {
+        "value": "#1a1a1a",
+        "type": "color"
+      },
+      "700": {
+        "value": "#2a2a2a",
+        "type": "color"
+      },
+      "600": {
+        "value": "#3a3a3a",
+        "type": "color"
+      },
+      "400": {
+        "value": "#808080",
+        "type": "color"
+      },
+      "300": {
+        "value": "#a0a0a0",
+        "type": "color"
+      },
+      "200": {
+        "value": "#c0c0c0",
+        "type": "color"
+      },
+      "100": {
+        "value": "#e8e8e8",
+        "type": "color"
+      }
+    }
+  }
+}

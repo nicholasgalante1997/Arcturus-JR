@@ -1,0 +1,32 @@
+.void-theme {
+  /**
+ * Code Block with Copy Button
+ */
+  .code-block,
+  .void-code-block {
+    position: relative;
+  }
+
+  .code-block-copy,
+  .void-code-block-copy {
+    position: absolute;
+    top: var(--void-spacing-2);
+    right: var(--void-spacing-2);
+    padding: var(--void-spacing-2) var(--void-spacing-3);
+    background-color: var(--void-gray-800);
+    border: 1px solid var(--void-gray-600);
+    border-radius: var(--void-radius-sm);
+    color: var(--void-gray-200);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition:
+      background-color var(--void-transition-fast),
+      color var(--void-transition-fast);
+  }
+
+  .code-block-copy:hover,
+  .void-code-block-copy:hover {
+    background-color: var(--void-azure);
+    color: var(--void-white);
+  }
+}

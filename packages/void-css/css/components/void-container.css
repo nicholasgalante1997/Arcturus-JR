@@ -1,0 +1,29 @@
+.void-theme {
+  /**
+ * Container
+ */
+  .container,
+  .void-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--void-spacing-4);
+    padding-right: var(--void-spacing-4);
+  }
+
+  .container-sm,
+  .void-container-sm {
+    max-width: 800px;
+  }
+
+  .container-lg,
+  .void-container-lg {
+    max-width: 1400px;
+  }
+
+  .container-fluid,
+  .void-container-fluid {
+    max-width: 100%;
+  }
+}
