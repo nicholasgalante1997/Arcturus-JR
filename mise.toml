@@ -13,8 +13,6 @@ _.path = [
     # that our package.json#scripts expects to load from node_modules/.bin
     "{{config_root}}/node_modules/.bin",
 ]
-DEBUG = "*"
-NODE_ENV = "production"
 
 [tasks]
 

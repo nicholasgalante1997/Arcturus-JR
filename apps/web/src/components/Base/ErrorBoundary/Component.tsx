@@ -36,7 +36,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   componentDidCatch(error: Error, info: React.ErrorInfo) {
     jlog.label('error-boundary');
     jlog('ErrorBoundary caught an error', error, info);
-    jlog('Component Stack:', info.componentStack, React.captureOwnerStack());
+    jlog('Component Stack:', info.componentStack);
     jlog.unlabel();
 
     // Send to Sentry with additional context

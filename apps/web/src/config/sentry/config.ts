@@ -11,7 +11,7 @@ class ArcJrSentry {
   static sentryReactDefaultErrorHandler(error: Error, info: React.ErrorInfo) {
     jlog.label('sentry-react-default-error-handler');
     jlog('ErrorBoundary caught an error', error, info);
-    jlog('Component Stack:', info.componentStack, React.captureOwnerStack());
+    jlog('Component Stack:', info.componentStack);
     jlog.unlabel();
 
     // Send to Sentry with additional context

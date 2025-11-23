@@ -52,7 +52,7 @@ export default {
       buffer: false,
       fs: false,
       path: false,
-      process: false
+      process: false,
     }
   },
   plugins: [

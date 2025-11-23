@@ -1,4 +1,5 @@
 import path from 'path';
+import webpack from 'webpack';
 
 import type { StorybookConfig } from '@storybook/react-webpack5';
 
@@ -45,6 +46,8 @@ const config: StorybookConfig = {
       path: false,
       process: false
     };
+    config.plugins ||= [];
+    config.plugins.push(new webpack.ProvidePlugin({ process: 'process/browser' }));
     return config;
   }
 };

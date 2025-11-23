@@ -8,7 +8,7 @@ const meta: Meta<typeof Home> = {
   title: 'Components/Home',
   component: Home,
   tags: ['autodocs'],
-  decorators: [StorybookDecorators.withTanstackQuery]
+  decorators: [StorybookDecorators.withTanstackQuery, StorybookDecorators.withReactRouterDOMProvider]
 };
 
 type Story = StoryObj<typeof Home>;
