@@ -12,10 +12,10 @@ dist
 out
 
 # Easter Eggs/Ciphers
-public/content/ee/*.md
-.cipher/ciphertexts
-.cipher/keys
-.cipher/plaintexts
+apps/web/public/content/ee/*.md
+apps/web/.cipher/ciphertexts
+apps/web/.cipher/keys
+apps/web/.cipher/plaintexts
 
 # Logs and backups
 *.bak
@@ -29,3 +29,14 @@ storybook-static
 
 # Sentry Config File
 .env.sentry-build-plugin
+
+# turborepo
+.turbo
+
+# Webpack Cache Dir
+.webpack-cache
+
+# amazon q save states
+.amazonq/db/saves/*.json
+# Snyk Security Extension - AI Rules (auto-generated)
+.github/instructions/snyk_rules.instructions.md

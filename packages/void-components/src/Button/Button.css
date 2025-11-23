@@ -1,0 +1,45 @@
+.void-button {
+  padding: var(--void-spacing-2) var(--void-spacing-4);
+  border-radius: var(--void-border-radius-md);
+  font-family: var(--void-font-family-base);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: var(--void-border-width-thin) solid transparent;
+  cursor: pointer;
+  transition: all var(--void-transition-duration-fast) var(--void-transition-easing-ease);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--void-spacing-2);
+  color: var(--void-color-base-white);
+}
+
+.void-button:focus-visible {
+  outline: var(--void-border-width-medium) solid var(--void-color-brand-violet);
+  outline-offset: 2px;
+}
+
+.void-button--primary {
+  background-color: var(--void-color-brand-violet);
+  border-color: var(--void-color-brand-violet);
+}
+
+.void-button--primary:hover:not(:disabled) {
+  background-color: var(--void-color-brand-azure);
+  border-color: var(--void-color-brand-azure);
+}
+
+.void-button--secondary {
+  background-color: transparent;
+  border-color: var(--void-color-gray-700);
+}
+
+.void-button--secondary:hover:not(:disabled) {
+  border-color: var(--void-color-brand-violet);
+  background-color: var(--void-color-gray-900);
+}
+
+.void-button--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,0 +1,37 @@
+.void-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--void-spacing-1) var(--void-spacing-3);
+  border-radius: var(--void-border-radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--void-font-family-base);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: var(--void-border-width-thin) solid transparent;
+  color: var(--void-color-base-white);
+}
+
+.void-badge--info {
+  background-color: rgba(58, 134, 255, 0.2);
+  border-color: var(--void-color-brand-azure);
+  color: var(--void-color-brand-azure);
+}
+
+.void-badge--success {
+  background-color: rgba(16, 185, 129, 0.2);
+  border-color: var(--void-color-semantic-success);
+  color: var(--void-color-semantic-success);
+}
+
+.void-badge--warning {
+  background-color: rgba(255, 190, 11, 0.2);
+  border-color: var(--void-color-brand-amber);
+  color: var(--void-color-brand-amber);
+}
+
+.void-badge--error {
+  background-color: rgba(255, 0, 110, 0.2);
+  border-color: var(--void-color-brand-rose);
+  color: var(--void-color-brand-rose);
+}
