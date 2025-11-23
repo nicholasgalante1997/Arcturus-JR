@@ -15,7 +15,7 @@
     "subcategory": "spec driven development",
     "searchTerms": ["amazon-q", "spec driven development"],
     "slug": "amazon-q-sdlc-setup",
-    "visible": true
+    "visible": false
   },
   {
     "id": "ubuntu-24.04-dev-env-setup",
