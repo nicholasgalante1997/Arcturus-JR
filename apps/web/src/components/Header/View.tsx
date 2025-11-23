@@ -4,14 +4,14 @@ import { Link } from 'react-router';
 import CONFIG from '@/config/config';
 import { pipeline } from '@/utils/pipeline';
 
-enum ARCJR_TABS {
+export enum ARCJR_TABS {
   HOME = '/',
   POSTS = '/posts',
   ABOUT = '/about',
   CONTACT = '/contact'
 }
 
-function getActiveTabByPathname(tab: string) {
+export function getActiveTabByPathname(tab: string) {
   if (typeof window === 'undefined') return 'default' as const;
   const url = new URL(window.location.href);
   const pathname = url.pathname;

@@ -3,4 +3,5 @@
 @import "./void/void-vanilla/css/void-font.css";
 @import "./void/void-vanilla/css/void-layout.css";
 
+@import "./v2/Header.css";
 @import "./v2/HeroWidget.css";

@@ -1,7 +1,5 @@
 import "@public/css/v2.css";
 
-import React from "react";
-
 import V2HeroWidgetView from "../View";
 
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
