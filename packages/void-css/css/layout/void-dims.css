@@ -1,0 +1,31 @@
+.void-theme {
+  /**
+ * Width/Height Utilities
+ */
+  .w-full, .void-w-full {
+    width: 100%;
+  }
+  .w-auto, .void-w-auto {
+    width: auto;
+  }
+  .w-screen, .void-w-screen {
+    width: 100vw;
+  }
+
+  .h-full, .void-h-full {
+    height: 100%;
+  }
+  .h-auto, .void-h-auto {
+    height: auto;
+  }
+  .h-screen, .void-h-screen {
+    height: 100vh;
+  }
+
+  .min-h-screen, .void-min-h-screen {
+    min-height: 100vh;
+  }
+  .min-h-full, .void-min-h-full {
+    min-height: 100%;
+  }
+}

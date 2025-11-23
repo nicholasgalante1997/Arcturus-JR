@@ -1,0 +1,45 @@
+.void-theme {
+  /**
+ * Badges
+ */
+  .badge,
+  .void-badge {
+    display: inline-block;
+    padding: var(--void-spacing-1) var(--void-spacing-3);
+    background-color: var(--void-azure);
+    color: var(--void-white);
+    font-size: 0.75rem;
+    font-weight: var(--void-font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: var(--void-radius-xl);
+  }
+
+  .badge-secondary,
+  .void-badge-secondary {
+    background-color: var(--void-violet);
+  }
+
+  .badge-success,
+  .void-badge-success {
+    background-color: #10b981;
+  }
+
+  .badge-warning,
+  .void-badge-warning {
+    background-color: var(--void-amber);
+    color: var(--void-black);
+  }
+
+  .badge-danger,
+  .void-badge-danger {
+    background-color: var(--void-orange);
+  }
+
+  .badge-outline,
+  .void-badge-outline {
+    background-color: transparent;
+    border: 1px solid var(--void-azure);
+    color: var(--void-azure);
+  }
+}

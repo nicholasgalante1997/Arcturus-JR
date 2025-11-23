@@ -1,0 +1,49 @@
+.void-theme {
+  /**
+ * Text Alignment
+ */
+  .text-left {
+    text-align: left;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-right {
+    text-align: right;
+  }
+  .text-justify {
+    text-align: justify;
+  }
+
+  /**
+ * Text Transform
+ */
+  .uppercase {
+    text-transform: uppercase;
+  }
+  .lowercase {
+    text-transform: lowercase;
+  }
+  .capitalize {
+    text-transform: capitalize;
+  }
+  .normal-case {
+    text-transform: none;
+  }
+
+  /**
+ * Font Weight
+ */
+  .font-normal {
+    font-weight: var(--void-font-weight-normal);
+  }
+  .font-medium {
+    font-weight: var(--void-font-weight-medium);
+  }
+  .font-semibold {
+    font-weight: var(--void-font-weight-semibold);
+  }
+  .font-bold {
+    font-weight: var(--void-font-weight-bold);
+  }
+}

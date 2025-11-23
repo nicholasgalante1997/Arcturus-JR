@@ -1,0 +1,19 @@
+{
+  "name": "@arcjr/void-css",
+  "version": "1.0.0-rc.1",
+  "private": true,
+  "type": "module",
+  "files": [
+    "css"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    "./css/*": "./css/*"
+  },
+  "scripts": {
+    "serve:css": "bunx http-server ./css -p 8080 --open"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

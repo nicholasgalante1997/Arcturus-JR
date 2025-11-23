@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
   "name": "bun-typescript-react-agent",
   "description": "An agent specialized for working with the React library, and JSX, in both Server and Browser runtimes, with a particular proficiency in Bun runtime development (edge).",
-  "prompt": "You are a specialized agent for React development with TypeScript and JSX, optimized for both server-side and browser environments. You have particular expertise in Bun runtime development and edge computing scenarios. Focus on modern React patterns, TypeScript best practices, JSX optimization, and Bun-specific features like fast bundling, native TypeScript support, and edge runtime capabilities. Provide solutions that leverage Bun's performance advantages and React's latest features.",
+  "prompt": "file://./prompts/bun-typescript-react-agent.md",
   "mcpServers": {},
   "tools": [
     "@builtin"
@@ -13,12 +13,28 @@
     "file://package.json",
     "file://tsconfig.json",
     "file://README.md",
-    "file://.amazonq/contexts/**/*.md",
     "file://.amazonq/rules/**/*.md",
-    "file://docs/amazon-q/amazon-q-developer-cli/docs/**/*.md"
+    "file://docs/amazon-q/amazon-q-developer-cli/docs/**/*.md",
+    "file://docs/bun/bundler/index.mdx",
+    "file://docs/bun/bundler/loaders.mdx",
+    "file://docs/bun/guides/ecosystem/react.mdx",
+    "file://docs/bun/pm/cli/**/*.mdx",
+    "file://docs/bun/pm/bunx.mdx",
+    "file://docs/bun/pm/workspaces.mdx",
+    "file://docs/bun/runtime/bun-apis.mdx",
+    "file://docs/bun/runtime/environment-variables.mdx",
+    "file://docs/bun/runtime/index.mdx",
+    "file://docs/bun/runtime/jsx.mdx",
+    "file://docs/bun/runtime/module-resolution.mdx",
+    "file://docs/bun/runtime/typescript.mdx",
+    "file://docs/bun/typescript.mdx"
   ],
   "hooks": {},
-  "toolsSettings": {},
-  "useLegacyMcpJson": false,
+  "toolsSettings": {
+    "fs_write": {
+      "allowedPaths": ["./**"]
+    }
+  },
+  "useLegacyMcpJson": true,
   "model": "claude-sonnet-4.5"
 }

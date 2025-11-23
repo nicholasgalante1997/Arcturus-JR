@@ -35,3 +35,6 @@ storybook-static
 
 # Webpack Cache Dir
 .webpack-cache
+
+# amazon q save states
+.amazonq/db/saves/*.json

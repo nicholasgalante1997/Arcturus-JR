@@ -1,0 +1,46 @@
+.void-theme {
+  /**
+ * Overflow
+ */
+  .overflow-auto, .void-overflow-auto {
+    overflow: auto;
+  }
+  .overflow-hidden, .void-overflow-hidden {
+    overflow: hidden;
+  }
+  .overflow-visible, .void-overflow-visible {
+    overflow: visible;
+  }
+  .overflow-scroll, .void-overflow-scroll {
+    overflow: scroll;
+  }
+
+  .overflow-x-auto, .void-overflow-x-auto {
+    overflow-x: auto;
+  }
+  .overflow-y-auto, .void-overflow-y-auto {
+    overflow-y: auto;
+  }
+
+  /**
+ * Z-Index
+ */
+  .z-0, .void-z-0 {
+    z-index: 0;
+  }
+  .z-10, .void-z-10 {
+    z-index: 10;
+  }
+  .z-20, .void-z-20 {
+    z-index: 20;
+  }
+  .z-30, .void-z-30 {
+    z-index: 30;
+  }
+  .z-40, .void-z-40 {
+    z-index: 40;
+  }
+  .z-50, .void-z-50 {
+    z-index: 50;
+  }
+}
