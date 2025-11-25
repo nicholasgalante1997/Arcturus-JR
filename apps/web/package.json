@@ -65,6 +65,8 @@
     "test": "bun test"
   },
   "dependencies": {
+    "@arcjr/config": "workspace:*",
+    "@arcjr/types": "workspace:*",
     "@arcjr/void-components": "workspace:*",
     "@arcjr/void-css": "workspace:*",
     "@arcjr/void-tokens": "workspace:*",

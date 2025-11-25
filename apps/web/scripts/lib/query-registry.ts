@@ -1,0 +1,35 @@
+import { getCipher } from '@/hooks/useCipher';
+import { getCiphers } from '@/hooks/useCiphers';
+import { getMarkdown } from '@/hooks/useMarkdown';
+import { getPost } from '@/hooks/usePost';
+import { getPosts } from '@/hooks/usePosts';
+
+import type { QueryFnName, Registry } from '@arcjr/types';
+
+type QueryFn = typeof getMarkdown | typeof getPosts | typeof getPost | typeof getCiphers | typeof getCipher;
+
+const queries: Readonly<{ name: QueryFnName; fn: QueryFn }[]> = [
+  { name: 'getMarkdown', fn: getMarkdown },
+  { name: 'getPosts', fn: getPosts },
+  { name: 'getPost', fn: getPost },
+  { name: 'getCiphers', fn: getCiphers },
+  { name: 'getCipher', fn: getCipher }
+] as const;
+
+class StaticPrerenderQueryRegistry implements Registry<QueryFnName, QueryFn> {
+  private registry = new Map<QueryFnName, QueryFn>();
+
+  constructor() {
+    queries.forEach(({ name, fn }) => this.register(name, fn));
+  }
+
+  register(key: QueryFnName, queryFn: QueryFn) {
+    this.registry.set(key, queryFn);
+    return this;
+  }
+  request(key: QueryFnName): QueryFn | null {
+    return this.registry.get(key) ?? null;
+  }
+}
+
+export default StaticPrerenderQueryRegistry;
