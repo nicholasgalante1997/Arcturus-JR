@@ -1,6 +1,6 @@
 # Claude Code Configuration
 
-This directory contains Claude Code CLI configuration for Arc-Jr, establishing best practice conventions for spec-driven development with React 19, TypeScript, and TanStack Query.
+This directory contains Claude Code CLI configuration for Arc-Jr, establishing best practice conventions for spec-driven development with Bun, React 19, TypeScript, and TanStack Query.
 
 ## Structure
 

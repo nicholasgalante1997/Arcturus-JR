@@ -15,10 +15,10 @@ Arc-Jr is a sophisticated monorepo for server-side rendered React with static pr
 
 ### Rendering Strategy
 
-- **Build-time prerendering**: All routes prerendered using React 19's `prerender` API from `react-dom/static.edge`
-- **Hydration**: Client hydrates prerendered markup using `hydrateRoot`
-- **Data prefetching**: TanStack Query prefetches all data on server during prerender, dehydrates state, rehydrates on client
-- **Suspenseful queries**: React 19's `use()` API with TanStack Query's experimental `promise` pattern
+- **Build-time prerendering**: All routes prerendered using React 19's `prerender` API from `react-dom/static.edge` during the build process
+- **Hydration**: Client hydrates prerendered markup using `hydrateRoot`. Single dynamic entrypoint in apps/web/src/bootstrap.tsx.
+- **Data prefetching**: TanStack Query prefetches all data on server during prerender, dehydrates state, rehydrates on client, refetches data after delay
+- **Suspenseful queries**: React 19's `use()` API with TanStack Query's experimental `promise` pattern opts into React Suspenseful Rendering.
 
 ### Key Patterns
 
@@ -47,14 +47,15 @@ Arc-Jr is a sophisticated monorepo for server-side rendered React with static pr
 ```
 ComponentName/
 ├── index.ts          # Barrel export
-├── Component.tsx     # Container with hooks
+├── Component.tsx     # Container with hooks/Logic and Data Layer
 ├── View.tsx          # Presentational
 ├── types.ts          # TypeScript types
+├── stories/          # Storybook CSF Story Files
 └── __tests__/        # Tests
 ```
 
 **Container Pattern:**
-- Place data fetching and hooks in Container
+- Place data fetching and hooks in Container/Container with hooks/Logic and Data Layer
 - Wrap View with `SuspenseEnabledQueryProvider` when using queries
 - Use `pipeline` utility for HOC composition
 
@@ -154,6 +155,7 @@ Vanilla CSS with design tokens provides:
 - Better performance (no style injection)
 - Simpler debugging (standard CSS)
 - Team familiarity (no framework learning curve)
+- Easily cacheable by modern browsers
 
 ### Why Bun Runtime?
 
@@ -161,7 +163,7 @@ Bun provides:
 - Native TypeScript execution without compilation
 - Fast package management
 - Built-in test runner
-- Superior performance for build scripts
+- Superior performance and developer experience
 
 ## Common Operations
 
