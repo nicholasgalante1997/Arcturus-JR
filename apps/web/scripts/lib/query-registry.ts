@@ -4,6 +4,8 @@ import { getMarkdown } from '@/hooks/useMarkdown';
 import { getPost } from '@/hooks/usePost';
 import { getPosts } from '@/hooks/usePosts';
 
+import lazy from './lazy';
+
 import type { QueryFnName, Registry } from '@arcjr/types';
 
 type QueryFn = typeof getMarkdown | typeof getPosts | typeof getPost | typeof getCiphers | typeof getCipher;
@@ -33,3 +35,10 @@ class StaticPrerenderQueryRegistry implements Registry<QueryFnName, QueryFn> {
 }
 
 export default StaticPrerenderQueryRegistry;
+
+// eslint-disable-next-line prefer-const
+let instance: StaticPrerenderQueryRegistry | null = null;
+
+/** @LazyLoad */
+export const ll_StaticPrerenderQueryRegistry = () =>
+  lazy.initDynConstructor(instance, StaticPrerenderQueryRegistry);

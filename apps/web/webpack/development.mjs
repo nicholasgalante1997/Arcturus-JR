@@ -39,7 +39,7 @@ const dev = {
       },
       {
         directory: path.resolve(process.cwd(), 'public', 'docs'),
-        publicPath: '/docs',
+        publicPath: '/docs'
       },
       {
         directory: path.resolve(process.cwd(), 'src', 'workers'),

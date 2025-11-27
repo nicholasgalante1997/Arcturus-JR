@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { RoutesConfig } from '@arcjr/config';
 import { RouteConfigurationPathKeysEnum } from '@arcjr/types';
 import { type RouteObject } from 'react-router';

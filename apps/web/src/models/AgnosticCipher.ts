@@ -21,9 +21,10 @@ import type {
  * meaning the AgnosticKeyCipher instance does not need to know the specific of the I/O Transformations
  *
  * */
-class AgnosticKeyCipher<Input extends CipherInputTypeConstraints, Output extends CipherOutputTypeConstraints>
-  implements Cipher<Input, Output>
-{
+class AgnosticKeyCipher<
+  Input extends CipherInputTypeConstraints,
+  Output extends CipherOutputTypeConstraints
+> implements Cipher<Input, Output> {
   /**
    * A valid SubstitutionMap should satisfy the following constraints,
    * - It is a record
