@@ -1,5 +1,41 @@
 [
     {
+    "id": "bun",
+    "title": "I would go to war for my wife, my dogs, and the bun runtime.",
+    "date": "2025-11-27",
+    "excerpt": "Sometimes, you got to buckle down on your laurels and say 'That's fucking stupid' and then you",
+    "tags": ["amazon-q", "spec driven development"],
+    "image": {
+      "src": "/assets/doodles-marketplace.avif",
+      "alt": "Doodles nft cards (web based cards, square containing an image of the nft and titular text) for sale in a marketplace fashion",
+      "aspectRatio": "16 / 9"
+    },
+    "readingTime": "Under 5 minutes",
+    "category": "GENERAL",
+    "subcategory": "spec driven development",
+    "searchTerms": ["amazon-q", "spec driven development"],
+    "slug": "amazon-q-sdlc-setup",
+    "visible": false
+  },
+  {
+    "id": "kanye",
+    "title": "I love Web Development, I hate Web Development",
+    "date": "2025-11-27",
+    "excerpt": "Sometimes, you got to buckle down on your laurels and say 'That's fucking stupid' and then you",
+    "tags": ["amazon-q", "spec driven development"],
+    "image": {
+      "src": "/assets/doodles-marketplace.avif",
+      "alt": "Doodles nft cards (web based cards, square containing an image of the nft and titular text) for sale in a marketplace fashion",
+      "aspectRatio": "16 / 9"
+    },
+    "readingTime": "Under 5 minutes",
+    "category": "GENERAL",
+    "subcategory": "spec driven development",
+    "searchTerms": ["amazon-q", "spec driven development"],
+    "slug": "amazon-q-sdlc-setup",
+    "visible": false
+  },
+  {
     "id": "amazon-q-sdlc-setup",
     "title": "A Brief Efficient Guide to Integrating Amazon Q into Moderate Sized Applications",
     "date": "2025-11-11",

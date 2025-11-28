@@ -1,9 +1,12 @@
+import { ExternalLinksConfig } from '@arcjr/config';
 import React from 'react';
 import { Link } from 'react-router';
 
 import { ARCJR_TABS, getActiveTabByPathname } from '@/components/Header/View';
-import CONFIG from '@/config/config';
 import { pipeline } from '@/utils/pipeline';
+
+const LINKEDIN_HREF = ExternalLinksConfig.ExternalLinkLinkedIn;
+const GITHUB_HREF = ExternalLinksConfig.ExternalLinkGithub;
 
 function V2HeaderView() {
   return (
@@ -45,12 +48,12 @@ function V2HeaderView() {
               </Link>
             </li>
             <li>
-              <Link target="_blank" to={CONFIG.LINKS.GITHUB} id="gh-icon-link">
+              <Link target="_blank" to={GITHUB_HREF} id="gh-icon-link">
                 <img height="24px" width="auto" src="/assets/icons/github-mark-white.svg" />
               </Link>
             </li>
             <li>
-              <Link target="_blank" to={CONFIG.LINKS.LINKEDIN} id="in-icon-link">
+              <Link target="_blank" to={LINKEDIN_HREF} id="in-icon-link">
                 <img height="24px" width="auto" src="/assets/icons/InBug-White.png" />
               </Link>
             </li>

@@ -7,7 +7,9 @@
   "bin": {
     "ngx": "bin/cli.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "run-s bundle copy:ciphers copy:workers prerender postcss copy",
     "build-storybook": "storybook build",
@@ -17,8 +19,8 @@
     "clean": "run-p clean:css clean:dist",
     "clean:ciphers": "rm -rf public/ciphertexts dist/ciphertexts",
     "clean:css": "rm -f public/css/*.min.css && rm -f public/css/themes/*.min.css",
-    "clean:void-css": "rm -rf public/css/void",
     "clean:dist": "rm -rf dist/",
+    "clean:void-css": "rm -rf public/css/void",
     "copy": "run-p copy:assets copy:docs copy:favicons copy:markdown copy:styles",
     "copy:assets": "cp -R public/assets dist/",
     "copy:ciphers": "run-s copy:ciphers:public",
@@ -35,8 +37,8 @@
     "copy:markdown": "cp -R public/content dist/",
     "copy:styles": "cp -R public/css dist/",
     "copy:void-css": "run-s copy:void-css:mkdir copy:void-css:tokens copy:void-css:styles copy:void-css:components",
-    "copy:void-css:mkdir": "mkdir -p public/css/void/void-vanilla",
     "copy:void-css:components": "cp node_modules/@arcjr/void-components/dist/index.css ./public/css/void/void-components.css",
+    "copy:void-css:mkdir": "mkdir -p public/css/void/void-vanilla",
     "copy:void-css:styles": "cp -R node_modules/@arcjr/void-css/css/ public/css/void/void-vanilla",
     "copy:void-css:tokens": "cp node_modules/@arcjr/void-tokens/dist/css/void-tokens.css ./public/css/void/void-variables.css",
     "copy:workers": "run-s copy:workers:mkdir copy:workers:js",
@@ -65,12 +67,14 @@
     "test": "bun test"
   },
   "dependencies": {
+    "@arcjr/config": "workspace:*",
+    "@arcjr/types": "workspace:*",
     "@arcjr/void-components": "workspace:*",
     "@arcjr/void-css": "workspace:*",
     "@arcjr/void-tokens": "workspace:*",
-    "@sentry/browser": "^10.21.0",
-    "@sentry/bun": "^10.20.0",
-    "@sentry/core": "^10.21.0",
+    "@sentry/browser": "^10.27.0",
+    "@sentry/bun": "^10.27.0",
+    "@sentry/core": "^10.27.0",
     "@sentry/react": "^10.21.0",
     "@sentry/webpack-plugin": "^4.5.0",
     "@tanstack/react-query": "^5.87.1",
