@@ -8,40 +8,75 @@ tags:
   - prefetching
 ---
 
-# TanStack Query SSR Skill
+# TanStack Query Data Fetching Rules
 
-## Overview
+## Purpose
 
-This skill covers TanStack Query patterns for server-side rendering, including prefetching, dehydration, rehydration, and isomorphic hooks that work on both server and client.
+Define standards for asynchronous data fetching using TanStack Query with React 19's `use()` API and the experimental suspenseful pattern.
 
-## Core Concepts
+## Priority
 
-### Query Keys
+**Critical**
 
-Always use consistent query keys between prefetch and hook:
+## Critical Requirements
+
+### Prefetch Everything
+
+**CRITICAL**: Every query used in a component must be prefetched during prerender.
+
+Checklist:
+
+- [ ] Query is defined in page configuration
+- [ ] Query key matches between prefetch and hook
+- [ ] Query function is properly defined
+- [ ] All queries are prefetched before rendering
+- [ ] No unresolved promises in component tree
+
+### Validation
+
+Always validate data on server-side:
 
 ```typescript
-// Define once
-const QUERY_KEYS = {
-  posts: () => ['posts'],
-  post: (id: string) => ['post', id],
-  markdown: (file: string) => ['markdown', file]
-} as const;
-
-// Use in prefetch
-await queryClient.prefetchQuery({
-  queryKey: QUERY_KEYS.posts(),
-  queryFn: () => getPosts()
-});
-
-// Use in hook
-export function useGetPosts() {
-  return useQuery({
-    queryKey: QUERY_KEYS.posts(),
-    queryFn: () => getPosts()
-  });
+if (getJavascriptEnvironment() === 'server') {
+  const data = queryClient.getQueryData(queryKey);
+  
+  // Validate type
+  if (!isValidType(data)) {
+    throw new Error(`Invalid data type for ${queryKey}`);
+  }
+  
+  return { data, promise: Promise.resolve(data) };
 }
 ```
+
+### Error Handling
+
+Handle errors gracefully:
+
+```typescript
+try {
+  const data = await queryClient.prefetchQuery({
+    queryKey,
+    queryFn: () => fetchData()
+  });
+} catch (error) {
+  console.error(`Failed to prefetch ${queryKey}:`, error);
+  throw error;
+}
+```
+
+## Best Practices
+
+1. **Export both function and hook** - enables reuse and testing
+2. **Use consistent query keys** - prevents cache misses
+3. **Validate server data** - catch prefetch issues early
+4. **Prefetch concurrently** - use Promise.all for performance
+5. **Type everything** - no implicit any in hooks
+6. **Document query requirements** - help future developers
+7. **Test prefetching** - verify prerender completes
+8. **Monitor query performance** - track prefetch times
+
+## Core Concepts
 
 ### Prefetching Pattern
 
@@ -148,24 +183,7 @@ export function usePost(id: string): UseQueryResult<Post, Error> {
 
 ### Adding Queries to Pages
 
-Define all queries for a page in `scripts/lib/pages.ts`:
-
-```typescript
-{
-  path: NON_DYNAMIC_ROUTES.HOME,
-  queries: [
-    {
-      queryKey: ['markdown', '/content/home.md'],
-      queryFn: () => getMarkdown('/content/home.md')
-    },
-    {
-      queryKey: ['posts'],
-      queryFn: () => getPosts()
-    }
-  ],
-  styles: [...BASE_CSS_STYLES]
-}
-```
+Update this for our new Routes Config pattern.
 
 ### Dynamic Routes
 
@@ -247,59 +265,171 @@ function HomeView({ queries }: HomeViewProps) {
 }
 ```
 
-## Critical Requirements
+## Hook Pattern
 
-### Prefetch Everything
-
-**CRITICAL**: Every query used in a component must be prefetched during prerender.
-
-Checklist:
-- [ ] Query is defined in page configuration
-- [ ] Query key matches between prefetch and hook
-- [ ] Query function is properly defined
-- [ ] All queries are prefetched before rendering
-- [ ] No unresolved promises in component tree
-
-### Validation
-
-Always validate data on server-side:
+**ALWAYS** create custom hooks that return `UseQueryResult` with server/client branching (ID: HOOK_PATTERN)
 
 ```typescript
-if (getJavascriptEnvironment() === 'server') {
-  const data = queryClient.getQueryData(queryKey);
-  
-  // Validate type
-  if (!isValidType(data)) {
-    throw new Error(`Invalid data type for ${queryKey}`);
+import { useQuery, useQueryClient, type UseQueryResult } from '@tanstack/react-query';
+import { getJavascriptEnvironment } from '@/utils/env';
+
+export async function getPosts() {
+  return new PostsService().fetchPosts();
+}
+
+export function useGetPosts(): UseQueryResult<Post[], Error> {
+  const queryClient = useQueryClient();
+  const queryKey = ['posts'];
+
+  // Server-side: return prefetched data from QueryClient
+  if (getJavascriptEnvironment() === 'server') {
+    const data = queryClient.getQueryData(queryKey) as Post[];
+    
+    // Validate data
+    if (!Array.isArray(data)) {
+      throw new Error(`data from query prefetch ${queryKey} is not an array.`);
+    }
+    
+    return { data, promise: Promise.resolve(data) } as UseQueryResult<Post[], Error>;
   }
-  
-  return { data, promise: Promise.resolve(data) };
+
+  // Client-side: return standard useQuery result
+  return useQuery({
+    queryKey,
+    queryFn: () => getPosts()
+  });
 }
 ```
 
-### Error Handling
+**ALWAYS** export both the data fetching function and the hook (ID: EXPORT_BOTH)
 
-Handle errors gracefully:
+**ALWAYS** use `getJavascriptEnvironment()` to detect server vs client (ID: ENV_DETECTION)
+
+**ALWAYS** validate data on server-side before returning (ID: VALIDATE_SERVER_DATA)
+
+**ALWAYS** return `{ data, promise: Promise.resolve(data) }` on server (ID: SERVER_RETURN_PROMISE)
+
+### Query Keys
+
+**ALWAYS** use consistent queryKey between prefetch and hook (ID: CONSISTENT_KEYS)
+
+**ALWAYS** use array format for queryKey: `['posts']` or `['post', id]` (ID: ARRAY_KEYS)
+
+**ALWAYS** include dynamic parameters in queryKey: `['markdown', file]` (ID: DYNAMIC_KEYS)
+
+### Component Pattern with SuspenseEnabledQueryProvider
+
+**ALWAYS** wrap view components with `SuspenseEnabledQueryProvider` (ID: SEQ_WRAPPER)
+
+**ALWAYS** call hooks in parent component, pass results to view (ID: HOOKS_IN_PARENT)
+
+**ALWAYS** use React 19's `use()` API to unwrap promises in view (ID: USE_API)
 
 ```typescript
-try {
-  const data = await queryClient.prefetchQuery({
-    queryKey,
-    queryFn: () => fetchData()
-  });
-} catch (error) {
-  console.error(`Failed to prefetch ${queryKey}:`, error);
-  throw error;
+// Component.tsx
+import { SuspenseEnabledQueryProvider } from '@/components/Base/SEQ';
+import { useMarkdown } from '@/hooks/useMarkdown';
+import { useGetPosts } from '@/hooks/usePosts';
+
+function Home() {
+  const markdown = useMarkdown('/content/home.md');
+  const posts = useGetPosts();
+  return (
+    <SuspenseEnabledQueryProvider>
+      <HomeView queries={[markdown, posts]} />
+    </SuspenseEnabledQueryProvider>
+  );
+}
+
+// View.tsx
+import { use } from 'react';
+
+function HomeView({ queries }: HomeViewProps) {
+  const [_markdown, _posts] = queries;
+  const markdown = use(_markdown.promise); // Suspends until resolved
+  const posts = use(_posts.promise);
+  return (
+    <div>
+      <Markdown markdown={markdown.markdown} />
+      <PostCardsList posts={posts} />
+    </div>
+  );
 }
 ```
 
-## Best Practices
+**NEVER** use `isLoading` or `isError` checks in components (ID: NO_LOADING_CHECKS)
 
-1. **Export both function and hook** - enables reuse and testing
-2. **Use consistent query keys** - prevents cache misses
-3. **Validate server data** - catch prefetch issues early
-4. **Prefetch concurrently** - use Promise.all for performance
-5. **Type everything** - no implicit any in hooks
-6. **Document query requirements** - help future developers
-7. **Test prefetching** - verify prerender completes
-8. **Monitor query performance** - track prefetch times
+**NEVER** use conditional rendering for loading states (ID: NO_CONDITIONAL_LOADING)
+
+## Type Definitions
+
+**ALWAYS** define proper types for query results (ID: TYPE_QUERY_RESULTS)
+
+```typescript
+import { UseQueryResult } from '@tanstack/react-query';
+import { MarkdownDocument, Post } from '@/types';
+
+type MarkdownQuery = UseQueryResult<MarkdownDocument>;
+type PostsQuery = UseQueryResult<Post[]>;
+
+export interface HomeViewProps {
+  queries: [MarkdownQuery, PostsQuery];
+}
+```
+
+## Data Fetching Services
+
+**ALWAYS** create service classes for data fetching logic (ID: SERVICE_CLASSES)
+
+**ALWAYS** keep hooks thin - delegate to services (ID: THIN_HOOKS)
+
+```typescript
+// services/Posts.ts
+export default class PostsService {
+  async fetchPosts(): Promise<Post[]> {
+    const response = await fetch('/content/posts.json');
+    return response.json();
+  }
+}
+
+// hooks/usePosts.ts
+export async function getPosts() {
+  return new PostsService().fetchPosts();
+}
+```
+
+## Prefetching Requirements
+
+**ALWAYS** prefetch every query used in a route during prerender (ID: PREFETCH_ALL)
+
+**ALWAYS** add new queries to `scripts/lib/pages.ts` page configuration (ID: ADD_TO_PAGES)
+
+**NEVER** add a useQuery hook without adding corresponding prefetch (ID: NO_UNPREFETCHED_HOOKS)
+
+## Error Handling
+
+If data validation fails on server, throw descriptive errors with queryKey information. This helps debug prefetch mismatches during prerender.
+
+## Examples
+
+### Dynamic Route Hook
+
+```typescript
+export function usePost(id: string): UseQueryResult<Post, Error> {
+  const queryClient = useQueryClient();
+  const queryKey = ['post', id];
+
+  if (getJavascriptEnvironment() === 'server') {
+    const data = queryClient.getQueryData(queryKey) as Post;
+    if (!isPost(data)) {
+      throw new Error(`data from query prefetch ${queryKey} is not a Post.`);
+    }
+    return { data, promise: Promise.resolve(data) } as UseQueryResult<Post, Error>;
+  }
+
+  return useQuery({
+    queryKey,
+    queryFn: () => getPost(id)
+  });
+}
+```
