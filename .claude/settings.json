@@ -1,0 +1,99 @@
+{
+  "permissionMode": "default",
+  "rules": [
+    {
+      "tool": "Read",
+      "pattern": "**/*.{ts,tsx,js,jsx,json,md,css}",
+      "allow": true
+    },
+    {
+      "tool": "Read",
+      "pattern": ".env*",
+      "deny": true
+    },
+    {
+      "tool": "Read",
+      "pattern": "node_modules/**",
+      "deny": true
+    },
+    {
+      "tool": "Write",
+      "pattern": "src/**/*.{ts,tsx}",
+      "allow": true
+    },
+    {
+      "tool": "Write",
+      "pattern": "apps/web/src/**/*.{ts,tsx,css}",
+      "allow": true
+    },
+    {
+      "tool": "Write",
+      "pattern": "packages/*/src/**/*.{ts,tsx,css}",
+      "allow": true
+    },
+    {
+      "tool": "Write",
+      "pattern": "scripts/**/*.{ts,tsx}",
+      "allow": true
+    },
+    {
+      "tool": "Write",
+      "pattern": ".claude/**",
+      "allow": true
+    },
+    {
+      "tool": "Write",
+      "pattern": "node_modules/**",
+      "deny": true
+    },
+    {
+      "tool": "Write",
+      "pattern": ".env*",
+      "deny": true
+    },
+    {
+      "tool": "Bash",
+      "pattern": "bun *",
+      "allow": true
+    },
+    {
+      "tool": "Bash",
+      "pattern": "npm *",
+      "allow": true
+    },
+    {
+      "tool": "Bash",
+      "pattern": "git *",
+      "allow": true
+    },
+    {
+      "tool": "Bash",
+      "pattern": "rm -rf *",
+      "deny": true
+    },
+    {
+      "tool": "Bash",
+      "pattern": "sudo *",
+      "deny": true
+    }
+  ],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write(src/**/*.{ts,tsx})",
+        "type": "command",
+        "command": "echo 'Validating TypeScript before write...'",
+        "timeout": 5000
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write(src/**/*.{ts,tsx})",
+        "type": "command",
+        "command": "bun run lint --fix $FILE 2>/dev/null || true",
+        "timeout": 10000,
+        "async": true
+      }
+    ]
+  }
+}
