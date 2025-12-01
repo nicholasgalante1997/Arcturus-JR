@@ -2,6 +2,7 @@ import type {
   QueryFnName,
   SerializablePrefetchQueryOptions,
 } from "../static/prefetch-query";
+import type { ArcVersion } from "../version";
 
 export enum ArcPageEnum {
   /** ARC v1 */
@@ -14,6 +15,7 @@ export enum ArcPageEnum {
   CIPHER = "Cipher",
 
   /** ARC v2 */
+  v2_HOME = "v2_Home"
 }
 
 export const ArcBrowserRuntimeRoutesEnum = {
@@ -24,6 +26,8 @@ export const ArcBrowserRuntimeRoutesEnum = {
   [ArcPageEnum.POST]: "/post/:id",
   [ArcPageEnum.CIPHERS]: "/ee/ciphers",
   [ArcPageEnum.CIPHER]: "/ee/cipher/:id",
+  
+  [ArcPageEnum.v2_HOME]: "/v2"
 } as const;
 
 export type ArcBrowserRuntimeRoutes = typeof ArcBrowserRuntimeRoutesEnum;
@@ -37,6 +41,8 @@ export enum ArcPrerenderStaticRouteEnum {
   POSTS = "https://nickgalante.tech/posts",
   ABOUT = "https://nickgalante.tech/about",
   CONTACT = "https://nickgalante.tech/contact",
+  
+  v2_HOME = "https://nickgalante.tech/v2"
 }
 
 export enum ArcPrerenderDynamicRouteEnum {
@@ -70,6 +76,7 @@ export type RouteConfiguration<
   };
 
   page: ArcPageEnum;
+  version?: ArcVersion; 
   type: 'static' | 'dynamic';
   queries: SerializablePrefetchQueryOptions<
     PrefetchQueryOptionsFnName,

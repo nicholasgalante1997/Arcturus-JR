@@ -1,23 +1,32 @@
-header {
+header.v2-header {
   background-color: var(--surface-color);
-  padding: 1.2rem 0;
+  padding: 1.2rem 1rem;
   position: sticky;
   top: 0;
   z-index: 100;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--glass-border);
+
+  div.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .glass {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px var(--glass-shadow);
+  }
 }
 
-header a h1 {
-  margin: 0;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  margin-block: 0px;
-  line-height: 1;
-}
-
-header a {
+header.v2-header a {
   color: var(--primary-color);
   text-decoration: none;
   transition: opacity 0.2s ease;
@@ -29,16 +38,54 @@ header a {
   gap: 0;
 }
 
-header a div#nav-profile-image {
+header.v2-header a#header-logo img {
   display: inline-block;
   box-sizing: border-box;
   margin-right: 0.5rem;
   padding: 0;
-  height: 50px;
-  width: 50px;
-  border-radius: 25px;
-  border: 1px solid white;
+  height: 64px;
+  width: auto;
+  object-fit: cover;
+  object-position: center;
+  border-image: linear-gradient(
+      to bottom right,
+      var(--void-color-brand-rose),
+      var(--void-color-brand-orange),
+      var(--void-color-brand-amber),
+      var(--void-color-brand-azure),
+      var(--void-color-brand-violet)
+    )
+    1;
+  border-width: 1.5px;
+  border-style: solid;
   overflow: hidden;
+}
+
+header a#header-logo h1 {
+  background: -webkit-linear-gradient(
+    to bottom right,
+    var(--void-color-brand-rose),
+    var(--void-color-brand-orange),
+    var(--void-color-brand-amber),
+    var(--void-color-brand-azure),
+    var(--void-color-brand-violet)
+  );
+  background: linear-gradient(
+    to bottom right,
+    var(--void-color-brand-rose),
+    var(--void-color-brand-orange),
+    var(--void-color-brand-amber),
+    var(--void-color-brand-azure),
+    var(--void-color-brand-violet)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-block: 0px;
+  line-height: 1;
+  font-size: 2rem;
 }
 
 header a:hover {
@@ -53,7 +100,7 @@ header nav ul {
 }
 
 header nav a {
-  color: var(--text-color);
+  color: #fff;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
@@ -74,8 +121,27 @@ header nav a::after {
 
 header nav a:hover,
 header nav a[data-active-tab='active'] {
-  color: var(--primary-color);
+  background: -webkit-linear-gradient(
+    to bottom right,
+    var(--void-color-brand-rose),
+    var(--void-color-brand-orange),
+    var(--void-color-brand-amber),
+    var(--void-color-brand-azure),
+    var(--void-color-brand-violet)
+  );
+  background: linear-gradient(
+    to bottom right,
+    var(--void-color-brand-rose),
+    var(--void-color-brand-orange),
+    var(--void-color-brand-amber),
+    var(--void-color-brand-azure),
+    var(--void-color-brand-violet)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: white;
 }
 
 header nav a:hover::after,
@@ -83,10 +149,19 @@ header nav a.active::after {
   width: 100%;
 }
 
+header div.external-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--void-spacing-6);
+}
+
+/** Desktops (All Sizes) */
 @media (min-width: 768px) {
   header .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
   }
 
@@ -95,6 +170,7 @@ header nav a.active::after {
   }
 }
 
+/** Large Mobile Screens or Small Tablets */
 @media (max-width: 768px) {
   header {
     padding: 1rem 0;
@@ -117,6 +193,7 @@ header nav a.active::after {
   }
 }
 
+/** Mobile Screens */
 @media (max-width: 480px) {
   header {
     padding: 0.8rem 0;

@@ -6,8 +6,29 @@ import {
   ArcPrerenderDynamicRouteEnum,
   ArcBrowserRuntimeRoutesEnum,
   BASE_V1_CSS,
+  BASE_V2_CSS,
   VOID_V1_THEME_CSS,
 } from "@arcjr/types";
+
+export const V2_HomePageRouteConfiguration: Readonly<
+  RouteConfiguration<"getPosts", {}>
+> = {
+  page: ArcPageEnum.v2_HOME,
+  type: "static",
+  path: {
+    [RouteConfigurationPathKeysEnum.Browser]: ArcBrowserRuntimeRoutesEnum.v2_Home,
+    [RouteConfigurationPathKeysEnum.Static]: ArcPrerenderStaticRouteEnum.v2_HOME,
+  },
+  index: true,
+  styles: [...BASE_V2_CSS],
+  queries: [
+    {
+      queryKey: ["posts"],
+      queryFnName: "getPosts",
+      queryFnParams: {},
+    },
+  ],
+} as const;
 
 export const V1_HomePageRouteConfiguration: Readonly<
   RouteConfiguration<"getPosts" | "getMarkdown", "/content/home.md" | {}>
