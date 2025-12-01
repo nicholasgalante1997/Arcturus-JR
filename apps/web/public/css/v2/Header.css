@@ -6,7 +6,9 @@ header.v2-header {
   z-index: 100;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--glass-border);
+  border-image: var(--glass-border) 1;
+  border-width: 0 0 1.25px 0;
+  border-style: solid;
 
   div.container {
     width: 90%;

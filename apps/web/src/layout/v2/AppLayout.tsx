@@ -17,7 +17,7 @@ function AppLayoutV2({ children }: LayoutProps) {
       )}
     >
       <V2Header />
-      <main id="app" className="container">
+      <main id="app-v2" className="container">
         {children}
       </main>
       {/* <Footer /> */}

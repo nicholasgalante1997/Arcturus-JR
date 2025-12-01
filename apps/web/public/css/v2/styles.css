@@ -1,0 +1,35 @@
+@import './Header.css';
+@import './HeroWidget.css';
+@import './Home.css';
+
+body {
+  --surface-color: rgba(24, 24, 24, 0.7);
+  --text-color: #e0e0e0;
+  --muted-text: #a0a0a0;
+  --card-bg: rgba(40, 40, 45, 0.6);
+  --glass-border: linear-gradient(
+    to bottom right,
+    var(--void-color-brand-rose) 40%,
+    var(--void-color-brand-azure),
+    var(--void-color-brand-violet)
+  );
+  --glass-shadow: rgba(0, 0, 0, 0.15);
+  --font-main: 'Nunito Sans', system-ui, -apple-system, sans-serif;
+  --muted-text: #cccccc;
+  --spacing-unit: 8px;
+}
+
+main#app-v2 {
+  min-height: calc(100vh - 160px);
+  padding: 3rem 0;
+}
+
+/** Common Layout for v2 Page Wrappers */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
