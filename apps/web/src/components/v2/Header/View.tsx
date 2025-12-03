@@ -2,63 +2,77 @@ import { ExternalLinksConfig } from '@arcjr/config';
 import React from 'react';
 import { Link } from 'react-router';
 
-import { ARCJR_TABS, getActiveTabByPathname } from '@/components/Header/View';
 import { pipeline } from '@/utils/pipeline';
+
+export enum ARCJR_V2_TABS {
+  HOME = '/v2',
+  POSTS = '/v2/post',
+  ABOUT = '/v2/about',
+  CONTACT = '/v2/contact'
+}
+
+export function getActiveTabByPathname(tab: string) {
+  if (typeof window === 'undefined') return 'default' as const;
+  const url = new URL(window.location.href);
+  const pathname = url.pathname;
+  if (tab === '/') {
+    if (pathname === '/v2' || pathname === '') return 'active' as const;
+    return 'default' as const;
+  }
+
+  return pathname.startsWith(tab) ? ('active' as const) : ('default' as const);
+}
 
 const LINKEDIN_HREF = ExternalLinksConfig.ExternalLinkLinkedIn;
 const GITHUB_HREF = ExternalLinksConfig.ExternalLinkGithub;
 
 function V2HeaderView() {
   return (
-    <header>
+    <header className="v2-header">
       <div className="container">
-        <Link to="/">
-          <div id="nav-profile-image">
-            <img
-              src="/assets/doodles-ember.avif"
-              alt="Profile Image"
-              height="50"
-              width="50"
-              style={{ objectFit: 'contain', objectPosition: 'center', aspectRatio: 1 }}
-            />
-          </div>
+        <Link id="header-logo" to="/v2">
+          <img
+            src="/assets/founder.webp"
+            alt="Profile Image"
+            height="64"
+            width="auto"
+            style={{ objectFit: 'contain', objectPosition: 'center', aspectRatio: '4/3' }}
+          />
 
-          <h1>nickgalante</h1>
+          <h1>Arcturus</h1>
         </Link>
         <nav>
           <ul>
             <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.HOME)} to="/">
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.HOME)} to="/v2">
                 Home
               </Link>
             </li>
             <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.POSTS)} to="/posts">
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.POSTS)} to="/v2/posts">
                 Posts
               </Link>
             </li>
             <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.ABOUT)} to="/about">
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.ABOUT)} to="/v2/about">
                 About
               </Link>
             </li>
             <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.CONTACT)} to="/contact">
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.CONTACT)} to="/v2/contact">
                 Contact
-              </Link>
-            </li>
-            <li>
-              <Link target="_blank" to={GITHUB_HREF} id="gh-icon-link">
-                <img height="24px" width="auto" src="/assets/icons/github-mark-white.svg" />
-              </Link>
-            </li>
-            <li>
-              <Link target="_blank" to={LINKEDIN_HREF} id="in-icon-link">
-                <img height="24px" width="auto" src="/assets/icons/InBug-White.png" />
               </Link>
             </li>
           </ul>
         </nav>
+        <div className="external-links">
+          <Link target="_blank" to={GITHUB_HREF} id="gh-icon-link">
+            <img height="24px" width="auto" src="/assets/icons/github-mark-white.svg" />
+          </Link>
+          <Link target="_blank" to={LINKEDIN_HREF} id="in-icon-link">
+            <img height="24px" width="auto" src="/assets/icons/InBug-White.png" />
+          </Link>
+        </div>
       </div>
     </header>
   );
