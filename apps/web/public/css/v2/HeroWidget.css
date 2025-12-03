@@ -6,9 +6,38 @@ section.arc-v2__home-hero-widget {
   padding: 0;
   margin: 0;
   margin-top: 4rem;
+  color: white;
 
-  > h1 {
+  > h1.arc-v2__home-hero-widget-title {
     font-weight: 800;
     font-size: 4.25rem;
+    background: linear-gradient(
+      to bottom right,
+      var(--void-color-brand-rose),
+      var(--void-color-brand-orange),
+      var(--void-color-brand-amber)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    > small#version {
+      -webkit-text-fill-color: var(--void-color-brand-amber);
+      text-decoration: none !important;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-left: var(--void-spacing-2);
+    }
+  }
+
+  > p > small > i {
+    font-size: 0.875rem;
+  }
+
+  > p.arc-v2__home-hero-widget-subtitle {
+    box-sizing: border-box;
+    margin: 0;
+    margin-top: var(--void-spacing-8);
+    font-weight: 700;
+    font-size: 1rem;
   }
 }

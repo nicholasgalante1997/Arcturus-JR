@@ -1,6 +1,6 @@
 @import './Header.css';
-@import './HeroWidget.css';
 @import './Home.css';
+@import './PostsGrid.css';
 
 body {
   --surface-color: rgba(24, 24, 24, 0.7);

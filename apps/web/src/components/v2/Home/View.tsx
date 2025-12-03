@@ -1,7 +1,9 @@
-import { memo } from 'react';
+import React, { memo } from 'react';
 
 import { pipeline } from '@/utils/pipeline';
 import { withProfiler } from '@/utils/profiler';
+
+import { V2PostsGrid } from '../PostGrid';
 
 import { V2HeroWidget } from './components/HeroWidget';
 
@@ -9,6 +11,7 @@ function V2HomePageView() {
   return (
     <section className="container home-page">
       <V2HeroWidget />
+      <V2PostsGrid />
     </section>
   );
 }
