@@ -61,7 +61,6 @@ export default defineConfig([
       '@typescript-eslint/no-empty-object-type': 'warn'
     }
   },
-  { files: ['**/*.json'], plugins: { json }, language: 'json/json', extends: ['json/recommended'] },
   {
     files: ['**/*.md'],
     plugins: { markdown },

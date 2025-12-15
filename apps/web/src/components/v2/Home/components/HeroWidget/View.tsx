@@ -1,22 +1,22 @@
-const heroText = {
-  title: 'Project Arcturus',
-  version: 'v2',
-  subtitle: `This is a space I've created to share thoughts, opinions, technical essays, instructional guides, tirades, and anything that doesn't fit into a stricter category above.`
-};
+import type { HeroWidgetViewProps } from './types';
 
-function V2HeroWidgetView() {
+function V2HeroWidgetView({ copy }: HeroWidgetViewProps) {
   return (
     <section className="arc-v2__home-hero-widget flex flex-col justify-center items-center">
       <h1 className="arc-v2__home-hero-widget-title">
-        {heroText.title}
-        <small id="version">{heroText.version}</small>
+        {copy.title}
+        <small id="version">{copy.version}</small>
       </h1>
       <p>
-        <b>A Blog By Nick Galante</b>
+        <b>{copy.author}</b>
       </p>
 
-      <p><small><i>This is the <s>first</s> second iteration of Arcturus</i></small></p>
-      <p className="arc-v2__home-hero-widget-subtitle">{heroText.subtitle}</p>
+      <p>
+        <small>
+          <i>{copy.iteration}</i>
+        </small>
+      </p>
+      <p className="arc-v2__home-hero-widget-subtitle">{copy.subtitle}</p>
     </section>
   );
 }

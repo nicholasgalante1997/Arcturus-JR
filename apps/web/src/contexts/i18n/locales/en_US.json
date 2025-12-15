@@ -1,0 +1,10 @@
+{
+  "resources": {
+    "home.hero.display.name": "Project Arcturus",
+    "home.hero.display.version": "v2",
+    "home.hero.display.author": "A Blog By Nick Galante",
+    "home.hero.display.subtitle": "This is a space I've created to share thoughts, opinions, technical essays, instructional guides, tirades, and anything that doesn't fit into a stricter category above.",
+    "home.hero.display.action": "View Posts",
+    "home.hero.display.iteration-text": "This is the <s>first</s> second iteration of Arcturus"
+  }
+}

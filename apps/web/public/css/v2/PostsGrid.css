@@ -1,6 +1,30 @@
+h2.arc-v2__post-grid-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: var(--void-spacing-8);
+  background: -webkit-linear-gradient(
+    to bottom right,
+    var(--void-color-brand-rose),
+    var(--void-color-brand-orange),
+    var(--void-color-brand-amber),
+    var(--void-color-brand-azure),
+    var(--void-color-brand-violet)
+  );
+  background: linear-gradient(
+    to bottom right,
+    var(--void-color-brand-rose),
+    var(--void-color-brand-orange),
+    var(--void-color-brand-amber),
+    var(--void-color-brand-azure),
+    var(--void-color-brand-violet)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 section.arc-v2__post-grid {
   box-sizing: border-box;
-  margin-top: var(--void-spacing-8);
   padding: 0;
   display: flex;
   flex-direction: row;
