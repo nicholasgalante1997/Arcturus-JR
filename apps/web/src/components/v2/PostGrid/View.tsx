@@ -20,27 +20,30 @@ function V2PostGridView({ queries }: V2PostGridViewProps) {
   console.log('Posts', posts);
 
   return (
-    <section className="arc-v2__post-grid">
-      {posts.map((post) => (
-        <Card
-          key={post.id}
-          header={getCardHeader(post.title)}
-          footer={getCardFooter(`/v2/post/${post.slug}`, navigate, post.date)}
-        >
-          <p className="void-card-post-excerpt">{post.excerpt}</p>
+    <React.Fragment>
+      <h2 className="arc-v2__post-grid-title">Recent Posts</h2>
+      <section className="arc-v2__post-grid">
+        {posts.map((post) => (
+          <Card
+            key={post.id}
+            header={getCardHeader(post.title)}
+            footer={getCardFooter(`/v2/post/${post.slug}`, navigate, post.date)}
+          >
+            <p className="void-card-post-excerpt">{post.excerpt}</p>
 
-          {FF.SHOW_TAGS && (
-            <span className="void-card-post-tags">
-              {post.tags.slice(0, 3).map((tag) => (
-                <Badge key={post.title + '_' + tag} variant="error">
-                  {tag}
-                </Badge>
-              ))}
-            </span>
-          )}
-        </Card>
-      ))}
-    </section>
+            {FF.SHOW_TAGS && (
+              <span className="void-card-post-tags">
+                {post.tags.slice(0, 3).map((tag) => (
+                  <Badge key={post.title + '_' + tag} variant="error">
+                    {tag}
+                  </Badge>
+                ))}
+              </span>
+            )}
+          </Card>
+        ))}
+      </section>
+    </React.Fragment>
   );
 }
 
