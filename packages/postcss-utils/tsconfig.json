@@ -16,11 +16,17 @@
         "typeRoots": [
             "node_modules/@types",
             "../../node_modules/@types"
-        ]
+        ],
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "sourceMap": true,
+        "listEmittedFiles": true
     },
     "include": [
+        "bin/index.js",
         "build.ts",
-        "config.ts",
+        "lib/**/*",
+        "__tests__/**/*"
     ],
     "exclude": [
         "node_modules",

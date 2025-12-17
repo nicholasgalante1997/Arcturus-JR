@@ -1,0 +1,58 @@
+{
+  "name": "@arcjr/postcss-utils",
+  "version": "1.0.0",
+  "description": "Common utilities for working with postcss",
+  "type": "module",
+  "module": "./dist/postcss.js",
+  "types": "./dist/lib/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/postcss.js",
+      "types": "./dist/lib/index.d.ts",
+      "default": "./dist/postcss.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "keywords": [
+    "postcss"
+  ],
+  "author": "Nick Galante",
+  "license": "MIT",
+  "engines": {
+    "bun": ">=1.3.3",
+    "node": ">=24"
+  },
+  "packageManager": "bun@1.3.3",
+  "scripts": {
+    "bundle": "bun run build.ts",
+    "bundle:watch": "bun run build.ts --watch",
+    "build": "run-p bundle check-types",
+    "check-types": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "commander": "^14.0.2"
+  },
+  "peerDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.0.6",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/bun": "latest",
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.0.6",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^4.1.18",
+    "typescript": "latest"
+  }
+}
