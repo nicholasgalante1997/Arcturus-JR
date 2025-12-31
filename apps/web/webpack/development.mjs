@@ -14,7 +14,7 @@ import WebpackCommonConfig from './common.mjs';
  */
 const dev = {
   mode: 'development',
-  entry: path.resolve(process.cwd(), 'src', 'main.tsx'),
+  entry: path.resolve(process.cwd(), 'src', 'dev', 'bootstrap.ts'),
   devServer: {
     hot: true,
     historyApiFallback: true,
@@ -71,7 +71,12 @@ const dev = {
             options: swc_dev
           }
         ]
-      }
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader", "postcss-loader"],
+      },
+
     ]
   },
   plugins: [

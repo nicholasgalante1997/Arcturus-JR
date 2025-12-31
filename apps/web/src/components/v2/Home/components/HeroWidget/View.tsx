@@ -6,7 +6,7 @@ const heroText = {
 
 function V2HeroWidgetView() {
   return (
-    <section className="arc-v2__home-hero-widget flex flex-col justify-center items-center">
+    <section className="arc-v2__home-hero-widget">
       <h1 className="arc-v2__home-hero-widget-title">
         {heroText.title}
         <small id="version">{heroText.version}</small>

@@ -11,13 +11,28 @@
     "package.json"
   ],
   "exports": {
-    "./": "",
+    "./postcss-config": "./postcss.config.mjs",
+    "./postcss.config.mjs": "./postcss.config.mjs",
+    "./postcss.config.js": "./postcss.config.mjs",
+    "./void": "./dist/void.min.css",
+    "./void.css": "./dist/void.min.css",
+    "./void-raw": "./css/void.css",
+    "./void-raw.css": "./css/void.css",
+    "./void-reset": "./dist/void-reset.min.css",
+    "./void-reset.css": "./dist/void-reset.min.css",
+    "./void-reset-raw": "./css/void-reset.css",
+    "./void-reset-raw.css": "./css/void-reset.css",
+    "./void-tailwind": "./dist/void-tailwind.min.css",
+    "./void-tailwind.css": "./dist/void-tailwind.min.css",
+    "./void-tailwind-raw": "./css/void-tailwind.css",
+    "./void-tailwind-raw.css": "./css/void-tailwind.css",
+    "./css.min/*": "./dist/*",
     "./css/*": "./css/*",
     "./package.json": "./package.json"
   },
   "scripts": {
     "build": "bun run postcss:void",
-    "postcss:void": "postcss ./css --dir dist/css --ext .min.css",
+    "postcss:void": "postcss ./css --dir dist --base ./css --ext .min.css",
     "serve:css": "bunx http-server ./css -p 8080 --open"
   },
   "peerDependencies": {

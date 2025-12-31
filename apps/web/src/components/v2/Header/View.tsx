@@ -34,9 +34,14 @@ function V2HeaderView() {
           <img
             src="/assets/founder.webp"
             alt="Profile Image"
-            height="64"
-            width="auto"
-            style={{ objectFit: 'contain', objectPosition: 'center', aspectRatio: '4/3' }}
+            style={{
+              objectFit: 'contain',
+              objectPosition: 'center',
+              aspectRatio: '4/3',
+              height: '64px',
+              width: 'auto',
+              overflow: 'hidden'
+            }}
           />
 
           <h1>Arcturus</h1>
@@ -66,10 +71,10 @@ function V2HeaderView() {
           </ul>
         </nav>
         <div className="external-links">
-          <Link target="_blank" to={GITHUB_HREF} id="gh-icon-link">
+          <Link className="external-icon-link" target="_blank" to={GITHUB_HREF} id="gh-icon-link">
             <img height="24px" width="auto" src="/assets/icons/github-mark-white.svg" />
           </Link>
-          <Link target="_blank" to={LINKEDIN_HREF} id="in-icon-link">
+          <Link className="external-icon-link" target="_blank" to={LINKEDIN_HREF} id="in-icon-link">
             <img height="24px" width="auto" src="/assets/icons/InBug-White.png" />
           </Link>
         </div>

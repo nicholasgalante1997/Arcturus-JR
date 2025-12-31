@@ -17,6 +17,10 @@ header.v2-header {
     padding: 0 16px;
     box-sizing: border-box;
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
   }
 
   .glass {
@@ -88,6 +92,9 @@ header a#header-logo h1 {
   margin-block: 0px;
   line-height: 1;
   font-size: 2rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-decoration: none;
 }
 
 header a:hover {
@@ -99,6 +106,12 @@ header nav ul {
   display: flex;
   gap: 2rem;
   margin-top: 0.5rem;
+  margin-block: 0px;
+
+  li {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 header nav a {
@@ -157,6 +170,14 @@ header div.external-links {
   justify-content: flex-end;
   align-items: center;
   gap: var(--void-spacing-6);
+
+  > a.external-icon-link img {
+    height: 24px;
+    width: 24px;
+    overflow: hidden;
+    object-fit: contain;
+    object-position: center;
+  }
 }
 
 /** Desktops (All Sizes) */

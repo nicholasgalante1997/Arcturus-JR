@@ -16,6 +16,9 @@
     },
     "./package.json": "./package.json"
   },
+  "bin": {
+    "x-postcss": "./bin/index.js"
+  },
   "keywords": [
     "postcss"
   ],
@@ -34,7 +37,8 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "commander": "^14.0.2"
+    "commander": "^14.0.2",
+    "picocolors": "^1.1.1"
   },
   "peerDependencies": {
     "@tailwindcss/postcss": "^4.1.18",

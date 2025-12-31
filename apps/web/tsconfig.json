@@ -31,7 +31,7 @@
       "@/*": ["./src/*"],
       "@public/*": ["./public/*"]
     },
-    "typeRoots": ["node_modules/@types", "src/__tests__", ".storybook/types", "../../node_modules/@types"]
+    "typeRoots": ["node_modules/@types", "src/__tests__", ".storybook/types", "../../node_modules/@types", "./src/types/globals"]
   },
   "include": ["./.cipher/**/*.ts", "./scripts/**/*", "src/**/*", "webpack/**/*"],
   "exclude": ["node_modules", "dist"]

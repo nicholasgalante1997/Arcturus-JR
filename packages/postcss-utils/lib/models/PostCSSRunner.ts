@@ -65,7 +65,7 @@ class PostCSSRunnerShellBuilder {
     const sanitizedInput = validateShellPath(this.input);
     const sanitizedOutput = validateShellPath(this.output.file || this.output.dir!);
 
-    const run = () => Bun.$`postcss ${sanitizedInput} ${this.output.file ? `-o ${sanitizedOutput}` : `--dir ${sanitizedInput}`} ${(this.output.dir && this.output.dir_BaseDir) ? `--base ${this.output.dir_BaseDir}` : ""} ${(this.output.dir && this.output.dir_FileExtension) ? `--ext ${this.output.dir_FileExtension}` : ""} ${this.verbose ? "-v" : ""}`
+    const run = () => Bun.$`postcss ${sanitizedInput} ${this.output.file ? `-o ${sanitizedOutput}` : `--dir ${sanitizedInput}`} ${(this.output.dir && this.output.dir_BaseDir) ? `--base ${this.output.dir_BaseDir}` : ""} ${(this.output.dir && this.output.dir_FileExtension) ? `--ext ${this.output.dir_FileExtension}` : ""} ${this.verbose ? "--verbose" : ""}`
 
     return run.bind(this);
   }
@@ -98,7 +98,7 @@ export default class PostCSSRunner {
       await Bun.$`postcss ${validatedInput} ${validatedOutput.endsWith(".css") ? `-o ${validatedOutput}` : `--dir ${validatedOutput}`}`;
     
     if (shresult.exitCode !== 0) {
-      throw new Error(shresult.text())
+      throw new Error(shresult.text("utf-8"))
     }
   }
 }
