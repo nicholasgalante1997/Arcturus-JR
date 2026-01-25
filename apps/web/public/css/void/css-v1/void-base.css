@@ -1,0 +1,148 @@
+/**
+ * Void Base Styles
+ * Foundation styles that build on the reset
+ */
+
+@import "./void-reset.css";
+
+:root {
+  /* Import all void tokens */
+  color-scheme: dark;
+}
+
+html {
+  font-family: var(--void-font-family-base);
+  font-size: 16px;
+  background-color: var(--void-color-base-black);
+  color: var(--void-color-base-white);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 1rem;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Scale */
+h1 {
+  font-size: var(--void-font-size-4xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--void-font-size-3xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: var(--void-font-size-2xl);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: var(--void-font-size-xl);
+  font-weight: 600;
+}
+
+h5 {
+  font-size: var(--void-font-size-lg);
+  font-weight: 600;
+}
+
+h6 {
+  font-size: var(--void-font-size-md);
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+/* Links */
+a {
+  color: var(--void-color-brand-azure);
+  text-decoration: none;
+  transition: color var(--void-transition-duration-fast) var(--void-transition-easing-ease);
+}
+
+a:hover {
+  color: var(--void-color-brand-violet);
+  text-decoration: underline;
+}
+
+/* Code */
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--void-font-family-mono);
+  font-size: 0.875em;
+}
+
+code {
+  background-color: var(--void-color-gray-800);
+  padding: 0.125em 0.375em;
+  border-radius: var(--void-border-radius-sm);
+}
+
+pre {
+  background-color: var(--void-color-gray-900);
+  padding: var(--void-spacing-4);
+  border-radius: var(--void-border-radius-md);
+  overflow-x: auto;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--void-color-brand-violet);
+  color: var(--void-color-base-white);
+}
+
+/* Focus */
+:focus-visible {
+  outline: var(--void-border-width-medium) solid var(--void-color-brand-violet);
+  outline-offset: 2px;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: var(--void-border-width-thin) solid var(--void-color-gray-700);
+  margin: var(--void-spacing-8) 0;
+}
+
+/* Blockquote */
+blockquote {
+  border-left: var(--void-border-width-thick) solid var(--void-color-brand-violet);
+  padding-left: var(--void-spacing-4);
+  margin: var(--void-spacing-4) 0;
+  font-style: italic;
+  color: var(--void-color-gray-300);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: var(--void-spacing-3) var(--void-spacing-4);
+  text-align: left;
+  border-bottom: var(--void-border-width-thin) solid var(--void-color-gray-700);
+}
+
+th {
+  font-weight: 600;
+  color: var(--void-color-gray-300);
+}

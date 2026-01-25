@@ -60,7 +60,7 @@ export const BASE_V1_CSS = [
   "/css/themes/sb.min.css",
 ] as const;
 
-export const BASE_V2_CSS = ["/css/v2.css"] as const;
+export const BASE_V2_CSS = ["/css/v2.min.css"] as const;
 
 export const VOID_V1_THEME_CSS = ["/css/themes/void/void.css"] as const;
 

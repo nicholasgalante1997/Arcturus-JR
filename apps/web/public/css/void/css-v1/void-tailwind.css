@@ -1,36 +1,18 @@
-/**
- * V2 CSS Entry Point
- * Combines Tailwind with Void design system
- */
-
-/* Tailwind base, components, utilities */
+/* Tailwind v4 CSS-first configuration */
 @import "tailwindcss";
 
-/* Void design tokens */
+/* Import void design tokens as CSS custom properties */
 @import "@arcjr/void-tokens/dist/css/void-tokens.css";
 
-/* Void CSS utilities */
-@import "@arcjr/void-css/void-raw";
-
-/* Void React components CSS */
-@import "@arcjr/void-components/void-react.css";
-
-/* Local v2 Style Sheets */
-@import "./v2/styles.css";
-
-/* Configure Tailwind theme with void tokens */
+/* Configure Tailwind theme using void tokens */
 @theme {
-  /* Map void tokens to Tailwind theme */
+  /* Colors - mapped from void tokens */
   --color-void-black: var(--void-color-base-black);
   --color-void-white: var(--void-color-base-white);
-
-  /* Gray scale */
-  --color-void-gray-50: var(--void-color-gray-50);
   --color-void-gray-100: var(--void-color-gray-100);
   --color-void-gray-200: var(--void-color-gray-200);
   --color-void-gray-300: var(--void-color-gray-300);
   --color-void-gray-400: var(--void-color-gray-400);
-  --color-void-gray-500: var(--void-color-gray-500);
   --color-void-gray-600: var(--void-color-gray-600);
   --color-void-gray-700: var(--void-color-gray-700);
   --color-void-gray-800: var(--void-color-gray-800);
@@ -40,22 +22,43 @@
   /* Brand colors */
   --color-void-violet: var(--void-color-brand-violet);
   --color-void-azure: var(--void-color-brand-azure);
-  --color-void-cyan: var(--void-color-brand-cyan);
   --color-void-rose: var(--void-color-brand-rose);
   --color-void-amber: var(--void-color-brand-amber);
+  --color-void-orange: var(--void-color-brand-orange);
 
   /* Semantic colors */
+  --color-void-primary: var(--void-color-semantic-primary);
+  --color-void-secondary: var(--void-color-semantic-secondary);
+  --color-void-accent: var(--void-color-semantic-accent);
   --color-void-success: var(--void-color-semantic-success);
   --color-void-warning: var(--void-color-semantic-warning);
-  --color-void-error: var(--void-color-semantic-error);
-  --color-void-info: var(--void-color-semantic-info);
+  --color-void-danger: var(--void-color-semantic-danger);
+
+  /* Background colors */
+  --color-void-bg-base: var(--void-color-background-base);
+  --color-void-bg-elevated: var(--void-color-background-elevated);
+  --color-void-bg-surface: var(--void-color-background-surface);
+  --color-void-bg-overlay: var(--void-color-background-overlay);
+
+  /* Text colors */
+  --color-void-text-primary: var(--void-color-text-primary);
+  --color-void-text-secondary: var(--void-color-text-secondary);
+  --color-void-text-tertiary: var(--void-color-text-tertiary);
+  --color-void-text-disabled: var(--void-color-text-disabled);
+  --color-void-text-heading: var(--void-color-text-heading);
+
+  /* Border colors */
+  --color-void-border-default: var(--void-color-border-default);
+  --color-void-border-subtle: var(--void-color-border-subtle);
+  --color-void-border-primary: var(--void-color-border-primary);
 
   /* Typography */
   --font-family-base: var(--void-font-family-base);
   --font-family-mono: var(--void-font-family-mono);
-  --font-family-display: var(--void-font-family-display);
 
-  /* Spacing */
+  /* Spacing scale (extends Tailwind defaults) */
+  --spacing-px: 1px;
+  --spacing-0: 0;
   --spacing-1: var(--void-spacing-1);
   --spacing-2: var(--void-spacing-2);
   --spacing-3: var(--void-spacing-3);
@@ -64,10 +67,6 @@
   --spacing-6: var(--void-spacing-6);
   --spacing-8: var(--void-spacing-8);
   --spacing-10: var(--void-spacing-10);
-  --spacing-12: var(--void-spacing-12);
-  --spacing-16: var(--void-spacing-16);
-  --spacing-20: var(--void-spacing-20);
-  --spacing-24: var(--void-spacing-24);
 
   /* Border radius */
   --radius-sm: var(--void-border-radius-sm);
@@ -80,61 +79,32 @@
   --shadow-sm: var(--void-shadow-sm);
   --shadow-md: var(--void-shadow-md);
   --shadow-lg: var(--void-shadow-lg);
-  --shadow-xl: var(--void-shadow-xl);
+  --shadow-glow-primary: var(--void-shadow-glow-primary);
+  --shadow-glow-accent: var(--void-shadow-glow-accent);
 
-  /* Z-index scale */
-  --z-dropdown: 1000;
-  --z-sticky: 1020;
-  --z-fixed: 1030;
-  --z-modal-backdrop: 1040;
-  --z-modal: 1050;
-  --z-popover: 1060;
-  --z-tooltip: 1070;
+  /* Transitions */
+  --transition-fast: var(--void-transition-duration-fast);
+  --transition-normal: var(--void-transition-duration-base);
+  --transition-slow: var(--void-transition-duration-slow);
+  --ease-default: var(--void-transition-easing-ease);
 }
 
-/* V2-specific base layer overrides */
+/* Base layer customizations */
 @layer base {
   html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  body {
     font-family: var(--font-family-base);
     background-color: var(--color-void-black);
     color: var(--color-void-white);
   }
 
-  /* Ensure app container fills viewport */
-  #app-v2 {
-    min-height: calc(100vh - var(--header-height, 80px));
-  }
-}
-
-/* V2-specific component layer */
-@layer components {
-  /* Container utility matching void-container */
-  .container {
-    width: 100%;
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: var(--spacing-4);
-    padding-right: var(--spacing-4);
+  ::selection {
+    background-color: var(--color-void-violet);
+    color: var(--color-void-white);
   }
 
-  @media (min-width: 640px) {
-    .container {
-      padding-left: var(--spacing-6);
-      padding-right: var(--spacing-6);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .container {
-      padding-left: var(--spacing-8);
-      padding-right: var(--spacing-8);
-    }
+  /* Focus visible styles */
+  :focus-visible {
+    outline: 2px solid var(--color-void-violet);
+    outline-offset: 2px;
   }
 }
