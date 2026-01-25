@@ -1,110 +1,148 @@
 /**
- * Void Theme - A high-contrast dark theme
- * Built with a modular approach inspired by [Pico CSS](https://picocss.com)
- * Version: 1.0.0
+ * Void Base Styles
+ * Foundation styles that build on the reset
  */
 
-/**
- * Variables
- * Design tokens for the Void theme
- */
-:root,
-.void-theme {
-  /* Brand colors */
-  --void-amber: #ffbe0b;
-  --void-orange: #fb5607;
-  --void-rose: #ff006e;
-  --void-violet: #8338ec;
-  --void-azure: #3a86ff;
+@import "./void-reset.css";
 
-  /* Grayscale */
-  --void-black: #000000;
-  --void-gray-950: #0a0a0a;
-  --void-gray-900: #0f0f0f;
-  --void-gray-800: #1a1a1a;
-  --void-gray-700: #2a2a2a;
-  --void-gray-600: #3a3a3a;
-  --void-gray-400: #808080;
-  --void-gray-300: #a0a0a0;
-  --void-gray-200: #c0c0c0;
-  --void-gray-100: #e8e8e8;
-  --void-white: #ffffff;
-
-  /* Semantic colors */
-  --void-primary: var(--void-azure);
-  --void-secondary: var(--void-violet);
-  --void-accent: var(--void-rose);
-  --void-warning: var(--void-amber);
-  --void-danger: var(--void-orange);
-
-  /* Typography */
-  --void-font-family:
-    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, sans-serif;
-  --void-font-family-mono: "JetBrains Mono", "Courier New", Courier, monospace;
-  --void-font-size-base: 15px;
-  --void-font-weight-normal: 400;
-  --void-font-weight-medium: 500;
-  --void-font-weight-semibold: 600;
-  --void-font-weight-bold: 700;
-  --void-line-height-base: 1.6;
-  --void-line-height-heading: 1.2;
-
-  /* Spacing scale */
-  --void-spacing-0: 0;
-  --void-spacing-1: 0.25rem;
-  --void-spacing-2: 0.5rem;
-  --void-spacing-3: 0.75rem;
-  --void-spacing-4: 1rem;
-  --void-spacing-5: 1.5rem;
-  --void-spacing-6: 2rem;
-  --void-spacing-8: 3rem;
-  --void-spacing-10: 4rem;
-
-  /* Border radius */
-  --void-radius-sm: 0.25rem;
-  --void-radius-md: 0.375rem;
-  --void-radius-lg: 0.5rem;
-  --void-radius-xl: 0.75rem;
-
-  /* Transitions */
-  --void-transition-fast: 150ms ease-in-out;
-  --void-transition-base: 250ms ease-in-out;
-  --void-transition-slow: 350ms ease-in-out;
-
-  /* Shadows */
-  --void-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
-  --void-shadow-md:
-    0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-  --void-shadow-lg:
-    0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-  --void-shadow-glow-primary: 0 0 20px rgba(58, 134, 255, 0.3);
-  --void-shadow-glow-accent: 0 0 20px rgba(255, 0, 110, 0.3);
-}
-
-/**
- * Reset and Base Styles
- */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+:root {
+  /* Import all void tokens */
+  color-scheme: dark;
 }
 
 html {
-  font-size: var(--void-font-size-base);
-  line-height: var(--void-line-height-base);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  font-family: var(--void-font-family-base);
+  font-size: 16px;
+  background-color: var(--void-color-base-black);
+  color: var(--void-color-base-white);
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--void-font-family);
-  font-weight: var(--void-font-weight-normal);
-  color: var(--void-gray-100);
-  background-color: var(--void-black);
-  min-height: 100vh;
+  font-size: 1rem;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Scale */
+h1 {
+  font-size: var(--void-font-size-4xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--void-font-size-3xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: var(--void-font-size-2xl);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: var(--void-font-size-xl);
+  font-weight: 600;
+}
+
+h5 {
+  font-size: var(--void-font-size-lg);
+  font-weight: 600;
+}
+
+h6 {
+  font-size: var(--void-font-size-md);
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+/* Links */
+a {
+  color: var(--void-color-brand-azure);
+  text-decoration: none;
+  transition: color var(--void-transition-duration-fast) var(--void-transition-easing-ease);
+}
+
+a:hover {
+  color: var(--void-color-brand-violet);
+  text-decoration: underline;
+}
+
+/* Code */
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--void-font-family-mono);
+  font-size: 0.875em;
+}
+
+code {
+  background-color: var(--void-color-gray-800);
+  padding: 0.125em 0.375em;
+  border-radius: var(--void-border-radius-sm);
+}
+
+pre {
+  background-color: var(--void-color-gray-900);
+  padding: var(--void-spacing-4);
+  border-radius: var(--void-border-radius-md);
+  overflow-x: auto;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--void-color-brand-violet);
+  color: var(--void-color-base-white);
+}
+
+/* Focus */
+:focus-visible {
+  outline: var(--void-border-width-medium) solid var(--void-color-brand-violet);
+  outline-offset: 2px;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: var(--void-border-width-thin) solid var(--void-color-gray-700);
+  margin: var(--void-spacing-8) 0;
+}
+
+/* Blockquote */
+blockquote {
+  border-left: var(--void-border-width-thick) solid var(--void-color-brand-violet);
+  padding-left: var(--void-spacing-4);
+  margin: var(--void-spacing-4) 0;
+  font-style: italic;
+  color: var(--void-color-gray-300);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: var(--void-spacing-3) var(--void-spacing-4);
+  text-align: left;
+  border-bottom: var(--void-border-width-thin) solid var(--void-color-gray-700);
+}
+
+th {
+  font-weight: 600;
+  color: var(--void-color-gray-300);
 }

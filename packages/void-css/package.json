@@ -26,14 +26,19 @@
     "./void-tailwind.css": "./dist/void-tailwind.min.css",
     "./void-tailwind-raw": "./css/void-tailwind.css",
     "./void-tailwind-raw.css": "./css/void-tailwind.css",
+    "./tailwind-theme": "./css/void-tailwind.css",
+    "./tailwind-theme.css": "./css/void-tailwind.css",
     "./css.min/*": "./dist/*",
     "./css/*": "./css/*",
     "./package.json": "./package.json"
   },
   "scripts": {
-    "build": "bun run postcss:void",
-    "postcss:void": "postcss ./css --dir dist --base ./css --ext .min.css",
-    "serve:css": "bunx http-server ./css -p 8080 --open"
+    "prebuild": "bun run clean",
+    "build": "bun run postcss:all",
+    "postcss:all": "postcss ./css/*.css --dir dist --base ./css --ext .min.css",
+    "postcss:watch": "postcss ./css/*.css --dir dist --base ./css --ext .min.css --watch",
+    "clean": "rm -rf dist && mkdir -p dist",
+    "serve:css": "bunx http-server ./dist -p 8080 --open"
   },
   "peerDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
