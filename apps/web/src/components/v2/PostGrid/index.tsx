@@ -1,1 +1,1 @@
-export { default as V2PostsGrid } from "./Component";
+export { default as V2PostsGrid } from './Component';

@@ -15,7 +15,13 @@ function V2HeroWidgetView() {
         <b>A Blog By Nick Galante</b>
       </p>
 
-      <p><small><i>This is the <s>first</s> second iteration of Arcturus</i></small></p>
+      <p>
+        <small>
+          <i>
+            This is the <s>first</s> second iteration of Arcturus
+          </i>
+        </small>
+      </p>
       <p className="arc-v2__home-hero-widget-subtitle">{heroText.subtitle}</p>
     </section>
   );

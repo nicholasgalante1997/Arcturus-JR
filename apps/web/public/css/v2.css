@@ -17,6 +17,7 @@
 
 /* Local v2 Style Sheets */
 @import "./v2/styles.css";
+@import "./layout/v2-app-layout.css";
 
 /* Configure Tailwind theme with void tokens */
 @theme {
