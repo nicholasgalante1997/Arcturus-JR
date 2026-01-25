@@ -1,0 +1,102 @@
+.void-select-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--void-spacing-1);
+}
+
+.void-select-wrapper--full-width {
+  display: flex;
+  width: 100%;
+}
+
+.void-select__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--void-color-gray-300);
+}
+
+.void-select__container {
+  position: relative;
+  display: flex;
+}
+
+.void-select {
+  flex: 1;
+  appearance: none;
+  padding: var(--void-spacing-2) var(--void-spacing-10) var(--void-spacing-2)
+    var(--void-spacing-3);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--void-color-base-white);
+  background-color: var(--void-color-gray-900);
+  border: var(--void-border-width-thin) solid var(--void-color-gray-700);
+  border-radius: var(--void-border-radius-md);
+  cursor: pointer;
+  transition: border-color var(--void-transition-duration-fast)
+      var(--void-transition-easing-ease),
+    box-shadow var(--void-transition-duration-fast)
+      var(--void-transition-easing-ease);
+}
+
+.void-select:hover:not(:disabled) {
+  border-color: var(--void-color-gray-600);
+}
+
+.void-select:focus {
+  outline: none;
+  border-color: var(--void-color-brand-violet);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+}
+
+/* Sizes */
+.void-select--sm {
+  padding: var(--void-spacing-1) var(--void-spacing-8) var(--void-spacing-1)
+    var(--void-spacing-2);
+  font-size: 0.875rem;
+}
+
+.void-select--lg {
+  padding: var(--void-spacing-3) var(--void-spacing-12) var(--void-spacing-3)
+    var(--void-spacing-4);
+  font-size: 1.125rem;
+}
+
+/* Variants */
+.void-select--error {
+  border-color: var(--void-color-semantic-error);
+}
+
+.void-select--error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+}
+
+.void-select--success {
+  border-color: var(--void-color-semantic-success);
+}
+
+/* Disabled */
+.void-select--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Icon */
+.void-select__icon {
+  position: absolute;
+  right: var(--void-spacing-3);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--void-color-gray-400);
+  pointer-events: none;
+}
+
+/* Helper text */
+.void-select__helper {
+  font-size: 0.75rem;
+  color: var(--void-color-gray-500);
+}
+
+.void-select__helper--error {
+  color: var(--void-color-semantic-error);
+}
