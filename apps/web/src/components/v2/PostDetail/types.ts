@@ -1,5 +1,5 @@
-import type { UseQueryResult } from "@tanstack/react-query";
-import type { Post, PostWithMarkdown } from "@/types/Post";
+import type { Post, PostWithMarkdown } from '@/types/Post';
+import type { UseQueryResult } from '@tanstack/react-query';
 
 export interface V2PostDetailViewProps {
   queries: [PostQuery, RelatedPostsQuery];

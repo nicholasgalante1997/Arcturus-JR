@@ -1,1 +1,1 @@
-export { default as TimelineSectionView } from "./View";
+export { default as TimelineSectionView } from './View';

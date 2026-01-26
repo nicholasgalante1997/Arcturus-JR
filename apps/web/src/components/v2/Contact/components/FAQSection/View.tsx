@@ -1,31 +1,31 @@
-import clsx from "clsx";
-import { memo, useState } from "react";
+import clsx from 'clsx';
+import { memo, useState } from 'react';
 
-import { pipeline } from "@/utils/pipeline";
+import { pipeline } from '@/utils/pipeline';
 
-import type { FAQItem } from "../../types";
+import type { FAQItem } from '../../types';
 
 const FAQ_ITEMS: FAQItem[] = [
   {
-    question: "Are you available for freelance work?",
+    question: 'Are you available for freelance work?',
     answer:
-      "I selectively take on freelance projects that align with my expertise. Feel free to reach out with details about your project.",
+      'I selectively take on freelance projects that align with my expertise. Feel free to reach out with details about your project.'
   },
   {
-    question: "Do you do consulting?",
+    question: 'Do you do consulting?',
     answer:
-      "Yes, I offer consulting services for architecture reviews, performance optimization, and technical strategy. Let's discuss your needs.",
+      "Yes, I offer consulting services for architecture reviews, performance optimization, and technical strategy. Let's discuss your needs."
   },
   {
-    question: "Can I use your code examples?",
+    question: 'Can I use your code examples?',
     answer:
-      "All code examples on this blog are available under the MIT license unless otherwise noted. Attribution is appreciated but not required.",
+      'All code examples on this blog are available under the MIT license unless otherwise noted. Attribution is appreciated but not required.'
   },
   {
-    question: "How can I support your work?",
+    question: 'How can I support your work?',
     answer:
-      "The best way to support is by sharing articles you find helpful, providing feedback, or connecting with me on social media.",
-  },
+      'The best way to support is by sharing articles you find helpful, providing feedback, or connecting with me on social media.'
+  }
 ];
 
 function FAQSectionView() {
@@ -45,10 +45,7 @@ function FAQSectionView() {
         {FAQ_ITEMS.map((item, index) => (
           <div
             key={index}
-            className={clsx(
-              "v2-contact-faq__item",
-              openIndex === index && "v2-contact-faq__item--open"
-            )}
+            className={clsx('v2-contact-faq__item', openIndex === index && 'v2-contact-faq__item--open')}
           >
             <button
               type="button"
@@ -58,13 +55,7 @@ function FAQSectionView() {
               aria-controls={`faq-answer-${index}`}
             >
               {item.question}
-              <svg
-                className="v2-contact-faq__icon"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
+              <svg className="v2-contact-faq__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path
                   d="M5 7.5l5 5 5-5"
                   stroke="currentColor"
@@ -74,11 +65,7 @@ function FAQSectionView() {
                 />
               </svg>
             </button>
-            <div
-              id={`faq-answer-${index}`}
-              className="v2-contact-faq__answer"
-              hidden={openIndex !== index}
-            >
+            <div id={`faq-answer-${index}`} className="v2-contact-faq__answer" hidden={openIndex !== index}>
               <p>{item.answer}</p>
             </div>
           </div>

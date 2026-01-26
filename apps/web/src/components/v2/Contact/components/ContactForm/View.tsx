@@ -1,31 +1,26 @@
-import { Input, Select, Textarea } from "@arcjr/void-components";
-import clsx from "clsx";
-import { memo, useState } from "react";
+import { Input, Select, Textarea } from '@arcjr/void-components';
+import clsx from 'clsx';
+import { memo, useState } from 'react';
 
-import { pipeline } from "@/utils/pipeline";
+import { pipeline } from '@/utils/pipeline';
 
-import type { ContactFormData,ContactFormProps } from "../../types";
+import type { ContactFormData, ContactFormProps } from '../../types';
 
 const SUBJECT_OPTIONS = [
-  { value: "", label: "Select a subject..." },
-  { value: "general", label: "General Inquiry" },
-  { value: "collaboration", label: "Collaboration Opportunity" },
-  { value: "feedback", label: "Feedback" },
-  { value: "bug", label: "Bug Report" },
-  { value: "other", label: "Other" },
+  { value: '', label: 'Select a subject...' },
+  { value: 'general', label: 'General Inquiry' },
+  { value: 'collaboration', label: 'Collaboration Opportunity' },
+  { value: 'feedback', label: 'Feedback' },
+  { value: 'bug', label: 'Bug Report' },
+  { value: 'other', label: 'Other' }
 ];
 
-function ContactFormView({
-  onSubmit,
-  isSubmitting,
-  submitError,
-  submitSuccess,
-}: ContactFormProps) {
+function ContactFormView({ onSubmit, isSubmitting, submitError, submitSuccess }: ContactFormProps) {
   const [formData, setFormData] = useState<ContactFormData>({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
   });
 
   const [errors, setErrors] = useState<Partial<ContactFormData>>({});
@@ -34,23 +29,23 @@ function ContactFormView({
     const newErrors: Partial<ContactFormData> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
+      newErrors.name = 'Name is required';
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = 'Email is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
+      newErrors.email = 'Please enter a valid email';
     }
 
     if (!formData.subject) {
-      newErrors.subject = "Please select a subject";
+      newErrors.subject = 'Please select a subject';
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
+      newErrors.message = 'Message is required';
     } else if (formData.message.trim().length < 20) {
-      newErrors.message = "Message must be at least 20 characters";
+      newErrors.message = 'Message must be at least 20 characters';
     }
 
     setErrors(newErrors);
@@ -65,11 +60,7 @@ function ContactFormView({
     await onSubmit(formData);
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
@@ -84,13 +75,7 @@ function ContactFormView({
       <div className="v2-contact-form__success">
         <div className="v2-contact-form__success-icon">
           <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <circle
-              cx="24"
-              cy="24"
-              r="22"
-              stroke="currentColor"
-              strokeWidth="2"
-            />
+            <circle cx="24" cy="24" r="22" stroke="currentColor" strokeWidth="2" />
             <path
               d="M16 24l6 6 12-12"
               stroke="currentColor"
@@ -178,12 +163,12 @@ function ContactFormView({
       <button
         type="submit"
         className={clsx(
-          "void-button void-button--primary void-button--lg v2-contact-form__submit",
-          isSubmitting && "void-button--loading"
+          'void-button void-button--primary void-button--lg v2-contact-form__submit',
+          isSubmitting && 'void-button--loading'
         )}
         disabled={isSubmitting}
       >
-        {isSubmitting ? "Sending..." : "Send Message"}
+        {isSubmitting ? 'Sending...' : 'Send Message'}
       </button>
     </form>
   );

@@ -1,9 +1,9 @@
-import clsx from "clsx";
-import { memo } from "react";
+import clsx from 'clsx';
+import { memo } from 'react';
 
-import { pipeline } from "@/utils/pipeline";
+import { pipeline } from '@/utils/pipeline';
 
-import type { TableOfContentsProps } from "../../types";
+import type { TableOfContentsProps } from '../../types';
 
 function TableOfContentsView({ headings, activeId }: TableOfContentsProps) {
   if (headings.length === 0) return null;
@@ -16,19 +16,10 @@ function TableOfContentsView({ headings, activeId }: TableOfContentsProps) {
       <nav className="v2-toc__nav">
         <ul className="v2-toc__list">
           {headings.map((heading) => (
-            <li
-              key={heading.id}
-              className={clsx(
-                "v2-toc__item",
-                `v2-toc__item--level-${heading.level}`
-              )}
-            >
+            <li key={heading.id} className={clsx('v2-toc__item', `v2-toc__item--level-${heading.level}`)}>
               <a
                 href={`#${heading.id}`}
-                className={clsx(
-                  "v2-toc__link",
-                  activeId === heading.id && "v2-toc__link--active"
-                )}
+                className={clsx('v2-toc__link', activeId === heading.id && 'v2-toc__link--active')}
               >
                 {heading.text}
               </a>

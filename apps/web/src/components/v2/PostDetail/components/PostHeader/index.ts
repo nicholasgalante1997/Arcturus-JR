@@ -1,1 +1,1 @@
-export { default as PostHeaderView } from "./View";
+export { default as PostHeaderView } from './View';

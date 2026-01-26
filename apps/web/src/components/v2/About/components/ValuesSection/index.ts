@@ -1,1 +1,1 @@
-export { default as ValuesSectionView } from "./View";
+export { default as ValuesSectionView } from './View';

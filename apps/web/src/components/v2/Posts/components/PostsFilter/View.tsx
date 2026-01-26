@@ -1,17 +1,17 @@
-import { Input } from "@arcjr/void-components";
-import clsx from "clsx";
-import { memo } from "react";
+import { Input } from '@arcjr/void-components';
+import clsx from 'clsx';
+import { memo } from 'react';
 
-import { pipeline } from "@/utils/pipeline";
+import { pipeline } from '@/utils/pipeline';
 
-import type { PostsFilterProps } from "../../types";
+import type { PostsFilterProps } from '../../types';
 
 function PostsFilterView({
   selectedTag,
   onTagSelect,
   availableTags,
   searchQuery,
-  onSearchChange,
+  onSearchChange
 }: PostsFilterProps) {
   return (
     <div className="v2-posts-filter">
@@ -41,10 +41,7 @@ function PostsFilterView({
       <div className="v2-posts-filter__tags">
         <button
           type="button"
-          className={clsx(
-            "v2-posts-filter__tag",
-            !selectedTag && "v2-posts-filter__tag--active"
-          )}
+          className={clsx('v2-posts-filter__tag', !selectedTag && 'v2-posts-filter__tag--active')}
           onClick={() => onTagSelect(null)}
         >
           All Posts
@@ -53,10 +50,7 @@ function PostsFilterView({
           <button
             key={tag}
             type="button"
-            className={clsx(
-              "v2-posts-filter__tag",
-              selectedTag === tag && "v2-posts-filter__tag--active"
-            )}
+            className={clsx('v2-posts-filter__tag', selectedTag === tag && 'v2-posts-filter__tag--active')}
             onClick={() => onTagSelect(tag)}
           >
             {tag}

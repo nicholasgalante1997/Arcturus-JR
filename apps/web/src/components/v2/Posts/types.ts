@@ -1,5 +1,5 @@
-import type { UseQueryResult } from "@tanstack/react-query";
-import type { Post } from "@/types/Post";
+import type { Post } from '@/types/Post';
+import type { UseQueryResult } from '@tanstack/react-query';
 
 export interface V2PostsPageViewProps {
   queries: [PostsQuery];

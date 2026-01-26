@@ -1,14 +1,14 @@
-import { memo, use, useEffect, useMemo,useState } from "react";
+import { memo, use, useEffect, useMemo, useState } from 'react';
 
-import { pipeline } from "@/utils/pipeline";
-import { withProfiler } from "@/utils/profiler";
+import { pipeline } from '@/utils/pipeline';
+import { withProfiler } from '@/utils/profiler';
 
-import { PostContentView } from "./components/PostContent";
-import { PostHeaderView } from "./components/PostHeader";
-import { RelatedPostsView } from "./components/RelatedPosts";
-import { TableOfContentsView } from "./components/TableOfContents";
+import { PostContentView } from './components/PostContent';
+import { PostHeaderView } from './components/PostHeader';
+import { RelatedPostsView } from './components/RelatedPosts';
+import { TableOfContentsView } from './components/TableOfContents';
 
-import type { HeadingItem,V2PostDetailViewProps } from "./types";
+import type { HeadingItem, V2PostDetailViewProps } from './types';
 
 const WORDS_PER_MINUTE = 200;
 
@@ -24,9 +24,9 @@ function slugify(text: string): string {
   return text
     .toLowerCase()
     .trim()
-    .replace(/[^\w\s-]/g, "") // Remove special characters
-    .replace(/\s+/g, "-") // Replace spaces with hyphens
-    .replace(/-+/g, "-"); // Remove consecutive hyphens
+    .replace(/[^\w\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-'); // Remove consecutive hyphens
 }
 
 /**
@@ -47,7 +47,7 @@ function extractHeadings(content: string): HeadingItem[] {
     headings.push({
       level,
       id,
-      text,
+      text
     });
   }
 
@@ -61,17 +61,11 @@ function V2PostDetailView({ queries }: V2PostDetailViewProps) {
 
   const [activeHeadingId, setActiveHeadingId] = useState<string | null>(null);
 
-  const content = post.markdownContent?.markdown || "";
+  const content = post.markdownContent?.markdown || '';
 
-  const readingTime = useMemo(
-    () => calculateReadingTime(content),
-    [content]
-  );
+  const readingTime = useMemo(() => calculateReadingTime(content), [content]);
 
-  const headings = useMemo(
-    () => extractHeadings(content),
-    [content]
-  );
+  const headings = useMemo(() => extractHeadings(content), [content]);
 
   // Intersection Observer for active heading
   useEffect(() => {
@@ -86,8 +80,8 @@ function V2PostDetailView({ queries }: V2PostDetailViewProps) {
         });
       },
       {
-        rootMargin: "-100px 0px -66% 0px",
-        threshold: 0,
+        rootMargin: '-100px 0px -66% 0px',
+        threshold: 0
       }
     );
 
@@ -108,10 +102,7 @@ function V2PostDetailView({ queries }: V2PostDetailViewProps) {
           {/* Table of Contents - Desktop */}
           <div className="v2-post-detail__sidebar">
             <div className="v2-post-detail__sidebar-sticky">
-              <TableOfContentsView
-                headings={headings}
-                activeId={activeHeadingId}
-              />
+              <TableOfContentsView headings={headings} activeId={activeHeadingId} />
             </div>
           </div>
 
@@ -128,4 +119,4 @@ function V2PostDetailView({ queries }: V2PostDetailViewProps) {
   );
 }
 
-export default pipeline(memo, withProfiler("v2_Post_Detail_View"))(V2PostDetailView);
+export default pipeline(memo, withProfiler('v2_Post_Detail_View'))(V2PostDetailView);

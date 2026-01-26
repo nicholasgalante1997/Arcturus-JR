@@ -1,11 +1,11 @@
-import React, { memo } from "react";
+import React, { memo } from 'react';
 
-import { SuspenseEnabledQueryProvider } from "@/components/Base/SEQ";
-import { useGetPosts } from "@/hooks/usePosts";
-import { pipeline } from "@/utils/pipeline";
-import { withProfiler } from "@/utils/profiler";
+import { SuspenseEnabledQueryProvider } from '@/components/Base/SEQ';
+import { useGetPosts } from '@/hooks/usePosts';
+import { pipeline } from '@/utils/pipeline';
+import { withProfiler } from '@/utils/profiler';
 
-import V2HomePageView from "./View";
+import V2HomePageView from './View';
 
 function V2HomePage() {
   const postsQuery = useGetPosts();
@@ -17,4 +17,4 @@ function V2HomePage() {
   );
 }
 
-export default pipeline(withProfiler("v2_Home_Page"), memo)(V2HomePage);
+export default pipeline(withProfiler('v2_Home_Page'), memo)(V2HomePage);

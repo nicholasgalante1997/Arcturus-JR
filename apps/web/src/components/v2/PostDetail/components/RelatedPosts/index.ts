@@ -1,1 +1,1 @@
-export { default as RelatedPostsView } from "./View";
+export { default as RelatedPostsView } from './View';

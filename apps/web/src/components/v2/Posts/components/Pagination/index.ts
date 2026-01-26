@@ -1,1 +1,1 @@
-export { default as PaginationView } from "./View";
+export { default as PaginationView } from './View';

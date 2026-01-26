@@ -1,7 +1,8 @@
-import { memo } from "react";
+import { memo } from 'react';
 
-import { pipeline } from "@/utils/pipeline";
-import type { ContactInfoProps } from "../../types";
+import { pipeline } from '@/utils/pipeline';
+
+import type { ContactInfoProps } from '../../types';
 
 function ContactInfoView({ email, socialLinks }: ContactInfoProps) {
   return (
@@ -28,9 +29,7 @@ function ContactInfoView({ email, socialLinks }: ContactInfoProps) {
               >
                 <span className="v2-contact-info__social-icon">{link.icon}</span>
                 <span className="v2-contact-info__social-name">{link.name}</span>
-                <span className="v2-contact-info__social-username">
-                  @{link.username}
-                </span>
+                <span className="v2-contact-info__social-username">@{link.username}</span>
               </a>
             </li>
           ))}
@@ -39,9 +38,7 @@ function ContactInfoView({ email, socialLinks }: ContactInfoProps) {
 
       <div className="v2-contact-info__section">
         <h3 className="v2-contact-info__section-title">Response Time</h3>
-        <p className="v2-contact-info__text">
-          I typically respond within 24-48 hours during weekdays.
-        </p>
+        <p className="v2-contact-info__text">I typically respond within 24-48 hours during weekdays.</p>
       </div>
     </aside>
   );

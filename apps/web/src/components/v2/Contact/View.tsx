@@ -1,13 +1,13 @@
-import { memo, useCallback,useState } from "react";
+import { memo, useCallback, useState } from 'react';
 
-import { pipeline } from "@/utils/pipeline";
-import { withProfiler } from "@/utils/profiler";
+import { pipeline } from '@/utils/pipeline';
+import { withProfiler } from '@/utils/profiler';
 
-import ContactFormView from "./components/ContactForm/View";
-import ContactInfoView from "./components/ContactInfo/View";
-import FAQSectionView from "./components/FAQSection/View";
+import ContactFormView from './components/ContactForm/View';
+import ContactInfoView from './components/ContactInfo/View';
+import FAQSectionView from './components/FAQSection/View';
 
-import type { ContactFormData, SocialLinkItem } from "./types";
+import type { ContactFormData, SocialLinkItem } from './types';
 
 // Icons
 const GitHubIcon = () => (
@@ -30,26 +30,26 @@ const LinkedInIcon = () => (
 
 const SOCIAL_LINKS: SocialLinkItem[] = [
   {
-    name: "GitHub",
-    url: "https://github.com/yourusername",
+    name: 'GitHub',
+    url: 'https://github.com/yourusername',
     icon: <GitHubIcon />,
-    username: "yourusername",
+    username: 'yourusername'
   },
   {
-    name: "Twitter",
-    url: "https://twitter.com/yourusername",
+    name: 'Twitter',
+    url: 'https://twitter.com/yourusername',
     icon: <TwitterIcon />,
-    username: "yourusername",
+    username: 'yourusername'
   },
   {
-    name: "LinkedIn",
-    url: "https://linkedin.com/in/yourusername",
+    name: 'LinkedIn',
+    url: 'https://linkedin.com/in/yourusername',
     icon: <LinkedInIcon />,
-    username: "yourusername",
-  },
+    username: 'yourusername'
+  }
 ];
 
-const EMAIL = "hello@example.com";
+const EMAIL = 'hello@example.com';
 
 function V2ContactPageView() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -62,23 +62,19 @@ function V2ContactPageView() {
 
     try {
       // Replace with actual API call
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
       });
 
       if (!response.ok) {
-        throw new Error("Failed to send message");
+        throw new Error('Failed to send message');
       }
 
       setSubmitSuccess(true);
     } catch (error) {
-      setSubmitError(
-        error instanceof Error
-          ? error.message
-          : "Something went wrong. Please try again."
-      );
+      setSubmitError(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -91,8 +87,7 @@ function V2ContactPageView() {
         <header className="v2-contact-page__header">
           <h1 className="v2-contact-page__title">Get in Touch</h1>
           <p className="v2-contact-page__description">
-            Have a question, project idea, or just want to say hello? I&apos;d love
-            to hear from you.
+            Have a question, project idea, or just want to say hello? I&apos;d love to hear from you.
           </p>
         </header>
 
@@ -117,4 +112,4 @@ function V2ContactPageView() {
   );
 }
 
-export default pipeline(memo, withProfiler("v2_Contact_Page_View"))(V2ContactPageView);
+export default pipeline(memo, withProfiler('v2_Contact_Page_View'))(V2ContactPageView);

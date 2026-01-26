@@ -1,9 +1,8 @@
-export { default as V2PostDetail } from "./Component";
+export { default as V2PostDetail } from './Component';
 export type {
-  V2PostDetailViewProps,
-  PostHeaderProps,
-  PostContentProps,
-  TableOfContentsProps,
   HeadingItem,
+  PostContentProps,
+  PostHeaderProps,
   RelatedPostsProps,
-} from "./types";
+  TableOfContentsProps,
+  V2PostDetailViewProps} from './types';

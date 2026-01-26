@@ -1,13 +1,13 @@
-import { memo, use,useMemo, useState } from "react";
+import { memo, use, useMemo, useState } from 'react';
 
-import { pipeline } from "@/utils/pipeline";
-import { withProfiler } from "@/utils/profiler";
+import { pipeline } from '@/utils/pipeline';
+import { withProfiler } from '@/utils/profiler';
 
-import { PaginationView } from "./components/Pagination";
-import { PostsFilterView } from "./components/PostsFilter";
-import { PostsGridView } from "./components/PostsGrid";
+import { PaginationView } from './components/Pagination';
+import { PostsFilterView } from './components/PostsFilter';
+import { PostsGridView } from './components/PostsGrid';
 
-import type { V2PostsPageViewProps } from "./types";
+import type { V2PostsPageViewProps } from './types';
 
 const POSTS_PER_PAGE = 9;
 
@@ -16,7 +16,7 @@ function V2PostsPageView({ queries }: V2PostsPageViewProps) {
   const allPosts = use(postsQuery.promise);
 
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
 
   // Extract unique tags from all posts
@@ -76,8 +76,7 @@ function V2PostsPageView({ queries }: V2PostsPageViewProps) {
         <header className="v2-posts-page__header">
           <h1 className="v2-posts-page__title">Blog Posts</h1>
           <p className="v2-posts-page__description">
-            Exploring software architecture, distributed systems, and modern web
-            development
+            Exploring software architecture, distributed systems, and modern web development
           </p>
         </header>
 
@@ -93,8 +92,7 @@ function V2PostsPageView({ queries }: V2PostsPageViewProps) {
         {/* Results count */}
         <div className="v2-posts-page__results">
           <p className="v2-posts-page__count">
-            {filteredPosts.length}{" "}
-            {filteredPosts.length === 1 ? "post" : "posts"}
+            {filteredPosts.length} {filteredPosts.length === 1 ? 'post' : 'posts'}
             {selectedTag && ` tagged with "${selectedTag}"`}
             {searchQuery && ` matching "${searchQuery}"`}
           </p>
@@ -104,16 +102,10 @@ function V2PostsPageView({ queries }: V2PostsPageViewProps) {
         <PostsGridView posts={paginatedPosts} />
 
         {/* Pagination */}
-        <PaginationView
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={setCurrentPage}
-        />
+        <PaginationView currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
       </div>
     </div>
   );
 }
 
-export default pipeline(memo, withProfiler("v2_Posts_Page_View"))(
-  V2PostsPageView
-);
+export default pipeline(memo, withProfiler('v2_Posts_Page_View'))(V2PostsPageView);

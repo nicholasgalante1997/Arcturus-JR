@@ -1,1 +1,1 @@
-export { default as PostContentView } from "./View";
+export { default as PostContentView } from './View';

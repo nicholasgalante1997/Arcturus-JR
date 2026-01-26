@@ -26,11 +26,7 @@ export function createStaticPageObjects(): StaticPageObject[] {
     mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_ContactPageRouteConfiguration, null),
     // V2 Post Detail dynamic routes
     ...slugs.map((slug) =>
-      mapRouteConfigurationToStaticPageObject(
-        RoutesConfig.V2_PostDetailPageRouteConfiguration,
-        slug,
-        slug
-      )
+      mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_PostDetailPageRouteConfiguration, slug, slug)
     )
   ];
 }

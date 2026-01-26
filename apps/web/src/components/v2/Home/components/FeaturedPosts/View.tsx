@@ -1,11 +1,11 @@
-import React, { memo } from "react";
-import { Link } from "react-router";
+import React, { memo } from 'react';
+import { Link } from 'react-router';
 
-import { pipeline } from "@/utils/pipeline";
+import { pipeline } from '@/utils/pipeline';
 
-import { PostCardV2 } from "./components/PostCardV2";
+import { PostCardV2 } from './components/PostCardV2';
 
-import type { FeaturedPostsProps } from "./types";
+import type { FeaturedPostsProps } from './types';
 
 function FeaturedPostsView({ posts, limit = 6 }: FeaturedPostsProps) {
   const displayPosts = posts.slice(0, limit);
@@ -18,13 +18,7 @@ function FeaturedPostsView({ posts, limit = 6 }: FeaturedPostsProps) {
         </h2>
         <Link to="/posts" className="v2-featured-posts__view-all">
           View all posts
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            aria-hidden="true"
-          >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path
               d="M3 8h10m0 0L9 4m4 4l-4 4"
               stroke="currentColor"

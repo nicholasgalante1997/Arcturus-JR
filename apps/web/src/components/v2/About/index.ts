@@ -1,2 +1,2 @@
-export { default as V2AboutPage } from "./Component";
-export type { SkillItem, TimelineItem, SocialLink } from "./types";
+export { default as V2AboutPage } from './Component';
+export type { SkillItem, SocialLink,TimelineItem } from './types';

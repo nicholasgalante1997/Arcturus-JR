@@ -1,1 +1,1 @@
-export { default as PostsFilterView } from "./View";
+export { default as PostsFilterView } from './View';

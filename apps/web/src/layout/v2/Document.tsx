@@ -1,6 +1,6 @@
-import { memo } from "react";
+import { memo } from 'react';
 
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
 interface V2DocumentProps {
   children: ReactNode;
@@ -15,9 +15,9 @@ interface V2DocumentProps {
  */
 function V2Document({
   children,
-  title = "Arc-Jr",
-  description = "Modern blog built with React 19, TypeScript, and TanStack Query",
-  styles = [],
+  title = 'Arc-Jr',
+  description = 'Modern blog built with React 19, TypeScript, and TanStack Query',
+  styles = []
 }: V2DocumentProps) {
   return (
     <html lang="en">

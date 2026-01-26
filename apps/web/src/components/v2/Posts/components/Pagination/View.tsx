@@ -1,15 +1,11 @@
-import clsx from "clsx";
-import { memo } from "react";
+import clsx from 'clsx';
+import { memo } from 'react';
 
-import { pipeline } from "@/utils/pipeline";
+import { pipeline } from '@/utils/pipeline';
 
-import type { PaginationProps } from "../../types";
+import type { PaginationProps } from '../../types';
 
-function PaginationView({
-  currentPage,
-  totalPages,
-  onPageChange,
-}: PaginationProps) {
+function PaginationView({ currentPage, totalPages, onPageChange }: PaginationProps) {
   if (totalPages <= 1) return null;
 
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -39,13 +35,10 @@ function PaginationView({
           <button
             key={page}
             type="button"
-            className={clsx(
-              "v2-pagination__page",
-              currentPage === page && "v2-pagination__page--active"
-            )}
+            className={clsx('v2-pagination__page', currentPage === page && 'v2-pagination__page--active')}
             onClick={() => onPageChange(page)}
             aria-label={`Page ${page}`}
-            aria-current={currentPage === page ? "page" : undefined}
+            aria-current={currentPage === page ? 'page' : undefined}
           >
             {page}
           </button>

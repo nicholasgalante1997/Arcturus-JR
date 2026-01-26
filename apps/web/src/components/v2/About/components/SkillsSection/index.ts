@@ -1,1 +1,1 @@
-export { default as SkillsSectionView } from "./View";
+export { default as SkillsSectionView } from './View';

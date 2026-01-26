@@ -1,9 +1,9 @@
-import { memo } from "react";
-import { Link } from "react-router";
+import { memo } from 'react';
+import { Link } from 'react-router';
 
-import { pipeline } from "@/utils/pipeline";
+import { pipeline } from '@/utils/pipeline';
 
-import type { HeroWidgetProps } from "../../types";
+import type { HeroWidgetProps } from '../../types';
 
 const heroText = {
   title: 'Project Arcturus',
@@ -13,14 +13,14 @@ const heroText = {
 
 const DEFAULT_HEADLINE = heroText.title + ' ' + heroText.version;
 const DEFAULT_SUBHEADLINE = heroText.subtitle;
-const DEFAULT_CTA_TEXT = "Read the Blog";
-const DEFAULT_CTA_HREF = "/posts";
+const DEFAULT_CTA_TEXT = 'Read the Blog';
+const DEFAULT_CTA_HREF = '/posts';
 
 function HeroWidgetView({
   headline = DEFAULT_HEADLINE,
   subheadline = DEFAULT_SUBHEADLINE,
   ctaText = DEFAULT_CTA_TEXT,
-  ctaHref = DEFAULT_CTA_HREF,
+  ctaHref = DEFAULT_CTA_HREF
 }: HeroWidgetProps) {
   return (
     <section className="v2-hero" aria-labelledby="hero-headline">

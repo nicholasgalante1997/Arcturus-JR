@@ -1,10 +1,10 @@
-import { format } from "date-fns";
-import { memo } from "react";
-import { Link } from "react-router";
+import { format } from 'date-fns';
+import { memo } from 'react';
+import { Link } from 'react-router';
 
-import { pipeline } from "@/utils/pipeline";
+import { pipeline } from '@/utils/pipeline';
 
-import type { RelatedPostsProps } from "../../types";
+import type { RelatedPostsProps } from '../../types';
 
 function RelatedPostsView({ posts }: RelatedPostsProps) {
   if (posts.length === 0) return null;
@@ -16,26 +16,19 @@ function RelatedPostsView({ posts }: RelatedPostsProps) {
       </h2>
       <div className="v2-related-posts__grid">
         {posts.map((post) => (
-          <Link
-            key={post.id}
-            to={`/v2/post/${post.id}`}
-            className="v2-related-posts__card"
-          >
+          <Link key={post.id} to={`/v2/post/${post.id}`} className="v2-related-posts__card">
             {post.image && (
               <img
                 src={post.image.src}
-                alt={post.image.alt || ""}
+                alt={post.image.alt || ''}
                 className="v2-related-posts__image"
                 loading="lazy"
               />
             )}
             <div className="v2-related-posts__content">
               <h3 className="v2-related-posts__card-title">{post.title}</h3>
-              <time
-                className="v2-related-posts__date"
-                dateTime={post.date}
-              >
-                {format(new Date(post.date), "MMM d, yyyy")}
+              <time className="v2-related-posts__date" dateTime={post.date}>
+                {format(new Date(post.date), 'MMM d, yyyy')}
               </time>
             </div>
           </Link>

@@ -5,7 +5,7 @@ export interface V2AboutViewProps {
 export interface SkillItem {
   name: string;
   category: string;
-  proficiency?: "expert" | "advanced" | "intermediate";
+  proficiency?: 'expert' | 'advanced' | 'intermediate';
 }
 
 export interface TimelineItem {

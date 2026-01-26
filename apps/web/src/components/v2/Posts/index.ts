@@ -1,7 +1,2 @@
-export { default as V2PostsPage } from "./Component";
-export type {
-  V2PostsPageViewProps,
-  PostsGridProps,
-  PostsFilterProps,
-  PaginationProps,
-} from "./types";
+export { default as V2PostsPage } from './Component';
+export type { PaginationProps,PostsFilterProps, PostsGridProps, V2PostsPageViewProps } from './types';

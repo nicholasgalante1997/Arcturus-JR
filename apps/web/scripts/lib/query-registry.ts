@@ -8,7 +8,13 @@ import lazy from './lazy';
 
 import type { QueryFnName, Registry } from '@arcjr/types';
 
-type QueryFn = typeof getMarkdown | typeof getPosts | typeof getPost | typeof getCiphers | typeof getCipher | typeof getRelatedPosts;
+type QueryFn =
+  | typeof getMarkdown
+  | typeof getPosts
+  | typeof getPost
+  | typeof getCiphers
+  | typeof getCipher
+  | typeof getRelatedPosts;
 
 const queries: Readonly<{ name: QueryFnName; fn: QueryFn }[]> = [
   { name: 'getMarkdown', fn: getMarkdown },
