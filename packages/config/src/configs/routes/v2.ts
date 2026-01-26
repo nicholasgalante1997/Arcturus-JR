@@ -86,11 +86,25 @@ export const V2_AboutPageRouteConfiguration: Readonly<
   queries: [],
 } as const;
 
+export const V2_ContactPageRouteConfiguration: Readonly<
+  RouteConfiguration<never, {}>
+> = {
+  page: ArcPageEnum.v2_CONTACT,
+  type: "static",
+  path: {
+    [RouteConfigurationPathKeysEnum.Browser]: ArcBrowserRuntimeRoutesEnum.v2_Contact,
+    [RouteConfigurationPathKeysEnum.Static]: ArcPrerenderStaticRouteEnum.v2_CONTACT,
+  },
+  styles: [...BASE_V2_CSS],
+  queries: [],
+} as const;
+
 export const V2_AllRouteConfigurations = [
   // Static Page Config Objects
   V2_HomePageRouteConfiguration,
   V2_PostsPageRouteConfiguration,
   V2_AboutPageRouteConfiguration,
+  V2_ContactPageRouteConfiguration,
   // Dynamic Page Config Objects
   V2_PostDetailPageRouteConfiguration
 ] as const;

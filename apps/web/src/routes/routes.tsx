@@ -26,6 +26,7 @@ function lazyRoutes() {
       mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_HomePageRouteConfiguration),
       mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_PostsPageRouteConfiguration),
       mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_AboutPageRouteConfiguration),
+      mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_ContactPageRouteConfiguration),
       mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_PostDetailPageRouteConfiguration)
     ];
   }
