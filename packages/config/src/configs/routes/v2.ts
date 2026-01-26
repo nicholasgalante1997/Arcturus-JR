@@ -73,10 +73,24 @@ export const V2_PostDetailPageRouteConfiguration: Readonly<
   ],
 };
 
+export const V2_AboutPageRouteConfiguration: Readonly<
+  RouteConfiguration<never, {}>
+> = {
+  page: ArcPageEnum.v2_ABOUT,
+  type: "static",
+  path: {
+    [RouteConfigurationPathKeysEnum.Browser]: ArcBrowserRuntimeRoutesEnum.v2_About,
+    [RouteConfigurationPathKeysEnum.Static]: ArcPrerenderStaticRouteEnum.v2_ABOUT,
+  },
+  styles: [...BASE_V2_CSS],
+  queries: [],
+} as const;
+
 export const V2_AllRouteConfigurations = [
   // Static Page Config Objects
   V2_HomePageRouteConfiguration,
   V2_PostsPageRouteConfiguration,
+  V2_AboutPageRouteConfiguration,
   // Dynamic Page Config Objects
   V2_PostDetailPageRouteConfiguration
 ] as const;

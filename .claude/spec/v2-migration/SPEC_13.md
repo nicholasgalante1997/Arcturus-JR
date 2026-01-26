@@ -113,14 +113,14 @@ const SKILLS: SkillItem[] = [
   { name: "TypeScript", category: "Languages", proficiency: "expert" },
   { name: "React", category: "Frontend", proficiency: "expert" },
   { name: "Node.js", category: "Backend", proficiency: "expert" },
-  { name: "Go", category: "Languages", proficiency: "advanced" },
+  { name: "Go", category: "Languages", proficiency: "expert" },
   { name: "PostgreSQL", category: "Databases", proficiency: "advanced" },
   { name: "Redis", category: "Databases", proficiency: "advanced" },
   { name: "Kubernetes", category: "Infrastructure", proficiency: "advanced" },
   { name: "AWS", category: "Cloud", proficiency: "advanced" },
   { name: "GraphQL", category: "APIs", proficiency: "advanced" },
   { name: "Docker", category: "Infrastructure", proficiency: "expert" },
-  { name: "Rust", category: "Languages", proficiency: "intermediate" },
+  { name: "Rust", category: "Languages", proficiency: "expert" },
   { name: "Python", category: "Languages", proficiency: "advanced" },
 ];
 
