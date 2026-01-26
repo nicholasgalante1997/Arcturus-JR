@@ -2,20 +2,27 @@ import { getCipher } from '@/hooks/useCipher';
 import { getCiphers } from '@/hooks/useCiphers';
 import { getMarkdown } from '@/hooks/useMarkdown';
 import { getPost } from '@/hooks/usePost';
-import { getPosts } from '@/hooks/usePosts';
+import { getPosts, getRelatedPosts } from '@/hooks/usePosts';
 
 import lazy from './lazy';
 
 import type { QueryFnName, Registry } from '@arcjr/types';
 
-type QueryFn = typeof getMarkdown | typeof getPosts | typeof getPost | typeof getCiphers | typeof getCipher;
+type QueryFn =
+  | typeof getMarkdown
+  | typeof getPosts
+  | typeof getPost
+  | typeof getCiphers
+  | typeof getCipher
+  | typeof getRelatedPosts;
 
 const queries: Readonly<{ name: QueryFnName; fn: QueryFn }[]> = [
   { name: 'getMarkdown', fn: getMarkdown },
   { name: 'getPosts', fn: getPosts },
   { name: 'getPost', fn: getPost },
   { name: 'getCiphers', fn: getCiphers },
-  { name: 'getCipher', fn: getCipher }
+  { name: 'getCipher', fn: getCipher },
+  { name: 'getRelatedPosts', fn: getRelatedPosts }
 ] as const;
 
 class StaticPrerenderQueryRegistry implements Registry<QueryFnName, QueryFn> {

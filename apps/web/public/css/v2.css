@@ -1,8 +1,141 @@
-@import "./void/void-vanilla/css/void-base.css";
-@import "./void/void-vanilla/css/void-font.css";
-@import "./void/void-vanilla/css/void-layout.css";
+/**
+ * V2 CSS Entry Point
+ * Combines Tailwind with Void design system
+ */
 
-@import "./void/void-variables.css";
-@import "./void/void-components.css";
+/* Tailwind base, components, utilities */
+@import "tailwindcss";
 
+/* Void design tokens */
+@import "@arcjr/void-tokens/dist/css/void-tokens.css";
+
+/* Void CSS utilities */
+@import "@arcjr/void-css/void-raw";
+
+/* Void React components CSS */
+@import "@arcjr/void-components/void-react.css";
+
+/* Local v2 Style Sheets */
 @import "./v2/styles.css";
+@import "./layout/v2-app-layout.css";
+
+/* Configure Tailwind theme with void tokens */
+@theme {
+  /* Map void tokens to Tailwind theme */
+  --color-void-black: var(--void-color-base-black);
+  --color-void-white: var(--void-color-base-white);
+
+  /* Gray scale */
+  --color-void-gray-50: var(--void-color-gray-50);
+  --color-void-gray-100: var(--void-color-gray-100);
+  --color-void-gray-200: var(--void-color-gray-200);
+  --color-void-gray-300: var(--void-color-gray-300);
+  --color-void-gray-400: var(--void-color-gray-400);
+  --color-void-gray-500: var(--void-color-gray-500);
+  --color-void-gray-600: var(--void-color-gray-600);
+  --color-void-gray-700: var(--void-color-gray-700);
+  --color-void-gray-800: var(--void-color-gray-800);
+  --color-void-gray-900: var(--void-color-gray-900);
+  --color-void-gray-950: var(--void-color-gray-950);
+
+  /* Brand colors */
+  --color-void-violet: var(--void-color-brand-violet);
+  --color-void-azure: var(--void-color-brand-azure);
+  --color-void-cyan: var(--void-color-brand-cyan);
+  --color-void-rose: var(--void-color-brand-rose);
+  --color-void-amber: var(--void-color-brand-amber);
+
+  /* Semantic colors */
+  --color-void-success: var(--void-color-semantic-success);
+  --color-void-warning: var(--void-color-semantic-warning);
+  --color-void-error: var(--void-color-semantic-error);
+  --color-void-info: var(--void-color-semantic-info);
+
+  /* Typography */
+  --font-family-base: var(--void-font-family-base);
+  --font-family-mono: var(--void-font-family-mono);
+  --font-family-display: var(--void-font-family-display);
+
+  /* Spacing */
+  --spacing-1: var(--void-spacing-1);
+  --spacing-2: var(--void-spacing-2);
+  --spacing-3: var(--void-spacing-3);
+  --spacing-4: var(--void-spacing-4);
+  --spacing-5: var(--void-spacing-5);
+  --spacing-6: var(--void-spacing-6);
+  --spacing-8: var(--void-spacing-8);
+  --spacing-10: var(--void-spacing-10);
+  --spacing-12: var(--void-spacing-12);
+  --spacing-16: var(--void-spacing-16);
+  --spacing-20: var(--void-spacing-20);
+  --spacing-24: var(--void-spacing-24);
+
+  /* Border radius */
+  --radius-sm: var(--void-border-radius-sm);
+  --radius-md: var(--void-border-radius-md);
+  --radius-lg: var(--void-border-radius-lg);
+  --radius-xl: var(--void-border-radius-xl);
+  --radius-full: var(--void-border-radius-full);
+
+  /* Shadows */
+  --shadow-sm: var(--void-shadow-sm);
+  --shadow-md: var(--void-shadow-md);
+  --shadow-lg: var(--void-shadow-lg);
+  --shadow-xl: var(--void-shadow-xl);
+
+  /* Z-index scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* V2-specific base layer overrides */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-family-base);
+    background-color: var(--color-void-black);
+    color: var(--color-void-white);
+  }
+
+  /* Ensure app container fills viewport */
+  #app-v2 {
+    min-height: calc(100vh - var(--header-height, 80px));
+  }
+}
+
+/* V2-specific component layer */
+@layer components {
+  /* Container utility matching void-container */
+  .container {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-4);
+    padding-right: var(--spacing-4);
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: var(--spacing-6);
+      padding-right: var(--spacing-6);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: var(--spacing-8);
+      padding-right: var(--spacing-8);
+    }
+  }
+}

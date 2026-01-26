@@ -1,0 +1,91 @@
+.void-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--void-spacing-2);
+  text-decoration: none;
+  color: var(--void-color-gray-400);
+  font-weight: 500;
+  transition: color var(--void-transition-duration-fast) var(--void-transition-easing-ease),
+    background-color var(--void-transition-duration-fast) var(--void-transition-easing-ease);
+  cursor: pointer;
+  position: relative;
+}
+
+.void-nav-link:hover {
+  color: var(--void-color-base-white);
+}
+
+/* Sizes */
+.void-nav-link--sm {
+  font-size: 0.875rem;
+  padding: var(--void-spacing-1) var(--void-spacing-2);
+}
+
+.void-nav-link--md {
+  font-size: 1rem;
+  padding: var(--void-spacing-2) var(--void-spacing-3);
+}
+
+.void-nav-link--lg {
+  font-size: 1.125rem;
+  padding: var(--void-spacing-3) var(--void-spacing-4);
+}
+
+/* Active states by indicator type */
+.void-nav-link--active {
+  color: var(--void-color-base-white);
+}
+
+/* Underline indicator */
+.void-nav-link--indicator-underline::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--void-color-brand-violet);
+  transition: width var(--void-transition-duration-fast) var(--void-transition-easing-ease),
+    left var(--void-transition-duration-fast) var(--void-transition-easing-ease);
+}
+
+.void-nav-link--indicator-underline.void-nav-link--active::after,
+.void-nav-link--indicator-underline:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Background indicator */
+.void-nav-link--indicator-background.void-nav-link--active {
+  background-color: var(--void-color-gray-800);
+  border-radius: var(--void-border-radius-md);
+}
+
+.void-nav-link--indicator-background:hover {
+  background-color: var(--void-color-gray-800);
+  border-radius: var(--void-border-radius-md);
+}
+
+/* Border indicator */
+.void-nav-link--indicator-border {
+  border-left: 2px solid transparent;
+}
+
+.void-nav-link--indicator-border.void-nav-link--active {
+  border-left-color: var(--void-color-brand-violet);
+}
+
+/* Disabled */
+.void-nav-link--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Icon */
+.void-nav-link__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}

@@ -21,7 +21,7 @@
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", "!.turbo/**"],
       "outputs": ["dist/**", "public/css/**/*.min.css"],
-      "cache": true
+      "cache": false
     },
     "dev": {
       "persistent": true,

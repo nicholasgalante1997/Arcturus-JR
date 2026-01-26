@@ -1,3 +1,34 @@
-@import './HeroWidget.css';
+/**
+ * V2 Home Page Styles
+ * Imports component CSS and adds page-specific overrides
+ */
 
-section.container.home-page {}
+.v2-home-page {
+  min-height: 100vh;
+}
+
+/* Ensure proper spacing between sections */
+.v2-home-page > section {
+  position: relative;
+}
+
+/* Add subtle separator between hero and posts */
+.v2-home-page .v2-featured-posts {
+  position: relative;
+}
+
+.v2-home-page .v2-featured-posts::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--void-color-gray-700),
+    transparent
+  );
+}

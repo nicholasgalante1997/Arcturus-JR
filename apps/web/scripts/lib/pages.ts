@@ -20,7 +20,14 @@ export function createStaticPageObjects(): StaticPageObject[] {
         cipher_name
       )
     ),
-    mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_HomePageRouteConfiguration, null)
+    mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_HomePageRouteConfiguration, null),
+    mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_PostsPageRouteConfiguration, null),
+    mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_AboutPageRouteConfiguration, null),
+    mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_ContactPageRouteConfiguration, null),
+    // V2 Post Detail dynamic routes
+    ...slugs.map((slug) =>
+      mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_PostDetailPageRouteConfiguration, slug, slug)
+    )
   ];
 }
 
