@@ -1,9 +1,10 @@
-import { memo, useState } from "react";
+import { Input, Select, Textarea } from "@arcjr/void-components";
 import clsx from "clsx";
+import { memo, useState } from "react";
 
-import { Input, Textarea, Select } from "@arcjr/void-components";
 import { pipeline } from "@/utils/pipeline";
-import type { ContactFormProps, ContactFormData } from "../../types";
+
+import type { ContactFormData,ContactFormProps } from "../../types";
 
 const SUBJECT_OPTIONS = [
   { value: "", label: "Select a subject..." },
@@ -101,7 +102,7 @@ function ContactFormView({
         </div>
         <h3 className="v2-contact-form__success-title">Message Sent!</h3>
         <p className="v2-contact-form__success-text">
-          Thank you for reaching out. I'll get back to you as soon as possible.
+          Thank you for reaching out. I&apos;ll get back to you as soon as possible.
         </p>
       </div>
     );
