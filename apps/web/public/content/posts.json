@@ -10,8 +10,8 @@
       "docker"
     ],
     "image": {
-      "src": "/assets/doodles-marketplace.avif",
-      "alt": "Doodles nft cards (web based cards, square containing an image of the nft and titular text) for sale in a marketplace fashion",
+      "src": "/assets/poke-stock/hi-res-gen-zero-gang.webp",
+      "alt": "Ash, Brock, and Misty, with Pikachu, gearing up for an adventure against a bright orange backdrop.",
       "aspectRatio": "16 / 9"
     },
     "readingTime": "Under 5 minutes",
@@ -108,8 +108,8 @@
       "developer"
     ],
     "image": {
-      "src": "/assets/doodles-marketplace.avif",
-      "alt": "Doodles nft cards (web based cards, square containing an image of the nft and titular text) for sale in a marketplace fashion",
+      "src": "/assets/poke-stock/looking-tough-gang.jpg",
+      "alt": "Several squirtles in sunglasses looking tough",
       "aspectRatio": "16 / 9"
     },
     "readingTime": "Under 15 minutes",
@@ -157,7 +157,7 @@
       "waavy"
     ],
     "image": {
-      "src": "/assets/doodles-adventurer.jpg",
+      "src": "/assets/poke-stock/mega-pikachu-gang.jpg",
       "alt": "a male Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
       "aspectRatio": "16 / 9"
     },
@@ -236,8 +236,8 @@
       "typescript"
     ],
     "image": {
-      "src": "/assets/doodles-marketplace.avif",
-      "alt": "Doodles nft cards (web based cards, square containing an image of the nft and titular text) for sale in a marketplace fashion",
+      "src": "/assets/poke-stock/surprised-viridian-forest-gang.jpg",
+      "alt": "Surprised pikachu and friends looking into a tree stump hole.",
       "aspectRatio": "16 / 9"
     },
     "category": "SOFTWARE ENGINEERING",
@@ -295,8 +295,8 @@
       "bundlers"
     ],
     "image": {
-      "src": "/assets/doodles-marketplace.avif",
-      "alt": "Doodles nft cards for sale in a marketplace fashion",
+      "src": "/assets/poke-stock/shipwrecked-rocket-gang.jpg",
+      "alt": "Jesse and James and Meowth in a body of water hanging over a log looking disheartened.",
       "aspectRatio": "16 / 9"
     },
     "readingTime": "18 minutes",
@@ -327,7 +327,7 @@
       "react-compiler"
     ],
     "image": {
-      "src": "/assets/doodles-marketplace.avif",
+      "src": "/assets/poke-stock/crossover-gang.jpg",
       "alt": "Doodles nft cards for sale in a marketplace fashion",
       "aspectRatio": "16 / 9"
     },

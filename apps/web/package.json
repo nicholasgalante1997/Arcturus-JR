@@ -11,6 +11,7 @@
     "dist"
   ],
   "scripts": {
+    "prebuild": "run-s clean",
     "build": "run-s bundle copy:ciphers copy:workers prerender sync:void-css postcss copy",
     "build-storybook": "storybook build",
     "bundle": "webpack --config webpack/prod.mjs",

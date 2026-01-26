@@ -1,21 +1,23 @@
-import React, { memo } from 'react';
+import React, { memo, use } from "react";
 
-import { pipeline } from '@/utils/pipeline';
-import { withProfiler } from '@/utils/profiler';
+import { pipeline } from "@/utils/pipeline";
+import { withProfiler } from "@/utils/profiler";
 
-import { V2PostsGrid } from '../PostGrid';
+import { FeaturedPosts } from "./components/FeaturedPosts";
+import { V2HeroWidget } from "./components/HeroWidget";
 
-import { V2HeroWidget } from './components/HeroWidget';
+import type { V2HomeViewProps } from "./types";
 
-function V2HomePageView() {
+function V2HomePageView({ queries }: V2HomeViewProps) {
+  const [postsQuery] = queries;
+  const posts = use(postsQuery.promise);
+
   return (
-    <section className="container home-page">
+    <div className="v2-home-page">
       <V2HeroWidget />
-      <V2PostsGrid />
-    </section>
+      <FeaturedPosts posts={posts} limit={6} />
+    </div>
   );
 }
 
-export default pipeline(memo, withProfiler('v2_Home_Page_View'))(V2HomePageView) as React.MemoExoticComponent<
-  typeof V2HomePageView
->;
+export default pipeline(memo, withProfiler("v2_Home_Page_View"))(V2HomePageView);
