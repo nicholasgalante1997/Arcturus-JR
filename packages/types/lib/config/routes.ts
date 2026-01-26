@@ -15,7 +15,8 @@ export enum ArcPageEnum {
   CIPHER = "Cipher",
 
   /** ARC v2 */
-  v2_HOME = "v2_Home"
+  v2_HOME = "v2_Home",
+  v2_POSTS = "v2_Posts"
 }
 
 export const ArcBrowserRuntimeRoutesEnum = {
@@ -27,7 +28,8 @@ export const ArcBrowserRuntimeRoutesEnum = {
   [ArcPageEnum.CIPHERS]: "/ee/ciphers",
   [ArcPageEnum.CIPHER]: "/ee/cipher/:id",
   
-  [ArcPageEnum.v2_HOME]: "/v2"
+  [ArcPageEnum.v2_HOME]: "/v2",
+  [ArcPageEnum.v2_POSTS]: "/v2/posts"
 } as const;
 
 export type ArcBrowserRuntimeRoutes = typeof ArcBrowserRuntimeRoutesEnum;
@@ -42,7 +44,8 @@ export enum ArcPrerenderStaticRouteEnum {
   ABOUT = "https://nickgalante.tech/about",
   CONTACT = "https://nickgalante.tech/contact",
   
-  v2_HOME = "https://nickgalante.tech/v2"
+  v2_HOME = "https://nickgalante.tech/v2",
+  v2_POSTS = "https://nickgalante.tech/v2/posts"
 }
 
 export enum ArcPrerenderDynamicRouteEnum {

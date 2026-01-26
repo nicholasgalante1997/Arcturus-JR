@@ -20,7 +20,8 @@ export function createStaticPageObjects(): StaticPageObject[] {
         cipher_name
       )
     ),
-    mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_HomePageRouteConfiguration, null)
+    mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_HomePageRouteConfiguration, null),
+    mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_PostsPageRouteConfiguration, null)
   ];
 }
 

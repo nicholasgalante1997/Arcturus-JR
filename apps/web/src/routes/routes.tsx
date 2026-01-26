@@ -23,7 +23,8 @@ function lazyRoutes() {
   if (!routes) {
     routes = [
       ...RoutesConfig.V1_AllRouteConfigurations.map(mapRouteConfigToReactRouterRouteObject),
-      mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_HomePageRouteConfiguration)
+      mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_HomePageRouteConfiguration),
+      mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_PostsPageRouteConfiguration)
     ];
   }
 

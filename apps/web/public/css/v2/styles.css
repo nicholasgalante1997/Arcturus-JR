@@ -3,6 +3,7 @@
 @import './Header.css';
 @import './HeroWidget.css';
 @import './Home.css';
+@import './Posts.css';
 @import './PostsGrid.css';
 
 body {
