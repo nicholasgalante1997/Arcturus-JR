@@ -22,6 +22,7 @@ export type {
   GetMarkdownQueryFnName,
   GetPostQueryFnName,
   GetPostsQueryFnName,
+  GetRelatedPostsQueryFnName,
   QueryFnName,
   SerializablePrefetchQueryOptions,
 } from "./static/prefetch-query";

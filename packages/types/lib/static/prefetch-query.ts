@@ -21,13 +21,15 @@ export type GetPostsQueryFnName = "getPosts";
 export type GetCiphersQueryFnName = "getCiphers";
 export type GetPostQueryFnName = "getPost";
 export type GetCipherQueryFnName = "getCipher";
+export type GetRelatedPostsQueryFnName = "getRelatedPosts";
 
 export type QueryFnName =
   | GetCipherQueryFnName
   | GetCiphersQueryFnName
   | GetMarkdownQueryFnName
   | GetPostQueryFnName
-  | GetPostsQueryFnName;
+  | GetPostsQueryFnName
+  | GetRelatedPostsQueryFnName;
 
 export type SerializablePrefetchQueryOptions<_QueryFnName extends QueryFnName, QueryFnParams> = {
   queryKey: string[];

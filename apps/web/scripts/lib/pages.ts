@@ -21,7 +21,15 @@ export function createStaticPageObjects(): StaticPageObject[] {
       )
     ),
     mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_HomePageRouteConfiguration, null),
-    mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_PostsPageRouteConfiguration, null)
+    mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_PostsPageRouteConfiguration, null),
+    // V2 Post Detail dynamic routes
+    ...slugs.map((slug) =>
+      mapRouteConfigurationToStaticPageObject(
+        RoutesConfig.V2_PostDetailPageRouteConfiguration,
+        slug,
+        slug
+      )
+    )
   ];
 }
 

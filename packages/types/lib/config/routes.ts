@@ -16,7 +16,8 @@ export enum ArcPageEnum {
 
   /** ARC v2 */
   v2_HOME = "v2_Home",
-  v2_POSTS = "v2_Posts"
+  v2_POSTS = "v2_Posts",
+  v2_POST_DETAIL = "v2_Post_Detail"
 }
 
 export const ArcBrowserRuntimeRoutesEnum = {
@@ -27,9 +28,10 @@ export const ArcBrowserRuntimeRoutesEnum = {
   [ArcPageEnum.POST]: "/post/:id",
   [ArcPageEnum.CIPHERS]: "/ee/ciphers",
   [ArcPageEnum.CIPHER]: "/ee/cipher/:id",
-  
+
   [ArcPageEnum.v2_HOME]: "/v2",
-  [ArcPageEnum.v2_POSTS]: "/v2/posts"
+  [ArcPageEnum.v2_POSTS]: "/v2/posts",
+  [ArcPageEnum.v2_POST_DETAIL]: "/v2/post/:postId"
 } as const;
 
 export type ArcBrowserRuntimeRoutes = typeof ArcBrowserRuntimeRoutesEnum;
@@ -51,6 +53,7 @@ export enum ArcPrerenderStaticRouteEnum {
 export enum ArcPrerenderDynamicRouteEnum {
   CIPHER = "https://nickgalante.tech/ee/cipher/:id",
   POST = "https://nickgalante.tech/post/:id",
+  v2_POST_DETAIL = "https://nickgalante.tech/v2/post/:postId",
 }
 
 export enum RouteConfigurationPathKeysEnum {

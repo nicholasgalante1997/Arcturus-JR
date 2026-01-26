@@ -13,7 +13,7 @@ function PostCardV2View({ post }: PostCardV2Props) {
 
   return (
     <article className="v2-post-card">
-      <Link to={`/post/${post.id}`} className="v2-post-card__link">
+      <Link to={`/v2/post/${post.slug}`} className="v2-post-card__link">
         {post.image && (
           <div className="v2-post-card__image-container">
             <img

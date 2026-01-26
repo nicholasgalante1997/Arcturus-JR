@@ -3,6 +3,7 @@ import {
   RouteConfigurationPathKeysEnum,
   ArcPageEnum,
   ArcPrerenderStaticRouteEnum,
+  ArcPrerenderDynamicRouteEnum,
   ArcBrowserRuntimeRoutesEnum,
   BASE_V2_CSS
 } from "@arcjr/types";
@@ -46,10 +47,38 @@ export const V2_PostsPageRouteConfiguration: Readonly<
   ],
 } as const;
 
+export const V2_PostDetailPageRouteConfiguration: Readonly<
+  RouteConfiguration<"getPost" | "getRelatedPosts", string>
+> = {
+  page: ArcPageEnum.v2_POST_DETAIL,
+  type: "dynamic",
+  path: {
+    [RouteConfigurationPathKeysEnum.Browser]: ArcBrowserRuntimeRoutesEnum.v2_Post_Detail,
+    [RouteConfigurationPathKeysEnum.Static]: ArcPrerenderDynamicRouteEnum.v2_POST_DETAIL,
+  },
+  styles: [...BASE_V2_CSS],
+  queries: [
+    {
+      // We will dynamically append :postId into the queryKey during the static pre-rendering process
+      queryKey: ["post"],
+      queryFnName: "getPost",
+      queryFnParams: ":postId",
+    },
+    {
+      // We will dynamically append :postId into the queryKey during the static pre-rendering process
+      queryKey: ["relatedPosts"],
+      queryFnName: "getRelatedPosts",
+      queryFnParams: ":postId",
+    },
+  ],
+};
+
 export const V2_AllRouteConfigurations = [
   // Static Page Config Objects
   V2_HomePageRouteConfiguration,
-  V2_PostsPageRouteConfiguration
+  V2_PostsPageRouteConfiguration,
+  // Dynamic Page Config Objects
+  V2_PostDetailPageRouteConfiguration
 ] as const;
 
 export const V2_StaticRouteConfigurations = V2_AllRouteConfigurations.filter(
