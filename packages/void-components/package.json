@@ -4,19 +4,24 @@
   "description": "React component library for the Void design system",
   "type": "module",
   "module": "./dist/index.js",
+  "types": "./dist/src/index.d.ts",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/src/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     },
+    "./components/*": "./dist/*/index.js",
+    "./components/*.js": "./dist/*/index.js",
     "./void-react.css": "./dist/index.css",
+    "./dist/index.css": "./dist/index.css",
     "./package.json": "./package.json"
   },
   "scripts": {
+    "prebuild": "rm -rf dist",
     "build": "run-s bundle check-types",
     "bundle": "bun run build.ts",
     "bundle:watch": "bun run build.ts --watch",
@@ -43,8 +48,12 @@
     "@testing-library/react": "^16.0.0",
     "@types/bun": "latest",
     "@types/react": "^19.0.0",
+    "autoprefixer": "^10.4.22",
+    "cssnano": "^7.1.2",
+    "esbuild": "^0.27.0",
     "happy-dom": "^20.0.10",
     "npm-run-all": "4.1.5",
+    "postcss": "^8.5.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "storybook": "^10.0.7",

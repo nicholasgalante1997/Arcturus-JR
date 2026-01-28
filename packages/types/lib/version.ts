@@ -1,0 +1,1 @@
+export type ArcVersion = "v1" | "v2";

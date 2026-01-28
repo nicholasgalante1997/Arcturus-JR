@@ -1,0 +1,74 @@
+.void-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--void-spacing-1);
+  text-decoration: none;
+  transition: color var(--void-transition-duration-fast) var(--void-transition-easing-ease);
+  cursor: pointer;
+}
+
+/* Variants */
+.void-link--default {
+  color: var(--void-color-brand-azure);
+}
+
+.void-link--default:hover {
+  color: var(--void-color-brand-violet);
+}
+
+.void-link--muted {
+  color: var(--void-color-gray-400);
+}
+
+.void-link--muted:hover {
+  color: var(--void-color-gray-200);
+}
+
+.void-link--accent {
+  color: var(--void-color-brand-violet);
+}
+
+.void-link--accent:hover {
+  color: var(--void-color-brand-azure);
+}
+
+.void-link--nav {
+  color: var(--void-color-gray-300);
+  font-weight: 500;
+}
+
+.void-link--nav:hover {
+  color: var(--void-color-base-white);
+}
+
+/* Underline */
+.void-link--underline-always {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.void-link--underline-hover:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.void-link--underline-none {
+  text-decoration: none;
+}
+
+.void-link--underline-none:hover {
+  text-decoration: none;
+}
+
+/* Disabled */
+.void-link--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* External icon */
+.void-link__external-icon {
+  flex-shrink: 0;
+  opacity: 0.7;
+}

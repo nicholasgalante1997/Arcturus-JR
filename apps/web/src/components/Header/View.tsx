@@ -1,7 +1,7 @@
+import { ExternalLinksConfig } from '@arcjr/config';
 import React from 'react';
 import { Link } from 'react-router';
 
-import CONFIG from '@/config/config';
 import { pipeline } from '@/utils/pipeline';
 
 export enum ARCJR_TABS {
@@ -10,6 +10,9 @@ export enum ARCJR_TABS {
   ABOUT = '/about',
   CONTACT = '/contact'
 }
+
+const LINKED_IN_HREF = ExternalLinksConfig.ExternalLinkLinkedIn;
+const GITHUB_HREF = ExternalLinksConfig.ExternalLinkGithub;
 
 export function getActiveTabByPathname(tab: string) {
   if (typeof window === 'undefined') return 'default' as const;
@@ -63,12 +66,12 @@ function Header() {
               </Link>
             </li>
             <li>
-              <Link target="_blank" to={CONFIG.LINKS.GITHUB} id="gh-icon-link">
+              <Link target="_blank" to={GITHUB_HREF} id="gh-icon-link">
                 <img height="24px" width="auto" src="/assets/icons/github-mark-white.svg" />
               </Link>
             </li>
             <li>
-              <Link target="_blank" to={CONFIG.LINKS.LINKEDIN} id="in-icon-link">
+              <Link target="_blank" to={LINKED_IN_HREF} id="in-icon-link">
                 <img height="24px" width="auto" src="/assets/icons/InBug-White.png" />
               </Link>
             </li>

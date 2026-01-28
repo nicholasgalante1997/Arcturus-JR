@@ -1,0 +1,80 @@
+.void-stack {
+  display: flex;
+}
+
+/* Direction */
+.void-stack--vertical {
+  flex-direction: column;
+}
+
+.void-stack--horizontal {
+  flex-direction: row;
+}
+
+/* Alignment */
+.void-stack--align-start {
+  align-items: flex-start;
+}
+.void-stack--align-center {
+  align-items: center;
+}
+.void-stack--align-end {
+  align-items: flex-end;
+}
+.void-stack--align-stretch {
+  align-items: stretch;
+}
+.void-stack--align-baseline {
+  align-items: baseline;
+}
+
+/* Justification */
+.void-stack--justify-start {
+  justify-content: flex-start;
+}
+.void-stack--justify-center {
+  justify-content: center;
+}
+.void-stack--justify-end {
+  justify-content: flex-end;
+}
+.void-stack--justify-between {
+  justify-content: space-between;
+}
+.void-stack--justify-around {
+  justify-content: space-around;
+}
+.void-stack--justify-evenly {
+  justify-content: space-evenly;
+}
+
+/* Spacing */
+.void-stack--spacing-none {
+  gap: 0;
+}
+.void-stack--spacing-xs {
+  gap: var(--void-spacing-1);
+}
+.void-stack--spacing-sm {
+  gap: var(--void-spacing-2);
+}
+.void-stack--spacing-md {
+  gap: var(--void-spacing-4);
+}
+.void-stack--spacing-lg {
+  gap: var(--void-spacing-6);
+}
+.void-stack--spacing-xl {
+  gap: var(--void-spacing-8);
+}
+.void-stack--spacing-2xl {
+  gap: var(--void-spacing-12);
+}
+.void-stack--spacing-3xl {
+  gap: var(--void-spacing-16);
+}
+
+/* Wrap */
+.void-stack--wrap {
+  flex-wrap: wrap;
+}

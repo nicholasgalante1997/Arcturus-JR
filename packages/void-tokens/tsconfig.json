@@ -6,16 +6,17 @@
             "ESNext"
         ],
         "moduleResolution": "bundler",
-        "types": [
-            "bun-types"
-        ],
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
         "allowSyntheticDefaultImports": true,
-        "outDir": "./dist"
+        "outDir": "./dist",
+        "typeRoots": [
+            "node_modules/@types",
+            "../../node_modules/@types"
+        ]
     },
     "include": [
         "build.ts",

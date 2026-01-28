@@ -1,7 +1,7 @@
 export function runTypewriterAnimation(element: HTMLElement) {
   const textPhrases = [
     "Hi, I'm Nick <wave>",
-    'I\'m a Senior Software Engineer',
+    "I'm a Senior Software Engineer",
     'Opinonated about the Web',
     'All in on Bun replacing Node.js',
     'Amateur Cryptologist',

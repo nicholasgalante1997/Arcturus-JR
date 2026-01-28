@@ -1,0 +1,84 @@
+@import './About.css';
+@import './Contact.css';
+@import './FeaturedPosts.css';
+@import './Footer.css';
+@import './Header.css';
+@import './HeroWidget.css';
+@import './Home.css';
+@import './Posts.css';
+@import './PostsGrid.css';
+@import './PostDetail.css';
+
+body {
+  --surface-color: rgba(24, 24, 24, 0.7);
+  --text-color: #e0e0e0;
+  --muted-text: #a0a0a0;
+  --card-bg: rgba(40, 40, 45, 0.6);
+  --glass-border: linear-gradient(
+    to bottom right,
+    var(--void-color-brand-rose) 40%,
+    var(--void-color-brand-azure),
+    var(--void-color-brand-violet)
+  );
+  --glass-shadow: rgba(0, 0, 0, 0.15);
+  --font-main: 'Nunito Sans', system-ui, -apple-system, sans-serif;
+  --muted-text: #cccccc;
+  --spacing-unit: 8px;
+
+  cursor: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png'), auto;
+
+  a,
+  a:hover,
+  a:focus,
+  a:active,
+  button,
+  button:hover,
+  button:focus,
+  button:active {
+    cursor:
+      url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png'), auto;
+  }
+}
+
+main#app-v2 {
+  min-height: calc(100vh - 160px);
+  padding: 3rem 0;
+}
+
+/** Common Layout for v2 Page Wrappers */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ========================================
+   Global Mobile Responsive Styles for V2
+   ======================================== */
+
+/* Mobile base adjustments */
+@media (max-width: 768px) {
+  main#app-v2 {
+    padding: 1.5rem 0;
+  }
+
+  .container,
+  .v2-container {
+    width: 100%;
+    padding: 0 var(--void-spacing-4);
+  }
+}
+
+@media (max-width: 480px) {
+  main#app-v2 {
+    padding: 1rem 0;
+  }
+
+  .container,
+  .v2-container {
+    padding: 0 var(--void-spacing-3);
+  }
+}

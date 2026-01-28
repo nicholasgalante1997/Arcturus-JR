@@ -23,6 +23,6 @@
     "noUncheckedIndexedAccess": true,
     "typeRoots": ["node_modules/@types", "../../node_modules/@types", "./src/types"]
   },
-  "include": ["src/**/*", "./.storybook/preview.tsx", "./.storybook/main.ts"],
+  "include": ["build.ts", "build/**/*", "src/**/*", "./.storybook/preview.tsx", "./.storybook/main.ts"],
   "exclude": ["node_modules", "dist"]
 }
