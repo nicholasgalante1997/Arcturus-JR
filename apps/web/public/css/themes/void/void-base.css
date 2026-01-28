@@ -39,7 +39,7 @@
 
   /* Typography */
   --void-font-family:
-    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   --void-font-family-mono: 'JetBrains Mono', 'Courier New', Courier, monospace;
   --void-font-size-base: 15px;
   --void-font-weight-normal: 400;

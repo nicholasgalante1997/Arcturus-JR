@@ -1,0 +1,100 @@
+.void-textarea-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--void-spacing-1);
+}
+
+.void-textarea-wrapper--full-width {
+  display: flex;
+  width: 100%;
+}
+
+.void-textarea__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--void-color-gray-300);
+}
+
+.void-textarea {
+  width: 100%;
+  padding: var(--void-spacing-2) var(--void-spacing-3);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--void-color-base-white);
+  background-color: var(--void-color-gray-900);
+  border: var(--void-border-width-thin) solid var(--void-color-gray-700);
+  border-radius: var(--void-border-radius-md);
+  transition: border-color var(--void-transition-duration-fast)
+      var(--void-transition-easing-ease),
+    box-shadow var(--void-transition-duration-fast)
+      var(--void-transition-easing-ease);
+}
+
+.void-textarea::placeholder {
+  color: var(--void-color-gray-500);
+}
+
+.void-textarea:hover:not(:disabled) {
+  border-color: var(--void-color-gray-600);
+}
+
+.void-textarea:focus {
+  outline: none;
+  border-color: var(--void-color-brand-violet);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+}
+
+/* Sizes */
+.void-textarea--sm {
+  padding: var(--void-spacing-1) var(--void-spacing-2);
+  font-size: 0.875rem;
+}
+
+.void-textarea--lg {
+  padding: var(--void-spacing-3) var(--void-spacing-4);
+  font-size: 1.125rem;
+}
+
+/* Variants */
+.void-textarea--error {
+  border-color: var(--void-color-semantic-error);
+}
+
+.void-textarea--error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+}
+
+.void-textarea--success {
+  border-color: var(--void-color-semantic-success);
+}
+
+/* Resize */
+.void-textarea--resize-none {
+  resize: none;
+}
+.void-textarea--resize-vertical {
+  resize: vertical;
+}
+.void-textarea--resize-horizontal {
+  resize: horizontal;
+}
+.void-textarea--resize-both {
+  resize: both;
+}
+
+/* Disabled */
+.void-textarea--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Helper text */
+.void-textarea__helper {
+  font-size: 0.75rem;
+  color: var(--void-color-gray-500);
+}
+
+.void-textarea__helper--error {
+  color: var(--void-color-semantic-error);
+}
