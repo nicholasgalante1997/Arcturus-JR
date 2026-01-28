@@ -7,7 +7,6 @@ import type { Decorator } from '@storybook/react-webpack5';
 
 export class StorybookDecorators {
   static queryClient = createQueryClient({ env: 'development' });
-
   static withTanstackQuery: Decorator = (Story) => {
     return (
       <QueryClientProvider client={StorybookDecorators.queryClient}>
