@@ -16,7 +16,7 @@ function FeaturedPostsView({ posts, limit = 6 }: FeaturedPostsProps) {
         <h2 id="featured-posts-title" className="v2-featured-posts__title">
           Latest Posts
         </h2>
-        <Link to="/posts" className="v2-featured-posts__view-all">
+        <Link to="/v2/posts" className="v2-featured-posts__view-all">
           View all posts
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path
