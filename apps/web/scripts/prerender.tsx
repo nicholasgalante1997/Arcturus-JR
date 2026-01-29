@@ -2,6 +2,7 @@ import 'dotenv/config';
 
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import debug from 'debug';
+import { emojify } from 'node-emoji';
 import _path from 'path';
 import React from 'react';
 import { prerender } from 'react-dom/static.edge';
@@ -38,17 +39,36 @@ const reportMetrics: Record<string, PrerenderMetrics> = {};
 $prerender()
   .then(() => {
     const end = performance.now();
-    prerenderer_logger_success(`Prerendering completed in ${(end - start).toFixed(2)}ms`);
-    prerenderer_logger_success('############ Prerender Report ############');
-    prerenderer_logger_success(`Built: ${getNumOfSucceededPrerenderJobs()} Artifacts`);
-    prerenderer_logger_success(`Failed: ${getNumOfFailedPrerenderJobs()} Prerender Tasks`);
+    const total_duration = `${(end - start).toFixed(2)}ms`;
+
+    console.log('');
+    console.log(emojify(`:sparkles: Prerendering completed in ${total_duration} :tada:`));
+    console.log('');
+
+    const sjobs = getNumOfSucceededPrerenderJobs();
+    const fjobs = getNumOfFailedPrerenderJobs();
+
+    console.log(emojify(`   :white_check_mark: Built: ${sjobs} Artifacts`));
+    console.log(emojify(`   :x: Failed: ${fjobs} Prerender Tasks`));
+    console.log('');
+
+    if (fjobs > 0) {
+      console.warn(emojify(`:warning: Some Prerender Tasks Failed! Check logs above for details :warning:`));
+      console.log('');
+
+      throw new Error('PrerenderTaskFailure');
+    }
 
     const [task, duration] = getLongestPrerenderJob();
-    prerenderer_logger_success(`Longest Prerender Job: ${task} ${duration.toFixed(2)}ms`);
-    prerenderer_logger_success('##########################################');
+    console.log(
+      emojify(`   :stopwatch: Longest Prerender Task: ${task} took ${(duration as number).toFixed(2)}ms`)
+    );
+    console.log('');
   })
   .catch((e) => {
     debug(namespace + ':fatal')('Fatal error during prerender task', e);
+    console.error('Fatal error during prerender task', e);
+    process.exit(1);
   });
 
 /**
@@ -134,7 +154,7 @@ async function $prerender() {
     const url = new URL(path);
     prerenderer_logger_debugger(`Starting "prerender" task for ${url.pathname}`);
 
-    const metricsKey = 'ARC_PRERENDER_PAGE___:' + url.pathname;
+    const metricsKey = JSON.stringify({ page: url.pathname });
 
     try {
       /**
