@@ -1,0 +1,249 @@
+/**
+ * Catppuccin Latte Theme for Project Arcturus
+ * A light, warm flavor for daytime use
+ *
+ * Palette: https://catppuccin.com/palette/
+ * Flavor: Latte (light)
+ */
+
+:root {
+  /* ===== Catppuccin Latte Base Palette ===== */
+  --ctp-rosewater: #dc8a78;
+  --ctp-flamingo: #dd7878;
+  --ctp-pink: #ea76cb;
+  --ctp-mauve: #8839ef;
+  --ctp-red: #d20f39;
+  --ctp-maroon: #e64553;
+  --ctp-peach: #fe640b;
+  --ctp-yellow: #df8e1d;
+  --ctp-green: #40a02b;
+  --ctp-teal: #179299;
+  --ctp-sky: #04a5e5;
+  --ctp-sapphire: #209fb5;
+  --ctp-blue: #1e66f5;
+  --ctp-lavender: #7287fd;
+  --ctp-text: #4c4f69;
+  --ctp-subtext1: #5c5f77;
+  --ctp-subtext0: #6c6f85;
+  --ctp-overlay2: #7c7f93;
+  --ctp-overlay1: #8c8fa1;
+  --ctp-overlay0: #9ca0b0;
+  --ctp-surface2: #acb0be;
+  --ctp-surface1: #bcc0cc;
+  --ctp-surface0: #ccd0da;
+  --ctp-base: #eff1f5;
+  --ctp-mantle: #e6e9ef;
+  --ctp-crust: #dce0e8;
+
+  /* ===== V1 Theme Compatibility ===== */
+  --primary-color: var(--ctp-mauve);
+  --secondary-color: var(--ctp-blue);
+  --bg-color: var(--ctp-base);
+  --surface-color: rgba(204, 208, 218, 0.7);
+  --text-color: var(--ctp-text);
+  --muted-text: var(--ctp-subtext0);
+  --card-bg: rgba(188, 192, 204, 0.6);
+  --glass-border: rgba(136, 57, 239, 0.2);
+  --glass-shadow: rgba(220, 224, 232, 0.3);
+
+  /* ===== Void Token Overrides ===== */
+  /* Brand colors */
+  --void-color-brand-azure: var(--ctp-blue);
+  --void-color-brand-violet: var(--ctp-mauve);
+  --void-color-brand-rose: var(--ctp-pink);
+  --void-color-brand-amber: var(--ctp-yellow);
+  --void-color-brand-orange: var(--ctp-peach);
+
+  /* Base colors - inverted for light mode */
+  --void-color-base-black: var(--ctp-base);
+  --void-color-base-white: var(--ctp-text);
+
+  /* Gray scale - inverted for light mode */
+  --void-color-gray-950: var(--ctp-base);
+  --void-color-gray-900: var(--ctp-mantle);
+  --void-color-gray-800: var(--ctp-crust);
+  --void-color-gray-700: var(--ctp-surface0);
+  --void-color-gray-600: var(--ctp-surface1);
+  --void-color-gray-400: var(--ctp-surface2);
+  --void-color-gray-300: var(--ctp-overlay0);
+  --void-color-gray-200: var(--ctp-subtext0);
+  --void-color-gray-100: var(--ctp-text);
+
+  /* Semantic colors */
+  --void-color-semantic-primary: var(--ctp-mauve);
+  --void-color-semantic-secondary: var(--ctp-blue);
+  --void-color-semantic-accent: var(--ctp-pink);
+  --void-color-semantic-warning: var(--ctp-yellow);
+  --void-color-semantic-danger: var(--ctp-red);
+  --void-color-semantic-success: var(--ctp-green);
+
+  /* Background hierarchy - adjusted for light mode */
+  --void-color-background-base: var(--ctp-base);
+  --void-color-background-elevated: var(--ctp-mantle);
+  --void-color-background-surface: var(--ctp-crust);
+  --void-color-background-overlay: var(--ctp-surface0);
+
+  /* Text hierarchy */
+  --void-color-text-primary: var(--ctp-text);
+  --void-color-text-secondary: var(--ctp-subtext1);
+  --void-color-text-tertiary: var(--ctp-subtext0);
+  --void-color-text-disabled: var(--ctp-overlay0);
+  --void-color-text-heading: var(--ctp-text);
+
+  /* Border colors */
+  --void-color-border-default: var(--ctp-surface1);
+  --void-color-border-subtle: var(--ctp-surface0);
+  --void-color-border-primary: var(--ctp-mauve);
+
+  /* Shadows - lighter for light mode */
+  --void-shadow-sm: 0 1px 2px 0 rgba(76, 79, 105, 0.1);
+  --void-shadow-md: 0 4px 6px -1px rgba(76, 79, 105, 0.1), 0 2px 4px -1px rgba(76, 79, 105, 0.06);
+  --void-shadow-lg: 0 10px 15px -3px rgba(76, 79, 105, 0.1), 0 4px 6px -2px rgba(76, 79, 105, 0.05);
+  --void-shadow-glow-primary: 0 0 20px rgba(136, 57, 239, 0.2);
+  --void-shadow-glow-accent: 0 0 20px rgba(234, 118, 203, 0.2);
+
+  /* Component token overrides */
+  --void-component-button-primary-background: var(--ctp-mauve);
+  --void-component-button-primary-background-hover: var(--ctp-pink);
+  --void-component-button-primary-text: var(--ctp-base);
+  --void-component-button-secondary-background: var(--ctp-blue);
+  --void-component-button-secondary-background-hover: var(--ctp-sapphire);
+  --void-component-button-secondary-text: var(--ctp-base);
+  --void-component-card-background: var(--ctp-mantle);
+  --void-component-card-border-color: var(--ctp-surface0);
+  --void-component-card-border-color-hover: var(--ctp-mauve);
+  --void-component-input-background: var(--ctp-crust);
+  --void-component-input-border-color: var(--ctp-surface1);
+  --void-component-input-border-color-focus: var(--ctp-mauve);
+  --void-component-badge-background: var(--ctp-mauve);
+  --void-component-badge-text: var(--ctp-base);
+}
+
+/* ===== Body Background Override ===== */
+body,
+div#arc_root {
+  background-color: var(--ctp-base);
+  color: var(--ctp-text);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(136, 57, 239, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 80% 80%, rgba(30, 102, 245, 0.03) 0%, transparent 20%);
+}
+
+/* ===== Glassmorphism Enhancement ===== */
+.glass {
+  background: linear-gradient(
+    135deg,
+    rgba(204, 208, 218, 0.6),
+    rgba(188, 192, 204, 0.4)
+  );
+  border: 1px solid rgba(136, 57, 239, 0.15);
+  box-shadow:
+    0 8px 32px rgba(76, 79, 105, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+/* ===== Code Block Theming ===== */
+.markdown-content pre {
+  background-color: var(--ctp-mantle);
+  border: 1px solid var(--ctp-surface0);
+  color: var(--ctp-text);
+}
+
+.markdown-content code {
+  background-color: var(--ctp-surface0);
+  color: var(--ctp-peach);
+}
+
+.markdown-content pre code {
+  background-color: transparent;
+  color: var(--ctp-text);
+}
+
+/* ===== Selection Color ===== */
+::selection {
+  background-color: var(--ctp-mauve);
+  color: var(--ctp-base);
+}
+
+/* ===== Scrollbar Theming ===== */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ctp-mantle);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ctp-surface2);
+  border-radius: 6px;
+  border: 3px solid var(--ctp-mantle);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ctp-overlay0);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ctp-surface2) var(--ctp-mantle);
+}
+
+/* ===== Light Mode Link Adjustments ===== */
+a {
+  color: var(--ctp-blue);
+}
+
+a:hover,
+a:focus {
+  color: var(--ctp-mauve);
+}
+
+/* ===== Light Mode Header Adjustments ===== */
+header {
+  background-color: rgba(230, 233, 239, 0.85);
+  border-bottom: 1px solid rgba(136, 57, 239, 0.15);
+}
+
+header a {
+  color: var(--ctp-mauve);
+}
+
+header nav a {
+  color: var(--ctp-text);
+}
+
+header nav a:hover,
+header nav a[data-active-tab="active"] {
+  color: var(--ctp-mauve);
+}
+
+header nav a::after {
+  background-color: var(--ctp-mauve);
+}
+
+/* ===== Light Mode Card Adjustments ===== */
+.post-card {
+  background: rgba(230, 233, 239, 0.8);
+  border: 1px solid rgba(136, 57, 239, 0.15);
+}
+
+.post-card:hover {
+  box-shadow: 0 12px 48px rgba(76, 79, 105, 0.15);
+}
+
+.post-card h2 {
+  color: var(--ctp-mauve);
+}
+
+/* ===== Light Mode Footer ===== */
+footer {
+  background-color: rgba(230, 233, 239, 0.85);
+  border-top: 1px solid rgba(136, 57, 239, 0.15);
+}
+
+footer p {
+  color: var(--ctp-subtext0);
+}

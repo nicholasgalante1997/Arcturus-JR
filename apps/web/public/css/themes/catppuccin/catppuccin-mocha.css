@@ -1,0 +1,187 @@
+/**
+ * Catppuccin Mocha Theme for Project Arcturus
+ * The darkest Catppuccin flavor with rich pastel accents
+ *
+ * Palette: https://catppuccin.com/palette/
+ * Flavor: Mocha (darkest)
+ */
+
+:root {
+  /* ===== Catppuccin Mocha Base Palette ===== */
+  --ctp-rosewater: #f5e0dc;
+  --ctp-flamingo: #f2cdcd;
+  --ctp-pink: #f5c2e7;
+  --ctp-mauve: #cba6f7;
+  --ctp-red: #f38ba8;
+  --ctp-maroon: #eba0ac;
+  --ctp-peach: #fab387;
+  --ctp-yellow: #f9e2af;
+  --ctp-green: #a6e3a1;
+  --ctp-teal: #94e2d5;
+  --ctp-sky: #89dceb;
+  --ctp-sapphire: #74c7ec;
+  --ctp-blue: #89b4fa;
+  --ctp-lavender: #b4befe;
+  --ctp-text: #cdd6f4;
+  --ctp-subtext1: #bac2de;
+  --ctp-subtext0: #a6adc8;
+  --ctp-overlay2: #9399b2;
+  --ctp-overlay1: #7f849c;
+  --ctp-overlay0: #6c7086;
+  --ctp-surface2: #585b70;
+  --ctp-surface1: #45475a;
+  --ctp-surface0: #313244;
+  --ctp-base: #1e1e2e;
+  --ctp-mantle: #181825;
+  --ctp-crust: #11111b;
+
+  /* ===== V1 Theme Compatibility ===== */
+  --primary-color: var(--ctp-mauve);
+  --secondary-color: var(--ctp-blue);
+  --bg-color: var(--ctp-base);
+  --surface-color: rgba(49, 50, 68, 0.7);
+  --text-color: var(--ctp-text);
+  --muted-text: var(--ctp-subtext0);
+  --card-bg: rgba(69, 71, 90, 0.6);
+  --glass-border: rgba(203, 166, 247, 0.2);
+  --glass-shadow: rgba(17, 17, 27, 0.3);
+
+  /* ===== Void Token Overrides ===== */
+  /* Brand colors */
+  --void-color-brand-azure: var(--ctp-blue);
+  --void-color-brand-violet: var(--ctp-mauve);
+  --void-color-brand-rose: var(--ctp-pink);
+  --void-color-brand-amber: var(--ctp-yellow);
+  --void-color-brand-orange: var(--ctp-peach);
+
+  /* Base colors */
+  --void-color-base-black: var(--ctp-crust);
+  --void-color-base-white: var(--ctp-text);
+
+  /* Gray scale */
+  --void-color-gray-950: var(--ctp-mantle);
+  --void-color-gray-900: var(--ctp-base);
+  --void-color-gray-800: var(--ctp-surface0);
+  --void-color-gray-700: var(--ctp-surface1);
+  --void-color-gray-600: var(--ctp-surface2);
+  --void-color-gray-400: var(--ctp-overlay0);
+  --void-color-gray-300: var(--ctp-overlay1);
+  --void-color-gray-200: var(--ctp-subtext0);
+  --void-color-gray-100: var(--ctp-text);
+
+  /* Semantic colors */
+  --void-color-semantic-primary: var(--ctp-mauve);
+  --void-color-semantic-secondary: var(--ctp-blue);
+  --void-color-semantic-accent: var(--ctp-pink);
+  --void-color-semantic-warning: var(--ctp-yellow);
+  --void-color-semantic-danger: var(--ctp-red);
+  --void-color-semantic-success: var(--ctp-green);
+
+  /* Background hierarchy */
+  --void-color-background-base: var(--ctp-crust);
+  --void-color-background-elevated: var(--ctp-mantle);
+  --void-color-background-surface: var(--ctp-base);
+  --void-color-background-overlay: var(--ctp-surface0);
+
+  /* Text hierarchy */
+  --void-color-text-primary: var(--ctp-text);
+  --void-color-text-secondary: var(--ctp-subtext1);
+  --void-color-text-tertiary: var(--ctp-subtext0);
+  --void-color-text-disabled: var(--ctp-overlay0);
+  --void-color-text-heading: var(--ctp-text);
+
+  /* Border colors */
+  --void-color-border-default: var(--ctp-surface1);
+  --void-color-border-subtle: var(--ctp-surface0);
+  --void-color-border-primary: var(--ctp-mauve);
+
+  /* Shadows with Catppuccin-appropriate colors */
+  --void-shadow-sm: 0 1px 2px 0 rgba(17, 17, 27, 0.5);
+  --void-shadow-md: 0 4px 6px -1px rgba(17, 17, 27, 0.5), 0 2px 4px -1px rgba(17, 17, 27, 0.3);
+  --void-shadow-lg: 0 10px 15px -3px rgba(17, 17, 27, 0.5), 0 4px 6px -2px rgba(17, 17, 27, 0.3);
+  --void-shadow-glow-primary: 0 0 20px rgba(203, 166, 247, 0.3);
+  --void-shadow-glow-accent: 0 0 20px rgba(245, 194, 231, 0.3);
+
+  /* Component token overrides */
+  --void-component-button-primary-background: var(--ctp-mauve);
+  --void-component-button-primary-background-hover: var(--ctp-pink);
+  --void-component-button-secondary-background: var(--ctp-blue);
+  --void-component-button-secondary-background-hover: var(--ctp-sapphire);
+  --void-component-card-background: var(--ctp-mantle);
+  --void-component-card-border-color: var(--ctp-surface0);
+  --void-component-card-border-color-hover: var(--ctp-mauve);
+  --void-component-input-background: var(--ctp-surface0);
+  --void-component-input-border-color: var(--ctp-surface1);
+  --void-component-input-border-color-focus: var(--ctp-mauve);
+  --void-component-badge-background: var(--ctp-mauve);
+}
+
+/* ===== Body Background Override ===== */
+body,
+div#arc_root {
+  background-color: var(--ctp-base);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(203, 166, 247, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 80% 80%, rgba(137, 180, 250, 0.03) 0%, transparent 20%);
+}
+
+/* ===== Glassmorphism Enhancement ===== */
+.glass {
+  background: linear-gradient(
+    135deg,
+    rgba(49, 50, 68, 0.4),
+    rgba(69, 71, 90, 0.2)
+  );
+  border: 1px solid rgba(203, 166, 247, 0.15);
+  box-shadow:
+    0 8px 32px rgba(17, 17, 27, 0.37),
+    inset 0 0 0 1px rgba(205, 214, 244, 0.05);
+}
+
+/* ===== Code Block Theming ===== */
+.markdown-content pre {
+  background-color: var(--ctp-mantle);
+  border: 1px solid var(--ctp-surface0);
+}
+
+.markdown-content code {
+  background-color: var(--ctp-surface0);
+  color: var(--ctp-peach);
+}
+
+.markdown-content pre code {
+  background-color: transparent;
+  color: var(--ctp-text);
+}
+
+/* ===== Selection Color ===== */
+::selection {
+  background-color: var(--ctp-mauve);
+  color: var(--ctp-crust);
+}
+
+/* ===== Scrollbar Theming ===== */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ctp-mantle);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ctp-surface2);
+  border-radius: 6px;
+  border: 3px solid var(--ctp-mantle);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ctp-overlay0);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ctp-surface2) var(--ctp-mantle);
+}
