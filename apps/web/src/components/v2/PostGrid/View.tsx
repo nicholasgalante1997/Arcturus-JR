@@ -25,7 +25,7 @@ function V2PostGridView({ queries }: V2PostGridViewProps) {
         <Card
           key={post.id}
           header={getCardHeader(post.title)}
-          footer={getCardFooter(`/v2/post/${post.slug}`, navigate, post.date)}
+          footer={getCardFooter(`/post/${post.slug}`, navigate, post.date)}
         >
           <p className="void-card-post-excerpt">{post.excerpt}</p>
 

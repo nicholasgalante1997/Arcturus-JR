@@ -6,7 +6,7 @@ import {
   ArcPrerenderDynamicRouteEnum,
   ArcBrowserRuntimeRoutesEnum,
   BASE_V1_CSS,
-  VOID_V1_THEME_CSS,
+  BASE_V2_CSS,
 } from "@arcjr/types";
 
 export const V1_HomePageRouteConfiguration: Readonly<
@@ -123,7 +123,7 @@ export const V1_CiphersPageRouteConfiguration: Readonly<
       ArcPrerenderStaticRouteEnum.CIPHERS,
   },
   index: false,
-  styles: [...VOID_V1_THEME_CSS],
+  styles: [...BASE_V2_CSS],
   queries: [
     {
       queryKey: ["ciphers"],
@@ -145,7 +145,7 @@ export const V1_CipherPageRouteConfiguration: Readonly<
       ArcPrerenderDynamicRouteEnum.CIPHER,
   },
   index: false,
-  styles: [...VOID_V1_THEME_CSS],
+  styles: [...BASE_V2_CSS],
   queries: [
     {
       // We will dynamically append :id into the queryKey during the static pre-rendering process

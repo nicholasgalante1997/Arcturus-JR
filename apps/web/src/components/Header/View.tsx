@@ -5,10 +5,10 @@ import { Link } from 'react-router';
 import { pipeline } from '@/utils/pipeline';
 
 export enum ARCJR_TABS {
-  HOME = '/',
-  POSTS = '/posts',
-  ABOUT = '/about',
-  CONTACT = '/contact'
+  HOME = '/archives/v1',
+  POSTS = '/archives/v1/posts',
+  ABOUT = '/archives/v1/about',
+  CONTACT = '/archives/v1/contact'
 }
 
 const LINKED_IN_HREF = ExternalLinksConfig.ExternalLinkLinkedIn;
@@ -18,8 +18,8 @@ export function getActiveTabByPathname(tab: string) {
   if (typeof window === 'undefined') return 'default' as const;
   const url = new URL(window.location.href);
   const pathname = url.pathname;
-  if (tab === '/') {
-    if (pathname === '/' || pathname === '') return 'active' as const;
+  if (tab === '/archives/v1') {
+    if (pathname === '/archives/v1' || pathname === '/archives/v1/') return 'active' as const;
     return 'default' as const;
   }
 
@@ -30,7 +30,7 @@ function Header() {
   return (
     <header>
       <div className="container">
-        <Link to="/">
+        <Link to="/archives/v1">
           <div id="nav-profile-image">
             <img
               src="/assets/doodles-ember.avif"
@@ -46,22 +46,22 @@ function Header() {
         <nav>
           <ul>
             <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.HOME)} to="/">
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.HOME)} to="/archives/v1">
                 Home
               </Link>
             </li>
             <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.POSTS)} to="/posts">
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.POSTS)} to="/archives/v1/posts">
                 Posts
               </Link>
             </li>
             <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.ABOUT)} to="/about">
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.ABOUT)} to="/archives/v1/about">
                 About
               </Link>
             </li>
             <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.CONTACT)} to="/contact">
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_TABS.CONTACT)} to="/archives/v1/contact">
                 Contact
               </Link>
             </li>

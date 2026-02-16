@@ -8,18 +8,18 @@ import { pipeline } from '@/utils/pipeline';
 import type { V2HeaderViewProps } from './types';
 
 export enum ARCJR_V2_TABS {
-  HOME = '/v2',
-  POSTS = '/v2/post',
-  ABOUT = '/v2/about',
-  CONTACT = '/v2/contact'
+  HOME = '/',
+  POSTS = '/post',
+  ABOUT = '/about',
+  CONTACT = '/contact'
 }
 
 export function getActiveTabByPathname(tab: string) {
   if (typeof window === 'undefined') return 'default' as const;
   const url = new URL(window.location.href);
   const pathname = url.pathname;
-  if (tab === '/v2') {
-    if (pathname === '/v2') return 'active' as const;
+  if (tab === '/') {
+    if (pathname === '/') return 'active' as const;
     return 'default' as const;
   }
 
@@ -47,7 +47,7 @@ function V2HeaderView({
       data-menu-open={isMobileMenuOpen}
     >
       <div className="container">
-        <Link id="header-logo" to="/v2">
+        <Link id="header-logo" to="/">
           {SHOW_IMAGE_LOGO && (
             <img
               src="/assets/poke-stock/champion-gang.webp"
@@ -68,22 +68,22 @@ function V2HeaderView({
         <nav>
           <ul>
             <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.HOME)} to="/v2">
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.HOME)} to="/">
                 Home
               </Link>
             </li>
             <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.POSTS)} to="/v2/posts">
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.POSTS)} to="/posts">
                 Posts
               </Link>
             </li>
             <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.ABOUT)} to="/v2/about">
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.ABOUT)} to="/about">
                 About
               </Link>
             </li>
             <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.CONTACT)} to="/v2/contact">
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.CONTACT)} to="/contact">
                 Contact
               </Link>
             </li>
@@ -119,22 +119,22 @@ function V2HeaderView({
         <nav className="mobile-menu" aria-label="Mobile navigation">
           <ul>
             <li>
-              <Link to="/v2" onClick={onToggleMobileMenu}>
+              <Link to="/" onClick={onToggleMobileMenu}>
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/v2/posts" onClick={onToggleMobileMenu}>
+              <Link to="/posts" onClick={onToggleMobileMenu}>
                 Posts
               </Link>
             </li>
             <li>
-              <Link to="/v2/about" onClick={onToggleMobileMenu}>
+              <Link to="/about" onClick={onToggleMobileMenu}>
                 About
               </Link>
             </li>
             <li>
-              <Link to="/v2/contact" onClick={onToggleMobileMenu}>
+              <Link to="/contact" onClick={onToggleMobileMenu}>
                 Contact
               </Link>
             </li>
