@@ -10,6 +10,7 @@ import type { V2HeaderViewProps } from './types';
 export enum ARCJR_V2_TABS {
   HOME = '/',
   POSTS = '/post',
+  RFCS = '/rfc',
   ABOUT = '/about',
   CONTACT = '/contact'
 }
@@ -78,6 +79,11 @@ function V2HeaderView({
               </Link>
             </li>
             <li>
+              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.RFCS)} to="/rfcs">
+                RFCs
+              </Link>
+            </li>
+            <li>
               <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.ABOUT)} to="/about">
                 About
               </Link>
@@ -126,6 +132,11 @@ function V2HeaderView({
             <li>
               <Link to="/posts" onClick={onToggleMobileMenu}>
                 Posts
+              </Link>
+            </li>
+            <li>
+              <Link to="/rfcs" onClick={onToggleMobileMenu}>
+                RFCs
               </Link>
             </li>
             <li>

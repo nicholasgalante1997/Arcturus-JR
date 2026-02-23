@@ -8,6 +8,7 @@
 @import './Posts.css';
 @import './PostsGrid.css';
 @import './PostDetail.css';
+@import './Rfcs.css';
 
 body {
   --surface-color: rgba(24, 24, 24, 0.7);

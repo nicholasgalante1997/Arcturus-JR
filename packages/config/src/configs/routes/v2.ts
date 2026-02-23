@@ -73,6 +73,44 @@ export const V2_PostDetailPageRouteConfiguration: Readonly<
   ],
 };
 
+export const V2_RfcsPageRouteConfiguration: Readonly<
+  RouteConfiguration<"getRfcs", {}>
+> = {
+  page: ArcPageEnum.v2_RFCS,
+  type: "static",
+  path: {
+    [RouteConfigurationPathKeysEnum.Browser]: ArcBrowserRuntimeRoutesEnum.v2_Rfcs,
+    [RouteConfigurationPathKeysEnum.Static]: ArcPrerenderStaticRouteEnum.v2_RFCS,
+  },
+  styles: [...BASE_V2_CSS],
+  queries: [
+    {
+      queryKey: ["rfcs"],
+      queryFnName: "getRfcs",
+      queryFnParams: {},
+    },
+  ],
+} as const;
+
+export const V2_RfcDetailPageRouteConfiguration: Readonly<
+  RouteConfiguration<"getRfc", string>
+> = {
+  page: ArcPageEnum.v2_RFC_DETAIL,
+  type: "dynamic",
+  path: {
+    [RouteConfigurationPathKeysEnum.Browser]: ArcBrowserRuntimeRoutesEnum.v2_Rfc_Detail,
+    [RouteConfigurationPathKeysEnum.Static]: ArcPrerenderDynamicRouteEnum.v2_RFC_DETAIL,
+  },
+  styles: [...BASE_V2_CSS],
+  queries: [
+    {
+      queryKey: ["rfc"],
+      queryFnName: "getRfc",
+      queryFnParams: ":rfcId",
+    },
+  ],
+};
+
 export const V2_AboutPageRouteConfiguration: Readonly<
   RouteConfiguration<never, {}>
 > = {
@@ -103,10 +141,12 @@ export const V2_AllRouteConfigurations = [
   // Static Page Config Objects
   V2_HomePageRouteConfiguration,
   V2_PostsPageRouteConfiguration,
+  V2_RfcsPageRouteConfiguration,
   V2_AboutPageRouteConfiguration,
   V2_ContactPageRouteConfiguration,
   // Dynamic Page Config Objects
-  V2_PostDetailPageRouteConfiguration
+  V2_PostDetailPageRouteConfiguration,
+  V2_RfcDetailPageRouteConfiguration
 ] as const;
 
 export const V2_StaticRouteConfigurations = V2_AllRouteConfigurations.filter(

@@ -8,9 +8,10 @@ import {
 import { mapSerializablePrefetchQueryOptionsToStaticPagePrefetchQueryOptions } from '../prefetch/prefetch-query-options-transform';
 
 function transformStaticRoutePath(routePath: string, routePathParam: string = ''): string {
-  // Handle both :id and :postId route parameters
+  // Handle :id, :postId, and :rfcId route parameters
   let path = routePath.replace(':id', encodeURIComponent(routePathParam));
   path = path.replace(':postId', encodeURIComponent(routePathParam));
+  path = path.replace(':rfcId', encodeURIComponent(routePathParam));
   return path;
 }
 

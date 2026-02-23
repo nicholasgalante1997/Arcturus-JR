@@ -18,6 +18,8 @@ export enum ArcPageEnum {
   v2_HOME = "v2_Home",
   v2_POSTS = "v2_Posts",
   v2_POST_DETAIL = "v2_Post_Detail",
+  v2_RFCS = "v2_Rfcs",
+  v2_RFC_DETAIL = "v2_Rfc_Detail",
   v2_ABOUT = "v2_About",
   v2_CONTACT = "v2_Contact"
 }
@@ -34,6 +36,8 @@ export const ArcBrowserRuntimeRoutesEnum = {
   [ArcPageEnum.v2_HOME]: "/",
   [ArcPageEnum.v2_POSTS]: "/posts",
   [ArcPageEnum.v2_POST_DETAIL]: "/post/:postId",
+  [ArcPageEnum.v2_RFCS]: "/rfcs",
+  [ArcPageEnum.v2_RFC_DETAIL]: "/rfc/:rfcId",
   [ArcPageEnum.v2_ABOUT]: "/about",
   [ArcPageEnum.v2_CONTACT]: "/contact"
 } as const;
@@ -52,6 +56,7 @@ export enum ArcPrerenderStaticRouteEnum {
 
   v2_HOME = "https://nickgalante.tech/",
   v2_POSTS = "https://nickgalante.tech/posts",
+  v2_RFCS = "https://nickgalante.tech/rfcs",
   v2_ABOUT = "https://nickgalante.tech/about",
   v2_CONTACT = "https://nickgalante.tech/contact"
 }
@@ -60,6 +65,7 @@ export enum ArcPrerenderDynamicRouteEnum {
   CIPHER = "https://nickgalante.tech/ee/cipher/:id",
   POST = "https://nickgalante.tech/archives/v1/post/:id",
   v2_POST_DETAIL = "https://nickgalante.tech/post/:postId",
+  v2_RFC_DETAIL = "https://nickgalante.tech/rfc/:rfcId",
 }
 
 export enum RouteConfigurationPathKeysEnum {
