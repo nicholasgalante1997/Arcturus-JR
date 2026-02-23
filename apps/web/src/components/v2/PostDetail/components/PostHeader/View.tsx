@@ -13,7 +13,7 @@ function PostHeaderView({ post, readingTime }: PostHeaderProps) {
     <header className="v2-post-header">
       {/* Breadcrumb */}
       <nav className="v2-post-header__breadcrumb" aria-label="Breadcrumb">
-        <Link to="/v2/posts" className="v2-post-header__breadcrumb-link">
+        <Link to="/posts" className="v2-post-header__breadcrumb-link">
           Posts
         </Link>
         <span className="v2-post-header__breadcrumb-separator" aria-hidden="true">
@@ -28,7 +28,7 @@ function PostHeaderView({ post, readingTime }: PostHeaderProps) {
       {post.tags && post.tags.length > 0 && (
         <div className="v2-post-header__tags">
           {post.tags.map((tag) => (
-            <Link key={tag} to={`/v2/posts?tag=${encodeURIComponent(tag)}`} className="v2-post-header__tag">
+            <Link key={tag} to={`/posts?tag=${encodeURIComponent(tag)}`} className="v2-post-header__tag">
               {tag}
             </Link>
           ))}

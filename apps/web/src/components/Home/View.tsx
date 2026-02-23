@@ -6,20 +6,17 @@ import { pipeline } from '@/utils/pipeline';
 
 import { HomeViewProps } from './types';
 
-function V2LaunchBanner() {
+function ArchiveBanner() {
   return (
     <div className="v2-launch-banner">
       <div className="v2-launch-banner__content">
-        <span className="v2-launch-banner__badge">New</span>
+        <span className="v2-launch-banner__badge">Archive</span>
         <p className="v2-launch-banner__text">
-          v1 was tight, but I&apos;ve grown: culturally, creatively, and in overall volume and mass. <br />
-          This site will receive all the same content updates as v2 until deprecation in 2027. <br />
-          <small>
-            <i>But you&apos;ll miss out on the cool space theme if you stay here.</i>
-          </small>
+          You&apos;re viewing the archived v1 site. The latest version has a fresh design and all the same
+          content.
         </p>
-        <a href="/v2" className="v2-launch-banner__link">
-          Check out v2
+        <a href="/" className="v2-launch-banner__link">
+          Visit the latest site
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -46,7 +43,7 @@ function HomeView({ queries }: HomeViewProps) {
   const posts = use(_posts.promise);
   return (
     <React.Fragment>
-      <V2LaunchBanner />
+      <ArchiveBanner />
       <div className="markdown-content">
         <Markdown markdown={markdown.markdown} />
       </div>

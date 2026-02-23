@@ -16,7 +16,7 @@ function RelatedPostsView({ posts }: RelatedPostsProps) {
       </h2>
       <div className="v2-related-posts__grid">
         {posts.map((post) => (
-          <Link key={post.id} to={`/v2/post/${post.id}`} className="v2-related-posts__card">
+          <Link key={post.id} to={`/post/${post.id}`} className="v2-related-posts__card">
             {post.image && (
               <img
                 src={post.image.src}

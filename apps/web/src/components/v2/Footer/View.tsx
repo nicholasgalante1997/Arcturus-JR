@@ -26,10 +26,10 @@ const FOOTER_SECTIONS: FooterSection[] = [
   {
     title: 'Navigation',
     links: [
-      { label: 'Home', href: '/v2' },
-      { label: 'Posts', href: '/v2/posts' },
-      { label: 'About', href: '/v2/about' },
-      { label: 'Contact', href: '/v2/contact' }
+      { label: 'Home', href: '/' },
+      { label: 'Posts', href: '/posts' },
+      { label: 'About', href: '/about' },
+      { label: 'Contact', href: '/contact' }
     ]
   },
   {
@@ -67,7 +67,7 @@ function V2FooterView({ className }: V2FooterProps) {
         <div className="v2-footer__top">
           {/* Brand */}
           <div className="v2-footer__brand">
-            <Link to="/v2" className="v2-footer__logo">
+            <Link to="/" className="v2-footer__logo">
               <span className="v2-footer__logo-text">Arc-Jr</span>
             </Link>
             <p className="v2-footer__tagline">
