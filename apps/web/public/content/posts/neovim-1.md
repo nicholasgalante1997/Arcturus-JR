@@ -1,34 +1,3 @@
----
-slug: "/developers/series/neovim/one"
-visible: true
-title: "Learning NeoVim - A Case Study"
-description: "2025 is the year of growth. Refusing to grow is accepting to die. Alright maybe that's a lot. Either way, we're gonna become proficient at neovim this year. It's my new year's resolution of sorts. Also, I want to belong to that 1%. You know the one I'm talking about. That class of developer that literally never leaves their terminal, demolishes tickets, and grows larger via sucking in the souls of lesser lifeforms."
-media:
-  - source: "/assets/doodles-ember.avif"
-    alt: "An image from the 'Doodles' NFT collection"
-    aspectRatio: "16 / 9"
-author:
-  - first_name: "Nick"
-    last_name: "Galante"
-    email: "rustycloud42@protonmail.com"
-    github: "nicholasgalante1997"
-    avatar: "/assets/headshot.jpg"
-    nickname: "Cthu"
-    id: '001'
-releaseDate: "12/28/2024"
-estimatedReadingTime: "A Series (Extended)"
-category: "CASE STUDY"
-archCategory: "SOFTWARE ENGINEERING"
-searchTerms:
-  - NeoVim
-  - Case Study
-  - Editors
-genres:
-  - "NeoVim"
-  - "Software Engineering"
-  - "Case Study"
----
-
 *Foreground*
 
 Let's do a thought exercise. I'd like for you to picture the worst developer you have worked with. Try and recall a time in which they needed your support in debugging and it was particularly irritiating. You've got 9 tickets in-progress and it's thursday, but you're in a slack huddle right now looking at their editor (which, let's be honest, is in light mode). What editor are they using?

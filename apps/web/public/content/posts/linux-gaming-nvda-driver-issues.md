@@ -1,9 +1,3 @@
----
-slug: "linux-gaming-nvda-driver-issues"
-visible: true
-title: "Patching Boot Issues due to Nvidia Driver Optimizations on Ubuntu Linux"
----
-
 > This will be a guide on how to resolve boot issues on your Ubuntu Linux system related to a potentially incorrect nvidia driver configuration or profile. Hope this helps!
 
 I have a Asus ROG Zephyrus G14 laptop. Love it. Things heavy and the battery is fucking awful but it's actually overall a great machine. It's got an integrated Nvidia GeForce RTX 4070 laptop GPU and a Ryzen 9 processor from the 7000 series (7940HS), and shipped with a Windows 11 OS. Thing is actually fairly elite, even for a 2 year old machine.

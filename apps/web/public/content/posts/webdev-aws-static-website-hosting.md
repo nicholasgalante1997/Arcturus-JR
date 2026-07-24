@@ -1,10 +1,3 @@
----
-slug: "webdev-static-website-hosting"
-visible: true
-title: ""
-description: "The pursuit of perfect software is the pursuit of perfect processes; and a bunch of other things you can say at parties to indicate that you believe progress is usually a snake eating its own tail."
----
-
 ## Hosting an ES6 Single Page App on AWS, and Setting Up CICD via Github Actions
 
 Today, we're going to walk through creating a continuous integration/continuous deployment pipeline for a Vanilla ES6 Single Page Application using AWS. However, the approaches applied here to CICD and Website Hosting can be applied to any static website (think react, or vue).

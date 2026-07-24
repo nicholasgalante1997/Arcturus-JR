@@ -1,7 +1,3 @@
----
-
----
-
 In this article, I am going to present a deep dive on this application's architecture, where I will, _boastfully_, propose that React is better without frameworks. Now I know that _better_ is largely subjective and situational, but I will propose it across several categories, which may help to better elicit it's advantages in a non-arbitrarian way:
 
 1. Developer Experience

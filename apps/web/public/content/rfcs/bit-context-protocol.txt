@@ -1,8 +1,3 @@
-
-
-
-
-
                          Bit Context Protocol (BCP)
           A Binary Serialization Format for Structured LLM Context
 

@@ -1,9 +1,3 @@
----
-slug: "/developers/blog/tc39-signals"
-visible: true
-title: "Implementing a tiny TC39 Signal API in Typescript in about ~200 SLOC using simple Graphs and Stacks."
----
-
 ## Stage Setting
 
 You have a browser based web application. Within it, you manage some state, and when that state changes, you would like to trigger a corresponding UI update.

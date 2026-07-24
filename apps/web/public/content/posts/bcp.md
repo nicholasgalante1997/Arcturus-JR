@@ -1,9 +1,3 @@
----
-slug: "bcp"
-visible: true
-title: "Let's talk about Bit Context Protocol"
----
-
 > **Disclaimer 1** This article is rather large and contains a number of fragmented but interrelated parts. You do not need to read all of it, sections can be expected to be self contained islands.
 
 ---

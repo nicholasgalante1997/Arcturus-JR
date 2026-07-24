@@ -1,36 +1,3 @@
----
-slug: "/developers/blog/opinion/react/framework/bun-and-turborepo"
-visible: true
-title: "Modern React without Frameworks: React, Bun, and Turborepo"
-description: "React is a wonderful thing. Here's how you can keep it wonderful for you and your team."
-media:
-  - source: "/assets/doodles-shapes.jpg"
-    alt: "Doodles basic shapes, smiling in a crude and cute fashion"
-    aspectRatio: "16 / 16"
-releaseDate: "02/15/2025"
-estimatedReadingTime: "45 minutes"
-author:
-  - first_name: "Nick"
-    last_name: "Galante"
-    email: "rustycloud42@protonmail.com"
-    github: "nicholasgalante1997"
-    avatar: "/assets/headshot.jpg"
-    nickname: "Cthu"
-    id: '001'
-category: Web Development
-archCategory: SOFTWARE ENGINEERING
-searchTerms:
-  - Web Development
-  - Javascript
-  - React
-  - Bun
-  - Turborepo
-genres:
-    - Turborepo
-    - Bun
-    - React
----
-
 ## Frameworks are commitments, and React has gone the way of the framework
 
 > After writing this out more thoroughly, I'm realizing it's an excessively long tangent on how I strongly dislike Client Side Rendering, perhaps more generally React, and how I heavily prefer Server Side Rendering, Static Site Generation, even Isomorphic or Partial SSR is preferential in my opinion to Client Side Rendering. I just go on and on about it. If you do not have an interest in that, I do not blame you. Skip to the section entitled _Standardizing Project Setup_ below.
