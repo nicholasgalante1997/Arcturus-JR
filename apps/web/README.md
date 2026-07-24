@@ -156,6 +156,18 @@ bun run dev
 
 Opens at `http://localhost:3000`
 
+> **Content dependency:** `public/content/` is a **generated copy target**, synced from `@arcjr/content-data`'s build output via the `content:sync` script (see [Content](#content) below). Prefer `turbo dev` / `turbo build` from the repo root — turbo's task graph builds `@arcjr/content-data` first. If you run `bun run dev` directly inside `apps/web` on a fresh clone where `@arcjr/content-data` has never been built, `content:sync:check` will fail loudly with instructions rather than silently serving empty content.
+
+### Content
+
+Posts and RFCs are authored in `packages/content-data/{posts,rfcs}/*` (Zod-validated frontmatter + body) — **not** in `apps/web/public/content`, which is now a gitignored build artifact regenerated on every `prebuild`/`predev` by the `content:sync` script:
+
+```bash
+content:sync         # content:sync:check -> content:sync:copy
+```
+
+`content:sync:check` verifies `@arcjr/content-data` has been built (`node_modules/@arcjr/content-data/dist`); `content:sync:copy` overlays `content-data`'s output onto `public/content/` — it only adds/overwrites the files `content-data` actually produces (`posts/<id>.md`, `rfcs/<id>.txt`, `posts.json`, `rfcs.json`, `about.md`, `home.md`) and never wipes the directory first, so `public/content/prose/` and any other hand-placed file are always left alone. To add a new post or RFC, see `packages/content-data`'s own docs, then run `turbo build --filter=@arcjr/content-data` (or just `turbo dev`/`turbo build`, which does it automatically).
+
 ### Production Build
 
 Full production build with prerendering:

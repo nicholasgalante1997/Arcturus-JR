@@ -11,8 +11,20 @@ node_modules
 dist
 out
 
+# Generated content (synced from @arcjr/content-data — see packages/content-data)
+apps/web/public/content/posts/
+apps/web/public/content/rfcs/
+apps/web/public/content/posts.json
+apps/web/public/content/rfcs.json
+apps/web/public/content/about.md
+apps/web/public/content/home.md
+
+# Prose — local, never published as a manifest, deliberately untracked
+apps/web/public/content/prose/
+
+packages/content-data/dist/
+
 # Easter Eggs/Ciphers
-apps/web/public/content/ee/*.md
 apps/web/.cipher/ciphertexts
 apps/web/.cipher/keys
 apps/web/.cipher/plaintexts
