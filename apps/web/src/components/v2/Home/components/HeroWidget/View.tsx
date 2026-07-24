@@ -14,7 +14,7 @@ const heroText = {
 const DEFAULT_HEADLINE = heroText.title + ' ' + heroText.version;
 const DEFAULT_SUBHEADLINE = heroText.subtitle;
 const DEFAULT_CTA_TEXT = 'Read the Blog';
-const DEFAULT_CTA_HREF = '/v2/posts';
+const DEFAULT_CTA_HREF = '/posts';
 
 function HeroWidgetView({
   headline = DEFAULT_HEADLINE,

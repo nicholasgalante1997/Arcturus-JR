@@ -37,7 +37,8 @@
       ".storybook/types",
       "../../node_modules/@types",
       "./src/types/globals"
-    ]
+    ],
+    "types": ["bun", "node"]
   },
   "include": ["./.cipher/**/*.ts", "./scripts/**/*", "src/**/*", "webpack/**/*"],
   "exclude": ["node_modules", "dist"]

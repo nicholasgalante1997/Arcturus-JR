@@ -302,7 +302,7 @@ Arc-JR/
 │       │   ├── prerender.tsx    # SSR prerendering script
 │       │   └── lib/             # Prerender utilities
 │       ├── public/
-│       │   ├── content/         # Markdown content and posts.json
+│       │   ├── content/         # GENERATED — synced from @arcjr/content-data via `content:sync`, gitignored, never hand-edited
 │       │   ├── css/             # Stylesheets and themes
 │       │   ├── assets/          # Images and static assets
 │       │   └── ciphertexts/     # Encrypted content
@@ -312,11 +312,26 @@ Arc-JR/
 │       ├── Dockerfile           # Multi-stage Docker build
 │       ├── nginx.conf           # Nginx configuration
 │       └── package.json         # Dependencies and scripts
-├── packages/                    # Future shared packages
+│   └── editor/                  # Local-only (127.0.0.1) authoring UI for posts/RFCs — see "Adding a Post or RFC" below
+├── packages/
+│   ├── content/                 # Zod schemas + parse/serialize/load/manifest — the content contract
+│   ├── content-data/             # SOURCE OF TRUTH for posts/rfcs/about/home (Zod-validated frontmatter + body)
+│   └── ...                      # Shared config, types, and void design-system packages
 ├── turbo.json                   # Turborepo pipeline configuration
 ├── package.json                 # Root workspace configuration
 └── .amazonq/                    # Amazon Q CLI configuration
 ```
+
+## Adding a Post or RFC
+
+Posts and RFCs are authored in `packages/content-data/{posts,rfcs}/*` — Zod-validated frontmatter (see `packages/content-data`'s own README/`packages/content/src/schema.ts`) plus a markdown (`.md`) or plain-text (`.txt`) body. **Do not hand-edit `apps/web/public/content`** — it's a gitignored, generated copy, rebuilt by `content:sync` on every `prebuild`/`predev`.
+
+Two ways to author:
+
+1. **`apps/editor`** — a local-only web UI (`turbo dev --filter=@arcjr/editor`, binds `127.0.0.1:4500`) with a metadata form and a CodeMirror-based markdown editor with live preview. Recommended for anything beyond a trivial edit.
+2. **By hand** — drop or edit a `.md`/`.txt` file in `packages/content-data/{posts,rfcs}/`, then run `turbo build --filter=@arcjr/content-data` (or just `turbo dev`/`turbo build`, which does this automatically) to validate and regenerate the manifest.
+
+Either way, `id` is always the filename stem — never put it in frontmatter. `slug` defaults to `id` when omitted. Invalid or missing required frontmatter fails the `content-data` build immediately with a readable error, rather than producing a 404 or a hung prerender.
 ## Build System
 
 ### Turborepo Configuration

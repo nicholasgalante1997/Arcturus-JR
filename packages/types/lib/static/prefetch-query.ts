@@ -22,6 +22,8 @@ export type GetCiphersQueryFnName = "getCiphers";
 export type GetPostQueryFnName = "getPost";
 export type GetCipherQueryFnName = "getCipher";
 export type GetRelatedPostsQueryFnName = "getRelatedPosts";
+export type GetRfcsQueryFnName = "getRfcs";
+export type GetRfcQueryFnName = "getRfc";
 
 export type QueryFnName =
   | GetCipherQueryFnName
@@ -29,7 +31,9 @@ export type QueryFnName =
   | GetMarkdownQueryFnName
   | GetPostQueryFnName
   | GetPostsQueryFnName
-  | GetRelatedPostsQueryFnName;
+  | GetRelatedPostsQueryFnName
+  | GetRfcsQueryFnName
+  | GetRfcQueryFnName;
 
 export type SerializablePrefetchQueryOptions<_QueryFnName extends QueryFnName, QueryFnParams> = {
   queryKey: string[];

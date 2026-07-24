@@ -1,9 +1,3 @@
----
-slug: "webpack-externals-and-es6-import-maps"
-visible: true
-title: "Reducing the Size of Webpack Bundles using Import Maps and Externals"
----
-
 ## Smaller is better, just ask my wife
 
 We all want smaller chunks and entrypoints, but modern browser applications maintain dozens, if not hundreds, of dependencies. How can we remedy these two contrasting needs?  

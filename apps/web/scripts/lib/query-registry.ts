@@ -3,6 +3,8 @@ import { getCiphers } from '@/hooks/useCiphers';
 import { getMarkdown } from '@/hooks/useMarkdown';
 import { getPost } from '@/hooks/usePost';
 import { getPosts, getRelatedPosts } from '@/hooks/usePosts';
+import { getRfc } from '@/hooks/useRfc';
+import { getRfcs } from '@/hooks/useRfcs';
 
 import lazy from './lazy';
 
@@ -14,7 +16,9 @@ type QueryFn =
   | typeof getPost
   | typeof getCiphers
   | typeof getCipher
-  | typeof getRelatedPosts;
+  | typeof getRelatedPosts
+  | typeof getRfcs
+  | typeof getRfc;
 
 const queries: Readonly<{ name: QueryFnName; fn: QueryFn }[]> = [
   { name: 'getMarkdown', fn: getMarkdown },
@@ -22,7 +26,9 @@ const queries: Readonly<{ name: QueryFnName; fn: QueryFn }[]> = [
   { name: 'getPost', fn: getPost },
   { name: 'getCiphers', fn: getCiphers },
   { name: 'getCipher', fn: getCipher },
-  { name: 'getRelatedPosts', fn: getRelatedPosts }
+  { name: 'getRelatedPosts', fn: getRelatedPosts },
+  { name: 'getRfcs', fn: getRfcs },
+  { name: 'getRfc', fn: getRfc }
 ] as const;
 
 class StaticPrerenderQueryRegistry implements Registry<QueryFnName, QueryFn> {

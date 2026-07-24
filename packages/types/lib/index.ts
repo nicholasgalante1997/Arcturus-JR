@@ -23,6 +23,8 @@ export type {
   GetPostQueryFnName,
   GetPostsQueryFnName,
   GetRelatedPostsQueryFnName,
+  GetRfcsQueryFnName,
+  GetRfcQueryFnName,
   QueryFnName,
   SerializablePrefetchQueryOptions,
 } from "./static/prefetch-query";

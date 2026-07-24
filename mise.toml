@@ -53,3 +53,75 @@ depends = ["build"]
 [tasks.clean]
 description = "Cleans the project build artifacts"
 run = "bun run clean"
+
+# =============================================================================
+# loclaude - Docker Management
+# =============================================================================
+# Commands for managing the Ollama and Open WebUI containers
+
+[tasks."lc:up"]
+description = "Start Ollama and Open WebUI containers"
+run = "loclaude docker-up"
+
+[tasks."lc:down"]
+description = "Stop all containers"
+run = "loclaude docker-down"
+
+[tasks."lc:restart"]
+description = "Restart all containers"
+run = "loclaude docker-restart"
+
+[tasks."lc:status"]
+description = "Show container status"
+run = "loclaude docker-status"
+
+[tasks."lc:logs"]
+description = "Follow container logs"
+run = "loclaude docker-logs --follow"
+
+# =============================================================================
+# loclaude - Model Management
+# =============================================================================
+# Commands for managing Ollama models (download, remove, list)
+
+[tasks."lc:models"]
+description = "List installed models"
+run = "loclaude models"
+
+[tasks."lc:pull"]
+description = "Pull a model (usage: mise run pull <model-name>)"
+run = "loclaude models-pull {{arg(name='model')}}"
+
+[tasks."lc:pull:recommended"]
+description = "Pull the recommended coding model"
+run = "loclaude models-pull qwen3-coder:30b"
+
+# =============================================================================
+# Claude Code
+# =============================================================================
+# Commands for running Claude Code with local Ollama
+
+[tasks."lc:claude"]
+description = "Run Claude Code with local Ollama"
+run = "loclaude run"
+
+[tasks."lc:claude:model"]
+description = "Run Claude with specific model (usage: mise run claude:model <model>)"
+run = "loclaude run -m {{arg(name='model')}}"
+
+# =============================================================================
+# Diagnostics
+# =============================================================================
+# Commands for checking system health and troubleshooting
+
+[tasks."lc:doctor"]
+description = "Check system requirements"
+run = "loclaude doctor"
+
+[tasks."lc:gpu"]
+description = "Check GPU status (requires NVIDIA GPU)"
+run = "docker exec ollama nvidia-smi"
+
+[tasks."lc:config"]
+description = "Show current configuration"
+run = "loclaude config"

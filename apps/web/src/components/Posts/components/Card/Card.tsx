@@ -6,7 +6,7 @@ import { PostCardProps } from './types';
 function PostCard({ post }: PostCardProps) {
   return (
     <div className="post-card">
-      <Link to={`/post/${post.id}`}>
+      <Link to={`/archives/v1/post/${post.id}`}>
         <div className="post-card-content">
           <h2>{post.title}</h2>
           <div className="post-meta">

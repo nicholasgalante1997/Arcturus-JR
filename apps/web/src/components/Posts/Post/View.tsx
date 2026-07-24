@@ -66,7 +66,7 @@ function PostView({ queries }: PostViewProps) {
                 By
                 <a
                   style={{ color: 'var(--secondary-color)', fontWeight: '600' }}
-                  href="/about"
+                  href="/archives/v1/about"
                   className="post-card__author"
                   data-link
                 >

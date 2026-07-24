@@ -1,9 +1,3 @@
----
-slug: "caesar-ciphers"
-visible: true
-title: "Fun with Caesar Ciphers"
----
-
 So, maybe unpopular opinion, but Julius Caesar is without a doubt my favorite Shakespearean play. Historical Shakespeare is peak Shakespeare. The whole "Caesar was an ambitious man," soliloquy, is amidst the best if not the best. Now that we've grown culturally, let's have some fun with caesar ciphers.
 
 ## So what is a Caesar Cipher

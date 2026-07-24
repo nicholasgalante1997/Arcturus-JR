@@ -1,5 +1,129 @@
 [
   {
+    "id": "johto",
+    "title": "I have found yet another way to spend money on Pokemon",
+    "date": "2026-05-13",
+    "excerpt": "Despite this sounding like a PokeRev ClickBait Post, this will mostly be about software. I would say I'm sorry to disappoint, but I owe you nothing.",
+    "tags": [
+      "pokemon",
+      "rust",
+      "mcp"
+    ],
+    "image": {
+      "src": "/assets/poke-stock/hi-res-gen-zero-gang.webp",
+      "alt": "Ash, Brock, and Misty, with Pikachu, gearing up for an adventure against a bright orange backdrop.",
+      "aspectRatio": "16 / 9"
+    },
+    "category": "GENERAL",
+    "subcategory": "command-line-tools",
+    "slug": "johto",
+    "searchTerms": [
+      "pokemon",
+      "rust",
+      "mcp"
+    ],
+    "readingTime": "About 25 minutes",
+    "visible": false
+  },
+  {
+    "id": "bcp",
+    "title": "Bit Context Protocol: ",
+    "date": "2026-02-23",
+    "excerpt": "A binary serialization format based on dumb block container protocols designed to efficiently encode structured context for consumption by large language models, optimizing for semantic density within token-constrained context windows.",
+    "tags": [
+      "claude-code",
+      "bit-context-protocol"
+    ],
+    "image": {
+      "src": "/assets/poke-stock/hi-res-gen-zero-gang.webp",
+      "alt": "Ash, Brock, and Misty, with Pikachu, gearing up for an adventure against a bright orange backdrop.",
+      "aspectRatio": "16 / 9"
+    },
+    "category": "GENERAL",
+    "subcategory": "large language models",
+    "slug": "bcp",
+    "searchTerms": [
+      "claude-code",
+      "bit-context-protocol"
+    ],
+    "readingTime": "Under 5 minutes",
+    "visible": false
+  },
+  {
+    "id": "proposal-react-anti-framework",
+    "title": "A Proposal for React Without the Framework",
+    "date": "2026-01-27",
+    "excerpt": "An outspoken case against the modern React framework, and what a configuration-based, library-based alternative could look like.",
+    "tags": [
+      "react",
+      "architecture"
+    ],
+    "image": {
+      "src": "/assets/doodles.jpg",
+      "alt": "Me, as a Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
+      "aspectRatio": "16 / 9"
+    },
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "React",
+    "slug": "proposal-react-anti-framework",
+    "searchTerms": [
+      "react",
+      "architecture"
+    ],
+    "readingTime": "About 2 minutes",
+    "visible": false
+  },
+  {
+    "id": "minimal-react",
+    "title": "Minimal React: A Deep Dive Without Frameworks",
+    "date": "2026-01-25",
+    "excerpt": "A deep dive on this application's architecture, proposing that React is better without frameworks across developer experience, security, maintainability, performance, and control.",
+    "tags": [
+      "react",
+      "architecture"
+    ],
+    "image": {
+      "src": "/assets/doodles.jpg",
+      "alt": "Me, as a Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
+      "aspectRatio": "16 / 9"
+    },
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "React",
+    "slug": "minimal-react",
+    "searchTerms": [
+      "react",
+      "architecture"
+    ],
+    "readingTime": "About 2 minutes",
+    "visible": false
+  },
+  {
+    "id": "rs-ssr-react",
+    "title": "Server Side Rendering React Components in a Rust Server",
+    "date": "2026-01-25",
+    "excerpt": "Notes on rendering React server-side from a Rust host.",
+    "tags": [
+      "rust",
+      "react",
+      "ssr"
+    ],
+    "image": {
+      "src": "/assets/doodles.jpg",
+      "alt": "Me, as a Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
+      "aspectRatio": "16 / 9"
+    },
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "Rust",
+    "slug": "rs-ssr-react",
+    "searchTerms": [
+      "rust",
+      "react",
+      "ssr"
+    ],
+    "readingTime": "Under 1 minute",
+    "visible": false
+  },
+  {
     "id": "loclaude-1",
     "title": "loclaude: Running Claude Code with Local Ollama Models",
     "date": "2026-01-24",
@@ -14,15 +138,15 @@
       "alt": "Ash, Brock, and Misty, with Pikachu, gearing up for an adventure against a bright orange backdrop.",
       "aspectRatio": "16 / 9"
     },
-    "readingTime": "Under 5 minutes",
     "category": "GENERAL",
     "subcategory": "large language models",
+    "slug": "loclaude-1",
     "searchTerms": [
       "claude-code",
       "ollama",
       "loclaude"
     ],
-    "slug": "loclaude-1",
+    "readingTime": "Under 5 minutes",
     "visible": true
   },
   {
@@ -39,14 +163,14 @@
       "alt": "Doodles nft cards (web based cards, square containing an image of the nft and titular text) for sale in a marketplace fashion",
       "aspectRatio": "16 / 9"
     },
-    "readingTime": "Under 5 minutes",
     "category": "GENERAL",
     "subcategory": "spec driven development",
+    "slug": "bun",
     "searchTerms": [
       "amazon-q",
       "spec driven development"
     ],
-    "slug": "bun-1",
+    "readingTime": "Under 5 minutes",
     "visible": false
   },
   {
@@ -63,14 +187,14 @@
       "alt": "Doodles nft cards (web based cards, square containing an image of the nft and titular text) for sale in a marketplace fashion",
       "aspectRatio": "16 / 9"
     },
-    "readingTime": "Under 5 minutes",
     "category": "GENERAL",
     "subcategory": "spec driven development",
+    "slug": "kanye",
     "searchTerms": [
       "amazon-q",
       "spec driven development"
     ],
-    "slug": "kanye",
+    "readingTime": "Under 5 minutes",
     "visible": false
   },
   {
@@ -87,14 +211,14 @@
       "alt": "Doodles nft cards (web based cards, square containing an image of the nft and titular text) for sale in a marketplace fashion",
       "aspectRatio": "16 / 9"
     },
-    "readingTime": "Under 5 minutes",
     "category": "GENERAL",
     "subcategory": "spec driven development",
+    "slug": "amazon-q-sdlc-setup",
     "searchTerms": [
       "amazon-q",
       "spec driven development"
     ],
-    "slug": "amazon-q-sdlc-setup",
+    "readingTime": "Under 5 minutes",
     "visible": false
   },
   {
@@ -112,14 +236,14 @@
       "alt": "Several squirtles in sunglasses looking tough",
       "aspectRatio": "16 / 9"
     },
-    "readingTime": "Under 15 minutes",
     "category": "GENERAL",
     "subcategory": "linux",
+    "slug": "ubuntu-24.04-dev-env-setup",
     "searchTerms": [
       "ubuntu",
       "developer-environment-setup"
     ],
-    "slug": "ubuntu-24.04-dev-env-setup",
+    "readingTime": "Under 15 minutes",
     "visible": true
   },
   {
@@ -137,14 +261,14 @@
       "alt": "Me, as a Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
       "aspectRatio": "16 / 9"
     },
-    "readingTime": "Under 5 minutes",
     "category": "GENERAL",
     "subcategory": "Introduction",
+    "slug": "linux-gaming-nvda-driver-issues",
     "searchTerms": [
       "introduction",
       "welcome"
     ],
-    "slug": "linux-gaming-nvda-driver-issues",
+    "readingTime": "Under 5 minutes",
     "visible": false
   },
   {
@@ -161,15 +285,15 @@
       "alt": "a male Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
       "aspectRatio": "16 / 9"
     },
-    "readingTime": "About 25 minutes",
     "category": "SOFTWARE ENGINEERING",
     "subcategory": "Monthly Releases",
+    "slug": "waavy-1",
     "searchTerms": [
       "waavy",
       "ssr",
       "react"
     ],
-    "slug": "waavy-1",
+    "readingTime": "About 25 minutes",
     "visible": true
   },
   {
@@ -189,9 +313,9 @@
       "alt": "a male Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
       "aspectRatio": "1 / 1"
     },
-    "readingTime": "Under 5 minutes",
     "category": "SOFTWARE ENGINEERING",
     "subcategory": "Development Environment",
+    "slug": "macos-ghostty-zellij-setup",
     "searchTerms": [
       "zsh",
       "zellij",
@@ -199,7 +323,7 @@
       "macos",
       "mac silicon"
     ],
-    "slug": "macos-ghostty-zellij-setup",
+    "readingTime": "Under 5 minutes",
     "visible": false
   },
   {
@@ -217,14 +341,14 @@
       "alt": "a male Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
       "aspectRatio": "1 / 1"
     },
-    "readingTime": "40 minutes",
     "category": "SOFTWARE ENGINEERING",
     "subcategory": "Linux - ext4 filesystem",
+    "slug": "ext4-fs-1",
     "searchTerms": [
       "ext4",
       "linux"
     ],
-    "slug": "ext4-1",
+    "readingTime": "40 minutes",
     "visible": false
   },
   {
@@ -242,17 +366,17 @@
     },
     "category": "SOFTWARE ENGINEERING",
     "subcategory": "encryption",
-    "readingTime": "8 - 10 minutes",
+    "slug": "caesar-ciphers",
     "searchTerms": [
       "typescript"
     ],
-    "slug": "caesar-ciphers",
+    "readingTime": "8 - 10 minutes",
     "visible": true
   },
   {
     "id": "linux-system-monitor",
     "title": "Build a Real Time System Monitor for your Raspberry Pi using Rust, Actix Web, sysinfo, Docker, and Ngrok",
-    "date": "04-22-2025",
+    "date": "2025-04-22",
     "excerpt": "Within like 30 minutes, you can build, and expose a public and visible endpoint where you can monitor the system vitals of your linux host, all using rust, docker, and ngrok.",
     "tags": [
       "raspberry-pi",
@@ -268,7 +392,7 @@
     },
     "category": "SOFTWARE ENGINEERING",
     "subcategory": "raspberry-pi",
-    "readingTime": "30 minutes",
+    "slug": "linux-system-monitor",
     "searchTerms": [
       "raspberry-pi",
       "linux",
@@ -277,7 +401,38 @@
       "ngrok",
       "docker"
     ],
-    "slug": "linux-system-monitor",
+    "readingTime": "30 minutes",
+    "visible": false
+  },
+  {
+    "id": "webdev-aws-static-website-hosting",
+    "title": "ES6 SPA Continuous Deployment with AWS and Github Actions",
+    "date": "2025-04-17",
+    "excerpt": "In this article, we'll cover scaffolding a CICD pipeline for a ESnext SPA and hosting it on AWS.",
+    "tags": [
+      "javascript",
+      "aws",
+      "github actions",
+      "cicd",
+      "spa"
+    ],
+    "image": {
+      "src": "/assets/doodles-marketplace.avif",
+      "alt": "Doodles nft cards for sale in a marketplace fashion",
+      "aspectRatio": "16 / 9"
+    },
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "Amazon Web Services",
+    "slug": "webdev-aws-static-website-hosting",
+    "searchTerms": [
+      "Web Development",
+      "Javascript",
+      "AWS",
+      "Github Actions",
+      "CICD",
+      "SPA"
+    ],
+    "readingTime": "30 minutes",
     "visible": false
   },
   {
@@ -299,9 +454,9 @@
       "alt": "Jesse and James and Meowth in a body of water hanging over a log looking disheartened.",
       "aspectRatio": "16 / 9"
     },
-    "readingTime": "18 minutes",
     "category": "SOFTWARE ENGINEERING",
     "subcategory": "Webpack",
+    "slug": "webpack-externals-and-es6-import-maps",
     "searchTerms": [
       "Web Development",
       "Javascript",
@@ -312,68 +467,8 @@
       "ES6",
       "Bundlers"
     ],
-    "slug": "webpack-externals-and-es6-import-maps",
+    "readingTime": "18 minutes",
     "visible": true
-  },
-  {
-    "id": "react-compiler-babel-plugin",
-    "title": "Getting Setup with the beta React Compiler",
-    "date": "2024-04-20",
-    "excerpt": "With very minimal lift, we can opt into the React Compiler with the `react-compiler-babel-plugin` and try out some of the proposed performance benefits.",
-    "tags": [
-      "react",
-      "react-dom",
-      "babel",
-      "react-compiler"
-    ],
-    "image": {
-      "src": "/assets/poke-stock/crossover-gang.jpg",
-      "alt": "Doodles nft cards for sale in a marketplace fashion",
-      "aspectRatio": "16 / 9"
-    },
-    "readingTime": "10 minutes",
-    "category": "SOFTWARE ENGINEERING",
-    "subcategory": "React",
-    "searchTerms": [
-      "Web Development",
-      "Javascript",
-      "React",
-      "Babel",
-      "React Compiler"
-    ],
-    "slug": "react-compiler-babel-plugin",
-    "visible": true
-  },
-  {
-    "id": "webdev-aws-static-website-hosting",
-    "title": "ES6 SPA Continuous Deployment with AWS and Github Actions",
-    "date": "2025-04-17",
-    "excerpt": "In this article, we'll cover scaffolding a CICD pipeline for a ESnext SPA and hosting it on AWS.",
-    "tags": [
-      "javascript",
-      "aws",
-      "github actions",
-      "cicd",
-      "spa"
-    ],
-    "image": {
-      "src": "/assets/doodles-marketplace.avif",
-      "alt": "Doodles nft cards for sale in a marketplace fashion",
-      "aspectRatio": "16 / 9"
-    },
-    "readingTime": "30 minutes",
-    "category": "SOFTWARE ENGINEERING",
-    "subcategory": "Amazon Web Services",
-    "searchTerms": [
-      "Web Development",
-      "Javascript",
-      "AWS",
-      "Github Actions",
-      "CICD",
-      "SPA"
-    ],
-    "slug": "webdev-aws-static-website-hosting",
-    "visible": false
   },
   {
     "id": "lazyollama",
@@ -391,16 +486,42 @@
       "alt": "a male Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
       "aspectRatio": "2 / 3"
     },
-    "readingTime": "45 minutes (Maybe More!)",
     "category": "SOFTWARE ENGINEERING",
     "subcategory": "large language models",
+    "slug": "lazyollama",
     "searchTerms": [
       "Large Language Models",
       "Ollama",
       "Bun",
       "Turborepo"
     ],
-    "slug": "building-lazy-ollama",
+    "readingTime": "45 minutes (Maybe More!)",
+    "visible": false
+  },
+  {
+    "id": "tc39-signals",
+    "title": "Implementing a tiny TC39 Signal API in Typescript in about ~200 SLOC using simple Graphs and Stacks.",
+    "date": "2025-03-18",
+    "excerpt": "A year ago, I would have told you that all life is a derivation of string manipulation. Now I might tell you that the universe is one big quantum directional graph. Anyway, here's signals.",
+    "tags": [
+      "Typescript",
+      "TC39 Proposal",
+      "Signals"
+    ],
+    "image": {
+      "src": "/assets/doodles.jpg",
+      "alt": "Me, as a Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
+      "aspectRatio": "16 / 9"
+    },
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "Signals",
+    "slug": "tc39-signals",
+    "searchTerms": [
+      "Typescript",
+      "TC39 Proposal",
+      "Signals"
+    ],
+    "readingTime": "30 minutes",
     "visible": false
   },
   {
@@ -419,9 +540,9 @@
       "alt": "Doodles basic shapes, smiling in a crude and cute fashion",
       "aspectRatio": "16 / 9"
     },
-    "readingTime": "20 minutes",
     "category": "SOFTWARE ENGINEERING",
     "subcategory": "web development",
+    "slug": "webdev-project-setup",
     "searchTerms": [
       "Web Development",
       "Javascript",
@@ -429,7 +550,65 @@
       "Bun",
       "Turborepo"
     ],
-    "slug": "frameworkless-react-bun-turborepo",
+    "readingTime": "20 minutes",
+    "visible": false
+  },
+  {
+    "id": "pokechain-1",
+    "title": "TCGTrader - A Case Study",
+    "date": "2025-01-16",
+    "excerpt": "We're going to design, implement, and deploy a larger scale project, and then we're going to catch 'em all.",
+    "tags": [
+      "Pokemon",
+      "Case Study",
+      "Infrastructure",
+      "Architecture",
+      "System Design"
+    ],
+    "image": {
+      "src": "/assets/doodles-gang.webp",
+      "alt": "Doodles Gang hanging out, having a grand old time.",
+      "aspectRatio": "16 / 9"
+    },
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "CASE STUDY",
+    "slug": "pokechain-1",
+    "searchTerms": [
+      "Pokemon",
+      "Case Study",
+      "Infrastructure",
+      "Architecture",
+      "System Design"
+    ],
+    "readingTime": "A Series (Extended)",
+    "visible": false
+  },
+  {
+    "id": "neovim-1",
+    "title": "Learning NeoVim - A Case Study",
+    "date": "2024-12-28",
+    "excerpt": "2025 is the year of growth. Refusing to grow is accepting to die. Alright maybe that's a lot. Either way, we're gonna become proficient at neovim this year. It's my new year's resolution of sorts. Also, I want to belong to that 1%. You know the one I'm talking about. That class of developer that literally never leaves their terminal, demolishes tickets, and grows larger via sucking in the souls of lesser lifeforms.",
+    "tags": [
+      "NeoVim",
+      "Case Study",
+      "Editors",
+      "Software Engineering"
+    ],
+    "image": {
+      "src": "/assets/doodles-ember.avif",
+      "alt": "An image from the 'Doodles' NFT collection",
+      "aspectRatio": "16 / 9"
+    },
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "CASE STUDY",
+    "slug": "neovim-1",
+    "searchTerms": [
+      "NeoVim",
+      "Case Study",
+      "Editors",
+      "Software Engineering"
+    ],
+    "readingTime": "A Series (Extended)",
     "visible": false
   },
   {
@@ -447,42 +626,16 @@
       "alt": "Doodles flame person, smiling in a crude and cute fashion",
       "aspectRatio": "1 / 1"
     },
-    "readingTime": "15 minutes",
     "category": "SOFTWARE ENGINEERING",
     "subcategory": "microfrontends + system audits",
+    "slug": "springfield-ast-parser",
     "searchTerms": [
       "Web Development",
       "Javascript",
       "Microfrontends",
       "AST"
     ],
-    "slug": "auditing-microfrontends-ast",
-    "visible": false
-  },
-  {
-    "id": "tc39-signals",
-    "title": "Implementing a tiny TC39 Signal API in Typescript in about ~200 SLOC using simple Graphs and Stacks.",
-    "date": "2025-03-18",
-    "excerpt": "A year ago, I would have told you that all life is a derivation of string manipulation. Now I might tell you that the universe is one big quantum directional graph. Anyway, here's signals.",
-    "tags": [
-      "Typescript",
-      "TC39 Proposal",
-      "Signals"
-    ],
-    "image": {
-      "src": "/assets/doodles.jpg",
-      "alt": "Me, as a Doodle, about to embark on an adventure through a valley, with several mountains in the background.",
-      "aspectRatio": "16 / 9"
-    },
-    "readingTime": "30 minutes",
-    "category": "SOFTWARE ENGINEERING",
-    "subcategory": "Signals",
-    "searchTerms": [
-      "Typescript",
-      "TC39 Proposal",
-      "Signals"
-    ],
-    "slug": "tc39-signals",
+    "readingTime": "15 minutes",
     "visible": false
   },
   {
@@ -499,14 +652,99 @@
       "alt": "Doodles flame person, smiling in a crude and cute fashion",
       "aspectRatio": "1 / 1"
     },
-    "readingTime": "15 minutes",
     "category": "SOFTWARE ENGINEERING",
     "subcategory": "Unicode",
+    "slug": "utf8-variation-selector-embeddings",
     "searchTerms": [
       "Unicode",
       "Variation Selectors"
     ],
-    "slug": "unicode-variation-selector-embeddings",
+    "readingTime": "15 minutes",
     "visible": false
+  },
+  {
+    "id": "react-polemic-1",
+    "title": "A Polemic; A Discourse on React and the State of Web Development in 2024, and Leading To.",
+    "date": "2024-11-14",
+    "excerpt": "We'll engage in a discussion on React, it's emergence into the realm of Web Development and Open Source, its sustained popularity and continued community expansion, and the trends that have persisted in modern web development that have called forth this polemic into existence. We'll try and support all claims made with numbers and data.",
+    "tags": [
+      "Web Development",
+      "Javascript",
+      "React",
+      "Opinion"
+    ],
+    "image": {
+      "src": "/assets/doodles-shark.jpg",
+      "alt": "Doodles",
+      "aspectRatio": "16 / 16"
+    },
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "Web Development",
+    "slug": "react-polemic-1",
+    "searchTerms": [
+      "Web Development",
+      "Javascript",
+      "React",
+      "Opinion"
+    ],
+    "readingTime": "30m",
+    "visible": false
+  },
+  {
+    "id": "web-dev-1",
+    "title": "I have eaten the Web Development Memberberries, maybe you should too.",
+    "date": "2024-06-26",
+    "excerpt": "Do you remember 2003? I sure don’t. I imagine for me, it was filled with a lot of soccer and Pokemon pack opening. If you were writing code then, I imagine it was a lot of php.",
+    "tags": [
+      "Web Development",
+      "Javascript",
+      "React",
+      "Opinion"
+    ],
+    "image": {
+      "src": "/assets/doodles-developer.png",
+      "alt": "Doodles",
+      "aspectRatio": "16 / 9"
+    },
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "Web Development",
+    "slug": "web-dev-1",
+    "searchTerms": [
+      "Web Development",
+      "Javascript",
+      "React",
+      "Opinion"
+    ],
+    "readingTime": "1 minute",
+    "visible": false
+  },
+  {
+    "id": "react-compiler-babel-plugin",
+    "title": "Getting Setup with the beta React Compiler",
+    "date": "2024-04-20",
+    "excerpt": "With very minimal lift, we can opt into the React Compiler with the `react-compiler-babel-plugin` and try out some of the proposed performance benefits.",
+    "tags": [
+      "react",
+      "react-dom",
+      "babel",
+      "react-compiler"
+    ],
+    "image": {
+      "src": "/assets/poke-stock/crossover-gang.jpg",
+      "alt": "Doodles nft cards for sale in a marketplace fashion",
+      "aspectRatio": "16 / 9"
+    },
+    "category": "SOFTWARE ENGINEERING",
+    "subcategory": "React",
+    "slug": "react-compiler-babel-plugin",
+    "searchTerms": [
+      "Web Development",
+      "Javascript",
+      "React",
+      "Babel",
+      "React Compiler"
+    ],
+    "readingTime": "10 minutes",
+    "visible": true
   }
 ]

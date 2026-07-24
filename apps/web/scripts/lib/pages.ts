@@ -4,6 +4,7 @@ import { mapRouteConfigurationToStaticPageObject } from './routes/route-to-stati
 import { StaticPageObject } from './types/static-page';
 import { cipher_slugs } from './ciphers';
 import { slugs } from './posts';
+import { rfc_slugs } from './rfcs';
 
 export function createStaticPageObjects(): StaticPageObject[] {
   return [
@@ -22,11 +23,16 @@ export function createStaticPageObjects(): StaticPageObject[] {
     ),
     mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_HomePageRouteConfiguration, null),
     mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_PostsPageRouteConfiguration, null),
+    mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_RfcsPageRouteConfiguration, null),
     mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_AboutPageRouteConfiguration, null),
     mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_ContactPageRouteConfiguration, null),
     // V2 Post Detail dynamic routes
     ...slugs.map((slug) =>
       mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_PostDetailPageRouteConfiguration, slug, slug)
+    ),
+    // V2 RFC Detail dynamic routes
+    ...rfc_slugs.map((slug) =>
+      mapRouteConfigurationToStaticPageObject(RoutesConfig.V2_RfcDetailPageRouteConfiguration, slug, slug)
     )
   ];
 }

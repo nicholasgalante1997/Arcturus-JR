@@ -260,17 +260,24 @@ mise run fmt
 ```
 Arc-Jr/
 ├── apps/
-│   └── web/              # Main blog application
+│   ├── web/              # Main blog application
+│   └── editor/           # Local-only (127.0.0.1) authoring UI for posts/RFCs
 ├── packages/             # Shared packages
 │   ├── void-components/  # React component library
 │   ├── void-tokens/      # Design tokens
 │   ├── void-css/         # CSS utilities
 │   ├── types/            # Shared TypeScript types
-│   └── config/           # Shared configuration
+│   ├── config/           # Shared configuration
+│   ├── content/          # Content contract: Zod schemas, parse/serialize, load, manifest
+│   └── content-data/      # SOURCE OF TRUTH for posts/rfcs/about/home
 ├── turbo.json            # Turborepo pipeline
 ├── package.json          # Root workspace
 └── .claude/              # Claude Code configuration
 ```
+
+### Adding a Post or RFC
+
+Posts and RFCs live in `packages/content-data/{posts,rfcs}/*` — Zod-validated frontmatter + body, one file per post/RFC. `apps/web/public/content` is a **gitignored, generated copy** (synced by `content:sync` on every `prebuild`/`predev`) — never hand-edit it. `id` is always the filename stem; `slug` defaults to `id` when omitted. Author via `apps/editor` (`turbo dev --filter=@arcjr/editor`) or by hand, then `turbo build --filter=@arcjr/content-data` to validate + regenerate the manifest. See `specs/content-pipeline-and-editor.spec.md` and `specs/content-pipeline-EXECUTION.md` for the full design.
 
 ## Tech Stack
 

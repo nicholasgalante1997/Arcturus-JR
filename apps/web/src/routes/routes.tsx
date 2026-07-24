@@ -25,9 +25,11 @@ function lazyRoutes() {
       ...RoutesConfig.V1_AllRouteConfigurations.map(mapRouteConfigToReactRouterRouteObject),
       mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_HomePageRouteConfiguration),
       mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_PostsPageRouteConfiguration),
+      mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_RfcsPageRouteConfiguration),
       mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_AboutPageRouteConfiguration),
       mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_ContactPageRouteConfiguration),
-      mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_PostDetailPageRouteConfiguration)
+      mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_PostDetailPageRouteConfiguration),
+      mapRouteConfigToReactRouterRouteObject(RoutesConfig.V2_RfcDetailPageRouteConfiguration)
     ];
   }
 
