@@ -82,7 +82,6 @@ const CodeComponent: React.FC<CodeComponentProps> = ({ inline, className, childr
   if (shouldHighlight) {
     return (
       <SyntaxHighlighter
-        style={dracula}
         language={actualLanguage}
         PreTag="div"
         showLineNumbers={false} // Set to true if you want line numbers
@@ -94,6 +93,7 @@ const CodeComponent: React.FC<CodeComponentProps> = ({ inline, className, childr
           lineHeight: '1.5'
         }}
         {...props}
+        style={dracula as { [key: string]: React.CSSProperties }}
       >
         {String(children).replace(/\n$/, '')}
       </SyntaxHighlighter>
