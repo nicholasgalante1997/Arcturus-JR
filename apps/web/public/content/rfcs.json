@@ -7,7 +7,12 @@
     "date": "2026-02-01",
     "author": "Nick Galante",
     "excerpt": "A binary serialization format based on dumb block container protocols designed to efficiently encode structured context for consumption by large language models, optimizing for semantic density within token-constrained context windows.",
-    "tags": ["llm", "binary-format", "serialization", "context-protocol"],
+    "tags": [
+      "llm",
+      "binary-format",
+      "serialization",
+      "context-protocol"
+    ],
     "visible": true
   }
 ]

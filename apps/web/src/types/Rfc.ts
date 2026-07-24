@@ -1,35 +1,16 @@
-export interface Rfc {
-  id: string;
-  title: string;
-  version: string;
-  status: string;
-  date: string;
-  author: string;
-  excerpt: string;
-  tags: string[];
-  visible: boolean;
-}
+import { rfcRecordSchema, type Rfc } from '@arcjr/content';
+
+export type { Rfc };
 
 export interface RfcWithContent extends Rfc {
   content: string;
 }
 
-export function isRfc(obj: unknown): obj is Rfc {
-  if (typeof obj !== 'object' || obj === null) return false;
-  const rfc = obj as Rfc;
-  return (
-    typeof rfc.id === 'string' &&
-    typeof rfc.title === 'string' &&
-    typeof rfc.version === 'string' &&
-    typeof rfc.status === 'string' &&
-    typeof rfc.date === 'string' &&
-    typeof rfc.author === 'string' &&
-    typeof rfc.excerpt === 'string' &&
-    Array.isArray(rfc.tags) &&
-    rfc.tags.every((tag) => typeof tag === 'string') &&
-    typeof rfc.visible === 'boolean'
-  );
-}
+// See Post.ts for why this validates against a passthrough variant: RfcWithContent
+// legitimately carries a `content` field beyond Rfc's strict-by-design shape.
+const rfcShapeSchema = rfcRecordSchema.passthrough();
+
+export const isRfc = (obj: unknown): obj is Rfc => rfcShapeSchema.safeParse(obj).success;
 
 export function isRfcWithContent(obj: unknown): obj is RfcWithContent {
   if (!isRfc(obj)) return false;

@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import 'tailwindcss';
+
+@source './**/*.tsx';
+
+/* Design tokens — sourced from @arcjr/void-tokens, applied dark-only and
+   restrained: grays carry the UI, azure/orange accents used sparingly. */
+@theme {
+  --font-sans: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --color-bg: #0a0a0a; /* gray-950 */
+  --color-surface: #0f0f0f; /* gray-900 */
+  --color-panel: #1a1a1a; /* gray-800 */
+  --color-elevated: #202020;
+  --color-border: #2a2a2a; /* gray-700 */
+  --color-border-strong: #3a3a3a; /* gray-600 */
+  --color-text: #e8e8e8; /* gray-100 */
+  --color-subtle: #a0a0a0; /* gray-300 */
+  --color-muted: #808080; /* gray-400 */
+  --color-accent: #3a86ff; /* azure — primary */
+  --color-accent-fg: #ffffff;
+  --color-danger: #fb5607; /* orange */
+  --color-success: #3fb950;
+
+  --radius-md: 6px;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    @apply bg-bg text-text font-sans antialiased;
+    font-size: 14px;
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  }
+
+  /* Thin, dark scrollbars to match the chrome */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-strong) transparent;
+  }
+}
+
+@layer components {
+  /* ---- App shell ---------------------------------------------------- */
+  .editor-app {
+    @apply grid h-screen overflow-hidden;
+    grid-template-columns: 280px 1fr;
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .editor-app__sidebar {
+    @apply flex min-h-0 flex-col border-r border-border bg-surface;
+  }
+
+  .editor-app__main {
+    @apply flex min-h-0 min-w-0 flex-col;
+  }
+
+  .editor-app__sidebar-footer {
+    @apply border-t border-border p-3;
+  }
+
+  /* ---- Collection switch ------------------------------------------- */
+  .editor-collection-switch {
+    @apply flex gap-1 p-2;
+  }
+
+  .editor-collection-switch__button {
+    @apply flex-1 rounded-md py-1.5 text-[13px] font-medium text-muted transition-colors duration-100;
+    @apply hover:text-text hover:bg-panel;
+  }
+
+  .editor-collection-switch__button--active {
+    @apply bg-panel text-text;
+  }
+
+  /* ---- Sidebar search ---------------------------------------------- */
+  .editor-search {
+    @apply px-2 pb-2;
+  }
+
+  .editor-search__input {
+    @apply w-full rounded-md border border-border bg-bg px-3 py-1.5 text-[13px] text-text;
+    @apply placeholder:text-muted focus:border-accent focus:outline-none;
+  }
+
+  /* ---- Document list ----------------------------------------------- */
+  .editor-post-list {
+    @apply m-0 min-h-0 flex-1 list-none overflow-y-auto p-1;
+  }
+
+  .editor-post-list__item {
+    @apply flex cursor-pointer flex-col gap-1 rounded-md px-3 py-2 transition-colors duration-100;
+    @apply hover:bg-panel;
+  }
+
+  .editor-post-list__item--active {
+    @apply bg-panel;
+    box-shadow: inset 2px 0 0 var(--color-accent);
+  }
+
+  .editor-post-list__title {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap text-[13px] font-medium text-text;
+  }
+
+  .editor-post-list__meta {
+    @apply flex items-center gap-2 text-[11px] text-muted;
+  }
+
+  .editor-badge {
+    @apply inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide;
+  }
+
+  .editor-badge--visible {
+    color: var(--color-success);
+    background: color-mix(in srgb, var(--color-success) 15%, transparent);
+  }
+
+  .editor-badge--draft {
+    @apply bg-panel text-muted;
+  }
+
+  /* ---- Buttons ------------------------------------------------------ */
+  .editor-button {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] font-medium;
+    @apply transition-colors duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent;
+    @apply bg-accent text-white hover:brightness-110;
+  }
+
+  .editor-button:disabled {
+    @apply cursor-not-allowed opacity-50 hover:brightness-100;
+  }
+
+  .editor-button--secondary {
+    @apply border border-border bg-transparent text-text hover:bg-panel;
+  }
+
+  .editor-button--ghost {
+    @apply bg-transparent text-muted hover:bg-panel hover:text-text;
+  }
+
+  .editor-button--danger {
+    @apply border border-transparent bg-transparent text-muted;
+    @apply hover:bg-[color-mix(in_srgb,var(--color-danger)_15%,transparent)] hover:text-[var(--color-danger)];
+  }
+
+  .editor-button--full {
+    @apply w-full;
+  }
+
+  /* ---- Top bar ------------------------------------------------------ */
+  .editor-topbar {
+    @apply flex h-12 flex-shrink-0 items-center gap-3 border-b border-border bg-surface px-4;
+  }
+
+  .editor-topbar__brand {
+    @apply flex items-center gap-2 text-[13px] font-semibold text-text;
+  }
+
+  .editor-topbar__brand-mark {
+    @apply inline-block h-2 w-2 rotate-45 rounded-[2px];
+    background: var(--color-accent);
+  }
+
+  .editor-topbar__docid {
+    @apply truncate font-mono text-[13px] text-subtle;
+  }
+
+  .editor-topbar__spacer {
+    @apply flex-1;
+  }
+
+  .editor-topbar__idinput {
+    @apply w-56 rounded-md border border-border bg-bg px-2.5 py-1 font-mono text-[13px] text-text;
+    @apply placeholder:text-muted focus:border-accent focus:outline-none;
+  }
+
+  /* ---- Save-state chip --------------------------------------------- */
+  .editor-savechip {
+    @apply inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-[12px] font-medium;
+  }
+
+  .editor-savechip__dot {
+    @apply inline-block h-1.5 w-1.5 rounded-full;
+  }
+
+  .editor-savechip--saved {
+    @apply text-muted;
+  }
+  .editor-savechip--saved .editor-savechip__dot {
+    background: var(--color-success);
+  }
+
+  .editor-savechip--unsaved {
+    @apply text-subtle;
+  }
+  .editor-savechip--unsaved .editor-savechip__dot {
+    background: var(--color-danger);
+  }
+
+  .editor-savechip--saving {
+    @apply text-muted;
+  }
+  .editor-savechip--saving .editor-savechip__dot {
+    background: var(--color-accent);
+    animation: editor-pulse 1s ease-in-out infinite;
+  }
+
+  /* ---- Tab bar (Write / Settings) ---------------------------------- */
+  .editor-tabbar {
+    @apply flex h-10 flex-shrink-0 items-center gap-1 border-b border-border bg-surface px-3;
+  }
+
+  .editor-tab {
+    @apply relative inline-flex items-center gap-1.5 rounded-md px-3 py-1 text-[13px] font-medium text-muted;
+    @apply transition-colors duration-100 hover:text-text;
+  }
+
+  .editor-tab--active {
+    @apply bg-panel text-text;
+  }
+
+  .editor-tab__dot {
+    @apply inline-block h-1.5 w-1.5 rounded-full;
+    background: var(--color-danger);
+  }
+
+  .editor-tabbar__spacer {
+    @apply flex-1;
+  }
+
+  /* ---- View toggle (Editor / Split / Preview) ---------------------- */
+  .editor-viewtoggle {
+    @apply inline-flex items-center gap-0.5 rounded-md border border-border p-0.5;
+  }
+
+  .editor-viewtoggle__btn {
+    @apply rounded-[4px] px-2.5 py-0.5 text-[12px] font-medium text-muted transition-colors duration-100;
+    @apply hover:text-text;
+  }
+
+  .editor-viewtoggle__btn--active {
+    @apply bg-panel text-text;
+  }
+
+  /* ---- Workspace / editor / preview -------------------------------- */
+  .editor-workspace {
+    @apply flex min-h-0 flex-1 flex-col;
+  }
+
+  .editor-pane {
+    @apply flex min-h-0 flex-1 flex-col;
+  }
+
+  .editor-pane--hidden {
+    @apply hidden;
+  }
+
+  .editor-settings {
+    @apply min-h-0 flex-1 overflow-y-auto;
+  }
+
+  .editor-empty-state {
+    @apply flex flex-1 items-center justify-center p-8 text-center text-[13px] text-muted;
+  }
+
+  .editor-split {
+    @apply flex min-h-0 flex-1;
+  }
+
+  .editor-split__pane {
+    @apply min-w-0 flex-1 overflow-y-auto;
+  }
+
+  .editor-split__pane + .editor-split__pane {
+    @apply border-l border-border;
+  }
+
+  .editor-cm-host {
+    @apply h-full;
+  }
+
+  .editor-preview {
+    @apply px-8 py-6 leading-relaxed text-text;
+  }
+
+  .editor-preview h1,
+  .editor-preview h2,
+  .editor-preview h3 {
+    @apply mb-3 mt-6 font-semibold leading-tight text-white;
+  }
+  .editor-preview h1 {
+    @apply text-2xl;
+  }
+  .editor-preview h2 {
+    @apply text-xl;
+  }
+  .editor-preview h3 {
+    @apply text-lg;
+  }
+  .editor-preview p {
+    @apply my-3;
+  }
+  .editor-preview a {
+    color: var(--color-accent);
+    @apply underline underline-offset-2;
+  }
+  .editor-preview code {
+    @apply rounded bg-panel px-1.5 py-0.5 font-mono text-[0.85em];
+  }
+  .editor-preview pre {
+    @apply my-4 overflow-x-auto rounded-md border border-border bg-surface p-4 font-mono text-[13px];
+  }
+  .editor-preview pre code {
+    @apply bg-transparent p-0;
+  }
+  .editor-preview blockquote {
+    @apply my-4 border-l-2 border-border-strong pl-4 text-subtle;
+  }
+  .editor-preview img {
+    @apply max-w-full rounded-md;
+  }
+  .editor-preview ul,
+  .editor-preview ol {
+    @apply my-3 pl-6;
+  }
+  .editor-preview li {
+    @apply my-1;
+  }
+
+  /* ---- Metadata form (Settings tab) -------------------------------- */
+  .editor-metadata-form {
+    @apply mx-auto grid max-w-3xl gap-5 p-8;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .editor-field {
+    @apply flex flex-col gap-1.5;
+  }
+
+  .editor-field--span-2 {
+    @apply col-span-2;
+  }
+
+  .editor-field label {
+    @apply text-[11px] font-medium uppercase tracking-wide text-muted;
+  }
+
+  .editor-field input[type='text'],
+  .editor-field input:not([type]),
+  .editor-field textarea {
+    @apply rounded-md border border-border bg-bg px-3 py-2 text-[13px] text-text;
+    @apply placeholder:text-muted focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent;
+  }
+
+  .editor-field textarea {
+    @apply min-h-20 resize-y;
+  }
+
+  .editor-field--checkbox {
+    @apply flex-row items-center gap-2;
+  }
+
+  .editor-field--checkbox input {
+    @apply h-4 w-4 accent-[var(--color-accent)];
+  }
+
+  .editor-field--checkbox label {
+    @apply text-[13px] normal-case tracking-normal text-text;
+  }
+
+  .editor-field__error {
+    @apply text-[11px];
+    color: var(--color-danger);
+  }
+
+  .editor-fieldset-title {
+    @apply col-span-2 -mb-1 mt-2 text-[11px] font-semibold uppercase tracking-wide text-subtle;
+  }
+
+  /* ---- Image picker ------------------------------------------------- */
+  .editor-image-picker {
+    @apply col-span-2 flex flex-col gap-2;
+  }
+
+  .editor-image-picker > label {
+    @apply text-[11px] font-medium uppercase tracking-wide text-muted;
+  }
+
+  .editor-image-picker__grid {
+    @apply grid max-h-44 gap-2 overflow-y-auto rounded-md border border-border p-2;
+    grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  }
+
+  .editor-image-picker__thumb {
+    @apply aspect-square w-full cursor-pointer rounded-md border-2 border-transparent object-cover transition-colors;
+    @apply hover:border-border-strong;
+  }
+
+  .editor-image-picker__thumb--selected {
+    border-color: var(--color-accent);
+  }
+
+  /* ---- Build-error panel ------------------------------------------- */
+  .editor-buildpanel {
+    @apply flex-shrink-0 border-b p-3;
+    border-color: color-mix(in srgb, var(--color-danger) 40%, var(--color-border));
+    background: color-mix(in srgb, var(--color-danger) 8%, var(--color-surface));
+  }
+
+  .editor-buildpanel__head {
+    @apply mb-2 flex items-center gap-2 text-[12px] font-semibold;
+    color: var(--color-danger);
+  }
+
+  .editor-buildpanel__close {
+    @apply ml-auto rounded p-0.5 text-muted hover:bg-panel hover:text-text;
+  }
+
+  .editor-buildpanel__output {
+    @apply max-h-40 overflow-auto whitespace-pre-wrap rounded-md bg-bg p-3 font-mono text-[12px] text-subtle;
+  }
+
+  /* ---- Toasts ------------------------------------------------------- */
+  .editor-toaster {
+    @apply pointer-events-none fixed bottom-4 right-4 z-50 flex flex-col gap-2;
+  }
+
+  .editor-toast {
+    @apply pointer-events-auto flex items-center gap-2 rounded-md border px-3 py-2 text-[13px] font-medium shadow-lg;
+    @apply border-border bg-panel text-text;
+    animation: editor-toast-in 120ms ease-out;
+  }
+
+  .editor-toast__dot {
+    @apply inline-block h-2 w-2 flex-shrink-0 rounded-full;
+  }
+
+  .editor-toast--success .editor-toast__dot {
+    background: var(--color-success);
+  }
+
+  .editor-toast--error .editor-toast__dot {
+    background: var(--color-danger);
+  }
+}
+
+@keyframes editor-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes editor-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

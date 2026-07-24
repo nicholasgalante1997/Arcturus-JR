@@ -1,9 +1,3 @@
----
-title: Getting Setup with the beta React Compiler
-date: "2024-04-20"
-visible: true
----
-
 Here's the breakdown of how this is going to go:  
 
 1. A Brief Overview of React Compiler

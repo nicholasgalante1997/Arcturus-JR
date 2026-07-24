@@ -11,7 +11,8 @@
     "dist"
   ],
   "scripts": {
-    "prebuild": "run-s clean",
+    "prebuild": "run-s clean content:sync",
+    "predev": "content:sync",
     "build": "run-s bundle copy:ciphers copy:workers prerender sync:void-css postcss copy",
     "build-storybook": "storybook build",
     "bundle": "webpack --config webpack/prod.mjs",
@@ -22,6 +23,9 @@
     "clean:css": "rm -f public/css/*.min.css && rm -f public/css/themes/*.min.css",
     "clean:dist": "rm -rf dist/",
     "clean:void-css": "rm -rf public/css/void",
+    "content:sync": "run-s content:sync:check content:sync:copy",
+    "content:sync:check": "test -d node_modules/@arcjr/content-data/dist || (echo 'ERROR: @arcjr/content-data is not built. Run: turbo run build --filter=@arcjr/content-data (or use `turbo dev`/`turbo build` instead of running this script standalone).' && exit 1)",
+    "content:sync:copy": "mkdir -p public/content/posts public/content/rfcs && cp -R node_modules/@arcjr/content-data/dist/. public/content/",
     "copy": "run-p copy:assets copy:docs copy:favicons copy:markdown copy:styles",
     "copy:assets": "cp -R public/assets dist/",
     "copy:ciphers": "run-s copy:ciphers:public",
@@ -75,6 +79,7 @@
   },
   "dependencies": {
     "@arcjr/config": "workspace:*",
+    "@arcjr/content": "workspace:*",
     "@arcjr/postcss-utils": "workspace:*",
     "@arcjr/types": "workspace:*",
     "@arcjr/void-components": "workspace:*",
@@ -107,6 +112,7 @@
     "typescript": "latest"
   },
   "devDependencies": {
+    "@arcjr/content-data": "workspace:*",
     "@eslint/css": "^0.11.0",
     "@eslint/js": "^9.35.0",
     "@eslint/json": "^0.13.2",

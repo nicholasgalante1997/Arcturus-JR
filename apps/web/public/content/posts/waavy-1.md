@@ -1,9 +1,3 @@
----
-slug: "waavy-1"
-visible: true
-title: "Release Updates for June 2025, Waavy v0.1.6 (Pre-Release)"
----
-
 I'm dropping a very quick blog post to draw some attention to some technical work that's I've conducted in late May, June. If you notice a period where technical writing lags, that's likely becuase things are actually getting done, albeit usually briefly.
 
 ## Waavy & Waavy-Rs
