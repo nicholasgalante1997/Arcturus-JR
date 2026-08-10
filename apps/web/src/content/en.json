@@ -13,5 +13,385 @@
     "intro": "Working specifications for ideas that need more rigor than a blog post.",
     "versionLabel": "Version",
     "updatedLabel": "Updated"
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "Software engineer",
+      "title": "I’m Nick Galante. I build software systems across the stack.",
+      "introduction": "I follow worthwhile problems wherever they go: from interfaces and compilers to distributed systems, storage, protocols, and infrastructure. The throughline is not a collection of technologies. It is ownership of the system.",
+      "role": "Senior Software Engineer — Lead, Agent Tools Design Technology at Charter Communications",
+      "availability": "I’m interested in ambitious technical problems and serious people working on them.",
+      "contactLabel": "Start a conversation",
+      "githubLabel": "GitHub",
+      "linkedinLabel": "LinkedIn"
+    },
+    "navigationLabel": "On this page",
+    "navigation": [
+      {
+        "label": "Selected Work",
+        "href": "#selected-work"
+      },
+      {
+        "label": "Experience",
+        "href": "#experience"
+      },
+      {
+        "label": "Technical Range",
+        "href": "#technical-range"
+      },
+      {
+        "label": "How I Engineer",
+        "href": "#how-i-engineer"
+      },
+      {
+        "label": "Elsewhere",
+        "href": "#elsewhere"
+      }
+    ],
+    "selectedWork": {
+      "title": "Selected Work",
+      "introduction": "A few systems where the constraints, scale, or consequences made the work worth doing.",
+      "projects": [
+        {
+          "index": "01",
+          "name": "AI / LLM Registry",
+          "context": "Charter Communications · Principal architect, primary implementer, direct maintainer",
+          "claim": "A company-wide registry for versioned agent assets, built on the durable ideas behind npm and container registries.",
+          "description": "I conceived, architected, and delivered a vendor-neutral platform for distributing serializable agent configuration across harnesses and IDEs. Namespaced assets have owners, semantic versions, dependencies, tags, update and yank semantics, and complete local history. A CAC-based npm client exposes installation, discovery, submission, rollback, and roughly thirty other operations; Rust services and PostgreSQL manage the durable system of record.",
+          "evidence": [
+            "Several hundred to low-thousands of cataloged assets",
+            "Adopted across 20–30 organizational namespaces",
+            "Conceived and delivered in roughly three to six months",
+            "SQLite-backed client history, dependency installation, rollback, and nightly releases"
+          ],
+          "technologies": "TypeScript, Bun, npm, CAC, SQLite, Rust, PostgreSQL, Artifactory",
+          "href": ""
+        },
+        {
+          "index": "02",
+          "name": "Springfield",
+          "context": "Charter Communications · Principal architect, implementer, long-term owner",
+          "claim": "A deterministic software-intelligence platform that turns hundreds of distributed frontends into a queryable model of the system.",
+          "description": "I built Springfield end to end as a stateless ETL system. It clones source packages into reliable filesystem locations, crawls them in parallel, converts source into ASTs, and runs purpose-built pipelines over the result. Those pipelines map cross-package imports and exports, catalog React components and hooks, reproduce component rendering, and trace downstream service and payload usage. The resulting data lakes are available through REST, GraphQL, MCP tools, and a conversational interface. Models can consume Springfield’s facts; they do not manufacture them.",
+          "evidence": [
+            "295 packages and more than 30,000 source files",
+            "More than 2,500 modules and 2,500 React components",
+            "Complete refresh in under four minutes with zero inference tokens",
+            "Roughly 90,000 database writes in about 875 milliseconds"
+          ],
+          "technologies": "TypeScript, AST analysis, parallel ETL, relational data, GraphQL, REST, MCP",
+          "href": ""
+        },
+        {
+          "index": "03",
+          "name": "Amazon Platform Engineering",
+          "context": "Amazon Games · Software Development Engineer",
+          "claim": "Platform work spanning design systems, microfrontends, regulated payments, and production reliability.",
+          "description": "I founded and technically led Gotham, a design system used across Prime Gaming, Prime Video, and digital-goods experiences. I also helped move a large frontend from a monolith toward microfrontends, reducing builds from eleven minutes to six; designed orchestration for European payment and compliance requirements; and built high-availability synthetic monitoring for critical customer paths.",
+          "evidence": [
+            "Shared interface foundations across multiple Amazon product organizations",
+            "Build time reduced from eleven minutes to six",
+            "Payment and compliance orchestration for European markets",
+            "Synthetic monitoring for high-availability customer experiences"
+          ],
+          "technologies": "React, TypeScript, design systems, microfrontends, AWS, distributed workflows",
+          "href": ""
+        },
+        {
+          "index": "04",
+          "name": "Evergreen Terrace",
+          "context": "Independent · Flagship",
+          "claim": "An agent-native engineering organization for turning intent into durable, inspectable work.",
+          "description": "I am building the software organization I want to work inside: a persistent queue, specialist agents, shared context, orchestration, and an operational dashboard. Evergreen treats agents as parts of an engineering system rather than a chat window, with explicit ownership and enough state to resume meaningful work instead of repeatedly rediscovering it.",
+          "evidence": [
+            "Persistent work and context across specialist agents",
+            "Operational dashboard and orchestration surfaces",
+            "Designed as an inspectable engineering system, not a prompt collection"
+          ],
+          "technologies": "TypeScript, Bun, React, agent orchestration, MCP, SQLite",
+          "href": "https://github.com/nicholasgalante1997/evergreen-terrace"
+        },
+        {
+          "index": "05",
+          "name": "Cross-session Context Store",
+          "context": "Independent · Working v0.1",
+          "claim": "Shared, durable engineering memory for Claude Code and Codex sessions.",
+          "description": "I built X-SCS around an append-only event model with deterministic extraction by default and optional model-assisted distillation. Memories are typed, scoped, reviewable, searchable, and allowed to decay. Conflict handling, handoff files, hooks, MCP tools, and a loopback dashboard make the store useful without turning it into an invisible source of truth.",
+          "evidence": [
+            "FTS5 and BM25 retrieval over typed, scoped memories",
+            "Review queues, conflict handling, decay, and explicit handoffs",
+            "Seventy-five automated tests across the working v0.1"
+          ],
+          "technologies": "Bun, TypeScript, SQLite, FTS5, React, MCP",
+          "href": ""
+        },
+        {
+          "index": "06",
+          "name": "Bit Context Protocol",
+          "context": "Independent · Protocol research",
+          "claim": "A compact binary format for structured model context.",
+          "description": "I designed BCP to test a simple premise: context should have a protocol, not merely a pile of prose. The work includes an RFC, reference implementation, fuzzing, and integration experiments in agent tooling. Early measurements show materially denser representations than equivalent text while preserving typed structure.",
+          "evidence": [
+            "RFC and reference implementation",
+            "Fuzz testing around binary encoding and decoding",
+            "Early workloads measured roughly 30–50% better token efficiency"
+          ],
+          "technologies": "Binary protocols, TypeScript, schema design, fuzz testing, LLM context",
+          "href": ""
+        },
+        {
+          "index": "07",
+          "name": "Bundt",
+          "context": "Independent · Open-source monorepo",
+          "claim": "A set of independently versioned developer tools built around Bun.",
+          "description": "Bundt is where related tools can share foundations without pretending they are one product. It includes Cleo for agent and MCP orchestration, DxDocs for zero-JavaScript documentation, Loclaude for local inference workflows, and libraries covering HATEOAS, server rendering, signals, and other pieces I wanted to understand by building.",
+          "evidence": [
+            "Independent application and library release boundaries",
+            "Agent orchestration, documentation, SSR, and local-inference tooling",
+            "A practical proving ground for shared packages without forced coupling"
+          ],
+          "technologies": "Bun, TypeScript, React, SSR, MCP, monorepo tooling",
+          "href": "https://github.com/mega-blastoise/bundt"
+        },
+        {
+          "index": "08",
+          "name": "DeckVault",
+          "context": "Independent · Flagship",
+          "claim": "A deliberately over-engineered Pokémon platform for exploring systems architecture with a domain I actually enjoy.",
+          "description": "DeckVault combines a React 19 server-rendered interface, Bun services, a Rust GraphQL API, relational and graph persistence, scheduled work, and containerized infrastructure. The domain is playful. The engineering questions—data ownership, service boundaries, rendering, graph relationships, and operational behavior—are not.",
+          "evidence": [
+            "React server rendering across a service-oriented backend",
+            "Relational, graph, and embedded persistence used for distinct jobs",
+            "A long-running architecture laboratory with real product constraints"
+          ],
+          "technologies": "React 19, Bun, Rust, GraphQL, PostgreSQL, Neo4j, SQLite, Docker",
+          "href": ""
+        },
+        {
+          "index": "09",
+          "name": "Project Arcturus",
+          "context": "Independent · Flagship",
+          "claim": "A long-lived publishing system and the site you are using now.",
+          "description": "I have evolved Arcturus for years rather than replacing it whenever a new framework became fashionable. It is a working laboratory for content pipelines, React server rendering and prerendering, accessibility, theming, monorepo infrastructure, and the unglamorous discipline of maintaining software long enough to understand its decisions.",
+          "evidence": [
+            "Years of continuous architectural stewardship",
+            "Static publishing backed by a structured content pipeline",
+            "Progressive design-system, accessibility, and rendering improvements"
+          ],
+          "technologies": "React, TypeScript, Bun, SSR, prerendering, content pipelines, monorepo tooling",
+          "href": "https://github.com/nicholasgalante1997/Project-Arcturus"
+        }
+      ]
+    },
+    "experience": {
+      "title": "Experience",
+      "introduction": "The chronology is useful. The work above is the better explanation.",
+      "roles": [
+        {
+          "period": "Aug 2023 — Present",
+          "role": "Senior Software Engineer — Lead, Agent Tools Design Technology",
+          "organization": "Charter Communications · Spectrum",
+          "description": "I lead the engineering charter behind internal agent tooling and own the architecture and delivery of platforms used across the company."
+        },
+        {
+          "period": "Aug 2021 — Jun 2023",
+          "role": "Software Development Engineer",
+          "organization": "Amazon Games",
+          "description": "I built platform capabilities spanning shared interfaces, microfrontend architecture, regulated payments, and production reliability."
+        },
+        {
+          "period": "Jan 2021 — Aug 2021",
+          "role": "Technology Analyst",
+          "organization": "Infosys",
+          "description": "I worked on enterprise software delivery and the engineering practices required to move safely inside large organizations."
+        },
+        {
+          "period": "Jan 2021 — Jan 2022 · Concurrent",
+          "role": "Software Engineer",
+          "organization": "Boost Fitness",
+          "description": "I built product software part-time alongside my primary roles."
+        },
+        {
+          "period": "Aug 2020 — Jan 2021",
+          "role": "Software Engineer",
+          "organization": "Intuily",
+          "description": "I worked across an early product stack and learned the value of owning problems beyond the boundary of a ticket."
+        }
+      ]
+    },
+    "technicalRange": {
+      "title": "Technical Range",
+      "introduction": "Representative territory, not a keyword inventory.",
+      "groups": [
+        {
+          "title": "Languages & runtimes",
+          "items": [
+            "TypeScript",
+            "JavaScript",
+            "Rust",
+            "Bun",
+            "Node.js",
+            "SQL",
+            "Shell"
+          ]
+        },
+        {
+          "title": "Web & interface architecture",
+          "items": [
+            "React",
+            "SSR and prerendering",
+            "Design systems",
+            "Microfrontends",
+            "Accessibility",
+            "Browser performance"
+          ]
+        },
+        {
+          "title": "Distributed systems & data",
+          "items": [
+            "Service boundaries",
+            "ETL pipelines",
+            "PostgreSQL",
+            "SQLite",
+            "Neo4j",
+            "GraphQL",
+            "REST"
+          ]
+        },
+        {
+          "title": "Compilers, analysis & tooling",
+          "items": [
+            "AST analysis",
+            "Dependency graphs",
+            "Static analysis",
+            "CLIs",
+            "Protocol design",
+            "Developer platforms"
+          ]
+        },
+        {
+          "title": "Systems, storage & protocols",
+          "items": [
+            "Linux internals",
+            "Filesystems",
+            "Binary formats",
+            "Resource monitoring",
+            "Native services",
+            "Networking"
+          ]
+        },
+        {
+          "title": "Infrastructure & delivery",
+          "items": [
+            "AWS",
+            "Docker",
+            "CI/CD",
+            "Observability",
+            "Release engineering",
+            "Artifactory"
+          ]
+        },
+        {
+          "title": "Agent systems & local inference",
+          "items": [
+            "Agent orchestration",
+            "MCP",
+            "Context systems",
+            "Asset registries",
+            "Ollama",
+            "Evaluation and deterministic grounding"
+          ]
+        }
+      ]
+    },
+    "principles": {
+      "title": "How I Engineer",
+      "introduction": "Principles matter when they change what I do.",
+      "items": [
+        {
+          "title": "Ownership",
+          "description": "I do not stop at the boundary where a problem becomes inconvenient. I follow it through architecture, implementation, delivery, adoption, and operation."
+        },
+        {
+          "title": "Bias for Action",
+          "description": "I reduce uncertainty by building the smallest useful thing, measuring it, and letting evidence sharpen the next decision."
+        },
+        {
+          "title": "Have Backbone; Disagree and Commit",
+          "description": "I make the technical argument clearly, especially when it is uncomfortable. Once the decision is made, I commit without keeping a private scoreboard."
+        },
+        {
+          "title": "Measure before claiming",
+          "description": "Performance, scale, and reliability are properties to instrument. Adjectives are not benchmarks."
+        },
+        {
+          "title": "Prefer deterministic systems before inference",
+          "description": "I use models where ambiguity requires them. If a parser, protocol, query, or state machine can produce the fact, I would rather make the fact reproducible."
+        },
+        {
+          "title": "Abstractions justify their cost",
+          "description": "An abstraction should remove a recurring burden or enforce a valuable constraint. Novelty is not rent."
+        },
+        {
+          "title": "Operational quality is architecture",
+          "description": "Accessibility, performance, observability, reversibility, and release behavior belong in the design—not in the cleanup phase."
+        },
+        {
+          "title": "Follow the problem across boundaries",
+          "description": "Useful systems rarely respect frontend, backend, infrastructure, or native labels. Neither do I."
+        }
+      ]
+    },
+    "experiments": {
+      "title": "Systems & Experiments",
+      "introduction": "Smaller projects, foundational work, and a few rabbit holes with source code.",
+      "projects": [
+        {
+          "name": "Agartha",
+          "description": "An early bare-metal x86-64 operating system in Rust, built around UEFI boot and a modular monolithic kernel.",
+          "href": ""
+        },
+        {
+          "name": "Foresight",
+          "description": "A proactive desktop resource manager that turns system telemetry into useful interventions instead of another dashboard to ignore.",
+          "href": ""
+        },
+        {
+          "name": "Btop",
+          "description": "A Bun and TypeScript Linux terminal monitor covering CPU, memory, GPU, processes, search, and keyboard-first navigation.",
+          "href": ""
+        },
+        {
+          "name": "Linux System Monitor",
+          "description": "A Rust and Actix system monitor reading Linux process and resource data through a small HTTP service.",
+          "href": "https://github.com/nicholasgalante1997/linux-system-monitor"
+        },
+        {
+          "name": "Nodext4",
+          "description": "A JavaScript implementation study of the ext4 filesystem specification and its low-level structures.",
+          "href": "https://github.com/nicholasgalante1997/nodext4"
+        },
+        {
+          "name": "Loclaude",
+          "description": "Claude Code workflows backed by local Ollama models, including model management, hardware detection, diagnostics, and Docker scaffolding.",
+          "href": "https://github.com/nicholasgalante1997/loclaude"
+        }
+      ]
+    },
+    "elsewhere": {
+      "title": "Elsewhere",
+      "paragraphs": [
+        "Away from a keyboard, I am usually with my fiancée and our dogs, accumulating Pokémon knowledge, or enduring the Dallas Cowboys with the sort of loyalty that should probably be studied.",
+        "I read avidly about pen-and-paper ciphers, modern encryption, and the long evolution between them. Cryptography is an intellectual interest, not a production credential I am trying to smuggle into a skills matrix.",
+        "I also like the Eagles. The band. This clarification has become operationally necessary."
+      ]
+    },
+    "closing": {
+      "title": "Bring me a problem with some teeth.",
+      "description": "If the work crosses boundaries, has real constraints, and deserves an owner, I would like to hear about it.",
+      "contactLabel": "Contact me",
+      "githubLabel": "GitHub",
+      "linkedinLabel": "LinkedIn"
+    }
   }
 }
