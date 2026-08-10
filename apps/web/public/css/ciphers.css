@@ -1,50 +1,237 @@
-@import './themes/void/void.css';
+.cipher-archive,
+.cipher-detail {
+  --cipher-green: light-dark(oklch(0.44 0.12 155), oklch(0.78 0.16 150));
+  --cipher-green-muted: color-mix(in oklab, var(--cipher-green) 70%, var(--s-text-muted));
+  padding-block: clamp(4rem, 9vw, 8rem) var(--s-space-section);
+}
 
-#ciphers-page___container {
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
+.cipher-archive > .wrapper,
+.cipher-detail > .wrapper {
+  inline-size: min(calc(100% - (var(--s-space-gutter) * 2)), var(--s-wrapper));
+  margin-inline: auto;
+}
+
+.cipher-eyebrow {
+  color: var(--cipher-green);
+  font: 650 var(--s-text-xs) / 1.3 var(--s-font-mono);
+  letter-spacing: 0.08em;
+  margin: 0 0 var(--s-space-6);
+  text-transform: uppercase;
+}
+
+.cipher-archive__header {
+  margin-block-end: clamp(4rem, 9vw, 8rem);
+  max-inline-size: 60rem;
+}
+
+.cipher-archive__header h1,
+.cipher-detail__header h1 {
+  font-size: var(--s-text-4xl);
+  line-height: 1.02;
+  margin: 0 0 var(--s-space-6);
+}
+
+.cipher-archive__introduction {
+  color: var(--s-text);
+  font-size: var(--s-text-xl);
+  line-height: 1.45;
+  margin: 0 0 var(--s-space-4);
+  max-inline-size: 54ch;
+}
+
+.cipher-archive__challenge {
+  color: var(--s-text-muted);
+  font: 500 var(--s-text-sm) / 1.55 var(--s-font-ui);
   margin: 0;
-  padding: var(--void-spacing-4);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: var(--void-spacing-4);
+  max-inline-size: 65ch;
 }
 
-#ciphers-page___cipher-card-grid {
-  display: flex;
-  flex-direction: row;
+.cipher-registry {
+  border-block-end: 1px solid var(--s-border-subtle);
+}
+
+.cipher-record {
   align-items: center;
-  justify-content: flex-start;
-  gap: var(--void-spacing-4);
-  width: 100%;
+  border-block-start: 1px solid var(--s-border-subtle);
+  display: grid;
+  gap: var(--s-space-8) clamp(2rem, 6vw, 6rem);
+  grid-template-columns: minmax(12rem, 1.15fr) minmax(22rem, 2fr) auto;
+  padding-block: clamp(2.5rem, 5vw, 4.5rem);
 }
 
-.ciphers-page___card {
-  --width: 275px;
-
-  width: var(--width);
-  min-width: var(--width);
-
-  h3 {
-    color: var(--void-amber) !important;
-  }
-
-  .card-footer {
-    margin-top: auto !important;
-  }
+.cipher-record__identity > span {
+  color: var(--cipher-green);
+  display: block;
+  font: 650 var(--s-text-xs) / 1 var(--s-font-mono);
+  margin-block-end: var(--s-space-4);
 }
 
-#cipher-name {
-  font-weight: 700;
-  color: var(--void-amber);
+.cipher-record__identity h2 {
+  font: 650 var(--s-text-xl) / 1.1 var(--s-font-mono);
+  letter-spacing: -0.025em;
+  margin: 0 0 var(--s-space-3);
 }
 
-/* @see https://stackoverflow.com/questions/248011/how-do-i-wrap-text-in-a-pre-tag */
+.cipher-record__identity h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cipher-record__identity h2 a:hover {
+  color: var(--cipher-green);
+}
+
+.cipher-record__identity code,
+.cipher-detail__header > code {
+  background: transparent;
+  color: var(--s-text-muted);
+  font: 500 var(--s-text-xs) / 1.4 var(--s-font-mono);
+  padding: 0;
+}
+
+.cipher-record__estimates > p {
+  color: var(--s-text-muted);
+  font: 650 var(--s-text-xs) / 1.4 var(--s-font-ui);
+  letter-spacing: 0.05em;
+  margin: 0 0 var(--s-space-4);
+  text-transform: uppercase;
+}
+
+.cipher-record__estimates dl {
+  display: grid;
+  gap: var(--s-space-6);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+}
+
+.cipher-record__estimates dt {
+  color: var(--s-text-muted);
+  font: 550 var(--s-text-xs) / 1.35 var(--s-font-ui);
+  margin-block-end: var(--s-space-2);
+}
+
+.cipher-record__estimates dd {
+  color: var(--cipher-green);
+  font: 650 var(--s-text-base) / 1.2 var(--s-font-mono);
+  margin: 0;
+}
+
+.cipher-record__action,
+.cipher-detail__back,
+.cipher-transmission__toolbar button {
+  color: var(--s-text);
+  font: 650 var(--s-text-sm) / 1.3 var(--s-font-ui);
+  white-space: nowrap;
+}
+
+.cipher-record__action,
+.cipher-detail__back {
+  text-decoration-line: underline;
+  text-underline-offset: 0.3em;
+}
+
+.cipher-record__action:hover,
+.cipher-detail__back:hover {
+  color: var(--cipher-green);
+}
+
+.cipher-detail__header {
+  border-block-end: 1px solid var(--s-border-subtle);
+  padding-block-end: clamp(3rem, 7vw, 6rem);
+}
+
+.cipher-detail__back {
+  display: inline-block;
+  margin-block-end: clamp(3rem, 7vw, 6rem);
+}
+
+.cipher-transmission {
+  padding-block-start: clamp(3rem, 7vw, 6rem);
+}
+
+.cipher-transmission__toolbar {
+  align-items: center;
+  display: flex;
+  gap: var(--s-space-6);
+  justify-content: space-between;
+  margin-block-end: var(--s-space-6);
+}
+
+.cipher-transmission__toolbar h2 {
+  color: var(--s-text-muted);
+  font: 650 var(--s-text-xs) / 1.3 var(--s-font-mono);
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.cipher-transmission__toolbar button {
+  background: transparent;
+  border: 1px solid var(--s-border-strong);
+  border-radius: var(--s-radius-full);
+  padding: 0.65rem 0.9rem;
+}
+
+.cipher-transmission__toolbar button:hover {
+  border-color: var(--cipher-green);
+  color: var(--cipher-green);
+}
+
 pre#ciphertext {
-  color: var(--void-amber);
-  max-width: 95%;
+  background:
+    linear-gradient(var(--s-border-subtle) 1px, transparent 1px) 0 0 / 100% 2rem,
+    color-mix(in oklab, var(--cipher-green) 4%, var(--s-surface-1));
+  border: 1px solid var(--s-border-subtle);
+  border-radius: var(--s-radius-md);
+  color: var(--cipher-green);
+  font: 500 var(--s-text-sm) / 2rem var(--s-font-mono);
+  margin: 0;
+  max-inline-size: none;
+  min-block-size: 14rem;
+  overflow: auto;
+  padding: var(--s-space-8);
+  tab-size: 4;
   white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (max-width: 58rem) {
+  .cipher-record {
+    align-items: start;
+    grid-template-columns: minmax(11rem, 0.8fr) minmax(0, 2fr);
+  }
+
+  .cipher-record__action {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 42rem) {
+  .cipher-archive,
+  .cipher-detail {
+    padding-block-start: var(--s-space-16);
+  }
+
+  .cipher-record {
+    grid-template-columns: 1fr;
+  }
+
+  .cipher-record__action {
+    grid-column: auto;
+  }
+
+  .cipher-record__estimates dl {
+    gap: var(--s-space-4);
+  }
+}
+
+@media (max-width: 28rem) {
+  .cipher-record__estimates dl {
+    grid-template-columns: 1fr;
+  }
+
+  .cipher-transmission__toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }

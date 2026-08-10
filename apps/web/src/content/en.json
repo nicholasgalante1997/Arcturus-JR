@@ -453,5 +453,21 @@
     "primaryGithubLabel": "Personal GitHub",
     "organizationGithubLabel": "Mega Blastoise",
     "linkedinLabel": "LinkedIn"
+  },
+  "ciphers": {
+    "eyebrow": "Easter egg / Cipher archive",
+    "title": "Intercepts",
+    "introduction": "Congratulations. You found something I deliberately neglected to put in the navigation.",
+    "challenge": "Two transmissions are currently on record. Break them if you can; complain about the estimates if you must.",
+    "archiveLabel": "Ciphertext archive",
+    "noviceLabel": "Novice",
+    "intermediateLabel": "Black Ops III enthusiast",
+    "expertLabel": "Herbert Yardley",
+    "openLabel": "Open transmission",
+    "backLabel": "All intercepts",
+    "transmissionLabel": "Encoded transmission",
+    "copyLabel": "Copy transmission",
+    "copiedLabel": "Copied",
+    "estimateLabel": "Estimated solve time"
   }
 }
