@@ -1,8 +1,8 @@
 import type { Post } from '@/types/Post';
 
 export interface FeaturedPostsProps {
-  posts: Post[];
-  limit?: number;
+  featuredPost: Post | null;
+  recentPosts: Post[];
 }
 
 export interface PostCardV2Props {

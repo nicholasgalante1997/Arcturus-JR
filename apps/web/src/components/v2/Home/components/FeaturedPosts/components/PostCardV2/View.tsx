@@ -1,5 +1,5 @@
 import { formatDistanceToNow } from 'date-fns';
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { Link } from 'react-router';
 
 import { pipeline } from '@/utils/pipeline';
@@ -13,8 +13,13 @@ function PostCardV2View({ post }: PostCardV2Props) {
 
   return (
     <article className="v2-post-card">
-      <Link to={`/post/${post.slug}`} className="v2-post-card__link">
-        {post.image && (
+      {post.image && (
+        <Link
+          to={`/post/${post.slug}`}
+          className="v2-post-card__image-link"
+          aria-label={`Read ${post.title}`}
+          tabIndex={-1}
+        >
           <div className="v2-post-card__image-container">
             <img
               src={post.image.src}
@@ -24,30 +29,22 @@ function PostCardV2View({ post }: PostCardV2Props) {
             />
             <div className="v2-post-card__image-overlay" />
           </div>
-        )}
-        <div className="v2-post-card__content">
-          <div className="v2-post-card__meta">
-            {post.tags && post.tags.length > 0 && <span className="v2-post-card__tag">{post.tags[0]}</span>}
-            <time className="v2-post-card__date" dateTime={post.date}>
-              {formattedDate}
-            </time>
-          </div>
-          <h3 className="v2-post-card__title">{post.title}</h3>
-          {post.excerpt && <p className="v2-post-card__description">{post.excerpt}</p>}
-          <span className="v2-post-card__read-more">
-            Read more
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path
-                d="M3 8h10m0 0L9 4m4 4l-4 4"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
+        </Link>
+      )}
+      <div className="v2-post-card__content">
+        <div className="v2-post-card__meta">
+          {post.tags && post.tags.length > 0 && <span className="v2-post-card__tag">{post.tags[0]}</span>}
+          <time className="v2-post-card__date" dateTime={post.date}>
+            {formattedDate}
+          </time>
         </div>
-      </Link>
+        <h3 className="v2-post-card__title">
+          <Link to={`/post/${post.slug}`} className="v2-post-card__title-link">
+            {post.title}
+          </Link>
+        </h3>
+        {post.excerpt && <p className="v2-post-card__description">{post.excerpt}</p>}
+      </div>
     </article>
   );
 }

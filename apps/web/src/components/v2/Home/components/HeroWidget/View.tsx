@@ -6,14 +6,14 @@ import { pipeline } from '@/utils/pipeline';
 import type { HeroWidgetProps } from '../../types';
 
 const heroText = {
-  title: 'Project Arcturus',
-  version: 'v2',
-  subtitle: `This is a space I've created to share opinions, essays, guides, tirades, and anything that doesn't fit into a stricter category above, about software development.`
+  title: 'I build software and write about it.',
+  subtitle:
+    'Essays, field notes, and the occasional technical tirade about systems, software, and whatever I am building next.'
 };
 
-const DEFAULT_HEADLINE = heroText.title + ' ' + heroText.version;
+const DEFAULT_HEADLINE = heroText.title;
 const DEFAULT_SUBHEADLINE = heroText.subtitle;
-const DEFAULT_CTA_TEXT = 'Read the Blog';
+const DEFAULT_CTA_TEXT = 'Browse all posts';
 const DEFAULT_CTA_HREF = '/posts';
 
 function HeroWidgetView({
@@ -30,7 +30,7 @@ function HeroWidgetView({
         </h1>
         <p className="v2-hero__subheadline">{subheadline}</p>
         <div className="v2-hero__actions">
-          <Link to={ctaHref} className="v2-hero__cta void-button void-button--primary">
+          <Link to={ctaHref} className="v2-hero__cta">
             {ctaText}
             <svg
               className="v2-hero__cta-icon"
@@ -50,10 +50,6 @@ function HeroWidgetView({
             </svg>
           </Link>
         </div>
-      </div>
-      <div className="v2-hero__decoration" aria-hidden="true">
-        <div className="v2-hero__glow v2-hero__glow--primary" />
-        <div className="v2-hero__glow v2-hero__glow--secondary" />
       </div>
     </section>
   );

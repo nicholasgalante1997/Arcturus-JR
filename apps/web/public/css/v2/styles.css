@@ -11,6 +11,7 @@
 @import './PostDetail.css';
 @import './Rfcs.css';
 @import './redesign.css';
+@import './HomeEditorial.css';
 
 body {
   --surface-color: rgba(24, 24, 24, 0.7);

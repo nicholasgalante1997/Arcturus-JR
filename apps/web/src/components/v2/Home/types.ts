@@ -17,9 +17,3 @@ export interface HeroWidgetProps {
   /** Call-to-action link destination */
   ctaHref?: string;
 }
-
-export interface FeaturedPostsProps {
-  posts: Post[];
-  /** Maximum number of posts to display */
-  limit?: number;
-}
