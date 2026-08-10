@@ -15,15 +15,18 @@ const POST_A: Post = {
   slug: 'alpha',
   searchTerms: ['one'],
   readingTime: 'Under 1 minute',
+  featured: false,
   visible: true
 };
 
 const RFC_A: Rfc = {
   id: 'my-rfc',
+  code: 'RFC-0001',
   title: 'My RFC',
   version: '0.1.0',
   status: 'Draft',
   date: '2025-01-01',
+  updated: '2025-01-01',
   author: 'Nick Galante',
   excerpt: 'An RFC',
   tags: ['draft'],

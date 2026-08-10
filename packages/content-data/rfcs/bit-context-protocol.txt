@@ -1,7 +1,8 @@
 ---
+code: BCP-0001
 title: 'Bit Context Pack (BCP): A Binary Serialization Format for Structured LLM Context'
 version: 0.1.0-draft
-status: Early Draft
+status: Draft
 date: '2026-02-01'
 author: Nick Galante
 excerpt: A binary serialization format based on dumb block container protocols designed to efficiently encode structured context for consumption by large language models, optimizing for semantic density within token-constrained context windows.
@@ -793,4 +794,3 @@ Authors' Address
 
 
                          --- End of RFC Draft ---
-
