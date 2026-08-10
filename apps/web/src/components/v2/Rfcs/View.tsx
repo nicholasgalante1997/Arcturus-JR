@@ -1,58 +1,68 @@
-import { memo, use } from 'react';
+import { memo, use, useMemo } from 'react';
 import { Link } from 'react-router';
 
+import copy from '@/content/en.json';
 import { pipeline } from '@/utils/pipeline';
+import { formatPostDate } from '@/utils/postPresentation';
 import { withProfiler } from '@/utils/profiler';
+
+import { sortRfcs } from './sortRfcs';
 
 import type { V2RfcsPageViewProps } from './types';
 
 function V2RfcsPageView({ queries }: V2RfcsPageViewProps) {
   const [rfcsQuery] = queries;
   const rfcs = use(rfcsQuery.promise);
+  const sortedRfcs = useMemo(() => sortRfcs(rfcs), [rfcs]);
 
   return (
     <div className="v2-rfcs-page">
-      <div className="container">
+      <div className="wrapper">
         <header className="v2-rfcs-page__header">
-          <h1 className="v2-rfcs-page__title">RFCs</h1>
-          <p className="v2-rfcs-page__description">
-            Requests for Comments — technical specifications and protocol drafts.
-          </p>
+          <h1 id="rfc-registry-title" className="v2-rfcs-page__title">
+            {copy.rfcs.title}
+          </h1>
+          <p className="v2-rfcs-page__description">{copy.rfcs.intro}</p>
         </header>
 
-        <div className="v2-rfcs-page__grid">
-          {rfcs.map((rfc) => (
-            <Link key={rfc.id} to={`/rfc/${rfc.id}`} className="v2-rfc-card">
-              <article className="v2-rfc-card__inner">
-                <div className="v2-rfc-card__meta">
-                  <span className="v2-rfc-card__status" data-status={rfc.status.toLowerCase().replace(/\s+/g, '-')}>
-                    {rfc.status}
-                  </span>
-                  <span className="v2-rfc-card__version">v{rfc.version}</span>
+        <section className="v2-rfc-registry" aria-labelledby="rfc-registry-title">
+          {sortedRfcs.map((rfc) => (
+            <article key={rfc.id} className="v2-rfc-record">
+              <div className="v2-rfc-record__identity">
+                <Link to={`/rfc/${rfc.id}`} className="v2-rfc-record__code">
+                  {rfc.code}
+                </Link>
+                <div
+                  className="v2-rfc-record__status"
+                  data-status={rfc.status.toLocaleLowerCase()}
+                >
+                  <span className="v2-rfc-record__status-dot" aria-hidden="true" />
+                  <span>{rfc.status}</span>
                 </div>
-                <h2 className="v2-rfc-card__title">{rfc.title}</h2>
-                <p className="v2-rfc-card__excerpt">{rfc.excerpt}</p>
-                <div className="v2-rfc-card__footer">
-                  <span className="v2-rfc-card__author">{rfc.author}</span>
-                  <time className="v2-rfc-card__date" dateTime={rfc.date}>
-                    {new Date(rfc.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
-                  </time>
+              </div>
+
+              <div className="v2-rfc-record__content">
+                <h2 className="v2-rfc-record__title">
+                  <Link to={`/rfc/${rfc.id}`}>{rfc.title}</Link>
+                </h2>
+                <p className="v2-rfc-record__abstract">{rfc.excerpt}</p>
+              </div>
+
+              <dl className="v2-rfc-record__revision">
+                <div>
+                  <dt>{copy.rfcs.versionLabel}</dt>
+                  <dd>v{rfc.version}</dd>
                 </div>
-                <div className="v2-rfc-card__tags">
-                  {rfc.tags.map((tag) => (
-                    <span key={tag} className="v2-rfc-card__tag">
-                      {tag}
-                    </span>
-                  ))}
+                <div>
+                  <dt>{copy.rfcs.updatedLabel}</dt>
+                  <dd>
+                    <time dateTime={rfc.updated}>{formatPostDate(rfc.updated)}</time>
+                  </dd>
                 </div>
-              </article>
-            </Link>
+              </dl>
+            </article>
           ))}
-        </div>
+        </section>
       </div>
     </div>
   );

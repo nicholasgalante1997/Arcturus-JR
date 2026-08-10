@@ -7,5 +7,11 @@
     "resultCountMany": "{count} posts match “{query}”.",
     "noResults": "No posts match “{query}”.",
     "clearSearch": "Clear search"
+  },
+  "rfcs": {
+    "title": "Requests for Comments",
+    "intro": "Working specifications for ideas that need more rigor than a blog post.",
+    "versionLabel": "Version",
+    "updatedLabel": "Updated"
   }
 }
