@@ -15,6 +15,7 @@
 @import './PostsEditorial.css';
 @import './RfcsRegistry.css';
 @import './AboutEditorial.css';
+@import './ContactEditorial.css';
 
 body {
   --surface-color: rgba(24, 24, 24, 0.7);

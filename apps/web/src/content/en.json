@@ -393,5 +393,65 @@
       "githubLabel": "GitHub",
       "linkedinLabel": "LinkedIn"
     }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Bring me a problem worth thinking about.",
+    "introduction": "Tell me what you are building, what is making it difficult, and why the problem matters. Technical depth is welcome.",
+    "aside": "For all other inquiries, leading with your favorite line from Airplane! remains acceptable protocol.",
+    "formTitle": "Start a conversation",
+    "formDescription": "A useful first message has context, constraints, and enough detail to avoid a ceremonial round of email.",
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "messagePlaceholder": "What are you working on, and where is the hard part?"
+    },
+    "subjects": [
+      {
+        "value": "",
+        "label": "Choose a subject"
+      },
+      {
+        "value": "technical-conversation",
+        "label": "Technical conversation"
+      },
+      {
+        "value": "collaboration",
+        "label": "Collaboration"
+      },
+      {
+        "value": "project",
+        "label": "Project inquiry"
+      },
+      {
+        "value": "feedback",
+        "label": "Site or writing feedback"
+      },
+      {
+        "value": "other",
+        "label": "Something else"
+      }
+    ],
+    "validation": {
+      "nameRequired": "Name is required.",
+      "emailRequired": "Email is required.",
+      "emailInvalid": "Enter a valid email address.",
+      "subjectRequired": "Choose a subject.",
+      "messageRequired": "Message is required.",
+      "messageLength": "Give me at least twenty characters to work with."
+    },
+    "submit": "Send message",
+    "submitting": "Sending…",
+    "submitError": "The form did not cooperate. Try again or use email.",
+    "successTitle": "Message sent.",
+    "successDescription": "Thanks for the context. I’ll read it and get back to you.",
+    "alternativesTitle": "Elsewhere",
+    "alternativesDescription": "The form is easiest. These work too.",
+    "emailLabel": "Email",
+    "primaryGithubLabel": "Personal GitHub",
+    "organizationGithubLabel": "Mega Blastoise",
+    "linkedinLabel": "LinkedIn"
   }
 }

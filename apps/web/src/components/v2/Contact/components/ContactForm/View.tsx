@@ -1,21 +1,12 @@
-import { Input, Select, Textarea } from '@arcjr/void-components';
-import clsx from 'clsx';
 import { memo, useRef, useState } from 'react';
 
+import copy from '@/content/en.json';
 import { pipeline } from '@/utils/pipeline';
 
 import type { ContactFormData } from '../../types';
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xnnpkkjo';
-
-const SUBJECT_OPTIONS = [
-  { value: '', label: 'Select a subject...' },
-  { value: 'general', label: 'General Inquiry' },
-  { value: 'collaboration', label: 'Collaboration Opportunity' },
-  { value: 'feedback', label: 'Feedback' },
-  { value: 'bug', label: 'Bug Report' },
-  { value: 'other', label: 'Other' }
-];
+const { contact } = copy;
 
 function ContactFormView() {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -36,23 +27,23 @@ function ContactFormView() {
     const newErrors: Partial<ContactFormData> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = contact.validation.nameRequired;
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = contact.validation.emailRequired;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
+      newErrors.email = contact.validation.emailInvalid;
     }
 
     if (!formData.subject) {
-      newErrors.subject = 'Please select a subject';
+      newErrors.subject = contact.validation.subjectRequired;
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = contact.validation.messageRequired;
     } else if (formData.message.trim().length < 20) {
-      newErrors.message = 'Message must be at least 20 characters';
+      newErrors.message = contact.validation.messageLength;
     }
 
     setErrors(newErrors);
@@ -83,13 +74,13 @@ function ContactFormView() {
           setSubmitError(null);
           formRef.current?.reset();
         } else {
-          setSubmitError('Oops! There was a problem submitting your form');
+          setSubmitError(contact.submitError);
           setIsSubmitting(false);
           console.error('Form submission error:', response.statusText);
         }
       })
       .catch((error) => {
-        setSubmitError('Oops! There was a problem submitting your form');
+        setSubmitError(contact.submitError);
         setIsSubmitting(false);
         console.error('Form submission error:', error);
       });
@@ -107,23 +98,12 @@ function ContactFormView() {
 
   if (submitSuccess) {
     return (
-      <div className="v2-contact-form__success">
-        <div className="v2-contact-form__success-icon">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="22" stroke="currentColor" strokeWidth="2" />
-            <path
-              d="M16 24l6 6 12-12"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-        <h3 className="v2-contact-form__success-title">Message Sent!</h3>
-        <p className="v2-contact-form__success-text">
-          Thank you for reaching out. I&apos;ll get back to you as soon as possible.
+      <div className="v2-contact-form__success" role="status">
+        <p className="v2-contact-form__success-mark" aria-hidden="true">
+          ✓
         </p>
+        <h3>{contact.successTitle}</h3>
+        <p>{contact.successDescription}</p>
       </div>
     );
   }
@@ -138,80 +118,98 @@ function ContactFormView() {
       ref={formRef}
       noValidate
     >
-      <div className="v2-contact-form__row">
-        <Input
-          label="Name"
+      <div className="v2-contact-field">
+        <label htmlFor="contact-name">{contact.fields.name}</label>
+        <input
+          id="contact-name"
           name="name"
           type="text"
           value={formData.name}
           onChange={handleChange}
-          error={errors.name}
           required
-          fullWidth
           autoComplete="name"
+          aria-invalid={Boolean(errors.name)}
+          aria-describedby={errors.name ? 'contact-name-error' : undefined}
         />
+        {errors.name && (
+          <p id="contact-name-error" className="v2-contact-field__error">
+            {errors.name}
+          </p>
+        )}
       </div>
 
-      <div className="v2-contact-form__row">
-        <Input
-          label="Email"
+      <div className="v2-contact-field">
+        <label htmlFor="contact-email">{contact.fields.email}</label>
+        <input
+          id="contact-email"
           name="email"
           type="email"
           value={formData.email}
           onChange={handleChange}
-          error={errors.email}
           required
-          fullWidth
           autoComplete="email"
+          aria-invalid={Boolean(errors.email)}
+          aria-describedby={errors.email ? 'contact-email-error' : undefined}
         />
+        {errors.email && (
+          <p id="contact-email-error" className="v2-contact-field__error">
+            {errors.email}
+          </p>
+        )}
       </div>
 
-      <div className="v2-contact-form__row">
-        <Select
-          label="Subject"
+      <div className="v2-contact-field">
+        <label htmlFor="contact-subject">{contact.fields.subject}</label>
+        <select
+          id="contact-subject"
           name="subject"
           value={formData.subject}
           onChange={handleChange}
-          error={errors.subject}
           required
-          fullWidth
-          options={SUBJECT_OPTIONS}
-        />
+          aria-invalid={Boolean(errors.subject)}
+          aria-describedby={errors.subject ? 'contact-subject-error' : undefined}
+        >
+          {contact.subjects.map((option) => (
+            <option key={option.value || 'empty'} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+        {errors.subject && (
+          <p id="contact-subject-error" className="v2-contact-field__error">
+            {errors.subject}
+          </p>
+        )}
       </div>
 
-      <div className="v2-contact-form__row">
-        <Textarea
-          label="Message"
+      <div className="v2-contact-field">
+        <label htmlFor="contact-message">{contact.fields.message}</label>
+        <textarea
+          id="contact-message"
           name="message"
           value={formData.message}
           onChange={handleChange}
-          error={errors.message}
           required
-          fullWidth
           rows={6}
-          placeholder="Tell me about your project, question, or idea..."
+          placeholder={contact.fields.messagePlaceholder}
+          aria-invalid={Boolean(errors.message)}
+          aria-describedby={errors.message ? 'contact-message-error' : undefined}
         />
+        {errors.message && (
+          <p id="contact-message-error" className="v2-contact-field__error">
+            {errors.message}
+          </p>
+        )}
       </div>
 
       {submitError && (
         <div className="v2-contact-form__error" role="alert">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M8 4v5M8 11v1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
           {submitError}
         </div>
       )}
 
-      <button
-        type="submit"
-        className={clsx(
-          'void-button void-button--primary void-button--lg v2-contact-form__submit',
-          isSubmitting && 'void-button--loading'
-        )}
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? 'Sending...' : 'Send Message'}
+      <button type="submit" className="v2-contact-form__submit" disabled={isSubmitting}>
+        {isSubmitting ? contact.submitting : contact.submit}
       </button>
     </form>
   );
