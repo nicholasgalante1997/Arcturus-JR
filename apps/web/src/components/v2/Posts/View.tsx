@@ -18,10 +18,7 @@ function V2PostsPageView({ queries }: V2PostsPageViewProps) {
   const searchQuery = searchParams.get('q') ?? '';
   const normalizedQuery = searchQuery.trim();
 
-  const filteredPosts = useMemo(
-    () => filterPosts(allPosts, normalizedQuery),
-    [allPosts, normalizedQuery]
-  );
+  const filteredPosts = useMemo(() => filterPosts(allPosts, normalizedQuery), [allPosts, normalizedQuery]);
 
   const updateSearch = (query: string): void => {
     const nextParams = new URLSearchParams(searchParams);
@@ -30,15 +27,14 @@ function V2PostsPageView({ queries }: V2PostsPageViewProps) {
     setSearchParams(nextParams, { replace: true });
   };
 
-  const resultMessage =
-    filteredPosts.length === 1 ? copy.posts.resultCountOne : copy.posts.resultCountMany;
+  const resultMessage = filteredPosts.length === 1 ? copy.posts.resultCountOne : copy.posts.resultCountMany;
 
   return (
     <div className="v2-posts-page">
       <div className="wrapper">
         <header className="v2-posts-page__header">
           <div className="v2-posts-page__introduction">
-            <h1 className="v2-visually-hidden">Posts</h1>
+            <h1 className="v2-visually-hidden">{copy.posts.title}</h1>
             <p>{copy.posts.intro}</p>
           </div>
           <div className="v2-posts-search">
@@ -54,12 +50,7 @@ function V2PostsPageView({ queries }: V2PostsPageViewProps) {
               aria-hidden="true"
             >
               <circle cx="7.75" cy="7.75" r="5.25" stroke="currentColor" strokeWidth="1.5" />
-              <path
-                d="m11.5 11.5 4 4"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
+              <path d="m11.5 11.5 4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
             <input
               id="posts-search"

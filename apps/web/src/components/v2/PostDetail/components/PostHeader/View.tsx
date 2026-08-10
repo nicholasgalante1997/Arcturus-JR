@@ -2,6 +2,8 @@ import { format } from 'date-fns';
 import { memo } from 'react';
 import { Link } from 'react-router';
 
+import copy from '@/content/en.json';
+import { formatMessage } from '@/utils/formatMessage';
 import { pipeline } from '@/utils/pipeline';
 
 import type { PostHeaderProps } from '../../types';
@@ -12,9 +14,9 @@ function PostHeaderView({ post, readingTime }: PostHeaderProps) {
   return (
     <header className="v2-post-header">
       {/* Breadcrumb */}
-      <nav className="v2-post-header__breadcrumb" aria-label="Breadcrumb">
+      <nav className="v2-post-header__breadcrumb" aria-label={copy.postDetail.breadcrumbLabel}>
         <Link to="/posts" className="v2-post-header__breadcrumb-link">
-          Posts
+          {copy.postDetail.postsLabel}
         </Link>
         <span className="v2-post-header__breadcrumb-separator" aria-hidden="true">
           /
@@ -46,7 +48,9 @@ function PostHeaderView({ post, readingTime }: PostHeaderProps) {
         <time className="v2-post-header__date" dateTime={post.date}>
           {formattedDate}
         </time>
-        <span className="v2-post-header__reading-time">{readingTime} min read</span>
+        <span className="v2-post-header__reading-time">
+          {formatMessage(copy.postDetail.readingTime, { minutes: readingTime })}
+        </span>
       </div>
 
       {/* Featured Image */}

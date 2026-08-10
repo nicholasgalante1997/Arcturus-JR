@@ -1,19 +1,14 @@
 import { memo } from 'react';
 import { Link } from 'react-router';
 
+import copy from '@/content/en.json';
 import { pipeline } from '@/utils/pipeline';
 
 import type { HeroWidgetProps } from '../../types';
 
-const heroText = {
-  title: 'I build software and write about it.',
-  subtitle:
-    'Essays, field notes, and the occasional technical tirade about systems, software, and whatever I am building next.'
-};
-
-const DEFAULT_HEADLINE = heroText.title;
-const DEFAULT_SUBHEADLINE = heroText.subtitle;
-const DEFAULT_CTA_TEXT = 'Browse all posts';
+const DEFAULT_HEADLINE = copy.home.hero.title;
+const DEFAULT_SUBHEADLINE = copy.home.hero.subtitle;
+const DEFAULT_CTA_TEXT = copy.home.hero.cta;
 const DEFAULT_CTA_HREF = '/posts';
 
 function HeroWidgetView({

@@ -1,6 +1,8 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router';
 
+import copy from '@/content/en.json';
+import { formatMessage } from '@/utils/formatMessage';
 import { pipeline } from '@/utils/pipeline';
 import { formatPostCategory, formatPostDate } from '@/utils/postPresentation';
 
@@ -22,19 +24,15 @@ function FeaturedPostsView({ featuredPost, recentPosts }: FeaturedPostsProps) {
   if (!featuredPost) return null;
 
   return (
-    <section className="v2-home-editorial" aria-label="Selected writing">
+    <section className="v2-home-editorial" aria-label={copy.home.selectedWritingLabel}>
       <article className="v2-home-feature">
         <Link
           to={`/post/${featuredPost.slug}`}
           className="v2-home-feature__image-link"
-          aria-label={`Read ${featuredPost.title}`}
+          aria-label={formatMessage(copy.home.readPostLabel, { title: featuredPost.title })}
           tabIndex={-1}
         >
-          <img
-            src={featuredPost.image.src}
-            alt={featuredPost.image.alt}
-            className="v2-home-feature__image"
-          />
+          <img src={featuredPost.image.src} alt={featuredPost.image.alt} className="v2-home-feature__image" />
         </Link>
         <div className="v2-home-feature__content">
           <PostMeta post={featuredPost} />
@@ -47,7 +45,7 @@ function FeaturedPostsView({ featuredPost, recentPosts }: FeaturedPostsProps) {
 
       {recentPosts.length > 0 && (
         <div className="v2-home-recent">
-          <h2 className="v2-home-recent__heading">Recent writing</h2>
+          <h2 className="v2-home-recent__heading">{copy.home.recentWritingTitle}</h2>
           <div className="v2-home-recent__grid">
             {recentPosts.map((post) => (
               <article className="v2-home-recent-post" key={post.id}>
@@ -61,7 +59,7 @@ function FeaturedPostsView({ featuredPost, recentPosts }: FeaturedPostsProps) {
                 <Link
                   to={`/post/${post.slug}`}
                   className="v2-home-recent-post__image-link"
-                  aria-label={`Read ${post.title}`}
+                  aria-label={formatMessage(copy.home.readPostLabel, { title: post.title })}
                   tabIndex={-1}
                 >
                   <img

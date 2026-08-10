@@ -1,5 +1,59 @@
 {
+  "site": {
+    "name": "Arcturus",
+    "locale": "en-US",
+    "documentTitle": "Nick Galante — Software Engineering",
+    "documentDescription": "Nick Galante’s technical writing about software systems, web architecture, developer tooling, and engineering practice.",
+    "skipToContent": "Skip to content",
+    "navigationLabel": "Primary navigation",
+    "mobileNavigationLabel": "Mobile navigation",
+    "toggleNavigationLabel": "Toggle navigation menu",
+    "navigation": {
+      "home": "Home",
+      "posts": "Posts",
+      "rfcs": "RFCs",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "githubProfileLabel": "Visit my GitHub profile",
+      "linkedinProfileLabel": "Connect on LinkedIn"
+    },
+    "theme": {
+      "controlLabel": "Theme: {theme}. Activate to use {nextTheme} theme.",
+      "controlTitle": "Theme: {theme}",
+      "light": "light",
+      "dark": "dark",
+      "system": "system"
+    },
+    "footer": {
+      "tagline": "Software systems, field notes, and the occasional technical tirade.",
+      "navigationTitle": "Navigation",
+      "resourcesTitle": "Resources",
+      "bunDocumentation": "Bun Documentation",
+      "reactDocumentation": "React Documentation",
+      "copyright": "{year} Arcturus. All rights reserved.",
+      "builtWithPrefix": "Built with",
+      "builtWithValue": "care",
+      "builtWithSuffix": "using React 19 and Bun",
+      "builtWithAriaLabel": "care"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "I build software and write about it.",
+      "subtitle": "Essays, field notes, and the occasional technical tirade about systems, software, and whatever I am building next.",
+      "cta": "Browse all posts"
+    },
+    "selectedWritingLabel": "Selected writing",
+    "recentWritingTitle": "Recent writing",
+    "readPostLabel": "Read {title}"
+  },
   "posts": {
+    "title": "Posts",
+    "readPostLabel": "Read {title}",
     "intro": "I wrote these down before I could reconsider.",
     "searchLabel": "Search posts",
     "searchPlaceholder": "Search posts",
@@ -8,11 +62,24 @@
     "noResults": "No posts match “{query}”.",
     "clearSearch": "Clear search"
   },
+  "postDetail": {
+    "breadcrumbLabel": "Breadcrumb",
+    "postsLabel": "Posts",
+    "readingTime": "{minutes} min read",
+    "tableOfContents": "On this page",
+    "relatedPosts": "Related Posts"
+  },
   "rfcs": {
     "title": "Requests for Comments",
     "intro": "Working specifications for ideas that need more rigor than a blog post.",
     "versionLabel": "Version",
     "updatedLabel": "Updated"
+  },
+  "rfcDetail": {
+    "breadcrumbLabel": "Breadcrumb",
+    "rfcsLabel": "RFCs",
+    "authorLabel": "Author",
+    "originalFormatLabel": "Read in RFC Format"
   },
   "about": {
     "hero": {
@@ -26,6 +93,16 @@
       "linkedinLabel": "LinkedIn"
     },
     "navigationLabel": "On this page",
+    "profileLinksLabel": "Profile links",
+    "evidenceLabel": "{name} evidence",
+    "sectionLabels": {
+      "work": "01 / Work",
+      "history": "02 / History",
+      "range": "03 / Range",
+      "principles": "04 / Principles",
+      "index": "05 / Index",
+      "elsewhere": "06 / Elsewhere"
+    },
     "navigation": [
       {
         "label": "Selected Work",
@@ -225,15 +302,7 @@
       "groups": [
         {
           "title": "Languages & runtimes",
-          "items": [
-            "TypeScript",
-            "JavaScript",
-            "Rust",
-            "Bun",
-            "Node.js",
-            "SQL",
-            "Shell"
-          ]
+          "items": ["TypeScript", "JavaScript", "Rust", "Bun", "Node.js", "SQL", "Shell"]
         },
         {
           "title": "Web & interface architecture",
@@ -248,15 +317,7 @@
         },
         {
           "title": "Distributed systems & data",
-          "items": [
-            "Service boundaries",
-            "ETL pipelines",
-            "PostgreSQL",
-            "SQLite",
-            "Neo4j",
-            "GraphQL",
-            "REST"
-          ]
+          "items": ["Service boundaries", "ETL pipelines", "PostgreSQL", "SQLite", "Neo4j", "GraphQL", "REST"]
         },
         {
           "title": "Compilers, analysis & tooling",
@@ -282,14 +343,7 @@
         },
         {
           "title": "Infrastructure & delivery",
-          "items": [
-            "AWS",
-            "Docker",
-            "CI/CD",
-            "Observability",
-            "Release engineering",
-            "Artifactory"
-          ]
+          "items": ["AWS", "Docker", "CI/CD", "Observability", "Release engineering", "Artifactory"]
         },
         {
           "title": "Agent systems & local inference",

@@ -2,6 +2,7 @@ import { format } from 'date-fns';
 import { memo } from 'react';
 import { Link } from 'react-router';
 
+import copy from '@/content/en.json';
 import { pipeline } from '@/utils/pipeline';
 
 import type { RelatedPostsProps } from '../../types';
@@ -12,7 +13,7 @@ function RelatedPostsView({ posts }: RelatedPostsProps) {
   return (
     <section className="v2-related-posts" aria-labelledby="related-posts-title">
       <h2 id="related-posts-title" className="v2-related-posts__title">
-        Related Posts
+        {copy.postDetail.relatedPosts}
       </h2>
       <div className="v2-related-posts__grid">
         {posts.map((post) => (

@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 
 import config from '@/config/config';
 import copy from '@/content/en.json';
+import { formatMessage } from '@/utils/formatMessage';
 import { pipeline } from '@/utils/pipeline';
 import { withProfiler } from '@/utils/profiler';
 
@@ -27,7 +28,7 @@ function V2AboutPageView() {
           <p className="v2-about-intro__lead">{about.hero.introduction}</p>
           <p className="v2-about-intro__role">{about.hero.role}</p>
           <p className="v2-about-intro__availability">{about.hero.availability}</p>
-          <div className="v2-about-actions" aria-label="Profile links">
+          <div className="v2-about-actions" aria-label={about.profileLinksLabel}>
             <Link className="v2-about-button v2-about-button--primary" to="/contact">
               {about.hero.contactLabel}
             </Link>
@@ -50,7 +51,7 @@ function V2AboutPageView() {
         <div>
           <section id="selected-work" className="v2-about-section">
             <header className="v2-about-section__header">
-              <p className="v2-about-section__kicker">01 / Work</p>
+              <p className="v2-about-section__kicker">{about.sectionLabels.work}</p>
               <h2>{about.selectedWork.title}</h2>
               <p>{about.selectedWork.introduction}</p>
             </header>
@@ -72,7 +73,10 @@ function V2AboutPageView() {
                     </h3>
                     <p className="v2-about-project__claim">{project.claim}</p>
                     <p className="v2-about-project__description">{project.description}</p>
-                    <ul className="v2-about-evidence" aria-label={`${project.name} evidence`}>
+                    <ul
+                      className="v2-about-evidence"
+                      aria-label={formatMessage(about.evidenceLabel, { name: project.name })}
+                    >
                       {project.evidence.map((item) => (
                         <li key={item}>{item}</li>
                       ))}
@@ -86,7 +90,7 @@ function V2AboutPageView() {
 
           <section id="experience" className="v2-about-section">
             <header className="v2-about-section__header">
-              <p className="v2-about-section__kicker">02 / History</p>
+              <p className="v2-about-section__kicker">{about.sectionLabels.history}</p>
               <h2>{about.experience.title}</h2>
               <p>{about.experience.introduction}</p>
             </header>
@@ -106,7 +110,7 @@ function V2AboutPageView() {
 
           <section id="technical-range" className="v2-about-section">
             <header className="v2-about-section__header">
-              <p className="v2-about-section__kicker">03 / Range</p>
+              <p className="v2-about-section__kicker">{about.sectionLabels.range}</p>
               <h2>{about.technicalRange.title}</h2>
               <p>{about.technicalRange.introduction}</p>
             </header>
@@ -122,7 +126,7 @@ function V2AboutPageView() {
 
           <section id="how-i-engineer" className="v2-about-section">
             <header className="v2-about-section__header">
-              <p className="v2-about-section__kicker">04 / Principles</p>
+              <p className="v2-about-section__kicker">{about.sectionLabels.principles}</p>
               <h2>{about.principles.title}</h2>
               <p>{about.principles.introduction}</p>
             </header>
@@ -141,7 +145,7 @@ function V2AboutPageView() {
 
           <section className="v2-about-section">
             <header className="v2-about-section__header">
-              <p className="v2-about-section__kicker">05 / Index</p>
+              <p className="v2-about-section__kicker">{about.sectionLabels.index}</p>
               <h2>{about.experiments.title}</h2>
               <p>{about.experiments.introduction}</p>
             </header>
@@ -163,7 +167,7 @@ function V2AboutPageView() {
 
           <section id="elsewhere" className="v2-about-section v2-about-elsewhere">
             <header className="v2-about-section__header">
-              <p className="v2-about-section__kicker">06 / Elsewhere</p>
+              <p className="v2-about-section__kicker">{about.sectionLabels.elsewhere}</p>
               <h2>{about.elsewhere.title}</h2>
             </header>
             <div>

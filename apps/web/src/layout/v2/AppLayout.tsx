@@ -6,6 +6,7 @@ import { DefaultFallbackErrorComponent } from '@/components/Base/Error';
 import { V2Footer } from '@/components/v2/Footer';
 import { V2Header } from '@/components/v2/Header';
 import ArcSentry from '@/config/sentry/config';
+import copy from '@/content/en.json';
 import { pipeline } from '@/utils/pipeline';
 
 import type { V2AppLayoutProps } from './types';
@@ -43,7 +44,7 @@ function AppLayoutV2({
     >
       <div className={clsx('v2-app-layout', className)}>
         <a className="v2-skip-link" href="#main-content">
-          Skip to content
+          {copy.site.skipToContent}
         </a>
         <V2Header transparent={transparentHeader} />
         <main id="main-content" className="v2-app-layout__main">

@@ -2,6 +2,8 @@ import { formatDistanceToNow } from 'date-fns';
 import { memo } from 'react';
 import { Link } from 'react-router';
 
+import copy from '@/content/en.json';
+import { formatMessage } from '@/utils/formatMessage';
 import { pipeline } from '@/utils/pipeline';
 
 import type { PostCardV2Props } from '../../types';
@@ -17,7 +19,7 @@ function PostCardV2View({ post }: PostCardV2Props) {
         <Link
           to={`/post/${post.slug}`}
           className="v2-post-card__image-link"
-          aria-label={`Read ${post.title}`}
+          aria-label={formatMessage(copy.home.readPostLabel, { title: post.title })}
           tabIndex={-1}
         >
           <div className="v2-post-card__image-container">

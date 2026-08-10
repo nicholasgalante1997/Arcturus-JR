@@ -3,6 +3,8 @@ import clsx from 'clsx';
 import React from 'react';
 import { Link } from 'react-router';
 
+import copy from '@/content/en.json';
+import { formatMessage } from '@/utils/formatMessage';
 import { pipeline } from '@/utils/pipeline';
 
 import type { V2HeaderViewProps } from './types';
@@ -31,6 +33,14 @@ const LINKEDIN_HREF = ExternalLinksConfig.ExternalLinkLinkedIn;
 const GITHUB_HREF = ExternalLinksConfig.ExternalLinkGithub;
 
 const SHOW_IMAGE_LOGO = false;
+
+const NAVIGATION_ITEMS = [
+  { href: '/', activeTab: ARCJR_V2_TABS.HOME, label: copy.site.navigation.home },
+  { href: '/posts', activeTab: ARCJR_V2_TABS.POSTS, label: copy.site.navigation.posts },
+  { href: '/rfcs', activeTab: ARCJR_V2_TABS.RFCS, label: copy.site.navigation.rfcs },
+  { href: '/about', activeTab: ARCJR_V2_TABS.ABOUT, label: copy.site.navigation.about },
+  { href: '/contact', activeTab: ARCJR_V2_TABS.CONTACT, label: copy.site.navigation.contact }
+] as const;
 
 function GitHubIcon() {
   return (
@@ -126,35 +136,17 @@ function V2HeaderView({
             />
           )}
 
-          <h1>Arcturus</h1>
+          <h1>{copy.site.name}</h1>
         </Link>
-        <nav>
+        <nav aria-label={copy.site.navigationLabel}>
           <ul>
-            <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.HOME)} to="/">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.POSTS)} to="/posts">
-                Posts
-              </Link>
-            </li>
-            <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.RFCS)} to="/rfcs">
-                RFCs
-              </Link>
-            </li>
-            <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.ABOUT)} to="/about">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link data-active-tab={getActiveTabByPathname(ARCJR_V2_TABS.CONTACT)} to="/contact">
-                Contact
-              </Link>
-            </li>
+            {NAVIGATION_ITEMS.map((item) => (
+              <li key={item.href}>
+                <Link data-active-tab={getActiveTabByPathname(item.activeTab)} to={item.href}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
         <div className="external-links">
@@ -164,6 +156,7 @@ function V2HeaderView({
             rel="noopener noreferrer"
             to={GITHUB_HREF}
             id="gh-icon-link"
+            aria-label={copy.site.social.githubProfileLabel}
           >
             <GitHubIcon />
           </Link>
@@ -173,6 +166,7 @@ function V2HeaderView({
             rel="noopener noreferrer"
             to={LINKEDIN_HREF}
             id="in-icon-link"
+            aria-label={copy.site.social.linkedinProfileLabel}
           >
             <LinkedInIcon />
           </Link>
@@ -180,21 +174,27 @@ function V2HeaderView({
         <button
           type="button"
           className="theme-toggle"
-          aria-label={`Theme: ${theme}. Activate to use ${
-            theme === 'system' ? 'light' : theme === 'light' ? 'dark' : 'system'
-          } theme.`}
-          title={`Theme: ${theme}`}
+          aria-label={formatMessage(copy.site.theme.controlLabel, {
+            theme: copy.site.theme[theme],
+            nextTheme:
+              theme === 'system'
+                ? copy.site.theme.light
+                : theme === 'light'
+                  ? copy.site.theme.dark
+                  : copy.site.theme.system
+          })}
+          title={formatMessage(copy.site.theme.controlTitle, { theme: copy.site.theme[theme] })}
           onClick={onCycleTheme}
         >
           <ThemeIcon theme={theme} />
-          <span className="theme-toggle__label">{theme}</span>
+          <span className="theme-toggle__label">{copy.site.theme[theme]}</span>
         </button>
 
         {/* Mobile Menu Toggle */}
         <button
           type="button"
           className="mobile-menu-toggle"
-          aria-label="Toggle navigation menu"
+          aria-label={copy.site.toggleNavigationLabel}
           aria-expanded={isMobileMenuOpen}
           onClick={onToggleMobileMenu}
         >
@@ -208,33 +208,15 @@ function V2HeaderView({
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <nav className="mobile-menu" aria-label="Mobile navigation">
+        <nav className="mobile-menu" aria-label={copy.site.mobileNavigationLabel}>
           <ul>
-            <li>
-              <Link to="/" onClick={onToggleMobileMenu}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/posts" onClick={onToggleMobileMenu}>
-                Posts
-              </Link>
-            </li>
-            <li>
-              <Link to="/rfcs" onClick={onToggleMobileMenu}>
-                RFCs
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" onClick={onToggleMobileMenu}>
-                About
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" onClick={onToggleMobileMenu}>
-                Contact
-              </Link>
-            </li>
+            {NAVIGATION_ITEMS.map((item) => (
+              <li key={item.href}>
+                <Link to={item.href} onClick={onToggleMobileMenu}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
           <div className="external-links">
             <Link
@@ -242,6 +224,7 @@ function V2HeaderView({
               target="_blank"
               to={GITHUB_HREF}
               onClick={onToggleMobileMenu}
+              aria-label={copy.site.social.githubProfileLabel}
             >
               <GitHubIcon />
             </Link>
@@ -250,6 +233,7 @@ function V2HeaderView({
               target="_blank"
               to={LINKEDIN_HREF}
               onClick={onToggleMobileMenu}
+              aria-label={copy.site.social.linkedinProfileLabel}
             >
               <LinkedInIcon />
             </Link>

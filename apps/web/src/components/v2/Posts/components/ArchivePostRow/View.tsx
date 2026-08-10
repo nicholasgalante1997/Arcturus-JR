@@ -1,6 +1,8 @@
 import { memo } from 'react';
 import { Link } from 'react-router';
 
+import copy from '@/content/en.json';
+import { formatMessage } from '@/utils/formatMessage';
 import { pipeline } from '@/utils/pipeline';
 import { formatPostCategory, formatPostDate } from '@/utils/postPresentation';
 
@@ -24,7 +26,7 @@ function ArchivePostRowView({ post, prioritizeImage = false }: ArchivePostRowPro
       <Link
         to={`/post/${post.slug}`}
         className="v2-archive-post__image-link"
-        aria-label={`Read ${post.title}`}
+        aria-label={formatMessage(copy.posts.readPostLabel, { title: post.title })}
         tabIndex={-1}
       >
         <img
