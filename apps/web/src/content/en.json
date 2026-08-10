@@ -1,0 +1,11 @@
+{
+  "posts": {
+    "intro": "I wrote these down before I could reconsider.",
+    "searchLabel": "Search posts",
+    "searchPlaceholder": "Search posts",
+    "resultCountOne": "{count} post matches “{query}”.",
+    "resultCountMany": "{count} posts match “{query}”.",
+    "noResults": "No posts match “{query}”.",
+    "clearSearch": "Clear search"
+  }
+}
