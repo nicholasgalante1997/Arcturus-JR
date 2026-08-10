@@ -23,6 +23,7 @@
       "mcp"
     ],
     "readingTime": "About 25 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -47,6 +48,7 @@
       "bit-context-protocol"
     ],
     "readingTime": "Under 5 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -71,6 +73,7 @@
       "architecture"
     ],
     "readingTime": "About 2 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -95,6 +98,7 @@
       "architecture"
     ],
     "readingTime": "About 2 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -121,6 +125,7 @@
       "ssr"
     ],
     "readingTime": "Under 1 minute",
+    "featured": false,
     "visible": false
   },
   {
@@ -147,6 +152,7 @@
       "loclaude"
     ],
     "readingTime": "Under 5 minutes",
+    "featured": true,
     "visible": true
   },
   {
@@ -171,6 +177,7 @@
       "spec driven development"
     ],
     "readingTime": "Under 5 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -195,6 +202,7 @@
       "spec driven development"
     ],
     "readingTime": "Under 5 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -219,6 +227,7 @@
       "spec driven development"
     ],
     "readingTime": "Under 5 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -244,6 +253,7 @@
       "developer-environment-setup"
     ],
     "readingTime": "Under 15 minutes",
+    "featured": false,
     "visible": true
   },
   {
@@ -269,6 +279,7 @@
       "welcome"
     ],
     "readingTime": "Under 5 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -294,6 +305,7 @@
       "react"
     ],
     "readingTime": "About 25 minutes",
+    "featured": false,
     "visible": true
   },
   {
@@ -324,6 +336,7 @@
       "mac silicon"
     ],
     "readingTime": "Under 5 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -349,6 +362,7 @@
       "linux"
     ],
     "readingTime": "40 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -371,6 +385,7 @@
       "typescript"
     ],
     "readingTime": "8 - 10 minutes",
+    "featured": false,
     "visible": true
   },
   {
@@ -402,6 +417,7 @@
       "docker"
     ],
     "readingTime": "30 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -433,6 +449,7 @@
       "SPA"
     ],
     "readingTime": "30 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -468,6 +485,7 @@
       "Bundlers"
     ],
     "readingTime": "18 minutes",
+    "featured": false,
     "visible": true
   },
   {
@@ -496,6 +514,7 @@
       "Turborepo"
     ],
     "readingTime": "45 minutes (Maybe More!)",
+    "featured": false,
     "visible": false
   },
   {
@@ -522,6 +541,7 @@
       "Signals"
     ],
     "readingTime": "30 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -551,6 +571,7 @@
       "Turborepo"
     ],
     "readingTime": "20 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -581,6 +602,7 @@
       "System Design"
     ],
     "readingTime": "A Series (Extended)",
+    "featured": false,
     "visible": false
   },
   {
@@ -609,6 +631,7 @@
       "Software Engineering"
     ],
     "readingTime": "A Series (Extended)",
+    "featured": false,
     "visible": false
   },
   {
@@ -636,6 +659,7 @@
       "AST"
     ],
     "readingTime": "15 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -660,6 +684,7 @@
       "Variation Selectors"
     ],
     "readingTime": "15 minutes",
+    "featured": false,
     "visible": false
   },
   {
@@ -688,6 +713,7 @@
       "Opinion"
     ],
     "readingTime": "30m",
+    "featured": false,
     "visible": false
   },
   {
@@ -716,6 +742,7 @@
       "Opinion"
     ],
     "readingTime": "1 minute",
+    "featured": false,
     "visible": false
   },
   {
@@ -745,6 +772,7 @@
       "React Compiler"
     ],
     "readingTime": "10 minutes",
+    "featured": false,
     "visible": true
   }
 ]
