@@ -5,8 +5,12 @@ export interface V2HeaderProps {
   className?: string;
 }
 
+export type ThemePreference = 'system' | 'light' | 'dark';
+
 export interface V2HeaderViewProps extends V2HeaderProps {
   isScrolled: boolean;
   isMobileMenuOpen: boolean;
   onToggleMobileMenu: () => void;
+  theme: ThemePreference;
+  onCycleTheme: () => void;
 }

@@ -1,3 +1,4 @@
+@import './fonts.css';
 @import './About.css';
 @import './Contact.css';
 @import './FeaturedPosts.css';
@@ -9,6 +10,7 @@
 @import './PostsGrid.css';
 @import './PostDetail.css';
 @import './Rfcs.css';
+@import './redesign.css';
 
 body {
   --surface-color: rgba(24, 24, 24, 0.7);

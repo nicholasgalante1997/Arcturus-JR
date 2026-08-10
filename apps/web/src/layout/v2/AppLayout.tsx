@@ -3,7 +3,6 @@ import React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
 import { DefaultFallbackErrorComponent } from '@/components/Base/Error';
-import { Starfield } from '@/components/Base/Starfield';
 import { V2Footer } from '@/components/v2/Footer';
 import { V2Header } from '@/components/v2/Header';
 import ArcSentry from '@/config/sentry/config';
@@ -43,7 +42,9 @@ function AppLayoutV2({
       )}
     >
       <div className={clsx('v2-app-layout', className)}>
-        <Starfield />
+        <a className="v2-skip-link" href="#main-content">
+          Skip to content
+        </a>
         <V2Header transparent={transparentHeader} />
         <main id="main-content" className="v2-app-layout__main">
           {children}
