@@ -38,6 +38,15 @@
   content: none;
 }
 
+.v2-home-page .v2-hero__greeting {
+  display: inline-block;
+  inline-size: 0.95em;
+  block-size: auto;
+  margin-inline-start: 0.08em;
+  image-rendering: pixelated;
+  vertical-align: -0.08em;
+}
+
 .v2-home-page .v2-hero__subheadline {
   max-inline-size: 56ch;
   margin: 0 0 var(--s-space-6);

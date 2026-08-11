@@ -43,9 +43,9 @@
   },
   "home": {
     "hero": {
-      "title": "I build software and write about it.",
-      "subtitle": "Essays, field notes, and the occasional technical tirade about systems, software, and whatever I am building next.",
-      "cta": "Browse all posts"
+      "title": "I'm Nick Galante.",
+      "subtitle": "I'm a senior software engineer leading Agent Tools Design Technology at Charter Communications. I build agent infrastructure, developer platforms, and deterministic software-intelligence systems, then write about the architecture, tradeoffs, and occasional bad idea worth pursuing.",
+      "cta": "Read the writing"
     },
     "selectedWritingLabel": "Selected writing",
     "recentWritingTitle": "Recent writing",

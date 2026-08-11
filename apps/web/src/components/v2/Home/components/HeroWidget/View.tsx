@@ -21,7 +21,15 @@ function HeroWidgetView({
     <section className="v2-hero" aria-labelledby="hero-headline">
       <div className="v2-hero__content">
         <h1 id="hero-headline" className="v2-hero__headline">
-          {headline}
+          <span>{headline}</span>{' '}
+          <img
+            className="v2-hero__greeting"
+            src="/assets/gifs/waving-pikachu.gif"
+            alt=""
+            width="50"
+            height="46"
+            aria-hidden="true"
+          />
         </h1>
         <p className="v2-hero__subheadline">{subheadline}</p>
         <div className="v2-hero__actions">
