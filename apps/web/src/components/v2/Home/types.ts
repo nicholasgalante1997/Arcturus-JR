@@ -16,4 +16,6 @@ export interface HeroWidgetProps {
   ctaText?: string;
   /** Call-to-action link destination */
   ctaHref?: string;
+  /** Tooltip messaging */
+  tooltipMessage?: string;
 }

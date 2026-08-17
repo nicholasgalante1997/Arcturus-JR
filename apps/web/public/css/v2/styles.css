@@ -1,6 +1,7 @@
 @import './fonts.css';
 @import './About.css';
 @import './Contact.css';
+@import './AnchorTooltip.css';
 @import './FeaturedPosts.css';
 @import './Footer.css';
 @import './Header.css';
@@ -12,6 +13,7 @@
 @import './Rfcs.css';
 @import './redesign.css';
 @import './HomeEditorial.css';
+@import './HomeCollage.css';
 @import './PostsEditorial.css';
 @import './RfcsRegistry.css';
 @import './AboutEditorial.css';

@@ -1,0 +1,75 @@
+/* Cropped field-note fragments make the home hero an editorial composition. */
+@media (min-width: 49rem) {
+  .v2-home-page .v2-hero {
+    min-block-size: clamp(37rem, 56vw, 46rem);
+  }
+
+  .v2-home-page .v2-hero__content {
+    position: relative;
+    z-index: 1;
+    max-inline-size: min(48%, 35rem);
+  }
+
+  .v2-home-page .v2-hero__collage {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 45%;
+    inset-inline-end: min(-9rem, -10vw);
+    pointer-events: none;
+  }
+
+  .v2-home-page .v2-hero__collage-panel {
+    position: absolute;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid var(--s-border-strong);
+    background: var(--s-surface-1);
+  }
+
+  .v2-home-page .v2-hero__collage-panel img {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  .v2-home-page .v2-hero__collage-panel--cipher {
+    inset-block-start: 2%;
+    inset-inline-end: 2%;
+    inline-size: min(23rem, 54%);
+    aspect-ratio: 1;
+  }
+
+  .v2-home-page .v2-hero__collage-panel--cipher img {
+    object-position: 100% 54%;
+  }
+
+  .v2-home-page .v2-hero__collage-panel--filesystem {
+    inset-block-start: 25%;
+    inset-inline-end: 31%;
+    z-index: 1;
+    inline-size: min(18rem, 43%);
+    aspect-ratio: 0.69;
+  }
+
+  .v2-home-page .v2-hero__collage-panel--filesystem img {
+    object-position: 100% 50%;
+  }
+
+  .v2-home-page .v2-hero__collage-panel--terminal {
+    inset-block-end: 5%;
+    inset-inline-end: -2%;
+    inline-size: min(28rem, 67%);
+    aspect-ratio: 1.45;
+  }
+
+  .v2-home-page .v2-hero__collage-panel--terminal img {
+    object-position: 100% 50%;
+  }
+}
+
+@media (max-width: 48rem) {
+  .v2-home-page .v2-hero__collage {
+    display: none;
+  }
+}

@@ -1,14 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
+import { useArcThemeContext } from '@/context/theme/Context';
 import { pipeline } from '@/utils/pipeline';
 
 import V2HeaderView from './View';
 
-import type { ThemePreference, V2HeaderProps } from './types';
+import type { V2HeaderProps } from './types';
 
 const SCROLL_THRESHOLD = 20;
-const THEME_STORAGE_KEY = 'arcturus-theme';
-const THEME_SEQUENCE: ThemePreference[] = ['system', 'light', 'dark'];
 
 /**
  * V2 Header component with responsive navigation
@@ -30,25 +29,8 @@ const THEME_SEQUENCE: ThemePreference[] = ['system', 'light', 'dark'];
 function V2Header(props: V2HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState<ThemePreference>('system');
 
-  const applyTheme = useCallback((preference: ThemePreference) => {
-    document.documentElement.classList.remove('light', 'dark');
-
-    if (preference !== 'system') {
-      document.documentElement.classList.add(preference);
-    }
-  }, []);
-
-  useEffect(() => {
-    const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-    const preference = THEME_SEQUENCE.includes(storedTheme as ThemePreference)
-      ? (storedTheme as ThemePreference)
-      : 'system';
-
-    setTheme(preference);
-    applyTheme(preference);
-  }, [applyTheme]);
+  const { theme, cycleTheme } = useArcThemeContext();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,19 +49,6 @@ function V2Header(props: V2HeaderProps) {
   const handleToggleMobileMenu = useCallback(() => {
     setIsMobileMenuOpen((prev) => !prev);
   }, []);
-
-  const handleCycleTheme = useCallback(() => {
-    setTheme((currentTheme) => {
-      const currentIndex = THEME_SEQUENCE.indexOf(currentTheme);
-      const nextTheme =
-        THEME_SEQUENCE[(currentIndex + 1) % THEME_SEQUENCE.length] ?? 'system';
-
-      window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-      applyTheme(nextTheme);
-
-      return nextTheme;
-    });
-  }, [applyTheme]);
 
   // Close mobile menu on escape key
   useEffect(() => {
@@ -100,7 +69,7 @@ function V2Header(props: V2HeaderProps) {
       isMobileMenuOpen={isMobileMenuOpen}
       onToggleMobileMenu={handleToggleMobileMenu}
       theme={theme}
-      onCycleTheme={handleCycleTheme}
+      onCycleTheme={cycleTheme}
     />
   );
 }

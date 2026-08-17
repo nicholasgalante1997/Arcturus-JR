@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
 import css from 'react-syntax-highlighter/dist/esm/languages/prism/css';
@@ -10,7 +10,9 @@ import rust from 'react-syntax-highlighter/dist/esm/languages/prism/rust';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
 import typescript from 'react-syntax-highlighter/dist/esm/languages/prism/typescript';
 import yaml from 'react-syntax-highlighter/dist/esm/languages/prism/yaml';
-import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { lucario, materialLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+import { useArcThemeContext } from '@/context/theme/Context';
 
 import { CodeComponentProps } from './types';
 
@@ -79,6 +81,23 @@ const CodeComponent: React.FC<CodeComponentProps> = ({ inline, className, childr
   const actualLanguage = language ? languageMap[language] || language : undefined;
   const shouldHighlight = !inline && actualLanguage && supportedLanguages.has(actualLanguage);
 
+  const { theme } = useArcThemeContext();
+  const systemTheme = useMemo(() => {
+    if (typeof window !== 'undefined' && "matchMedia" in window) {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    return null;
+  }, [window?.matchMedia]);
+
+  const codeTheme = useMemo(() => {
+    if (theme === 'system') {
+      return systemTheme === 'dark' ? lucario : materialLight;
+    }
+
+    return theme === 'dark' ? lucario : materialLight;
+  }, [theme, systemTheme]);
+
   if (shouldHighlight) {
     return (
       <SyntaxHighlighter
@@ -93,7 +112,7 @@ const CodeComponent: React.FC<CodeComponentProps> = ({ inline, className, childr
           lineHeight: '1.5'
         }}
         {...props}
-        style={dracula as { [key: string]: React.CSSProperties }}
+        style={codeTheme as { [key: string]: React.CSSProperties }}
       >
         {String(children).replace(/\n$/, '')}
       </SyntaxHighlighter>

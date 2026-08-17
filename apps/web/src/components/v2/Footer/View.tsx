@@ -66,6 +66,12 @@ const SOCIAL_LINKS: SocialLink[] = [
 
 function V2FooterView({ className }: V2FooterProps) {
   const currentYear = new Date().getFullYear();
+  const footerTaglineRef = React.useRef<HTMLParagraphElement>(null);
+  React.useEffect(() => {
+    if (footerTaglineRef.current && footerTaglineRef.current.innerHTML !== copy.site.footer.tagline) {
+      footerTaglineRef.current.innerHTML = copy.site.footer.tagline;
+    }
+  }, [footerTaglineRef.current]);
 
   return (
     <footer className={clsx('v2-footer', className)}>
@@ -77,7 +83,7 @@ function V2FooterView({ className }: V2FooterProps) {
             <Link to="/" className="v2-footer__logo">
               <span className="v2-footer__logo-text">{copy.site.name}</span>
             </Link>
-            <p className="v2-footer__tagline">{copy.site.footer.tagline}</p>
+            <p className="v2-footer__tagline" ref={footerTaglineRef} />
             <SocialIcons links={SOCIAL_LINKS} />
           </div>
 

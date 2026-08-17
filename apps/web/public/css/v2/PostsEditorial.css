@@ -37,7 +37,7 @@
   margin: 0;
   color: var(--s-text);
   font-family: var(--s-font-display);
-  font-size: var(--s-text-xl);
+  font-size: var(--s-text-base);
   font-weight: 550;
   line-height: 1.25;
   text-wrap: balance;

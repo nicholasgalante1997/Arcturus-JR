@@ -1,6 +1,7 @@
-import { memo } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router';
 
+import { AnchorTooltip } from '@/components/v2/shared/AnchorTooltip';
 import config from '@/config/config';
 import copy from '@/content/en.json';
 import { formatMessage } from '@/utils/formatMessage';
@@ -8,6 +9,9 @@ import { pipeline } from '@/utils/pipeline';
 import { withProfiler } from '@/utils/profiler';
 
 const { about } = copy;
+const ABOUT_TOOLTIP_ANCHOR_CLASS = 'subheadline-tooltip';
+const ABOUT_TOOLTIP_ANCHOR_NAME = `--${ABOUT_TOOLTIP_ANCHOR_CLASS}`;
+const ABOUT_TOOLTIP_ID = 'about-hero-introduction-tooltip';
 
 function ExternalLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -19,13 +23,55 @@ function ExternalLink({ href, children }: { href: string; children: React.ReactN
 }
 
 function V2AboutPageView() {
+  const aboutHeroIntroductionRef = useRef<HTMLParagraphElement>(null);
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  useEffect(() => {
+    const introductionElement = aboutHeroIntroductionRef.current;
+    if (!introductionElement) {
+      return;
+    }
+
+    introductionElement.innerHTML = about.hero.introduction;
+
+    const anchor = introductionElement.querySelector<HTMLElement>(`.${ABOUT_TOOLTIP_ANCHOR_CLASS}`);
+    if (!anchor) {
+      return;
+    }
+
+    const show = () => setShowTooltip(true);
+    const hide = () => setShowTooltip(false);
+
+    anchor.tabIndex = 0;
+    anchor.setAttribute('aria-describedby', ABOUT_TOOLTIP_ID);
+    anchor.addEventListener('mouseenter', show);
+    anchor.addEventListener('mouseleave', hide);
+    anchor.addEventListener('focus', show);
+    anchor.addEventListener('blur', hide);
+
+    return () => {
+      anchor.removeEventListener('mouseenter', show);
+      anchor.removeEventListener('mouseleave', hide);
+      anchor.removeEventListener('focus', show);
+      anchor.removeEventListener('blur', hide);
+    };
+  }, [about.hero.introduction]);
+
   return (
     <div className="v2-about-page v2-about-editorial">
       <div className="wrapper">
         <header className="v2-about-intro">
           <p className="v2-about-eyebrow">{about.hero.eyebrow}</p>
           <h1>{about.hero.title}</h1>
-          <p className="v2-about-intro__lead">{about.hero.introduction}</p>
+          <p className="v2-about-intro__lead" ref={aboutHeroIntroductionRef} />
+          <AnchorTooltip
+            id={ABOUT_TOOLTIP_ID}
+            className="v2-about-intro__tooltip"
+            visible={showTooltip}
+            anchor={ABOUT_TOOLTIP_ANCHOR_NAME}
+          >
+            {about.hero.tooltipMessage}
+          </AnchorTooltip>
           <p className="v2-about-intro__role">{about.hero.role}</p>
           <p className="v2-about-intro__availability">{about.hero.availability}</p>
           <div className="v2-about-actions" aria-label={about.profileLinksLabel}>

@@ -29,7 +29,7 @@
 
 .v2-about-intro__lead {
   color: var(--s-text);
-  font-size: var(--s-text-xl);
+  font-size: var(--s-text-base);
   line-height: 1.45;
   margin: 0 0 var(--s-space-8);
   max-inline-size: 60ch;

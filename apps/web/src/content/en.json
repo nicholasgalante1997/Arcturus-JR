@@ -3,7 +3,7 @@
     "name": "Arcturus",
     "locale": "en-US",
     "documentTitle": "Nick Galante — Software Engineering",
-    "documentDescription": "Nick Galante’s technical writing about software systems, web architecture, developer tooling, and engineering practice.",
+    "documentDescription": "Nick Galante's technical writing about software systems, web architecture, developer tooling, and engineering practice.",
     "skipToContent": "Skip to content",
     "navigationLabel": "Primary navigation",
     "mobileNavigationLabel": "Mobile navigation",
@@ -29,7 +29,7 @@
       "system": "system"
     },
     "footer": {
-      "tagline": "Software systems, field notes, and the occasional technical tirade.",
+      "tagline": "If you're wondering where <i>Arcturus</i> comes from, it is a reference to Hank Scorpio's openly stated plan to take over the eastern seaboard of the United States. This website shares the same goal.",
       "navigationTitle": "Navigation",
       "resourcesTitle": "Resources",
       "bunDocumentation": "Bun Documentation",
@@ -43,9 +43,10 @@
   },
   "home": {
     "hero": {
-      "title": "I'm Nick Galante.",
-      "subtitle": "I'm a senior software engineer leading Agent Tools Design Technology at Charter Communications. I build agent infrastructure, developer platforms, and deterministic software-intelligence systems, then write about the architecture, tradeoffs, and occasional bad idea worth pursuing.",
-      "cta": "Read the writing"
+      "title": "Nick Galante",
+      "subtitle": "I'm a senior software engineer and <span class=\"subheadline-highlight\">technical lead</span> at Charter Communications. I like to work on ambitious technical problems. Over my career, I've architected, implemented, deployed, and maintained technical solutions that <span class=\"subheadline-tooltip\">have served millions of users at scale</span>. I enjoy working on <span class=\"subheadline-highlight\">distributed systems</span>. I have worked extensively improving and scaling <span class=\"subheadline-highlight\">microfrontends and enterprise React architectures</span>. I am meticulous and obsessive about performance and optimization. More recently, I've been interested in cryptography, and <span class=\"subheadline-highlight\">large language model agentic developer tooling</span>.",
+      "cta": "Check out some of my projects",
+      "tooltipMessage": "Not at Charter, I've been mostly focused on internal tooling, saas, and R&D for DX here, but with Amazon Games I launched experiences on digital goods storefronts in collaboration with Steam to serve millions of concurrent users, supporting major title drops like Left 4 Dead 2, New World, and Lost Ark with direct digital fulfillment. Lots of fun."
     },
     "selectedWritingLabel": "Selected writing",
     "recentWritingTitle": "Recent writing",
@@ -54,7 +55,7 @@
   "posts": {
     "title": "Posts",
     "readPostLabel": "Read {title}",
-    "intro": "I wrote these down before I could reconsider.",
+    "intro": "This series of posts is a mixed bag. Sometimes, I'll write about cryptography, other times React. There might be times I write about agent tooling. <i>Maybe one day I'll post a whole soliloquy hidden in plainsight with utf8 variation selector embedding. You don't control me. I'll do it all.</i>",
     "searchLabel": "Search posts",
     "searchPlaceholder": "Search posts",
     "resultCountOne": "{count} post matches “{query}”.",
@@ -71,7 +72,7 @@
   },
   "rfcs": {
     "title": "Requests for Comments",
-    "intro": "Working specifications for ideas that need more rigor than a blog post.",
+    "intro": "I don't usually post these! But then again, sometimes I do! Be prepared for anything on this site.",
     "versionLabel": "Version",
     "updatedLabel": "Updated"
   },
@@ -83,11 +84,12 @@
   },
   "about": {
     "hero": {
-      "eyebrow": "Software engineer",
-      "title": "I’m Nick Galante. I build software systems across the stack.",
-      "introduction": "I follow worthwhile problems wherever they go: from interfaces and compilers to distributed systems, storage, protocols, and infrastructure. The throughline is not a collection of technologies. It is ownership of the system.",
-      "role": "Senior Software Engineer — Lead, Agent Tools Design Technology at Charter Communications",
-      "availability": "I’m interested in ambitious technical problems and serious people working on them.",
+      "eyebrow": "Senior Software Engineer & Technical Lead",
+      "title": "I'm Nick Galante. Welcome to my website!",
+      "introduction": "I'm a senior software engineer and <span class=\"subheadline-highlight\">technical lead</span> at Charter Communications. I like to work on ambitious technical problems. Over my career, I've architected, implemented, deployed, and maintained technical solutions that <span class=\"subheadline-tooltip\">have served hundreds of millions of users at scale</span>. I enjoy working on <span class=\"subheadline-highlight\">distributed systems</span>. I have worked extensively improving and scaling <span class=\"subheadline-highlight\">microfrontends and enterprise React architectures</span>. I am meticulous and obsessive about performance and optimization. More recently, I've been interested in cryptography, and <span class=\"subheadline-highlight\">large language model agentic developer tooling</span>.",
+      "tooltipMessage": "Not at Charter, I've been mostly focused on internal tooling, saas, and R&D for DX here, but with Amazon Games I launched experiences on digital goods storefronts in collaboration with Steam to serve millions of concurrent users, supporting major title drops like Left 4 Dead 2, New World, and Lost Ark with direct digital fulfillment. Lots of fun.",
+      "role": "Senior Software Engineer — Technical Lead, Agent Tools Design Technology at Charter Communications",
+      "availability": "I'm currently not interested in new roles, but I am available to consult on technical problems of scale or interest, or projects that support the benefit and welfare of animals.",
       "contactLabel": "Start a conversation",
       "githubLabel": "GitHub",
       "linkedinLabel": "LinkedIn"
@@ -127,36 +129,35 @@
     ],
     "selectedWork": {
       "title": "Selected Work",
-      "introduction": "A few systems where the constraints, scale, or consequences made the work worth doing.",
+      "introduction": "These are some projects that I felt were worth cherry-picking and noting specifically. If you'd like to learn more about any of these projects, drop me a note!",
       "projects": [
         {
           "index": "01",
           "name": "AI / LLM Registry",
-          "context": "Charter Communications · Principal architect, primary implementer, direct maintainer",
+          "context": "Charter Communications · Principal architect, primary implementer, technical lead maintainer",
           "claim": "A company-wide registry for versioned agent assets, built on the durable ideas behind npm and container registries.",
-          "description": "I conceived, architected, and delivered a vendor-neutral platform for distributing serializable agent configuration across harnesses and IDEs. Namespaced assets have owners, semantic versions, dependencies, tags, update and yank semantics, and complete local history. A CAC-based npm client exposes installation, discovery, submission, rollback, and roughly thirty other operations; Rust services and PostgreSQL manage the durable system of record.",
+          "description": "I architected, implemented, and delivered a vendor-neutral platform for distributing serializable large language model asset configurations (Agents, Skills, Model Configs, MCP Support, etc.) across harnesses and IDEs (Cross Agent/IDE Support). Namespaced assets have owners, semantic versions, dependencies, tags, update and yank semantics, and complete local history. A CAC-based npm client exposes installation, discovery, submission, rollback, and a suite of roughly thirty other operations that support improved agentic development workflows.",
           "evidence": [
             "Several hundred to low-thousands of cataloged assets",
-            "Adopted across 20–30 organizational namespaces",
-            "Conceived and delivered in roughly three to six months",
+            "Adopted company wide across 40 to 50 organizational namespaces",
             "SQLite-backed client history, dependency installation, rollback, and nightly releases"
           ],
-          "technologies": "TypeScript, Bun, npm, CAC, SQLite, Rust, PostgreSQL, Artifactory",
+          "technologies": "TypeScript, Bun, npm, CAC, SQLite, Rust, PostgreSQL",
           "href": ""
         },
         {
           "index": "02",
           "name": "Springfield",
           "context": "Charter Communications · Principal architect, implementer, long-term owner",
-          "claim": "A deterministic software-intelligence platform that turns hundreds of distributed frontends into a queryable model of the system.",
-          "description": "I built Springfield end to end as a stateless ETL system. It clones source packages into reliable filesystem locations, crawls them in parallel, converts source into ASTs, and runs purpose-built pipelines over the result. Those pipelines map cross-package imports and exports, catalog React components and hooks, reproduce component rendering, and trace downstream service and payload usage. The resulting data lakes are available through REST, GraphQL, MCP tools, and a conversational interface. Models can consume Springfield’s facts; they do not manufacture them.",
+          "claim": "A deterministic software-intelligence platform that turns a massive system (65+) of distributed frontends into a queryable model of the system.",
+          "description": "I built Springfield end to end as a stateless ETL system. It clones source packages into deterministic temporary filesystem locations, crawls them in parallel, converts source into ASTs, and runs purpose-built pipelines over the result. Those pipelines map cross-package imports and exports, catalog React components and hooks, reproduce component rendering, and trace downstream service and payload usage. The resulting data lakes are available through REST, GraphQL, MCP tools, and a conversational interface. Models can consume Springfield's facts. This has supported enhanced observability into the system, and worked to starkly increase developer and product velocity.",
           "evidence": [
-            "295 packages and more than 30,000 source files",
+            "295 total crawled packages and more than 30,000 source files",
             "More than 2,500 modules and 2,500 React components",
-            "Complete refresh in under four minutes with zero inference tokens",
+            "Complete refresh in under four minutes with zero inference tokens (concurrent automomous ETL pipelines)",
             "Roughly 90,000 database writes in about 875 milliseconds"
           ],
-          "technologies": "TypeScript, AST analysis, parallel ETL, relational data, GraphQL, REST, MCP",
+          "technologies": "TypeScript, Rust, AST analysis, parallel ETL, relational data, GraphQL, REST, MCP",
           "href": ""
         },
         {
@@ -164,7 +165,7 @@
           "name": "Amazon Platform Engineering",
           "context": "Amazon Games · Software Development Engineer",
           "claim": "Platform work spanning design systems, microfrontends, regulated payments, and production reliability.",
-          "description": "I founded and technically led Gotham, a design system used across Prime Gaming, Prime Video, and digital-goods experiences. I also helped move a large frontend from a monolith toward microfrontends, reducing builds from eleven minutes to six; designed orchestration for European payment and compliance requirements; and built high-availability synthetic monitoring for critical customer paths.",
+          "description": "I founded and technically led Gotham, a design system used across Prime Gaming, Prime Video, and digital-goods experiences. I also proposed, implemented, and owned the migration of a massive monolithic digital goods frontend toward distributed team level microfrontends, enabling autonomous releases, reducing builds from upwards of eleven minutes to under 2 minutes. I solutioned and implemented a microservice and edge function  for European payment and compliance requirements, and built high-availability synthetic monitoring (canaries) for critical customer paths.",
           "evidence": [
             "Shared interface foundations across multiple Amazon product organizations",
             "Build time reduced from eleven minutes to six",
@@ -178,8 +179,8 @@
           "index": "04",
           "name": "Evergreen Terrace",
           "context": "Independent · Flagship",
-          "claim": "An agent-native engineering organization for turning intent into durable, inspectable work.",
-          "description": "I am building the software organization I want to work inside: a persistent queue, specialist agents, shared context, orchestration, and an operational dashboard. Evergreen treats agents as parts of an engineering system rather than a chat window, with explicit ownership and enough state to resume meaningful work instead of repeatedly rediscovering it.",
+          "claim": "A private scalable model for gastown that doesn't incinerate tokens.",
+          "description": "I think everyone takes a swing at one of these in 2026: a persistent queue, specialist agents, shared context, orchestration, and an operational dashboard. Evergreen treats agents as parts of an engineering system rather than a chat window, with explicit ownership and enough persistence and state to resume meaningful work instead of repeatedly rediscovering it.",
           "evidence": [
             "Persistent work and context across specialist agents",
             "Operational dashboard and orchestration surfaces",
@@ -192,8 +193,8 @@
           "index": "05",
           "name": "Cross-session Context Store",
           "context": "Independent · Working v0.1",
-          "claim": "Shared, durable engineering memory for Claude Code and Codex sessions.",
-          "description": "I built X-SCS around an append-only event model with deterministic extraction by default and optional model-assisted distillation. Memories are typed, scoped, reviewable, searchable, and allowed to decay. Conflict handling, handoff files, hooks, MCP tools, and a loopback dashboard make the store useful without turning it into an invisible source of truth.",
+          "claim": "Shared, durable engineering memory for Claude Code, Codex, and Kiro sessions.",
+          "description": "This one's pretty straight forward. If you've ever used AWS AgentCore Memory this is a private, open source, cross harness compatible version. Its just how you want memory in a harness to work: hands off, loaded on demand, and nothing leaves your machine.",
           "evidence": [
             "FTS5 and BM25 retrieval over typed, scoped memories",
             "Review queues, conflict handling, decay, and explicit handoffs",
@@ -207,11 +208,11 @@
           "name": "Bit Context Protocol",
           "context": "Independent · Protocol research",
           "claim": "A compact binary format for structured model context.",
-          "description": "I designed BCP to test a simple premise: context should have a protocol, not merely a pile of prose. The work includes an RFC, reference implementation, fuzzing, and integration experiments in agent tooling. Early measurements show materially denser representations than equivalent text while preserving typed structure.",
+          "description": "This one's heavily based on some work I had done previously around ext4 filesystems. It's an approach to efficient context window delegation through a dumb byte container protocol medium. It's still in early workings, but the stable prerelease is available for use today.",
           "evidence": [
             "RFC and reference implementation",
             "Fuzz testing around binary encoding and decoding",
-            "Early workloads measured roughly 30–50% better token efficiency"
+            "Early workloads measured roughly 30-50% better token efficiency"
           ],
           "technologies": "Binary protocols, TypeScript, schema design, fuzz testing, LLM context",
           "href": ""
@@ -221,7 +222,7 @@
           "name": "Bundt",
           "context": "Independent · Open-source monorepo",
           "claim": "A set of independently versioned developer tools built around Bun.",
-          "description": "Bundt is where related tools can share foundations without pretending they are one product. It includes Cleo for agent and MCP orchestration, DxDocs for zero-JavaScript documentation, Loclaude for local inference workflows, and libraries covering HATEOAS, server rendering, signals, and other pieces I wanted to understand by building.",
+          "description": "Bundt is a system of bun developer tooling. This is to say, developer tooling, built with the same foundational bun toolchain and with a turborepo monorepo approach. Think oxc but with one ten millionth the funding.",
           "evidence": [
             "Independent application and library release boundaries",
             "Agent orchestration, documentation, SSR, and local-inference tooling",
@@ -235,7 +236,7 @@
           "name": "DeckVault",
           "context": "Independent · Flagship",
           "claim": "A deliberately over-engineered Pokémon platform for exploring systems architecture with a domain I actually enjoy.",
-          "description": "DeckVault combines a React 19 server-rendered interface, Bun services, a Rust GraphQL API, relational and graph persistence, scheduled work, and containerized infrastructure. The domain is playful. The engineering questions—data ownership, service boundaries, rendering, graph relationships, and operational behavior—are not.",
+          "description": "Deckvault is a pokemon-themed love letter to microservice infrastructures, frameworkless performant server rendered react, and passion projects, and maybe, just maybe, a tool for Pokemon trainers to build better decks.",
           "evidence": [
             "React server rendering across a service-oriented backend",
             "Relational, graph, and embedded persistence used for distinct jobs",
@@ -249,7 +250,7 @@
           "name": "Project Arcturus",
           "context": "Independent · Flagship",
           "claim": "A long-lived publishing system and the site you are using now.",
-          "description": "I have evolved Arcturus for years rather than replacing it whenever a new framework became fashionable. It is a working laboratory for content pipelines, React server rendering and prerendering, accessibility, theming, monorepo infrastructure, and the unglamorous discipline of maintaining software long enough to understand its decisions.",
+          "description": "If you thought deckvault was elegant React, you're going to plotz when you see this one. This is frameworkless, modern, organized, scalable React. To learn more about this project, read the article 'Project Arcturus'",
           "evidence": [
             "Years of continuous architectural stewardship",
             "Static publishing backed by a structured content pipeline",
@@ -262,13 +263,13 @@
     },
     "experience": {
       "title": "Experience",
-      "introduction": "The chronology is useful. The work above is the better explanation.",
+      "introduction": "Here's some of the places I've worked over the years",
       "roles": [
         {
           "period": "Aug 2023 — Present",
-          "role": "Senior Software Engineer — Lead, Agent Tools Design Technology",
+          "role": "Senior Software Engineer, Technical Lead for the Agent Tools Design Technology Team",
           "organization": "Charter Communications · Spectrum",
-          "description": "I lead the engineering charter behind internal agent tooling and own the architecture and delivery of platforms used across the company."
+          "description": "I "
         },
         {
           "period": "Aug 2021 — Jun 2023",
@@ -297,27 +298,32 @@
       ]
     },
     "technicalRange": {
-      "title": "Technical Range",
-      "introduction": "Representative territory, not a keyword inventory.",
+      "title": "Technical Acumen",
+      "introduction": "These are technologies I have worked with extensively.",
       "groups": [
         {
           "title": "Languages & runtimes",
-          "items": ["TypeScript", "JavaScript", "Rust", "Bun", "Node.js", "SQL", "Shell"]
+          "items": ["Rust", "TypeScript", "JavaScript", "Bun", "Node.js", "Java", "Kotlin", "Zig", "C", "Python", "SQL", "Shell"]
         },
         {
           "title": "Web & interface architecture",
           "items": [
             "React",
+            "Vue",
+            "Svelte",
+            "Htmx",
+            "Modern Javascript",
             "SSR and prerendering",
             "Design systems",
             "Microfrontends",
             "Accessibility",
-            "Browser performance"
+            "Browser performance",
+            "Import Maps"
           ]
         },
         {
           "title": "Distributed systems & data",
-          "items": ["Service boundaries", "ETL pipelines", "PostgreSQL", "SQLite", "Neo4j", "GraphQL", "REST"]
+          "items": ["Service boundaries", "ETL pipelines", "PostgreSQL", "SQLite", "Neo4j", "GraphQL", "REST", "AST Parsing"]
         },
         {
           "title": "Compilers, analysis & tooling",
@@ -325,9 +331,10 @@
             "AST analysis",
             "Dependency graphs",
             "Static analysis",
-            "CLIs",
+            "CLI Tooling",
             "Protocol design",
-            "Developer platforms"
+            "Developer platforms",
+            "Observability platforms"
           ]
         },
         {
@@ -343,62 +350,63 @@
         },
         {
           "title": "Infrastructure & delivery",
-          "items": ["AWS", "Docker", "CI/CD", "Observability", "Release engineering", "Artifactory"]
+          "items": ["AWS", "Docker", "Kubernetes", "Podman", "Gitlab CI/CD", "Observability", "Release engineering", "Artifactory", "Self Hosting with Linux", "Home Datacenters"]
         },
         {
           "title": "Agent systems & local inference",
           "items": [
-            "Agent orchestration",
+            "Autonomous agent orchestration systems",
             "MCP",
             "Context systems",
             "Asset registries",
             "Ollama",
-            "Evaluation and deterministic grounding"
+            "Context persistence systems",
+            "Agentic harnesses"
           ]
         }
       ]
     },
     "principles": {
       "title": "How I Engineer",
-      "introduction": "Principles matter when they change what I do.",
+      "introduction": "These are some principles that I've come to value over my career, in regards to how we approach software as engineers:",
       "items": [
         {
           "title": "Ownership",
-          "description": "I do not stop at the boundary where a problem becomes inconvenient. I follow it through architecture, implementation, delivery, adoption, and operation."
+          "description": "Ownership involves a model of what I'd call perpetual accountability. Software is not done when it ships, and it's not even really done when it's sunsetted. When something goes down, at 3 AM for a critical service, you very likely want someone answering the pager with the mentality that this is their responsibility to fix, and that itself stems from a model of ownership."
         },
         {
           "title": "Bias for Action",
-          "description": "I reduce uncertainty by building the smallest useful thing, measuring it, and letting evidence sharpen the next decision."
+          "description": "This comes down to being able to, in your software ecosystem, correctly identify one way and two way doors. Engineers who sprint through two way doors responsibly "
         },
         {
-          "title": "Have Backbone; Disagree and Commit",
-          "description": "I make the technical argument clearly, especially when it is uncomfortable. Once the decision is made, I commit without keeping a private scoreboard."
+          "title": "Strong Opinions, Loosely Held",
+          "description": "This one's simple. Have opinions. Ground them in data, benchmarks, tangible evidence. Be able to support them and demonstrate why they are correct for this problem. Drop them when someone else's strong opinion is better suited for the problem based on the data they brought to the table. When we all operate this, we all improve each other."
         },
         {
           "title": "Measure before claiming",
-          "description": "Performance, scale, and reliability are properties to instrument. Adjectives are not benchmarks."
+          "description": "If you aren't able to ground what you are saying in data, there's a great likelihood there's something better you could be saying."
         },
         {
           "title": "Prefer deterministic systems before inference",
-          "description": "I use models where ambiguity requires them. If a parser, protocol, query, or state machine can produce the fact, I would rather make the fact reproducible."
+          "description": "I use models where ambiguity requires them. If a parser, protocol, query, or state machine can produce the fact, I would rather make the fact reproducible. Prefer reproducible deterministic systems, always. Use model inference where needed. Fairly simple."
         },
         {
           "title": "Abstractions justify their cost",
-          "description": "An abstraction should remove a recurring burden or enforce a valuable constraint. Novelty is not rent."
+          "description": "An abstraction should remove a recurring burden or enforce a valuable constraint. A small simple system is almost inarguably the desired state of all software systems, it's just not the pragmatic state of some."
         },
         {
           "title": "Operational quality is architecture",
-          "description": "Accessibility, performance, observability, reversibility, and release behavior belong in the design—not in the cleanup phase."
+          "description": "Accessibility, performance, observability, reversibility, and release behavior belong in the roadmap from day one, and never thought of as a fast follow."
         },
         {
           "title": "Follow the problem across boundaries",
-          "description": "Useful systems rarely respect frontend, backend, infrastructure, or native labels. Neither do I."
+          "description": "Useful systems rarely respect frontend, backend, infrastructure, or native labels. Become an expert at problem solving and at the craft of software, and solve problems wherever they hide."
         }
       ]
     },
     "experiments": {
       "title": "Systems & Experiments",
-      "introduction": "Smaller projects, foundational work, and a few rabbit holes with source code.",
+      "introduction": "Just like a few fun open source projects I work on with my extremely limited spare time.",
       "projects": [
         {
           "name": "Agartha",
@@ -422,7 +430,7 @@
         },
         {
           "name": "Nodext4",
-          "description": "A JavaScript implementation study of the ext4 filesystem specification and its low-level structures.",
+          "description": "A TypeScript implementation study of the ext4 filesystem specification and its low-level structures.",
           "href": "https://github.com/nicholasgalante1997/nodext4"
         },
         {
@@ -441,8 +449,8 @@
       ]
     },
     "closing": {
-      "title": "Bring me a problem with some teeth.",
-      "description": "If the work crosses boundaries, has real constraints, and deserves an owner, I would like to hear about it.",
+      "title": "I like using software to solve problems, try out new ideas, and improve our lives",
+      "description": "If you have an idea for a project and are looking for support, I'm usually very happy to offer assistance through consulting or direct collaboration.",
       "contactLabel": "Contact me",
       "githubLabel": "GitHub",
       "linkedinLabel": "LinkedIn"
@@ -450,11 +458,11 @@
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Bring me a problem worth thinking about.",
+    "title": "I want to hear about the problems you're solving",
     "introduction": "Tell me what you are building, what is making it difficult, and why the problem matters. Technical depth is welcome.",
-    "aside": "For all other inquiries, leading with your favorite line from Airplane! remains acceptable protocol.",
+    "aside": "For all other inquiries, leading with your favorite line from Airplane! remains acceptable protocol. Show me you're still human (and a good one that has seen the movie Airplane!)",
     "formTitle": "Start a conversation",
-    "formDescription": "A useful first message has context, constraints, and enough detail to avoid a ceremonial round of email.",
+    "formDescription": "You can also just send me pictures of your dog also! Not everything has to be business.",
     "fields": {
       "name": "Name",
       "email": "Email",
@@ -484,6 +492,10 @@
         "label": "Site or writing feedback"
       },
       {
+        "value": "dog-pics",
+        "label": "Dog Pics"
+      },
+      {
         "value": "other",
         "label": "Something else"
       }
@@ -509,18 +521,18 @@
     "linkedinLabel": "LinkedIn"
   },
   "ciphers": {
-    "eyebrow": "Easter egg / Cipher archive",
-    "title": "Intercepts",
-    "introduction": "Congratulations. You found something I deliberately neglected to put in the navigation.",
-    "challenge": "Two transmissions are currently on record. Break them if you can; complain about the estimates if you must.",
+    "eyebrow": "Easter egg",
+    "title": "Hope you like puzzles!",
+    "introduction": "The fun part about ciphers is, you rarely know if the message was worth the effort to break it, until you've already broken it.",
+    "challenge": "",
     "archiveLabel": "Ciphertext archive",
     "noviceLabel": "Novice",
     "intermediateLabel": "Black Ops III enthusiast",
-    "expertLabel": "Herbert Yardley",
-    "openLabel": "Open transmission",
-    "backLabel": "All intercepts",
-    "transmissionLabel": "Encoded transmission",
-    "copyLabel": "Copy transmission",
+    "expertLabel": "Jason Blundell",
+    "openLabel": "Open",
+    "backLabel": "All",
+    "transmissionLabel": "CIPHERTEXTS",
+    "copyLabel": "Copy",
     "copiedLabel": "Copied",
     "estimateLabel": "Estimated solve time"
   }

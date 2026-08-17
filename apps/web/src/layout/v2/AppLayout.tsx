@@ -7,6 +7,7 @@ import { V2Footer } from '@/components/v2/Footer';
 import { V2Header } from '@/components/v2/Header';
 import ArcSentry from '@/config/sentry/config';
 import copy from '@/content/en.json';
+import { ArcThemeProvider } from '@/context/theme';
 import { pipeline } from '@/utils/pipeline';
 
 import type { V2AppLayoutProps } from './types';
@@ -37,21 +38,23 @@ function AppLayoutV2({
 }: V2AppLayoutProps) {
   return (
     <ErrorBoundary
-      onError={ArcSentry.sentryReactDefaultErrorHandler}
+      onError={ArcSentry.sentryReactDefaultErrorHandler as (error: unknown, info: React.ErrorInfo) => void}
       fallbackRender={({ error, resetErrorBoundary }) => (
         <DefaultFallbackErrorComponent error={error} reset={resetErrorBoundary} />
       )}
     >
-      <div className={clsx('v2-app-layout', className)}>
-        <a className="v2-skip-link" href="#main-content">
-          {copy.site.skipToContent}
-        </a>
-        <V2Header transparent={transparentHeader} />
-        <main id="main-content" className="v2-app-layout__main">
-          {children}
-        </main>
-        {showFooter && <V2Footer />}
-      </div>
+      <ArcThemeProvider>
+        <div className={clsx('v2-app-layout', className)}>
+          <a className="v2-skip-link" href="#main-content">
+            {copy.site.skipToContent}
+          </a>
+          <V2Header transparent={transparentHeader} />
+          <main id="main-content" className="v2-app-layout__main">
+            {children}
+          </main>
+          {showFooter && <V2Footer />}
+        </div>
+      </ArcThemeProvider>
     </ErrorBoundary>
   );
 }
