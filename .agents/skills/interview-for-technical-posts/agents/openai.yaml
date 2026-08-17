@@ -1,0 +1,4 @@
+interface:
+  display_name: "Technical Blog Interview"
+  short_description: "Interview ideas into authentic technical posts"
+  default_prompt: "Use $interview-for-technical-posts to interview me and develop a publishable technical post in my voice."
