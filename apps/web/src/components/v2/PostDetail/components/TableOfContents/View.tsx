@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { memo } from 'react';
 
+import copy from '@/content/en.json';
 import { pipeline } from '@/utils/pipeline';
 
 import type { TableOfContentsProps } from '../../types';
@@ -11,7 +12,7 @@ function TableOfContentsView({ headings, activeId }: TableOfContentsProps) {
   return (
     <aside className="v2-toc" aria-labelledby="toc-title">
       <h2 id="toc-title" className="v2-toc__title">
-        On this page
+        {copy.postDetail.tableOfContents}
       </h2>
       <nav className="v2-toc__nav">
         <ul className="v2-toc__list">

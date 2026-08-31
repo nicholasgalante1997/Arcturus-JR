@@ -11,16 +11,7 @@ export interface PostsGridProps {
   posts: Post[];
 }
 
-export interface PostsFilterProps {
-  selectedTag: string | null;
-  onTagSelect: (tag: string | null) => void;
-  availableTags: string[];
-  searchQuery: string;
-  onSearchChange: (query: string) => void;
-}
-
-export interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
+export interface ArchivePostRowProps {
+  post: Post;
+  prioritizeImage?: boolean;
 }

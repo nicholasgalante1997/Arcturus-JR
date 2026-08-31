@@ -47,7 +47,11 @@ class BrowserRfcService implements IRfcService {
 
       const sorted = rfcs
         .filter((rfc) => rfc.visible)
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        .sort((a, b) => {
+          const updatedDifference =
+            new Date(b.updated).getTime() - new Date(a.updated).getTime();
+          return updatedDifference || a.code.localeCompare(b.code);
+        });
 
       BrowserRfcService.__caches.rfcs = sorted;
       return sorted;

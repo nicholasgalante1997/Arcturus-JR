@@ -100,17 +100,27 @@ export function derivePostRecord(id: string, frontmatter: PostFrontmatter, body:
 export function deriveRfcRecord(id: string, frontmatter: RfcFrontmatter, _body: string): unknown {
   return {
     ...frontmatter,
-    id
+    id,
+    updated: frontmatter.updated ?? frontmatter.date
   };
 }
 
-export function loadPosts(dir: string): Promise<CollectionEntry<Post>[]> {
-  return loadCollection(dir, {
+export async function loadPosts(dir: string): Promise<CollectionEntry<Post>[]> {
+  const entries = await loadCollection(dir, {
     extension: '.md',
     frontmatterSchema: postFrontmatterSchema,
     recordSchema: postRecordSchema,
     deriveRecord: derivePostRecord
   });
+
+  const featuredPosts = entries.filter(({ record }) => record.visible && record.featured);
+  if (featuredPosts.length > 1) {
+    throw new Error(
+      `Only one visible post may be featured; found: ${featuredPosts.map(({ id }) => id).join(', ')}`
+    );
+  }
+
+  return entries;
 }
 
 export function loadRfcs(dir: string): Promise<CollectionEntry<Rfc>[]> {

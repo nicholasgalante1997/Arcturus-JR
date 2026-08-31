@@ -145,6 +145,38 @@ Body.
         await rm(badDir, { recursive: true, force: true });
       }
     });
+
+    test('rejects more than one visible featured post', async () => {
+      const featuredDir = await mkdtemp(path.join(tmpdir(), 'arcjr-content-featured-'));
+      const makePost = (title: string) => `---
+title: ${title}
+date: '2025-01-01'
+excerpt: A featured post.
+image:
+  src: /assets/a.jpg
+  alt: A
+  aspectRatio: 16 / 9
+category: GENERAL
+subcategory: intro
+featured: true
+visible: true
+---
+
+Body.
+`;
+
+      try {
+        await Promise.all([
+          writeFile(path.join(featuredDir, 'alpha.md'), makePost('Alpha')),
+          writeFile(path.join(featuredDir, 'beta.md'), makePost('Beta'))
+        ]);
+        await expect(loadPosts(featuredDir)).rejects.toThrow(
+          /Only one visible post may be featured/
+        );
+      } finally {
+        await rm(featuredDir, { recursive: true, force: true });
+      }
+    });
   });
 
   describe('loadRfcs', () => {
@@ -155,6 +187,7 @@ Body.
       await writeFile(
         path.join(dir, 'my-rfc.txt'),
         `---
+code: RFC-0001
 title: My RFC
 version: 0.1.0
 status: Draft
@@ -179,6 +212,11 @@ RFC body.
       const entries = await loadRfcs(dir);
       expect(entries).toHaveLength(1);
       expect(entries[0]!.record.id).toBe('my-rfc');
+    });
+
+    test('updated defaults to the publication date', async () => {
+      const entries = await loadRfcs(dir);
+      expect(entries[0]!.record.updated).toBe('2025-01-01');
     });
 
     test('rfc record has no post-only fields', async () => {

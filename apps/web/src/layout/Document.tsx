@@ -1,10 +1,20 @@
 import React from 'react';
 
+import copy from '@/content/en.json';
 import { pipeline } from '@/utils/pipeline';
 
 interface DocumentProps extends React.PropsWithChildren {
   styles?: React.ReactNode[];
 }
+
+const themeInitializationScript = `
+  try {
+    const theme = localStorage.getItem('arcturus-theme');
+    if (theme === 'light' || theme === 'dark') {
+      document.documentElement.classList.add(theme);
+    }
+  } catch {}
+`;
 
 function Document({ children, styles }: DocumentProps) {
   return (
@@ -12,11 +22,9 @@ function Document({ children, styles }: DocumentProps) {
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Nick&apos;s Software Engineering Posts</title>
-        <meta
-          name="description"
-          content="Nick's technical blog website. Serious about Rust and Modern Javascript/Web Development initiatives. An unserious effort to join the IndieWeb."
-        />
+        <script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} />
+        <title>{copy.site.documentTitle}</title>
+        <meta name="description" content={copy.site.documentDescription} />
 
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -25,11 +33,19 @@ function Document({ children, styles }: DocumentProps) {
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="manifest" href="/site.webmanifest" />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Fira+Mono:wght@400;500;700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
-          rel="stylesheet"
+          rel="preload"
+          href="/fonts/fraunces-latin-variable.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/source-serif-4-latin-variable.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
         />
         <link
           rel="stylesheet"

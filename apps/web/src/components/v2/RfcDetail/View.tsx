@@ -1,6 +1,7 @@
 import { memo, use } from 'react';
 import { Link } from 'react-router';
 
+import copy from '@/content/en.json';
 import { pipeline } from '@/utils/pipeline';
 import { withProfiler } from '@/utils/profiler';
 
@@ -13,8 +14,8 @@ function V2RfcDetailView({ queries }: V2RfcDetailViewProps) {
   return (
     <div className="v2-rfc-detail">
       <div className="v2-container">
-        <nav className="v2-rfc-detail__breadcrumb">
-          <Link to="/rfcs">RFCs</Link>
+        <nav className="v2-rfc-detail__breadcrumb" aria-label={copy.rfcDetail.breadcrumbLabel}>
+          <Link to="/rfcs">{copy.rfcDetail.rfcsLabel}</Link>
           <span className="v2-rfc-detail__breadcrumb-separator" aria-hidden="true">
             /
           </span>
@@ -31,7 +32,7 @@ function V2RfcDetailView({ queries }: V2RfcDetailViewProps) {
             </span>
             <span className="v2-rfc-detail__version">v{rfc.version}</span>
             <time className="v2-rfc-detail__date" dateTime={rfc.date}>
-              {new Date(rfc.date).toLocaleDateString('en-US', {
+              {new Date(rfc.date).toLocaleDateString(copy.site.locale, {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
@@ -39,7 +40,9 @@ function V2RfcDetailView({ queries }: V2RfcDetailViewProps) {
             </time>
           </div>
           <h1 className="v2-rfc-detail__title">{rfc.title}</h1>
-          <p className="v2-rfc-detail__author">Author: {rfc.author}</p>
+          <p className="v2-rfc-detail__author">
+            {copy.rfcDetail.authorLabel}: {rfc.author}
+          </p>
           <div className="v2-rfc-detail__tags">
             {rfc.tags.map((tag) => (
               <span key={tag} className="v2-rfc-detail__tag">
@@ -54,7 +57,7 @@ function V2RfcDetailView({ queries }: V2RfcDetailViewProps) {
               target="_blank"
               href={`/content/rfcs/${rfc.id}.txt`}
             >
-              Read in RFC Format
+              {copy.rfcDetail.originalFormatLabel}
             </a>
           </div>
         </header>

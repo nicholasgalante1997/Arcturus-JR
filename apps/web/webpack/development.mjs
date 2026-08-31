@@ -42,6 +42,10 @@ const dev = {
         publicPath: '/docs'
       },
       {
+        directory: path.resolve(process.cwd(), 'public', 'fonts'),
+        publicPath: '/fonts'
+      },
+      {
         directory: path.resolve(process.cwd(), 'src', 'workers'),
         publicPath: '/workers'
       }
@@ -74,7 +78,18 @@ const dev = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader', 'postcss-loader']
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              url: {
+                filter: url => !url.startsWith('/')
+              }
+            }
+          },
+          'postcss-loader'
+        ]
       }
     ]
   },

@@ -1,0 +1,182 @@
+/* RFCs are versioned technical records, presented as a registry rather than cards. */
+.v2-rfcs-page {
+  padding-block: clamp(3.5rem, 8vw, 7rem) var(--s-space-section);
+}
+
+.v2-rfcs-page > .wrapper {
+  inline-size: min(calc(100% - (2 * var(--s-space-gutter))), var(--s-wrapper));
+  margin-inline: auto;
+}
+
+.v2-rfcs-page__header {
+  max-inline-size: 48rem;
+  margin: 0 0 clamp(3rem, 7vw, 6rem);
+  text-align: start;
+}
+
+.v2-rfcs-page__title {
+  margin: 0 0 var(--s-space-4);
+  color: var(--s-text);
+  font-size: var(--s-text-3xl);
+  line-height: 1.05;
+}
+
+.v2-rfcs-page__description {
+  max-inline-size: 58ch;
+  margin: 0;
+  color: var(--s-text-muted);
+  font-size: var(--s-text-lg);
+  line-height: 1.55;
+}
+
+.v2-rfc-registry {
+  border-block-end: 1px solid var(--s-border-subtle);
+}
+
+.v2-rfc-record {
+  display: grid;
+  grid-template-columns: minmax(8.5rem, 0.8fr) minmax(0, 3.5fr) minmax(11rem, 1fr);
+  align-items: start;
+  gap: clamp(2rem, 5vw, 5rem);
+  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+  border-block-start: 1px solid var(--s-border-subtle);
+}
+
+.v2-rfc-record__identity,
+.v2-rfc-record__content,
+.v2-rfc-record__revision {
+  min-inline-size: 0;
+}
+
+.v2-rfc-record__code {
+  display: inline-block;
+  margin-block-end: var(--s-space-4);
+  color: var(--s-text);
+  font: 650 var(--s-text-base) / 1.2 var(--s-font-mono);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  transition: color var(--s-duration-fast) var(--s-ease-out);
+}
+
+.v2-rfc-record__code:hover,
+.v2-rfc-record__title a:hover {
+  color: var(--s-accent);
+}
+
+.v2-rfc-record__status {
+  display: flex;
+  align-items: center;
+  gap: var(--s-space-2);
+  color: var(--s-text-muted);
+  font: 600 var(--s-text-xs) / 1.4 var(--s-font-ui);
+}
+
+.v2-rfc-record__status-dot {
+  inline-size: 0.5rem;
+  block-size: 0.5rem;
+  flex: 0 0 auto;
+  border-radius: var(--s-radius-full);
+  background: currentColor;
+}
+
+.v2-rfc-record__status[data-status="draft"] {
+  color: var(--s-accent);
+}
+
+.v2-rfc-record__status[data-status="proposed"] {
+  color: light-dark(oklch(0.54 0.14 75), oklch(0.78 0.14 80));
+}
+
+.v2-rfc-record__status:is([data-status="accepted"], [data-status="implemented"]) {
+  color: light-dark(oklch(0.48 0.13 150), oklch(0.73 0.14 150));
+}
+
+.v2-rfc-record__status[data-status="deprecated"] {
+  color: var(--s-text-muted);
+}
+
+.v2-rfc-record__title {
+  max-inline-size: 28ch;
+  margin: 0 0 var(--s-space-4);
+  font-size: var(--s-text-2xl);
+  line-height: 1.08;
+}
+
+.v2-rfc-record__title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--s-duration-fast) var(--s-ease-out);
+}
+
+.v2-rfc-record__abstract {
+  max-inline-size: 64ch;
+  margin: 0;
+  color: var(--s-text-muted);
+  font-size: var(--s-text-base);
+  line-height: 1.6;
+}
+
+.v2-rfc-record__revision {
+  display: grid;
+  gap: var(--s-space-6);
+  margin: 0;
+}
+
+.v2-rfc-record__revision div {
+  display: grid;
+  gap: var(--s-space-1);
+}
+
+.v2-rfc-record__revision dt {
+  color: var(--s-text-muted);
+  font: 600 var(--s-text-xs) / 1.4 var(--s-font-ui);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.v2-rfc-record__revision dd {
+  margin: 0;
+  color: var(--s-text);
+  font: 500 var(--s-text-sm) / 1.45 var(--s-font-ui);
+}
+
+.v2-rfc-record__revision div:first-child dd {
+  font-family: var(--s-font-mono);
+}
+
+@media (max-width: 48rem) {
+  .v2-rfcs-page {
+    padding-block-start: var(--s-space-16);
+  }
+
+  .v2-rfcs-page__header {
+    margin-block-end: var(--s-space-12);
+  }
+
+  .v2-rfc-record {
+    grid-template-columns: 1fr;
+    gap: var(--s-space-8);
+  }
+
+  .v2-rfc-record__identity {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--s-space-4);
+  }
+
+  .v2-rfc-record__code {
+    margin: 0;
+  }
+
+  .v2-rfc-record__revision {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-space-6);
+  }
+}
+
+@media (max-width: 28rem) {
+  .v2-rfc-record__revision {
+    grid-template-columns: 1fr;
+  }
+}

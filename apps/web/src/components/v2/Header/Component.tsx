@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
+import { useArcThemeContext } from '@/context/theme/Context';
 import { pipeline } from '@/utils/pipeline';
 
 import V2HeaderView from './View';
@@ -28,6 +29,8 @@ const SCROLL_THRESHOLD = 20;
 function V2Header(props: V2HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const { theme, cycleTheme } = useArcThemeContext();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,6 +68,8 @@ function V2Header(props: V2HeaderProps) {
       isScrolled={isScrolled}
       isMobileMenuOpen={isMobileMenuOpen}
       onToggleMobileMenu={handleToggleMobileMenu}
+      theme={theme}
+      onCycleTheme={cycleTheme}
     />
   );
 }

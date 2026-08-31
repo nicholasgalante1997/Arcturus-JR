@@ -22,6 +22,7 @@ export const postFrontmatterSchema = z.strictObject({
   slug: z.string().optional(),
   searchTerms: z.array(z.string()).optional(),
   readingTime: z.string().optional(),
+  featured: z.boolean().default(false),
   visible: z.boolean().default(false)
 });
 
@@ -40,11 +41,21 @@ export type Post = z.infer<typeof postRecordSchema>;
 
 // RFC is NOT post-shaped — no image/category/subcategory/readingTime/searchTerms/slug,
 // none of those exist in the current Rfc type. Same unknown-key rejection as posts.
+export const rfcStatusSchema = z.enum([
+  'Draft',
+  'Proposed',
+  'Accepted',
+  'Implemented',
+  'Deprecated'
+]);
+
 export const rfcFrontmatterSchema = z.strictObject({
+  code: z.string().min(1),
   title: z.string().min(1),
   version: z.string().min(1),
-  status: z.string().min(1),
+  status: rfcStatusSchema,
   date: z.iso.date(),
+  updated: z.iso.date().optional(),
   author: z.string().min(1),
   excerpt: z.string().min(1),
   tags: z.array(z.string()).default([]),
@@ -54,7 +65,8 @@ export const rfcFrontmatterSchema = z.strictObject({
 export type RfcFrontmatter = z.infer<typeof rfcFrontmatterSchema>;
 
 export const rfcRecordSchema = rfcFrontmatterSchema.extend({
-  id: z.string().min(1)
+  id: z.string().min(1),
+  updated: z.iso.date()
 });
 
 export type Rfc = z.infer<typeof rfcRecordSchema>;
@@ -70,6 +82,7 @@ export const POST_FRONTMATTER_KEY_ORDER = [
   'slug',
   'searchTerms',
   'readingTime',
+  'featured',
   'visible'
 ] as const satisfies ReadonlyArray<keyof PostFrontmatter>;
 
@@ -87,14 +100,17 @@ export const POST_RECORD_KEY_ORDER = [
   'slug',
   'searchTerms',
   'readingTime',
+  'featured',
   'visible'
 ] as const satisfies ReadonlyArray<keyof Post>;
 
 export const RFC_FRONTMATTER_KEY_ORDER = [
+  'code',
   'title',
   'version',
   'status',
   'date',
+  'updated',
   'author',
   'excerpt',
   'tags',
@@ -103,10 +119,12 @@ export const RFC_FRONTMATTER_KEY_ORDER = [
 
 export const RFC_RECORD_KEY_ORDER = [
   'id',
+  'code',
   'title',
   'version',
   'status',
   'date',
+  'updated',
   'author',
   'excerpt',
   'tags',

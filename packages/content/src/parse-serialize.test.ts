@@ -29,9 +29,10 @@ Let's have some fun.
 `;
 
 const RFC_FIXTURE = `---
+code: BCP-0001
 title: Bit Context Pack (BCP)
 version: 0.1.0-draft
-status: Early Draft
+status: Draft
 date: '2026-02-01'
 author: Nick Galante
 excerpt: A binary serialization format for structured LLM context.
@@ -60,7 +61,7 @@ describe('parseFrontmatter / serializeFrontmatter', () => {
     const result = serializeFrontmatter(
       attributes as Record<string, unknown>,
       body,
-      ['title', 'version', 'status', 'date', 'author', 'excerpt', 'tags', 'visible']
+      ['code', 'title', 'version', 'status', 'date', 'updated', 'author', 'excerpt', 'tags', 'visible']
     );
     expect(result).toBe(RFC_FIXTURE);
   });

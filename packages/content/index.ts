@@ -4,6 +4,7 @@ export {
   postRecordSchema,
   rfcFrontmatterSchema,
   rfcRecordSchema,
+  rfcStatusSchema,
   POST_FRONTMATTER_KEY_ORDER,
   POST_RECORD_KEY_ORDER,
   RFC_FRONTMATTER_KEY_ORDER,

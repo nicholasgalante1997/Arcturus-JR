@@ -2,6 +2,8 @@ import clsx from 'clsx';
 import React from 'react';
 import { Link } from 'react-router';
 
+import copy from '@/content/en.json';
+import { formatMessage } from '@/utils/formatMessage';
 import { pipeline } from '@/utils/pipeline';
 
 import SocialIcons from './SocialIcons';
@@ -24,41 +26,52 @@ const LinkedInIcon = () => (
 
 const FOOTER_SECTIONS: FooterSection[] = [
   {
-    title: 'Navigation',
+    title: copy.site.footer.navigationTitle,
     links: [
-      { label: 'Home', href: '/' },
-      { label: 'Posts', href: '/posts' },
-      { label: 'About', href: '/about' },
-      { label: 'Contact', href: '/contact' }
+      { label: copy.site.navigation.home, href: '/' },
+      { label: copy.site.navigation.posts, href: '/posts' },
+      { label: copy.site.navigation.rfcs, href: '/rfcs' },
+      { label: copy.site.navigation.about, href: '/about' },
+      { label: copy.site.navigation.contact, href: '/contact' }
     ]
   },
   {
-    title: 'Resources',
+    title: copy.site.footer.resourcesTitle,
     links: [
-      { label: 'GitHub', href: 'https://github.com/nicholasgalante1997/Arcturus-JR', external: true },
-      { label: 'Bun Documentation', href: 'https://bun.sh', external: true },
-      { label: 'React Documentation', href: 'https://react.dev', external: true }
+      {
+        label: copy.site.social.github,
+        href: 'https://github.com/nicholasgalante1997/Arcturus-JR',
+        external: true
+      },
+      { label: copy.site.footer.bunDocumentation, href: 'https://bun.sh', external: true },
+      { label: copy.site.footer.reactDocumentation, href: 'https://react.dev', external: true }
     ]
   }
 ];
 
 const SOCIAL_LINKS: SocialLink[] = [
   {
-    name: 'GitHub',
+    name: copy.site.social.github,
     href: 'https://github.com/nicholasgalante1997',
     icon: <GitHubIcon />,
-    ariaLabel: 'Visit my GitHub profile'
+    ariaLabel: copy.site.social.githubProfileLabel
   },
   {
-    name: 'LinkedIn',
+    name: copy.site.social.linkedin,
     href: 'https://www.linkedin.com/in/nicholas-g-1963041a2/',
     icon: <LinkedInIcon />,
-    ariaLabel: 'Connect on LinkedIn'
+    ariaLabel: copy.site.social.linkedinProfileLabel
   }
 ];
 
 function V2FooterView({ className }: V2FooterProps) {
   const currentYear = new Date().getFullYear();
+  const footerTaglineRef = React.useRef<HTMLParagraphElement>(null);
+  React.useEffect(() => {
+    if (footerTaglineRef.current && footerTaglineRef.current.innerHTML !== copy.site.footer.tagline) {
+      footerTaglineRef.current.innerHTML = copy.site.footer.tagline;
+    }
+  }, [footerTaglineRef.current]);
 
   return (
     <footer className={clsx('v2-footer', className)}>
@@ -68,11 +81,9 @@ function V2FooterView({ className }: V2FooterProps) {
           {/* Brand */}
           <div className="v2-footer__brand">
             <Link to="/" className="v2-footer__logo">
-              <span className="v2-footer__logo-text">Arc-Jr</span>
+              <span className="v2-footer__logo-text">{copy.site.name}</span>
             </Link>
-            <p className="v2-footer__tagline">
-              Building the future with React, TypeScript, and modern web technologies.
-            </p>
+            <p className="v2-footer__tagline" ref={footerTaglineRef} />
             <SocialIcons links={SOCIAL_LINKS} />
           </div>
 
@@ -108,13 +119,15 @@ function V2FooterView({ className }: V2FooterProps) {
 
         {/* Bottom Section */}
         <div className="v2-footer__bottom">
-          <p className="v2-footer__copyright">{currentYear} Arc-Jr. All rights reserved.</p>
+          <p className="v2-footer__copyright">
+            {formatMessage(copy.site.footer.copyright, { year: currentYear })}
+          </p>
           <p className="v2-footer__attribution">
-            Built with{' '}
-            <span className="v2-footer__heart" aria-label="love">
-              love
+            {copy.site.footer.builtWithPrefix}{' '}
+            <span className="v2-footer__heart" aria-label={copy.site.footer.builtWithAriaLabel}>
+              {copy.site.footer.builtWithValue}
             </span>{' '}
-            using React 19 and Bun
+            {copy.site.footer.builtWithSuffix}
           </p>
         </div>
       </div>
