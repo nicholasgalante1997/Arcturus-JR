@@ -17,6 +17,7 @@ export default defineConfig([
   },
   tseslint.configs.recommended,
   {
+    files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     ...pluginReact.configs.flat.recommended,
     settings: {
       react: {
