@@ -1,4 +1,4 @@
-import { postRecordSchema, type Post, type PostImage } from '@arcjr/content';
+import { type Post, type PostImage, postRecordSchema } from '@arcjr/content';
 
 import { isMarkdownDocument, type MarkdownDocument } from './MarkdownDocument';
 
