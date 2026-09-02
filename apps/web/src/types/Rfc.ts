@@ -1,4 +1,4 @@
-import { rfcRecordSchema, type Rfc } from '@arcjr/content';
+import { type Rfc,rfcRecordSchema } from '@arcjr/content';
 
 export type { Rfc };
 
